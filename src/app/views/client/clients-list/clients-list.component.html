@@ -1,7 +1,7 @@
 <div id="clientList" class="lists">
 
   <h1>Listado de clientes</h1>
-
+<!--
   <table>
     <tr>
       <th>Id</th>
@@ -22,4 +22,53 @@
       <a routerLink="/ModClient/{{ client.client_id }}" class="editlink"> <td class="edit"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </td> </a>
     </tr>
   </table>
+-->
+
+
+
+  <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+    <ng-container matColumnDef="client_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.client_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="client_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Client Name</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.client_name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="client_surname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Client surname</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.client_surname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="entry_date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Entry date</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.entry_date | date: 'dd/MM/yyyy' }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="start_capital">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Start capital</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.start_capital}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+        <mat-cell *matCellDef="let client"><a routerLink="/ModClient/{{ client.client_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[3, 5, 10]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+
+
 </div>

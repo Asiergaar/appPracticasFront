@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
@@ -8,29 +10,42 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
   templateUrl: './clients-list.component.html',
   styleUrls: ['./clients-list.component.css']
 })
-export class ClientsListComponent implements OnInit {
+export class ClientsListComponent implements AfterViewInit {
+  public client: Client;
   public clientList: any;
+  public displayedColumns= ["client_id", "client_name", "client_surname", "email", "entry_date", "start_capital", "edit"];
+  public dataSource: any;
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private clientsService: ClientsService) {
     this.clientList = [];
    }
 
-  ngOnInit(): void {
-    this.getClients();
+  async ngAfterViewInit(): Promise<void>{
+    this.clientList = await this.getClients();
+    this.dataSource = new MatTableDataSource(this.clientList);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
-  private getClients(): void {
-    this.clientsService.getClients().subscribe(
-      (data) => {
-        this.clientList = data.data;
-      },
-      (error) => {
-        console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
-      }
-    )
-  }
 
+  private async getClients(): Promise<any> {
+    return new Promise(resolve => {
+      let clientList: any[];
+      this.clientsService.getClients().subscribe(
+        (data) => {
+          clientList = data.data;
+        },
+        (error) => {
+          console.log('Error: ', error);
+        },
+        () => {
+          console.log('Petición realizada correctamente');
+          resolve(clientList);
+        }
+      )
+    })
+  }
 }

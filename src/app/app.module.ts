@@ -5,6 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule  } from "@angular/material/paginator";
+import { MatProgressSpinnerModule  } from "@angular/material/progress-spinner";
+import { MatSortModule  } from "@angular/material/sort";
+
 import { MenuComponent } from './menu/menu.component';
 import { PantallaComponent } from './views/pantalla/pantalla.component';
 import { BloqueComponent } from './views/pantalla/bloque/bloque.component';
@@ -22,6 +30,7 @@ import { PairsListComponent } from './views/pair/pairs-list/pairs-list.component
 import { PairAddComponent } from './views/pair/pair-add/pair-add.component';
 import { PairModComponent } from './views/pair/pair-mod/pair-mod.component';
 import { HomeComponent } from './views/home/home.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,7 +57,15 @@ import { HomeComponent } from './views/home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
