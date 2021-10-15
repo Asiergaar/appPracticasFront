@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Pair } from 'src/app/shared/classes/pair';
-import { PairsService } from 'src/app/shared/services/pairs.service';
-import { TokensService } from 'src/app/shared/services/tokens.service';
-import { ExchangesService } from 'src/app/shared/services/exchanges.service';
+import { PairsService } from 'src/app/shared/services/pair/pairs.service';
+import { TokensService } from 'src/app/shared/services/token/tokens.service';
+import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 @Component({
   selector: 'app-pair-add',

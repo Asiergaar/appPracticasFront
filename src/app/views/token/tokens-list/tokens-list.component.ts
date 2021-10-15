@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Client } from 'src/app/shared/interfaces/client';
-import { TokensService } from 'src/app/shared/services/tokens.service';
+import { TokensService } from 'src/app/shared/services/token/tokens.service';
 
 @Component({
   selector: 'app-tokens-list',

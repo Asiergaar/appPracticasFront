@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Client } from 'src/app/shared/classes/client';
-import { ClientsService } from 'src/app/shared/services/clients.service';
+import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
 @Component({
   selector: 'app-client-add',

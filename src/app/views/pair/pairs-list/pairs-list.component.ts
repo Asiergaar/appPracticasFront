@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Pair } from 'src/app/shared/interfaces/pair';
-import { PairsService } from 'src/app/shared/services/pairs.service';
+import { PairsService } from 'src/app/shared/services/pair/pairs.service';
 
 @Component({
   selector: 'app-pairs-list',

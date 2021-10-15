@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Exchange } from 'src/app/shared/interfaces/exchange';
-import { ExchangesService } from 'src/app/shared/services/exchanges.service';
+import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 @Component({
   selector: 'app-exchanges-list',

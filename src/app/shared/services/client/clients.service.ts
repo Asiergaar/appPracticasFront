@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Client } from '../classes/client';
+import { Client } from '../../classes/client';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,14 +16,14 @@ export class ClientsService {
   }
 
   public getClient(id: number): Observable<any> {
-    return this.httpClient.get<any>('http://localhost:3000/clients/getClient/'+id);
+    return this.httpClient.get<any>(environment.api + 'clients/getClient/'+id);
   }
 
   public addClient(client: Client) {
-    return this.httpClient.post<Client>('http://localhost:3000/clients/addClient/', client);
+    return this.httpClient.post<Client>(environment.api + 'clients/addClient/', client);
   }
 
   public modClient(id: number, client: Client) {
-    return this.httpClient.post<Client>('http://localhost:3000/clients/editClient/'+id, client);
+    return this.httpClient.post<Client>(environment.api + 'clients/editClient/'+id, client);
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Exchange } from 'src/app/shared/classes/exchange';
-import { ExchangesService } from 'src/app/shared/services/exchanges.service';
+import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 @Component({
   selector: 'app-exchange-add',
