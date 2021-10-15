@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Exchange } from 'src/app/shared/classes/exchange';
+import { Exchange } from 'src/app/shared/classes/exchange/exchange';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 @Component({

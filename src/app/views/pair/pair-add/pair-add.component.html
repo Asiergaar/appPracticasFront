@@ -12,6 +12,7 @@
   <div class="forminput">
     <label for="tokenB">Token B</label>
     <select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel">
+      <option  value="notoken">Sin token</option>
       <option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</option>
     </select>
   </div>

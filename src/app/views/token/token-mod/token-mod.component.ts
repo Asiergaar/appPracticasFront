@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Token } from 'src/app/shared/classes/token';
+import { Token } from 'src/app/shared/classes/token/token';
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 
 @Component({

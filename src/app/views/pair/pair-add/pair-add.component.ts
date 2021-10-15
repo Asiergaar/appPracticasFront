@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Pair } from 'src/app/shared/classes/pair';
+import { Pair } from 'src/app/shared/classes/pair/pair';
 import { PairsService } from 'src/app/shared/services/pair/pairs.service';
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
@@ -13,13 +13,11 @@ import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.ser
 })
 export class PairAddComponent implements OnInit {
   public pair: Pair;
-  public pairList: any;
   public tokenList: any;
   public exchangeList: any;
 
   constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private router: Router) {
     this.pair = new Pair();
-    this.pairList = [];
     this.tokenList = [];
     this.exchangeList = [];
    }
