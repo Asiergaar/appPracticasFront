@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Exchange } from 'src/app/shared/classes/exchange';
+import { ExchangesService } from 'src/app/shared/services/exchanges.service';
+
+@Component({
+  selector: 'app-exchange-add',
+  templateUrl: './exchange-add.component.html',
+  styleUrls: ['./exchange-add.component.css']
+})
+export class ExchangeAddComponent implements OnInit {
+
+  public exchange: Exchange;
+
+  constructor(private exchangesService: ExchangesService, private router: Router) {
+    this.exchange = new Exchange();
+   }
+
+  ngOnInit(): void {
+  }
+
+  public submit(): void {
+    this.exchangesService.addExchange(this.exchange).subscribe(
+      (data: any) => {
+        localStorage.setItem('exchange_name', this.exchange.exchange_name);
+        localStorage.setItem('URL', this.exchange.url);
+
+        this.router.navigate(['/ExchangesList']);
+      },
+      (error: Error) => {
+        console.error("Error al realizar el acceso");
+      }
+    )
+  }
+
+}

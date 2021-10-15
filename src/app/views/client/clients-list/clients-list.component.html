@@ -1,0 +1,25 @@
+<div id="clientList" class="lists">
+
+  <h1>Listado de clientes</h1>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Email</th>
+      <th>Entry date</th>
+      <th>Start capital</th>
+      <th>Edit</th>
+    </tr>
+    <tr *ngFor="let client of clientList">
+      <td>{{ client.client_id }}</td>
+      <td>{{ client.client_name }}</td>
+      <td>{{ client.client_surname }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.entry_date | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ client.start_capital }}</td>
+      <a routerLink="/ModClient/{{ client.client_id }}" class="editlink"> <td class="edit"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </td> </a>
+    </tr>
+  </table>
+</div>

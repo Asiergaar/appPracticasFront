@@ -1,0 +1,19 @@
+<div id="exchangeList" class="lists">
+
+  <h1>Listado de exchanges</h1>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Edit</th>
+    </tr>
+    <tr *ngFor="let exchange of exchangeList">
+      <td>{{ exchange.exchange_id }}</td>
+      <td>{{ exchange.exchange_name }}</td>
+      <td><a href="{{ exchange.URL }}" target="blank">{{ exchange.URL }}</a></td>
+      <a routerLink="/ModExchange/{{ exchange.exchange_id }}" class="editlink"> <td class="edit"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </td> </a>
+    </tr>
+  </table>
+</div>

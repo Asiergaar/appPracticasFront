@@ -1,0 +1,30 @@
+<h1>Añade un nuevo pair</h1>
+
+<form (ngSubmit)="submit()" #pairForm="ngForm">
+
+  <div class="forminput">
+    <label for="tokenA">Token A</label>
+    <select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel">
+      <option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</option>
+    </select>
+  </div>
+
+  <div class="forminput">
+    <label for="tokenB">Token B</label>
+    <select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel">
+      <option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</option>
+    </select>
+  </div>
+
+  <div class="forminput">
+    <label for="pair_exchange">Exchange</label>
+    <select [(ngModel)]="pair.pair_exchange" id="pair_exchange" name="pair_exchange" #name="ngModel">
+      <option *ngFor="let exchange of exchangeList" value="{{ exchange.exchange_id }}">{{ exchange.exchange_name }}</option>
+    </select>
+  </div>
+
+  <div class="forminput">
+    <button type="button" routerLink="/PairsList" class="btnback">Volver</button>
+    <button type="submit" [disabled]="!pairForm.form.valid" class="btnsubmit">Añadir</button>
+  </div>
+</form>

@@ -1,0 +1,24 @@
+<div id="pairList" class="lists">
+
+  <h1>Listado de pairs</h1>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Token A</th>
+      <th>Token B</th>
+      <th>Exchange</th>
+      <th>Edit</th>
+    </tr>
+    <tr *ngFor="let pair of pairList">
+      <td>{{ pair.id }}</td>
+      <td>{{ pair.tkA }}</td>
+      <td><span *ngIf="pair.tkB; else other">{{ pair.tkB }}</span> </td>
+      <ng-template #other>-</ng-template>
+      <td>{{ pair.exch }}</td>
+      <a routerLink="/ModPair/{{ pair.id }}" class="editlink"> <td class="edit"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </td> </a>
+    </tr>
+  </table>
+
+  <p></p>
+</div>
