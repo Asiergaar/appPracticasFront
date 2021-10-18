@@ -2,6 +2,10 @@
 
   <h1 class="tituloPagina">Listado de exchanges</h1>
 
+  <mat-form-field class="listFilter">
+    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+  </mat-form-field>
+
   <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
     <ng-container matColumnDef="exchange_id">
@@ -29,6 +33,6 @@
 
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons class="pagination"></mat-paginator>
 
 </div>

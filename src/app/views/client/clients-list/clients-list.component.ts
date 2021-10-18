@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
@@ -30,7 +32,6 @@ export class ClientsListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-
   private async getClients(): Promise<any> {
     return new Promise(resolve => {
       let clientList: any[];
@@ -48,4 +49,16 @@ export class ClientsListComponent implements OnInit {
       )
     })
   }
+
+  target(event: KeyboardEvent): HTMLInputElement {
+    if (!(event.target instanceof HTMLInputElement)) {
+      throw new Error("wrong target");
+    }
+    return event.target;
+  }
+
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

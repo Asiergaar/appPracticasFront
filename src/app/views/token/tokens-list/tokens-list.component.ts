@@ -49,4 +49,15 @@ export class TokensListComponent implements OnInit {
     })
   }
 
+  target(event: KeyboardEvent): HTMLInputElement {
+    if (!(event.target instanceof HTMLInputElement)) {
+      throw new Error("wrong target");
+    }
+    return event.target;
+  }
+
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

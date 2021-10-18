@@ -131,8 +131,18 @@ body {
   text-align: center;
 }
 
-.tablelist {
+.tablelist, .pagination {
   margin: 0 20px;
+}
+
+.listFilter {
+  width: 100%;
+}
+
+.lists .mat-form-field-wrapper {
+  margin: 0 20px;
+  width: 200px;
+  float: right;
 }
 
 form {
