@@ -1,19 +1,34 @@
 <div id="exchangeList" class="lists">
 
-  <h1>Listado de exchanges</h1>
+  <h1 class="tituloPagina">Listado de exchanges</h1>
 
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>URL</th>
-      <th>Edit</th>
-    </tr>
-    <tr *ngFor="let exchange of exchangeList">
-      <td>{{ exchange.exchange_id }}</td>
-      <td>{{ exchange.exchange_name }}</td>
-      <td><a href="{{ exchange.URL }}" target="blank">{{ exchange.URL }}</a></td>
-      <a routerLink="/ModExchange/{{ exchange.exchange_id }}" class="editlink"> <td class="edit"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </td> </a>
-    </tr>
-  </table>
+  <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+    <ng-container matColumnDef="exchange_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let exchange">{{exchange.exchange_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="exchange_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let exchange">{{exchange.exchange_name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="url">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>URL</mat-header-cell>
+        <mat-cell *matCellDef="let exchange"><a href="{{exchange.URL}}" target="blank">{{exchange.URL}}</a></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+        <mat-cell *matCellDef="let exchange"><a routerLink="/ModExchange/{{ exchange.exchange_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+
 </div>

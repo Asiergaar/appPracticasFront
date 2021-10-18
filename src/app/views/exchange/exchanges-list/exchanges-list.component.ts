@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
-import { Exchange } from 'src/app/shared/interfaces/exchange';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 @Component({
@@ -10,27 +12,39 @@ import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.ser
 })
 export class ExchangesListComponent implements OnInit {
   public exchangeList: any;
+  public displayedColumns= ["exchange_id", "exchange_name", "url", "edit"];
+  public dataSource: any;
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private exchangesService: ExchangesService) {
     this.exchangeList = [];
-   }
-
-  ngOnInit(): void {
-    this.getExchanges();
   }
 
-  private getExchanges(): void {
-    this.exchangesService.getExchanges().subscribe(
-      (data) => {
-        this.exchangeList = data.data;
-      },
-      (error) => {
-        console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
-      }
-    )
+  async ngOnInit(): Promise<void>{
+    this.exchangeList = await this.getExchanges();
+    this.dataSource = new MatTableDataSource(this.exchangeList);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  private async getExchanges(): Promise<any> {
+    return new Promise(resolve => {
+      let exchangeList: any[];
+      this.exchangesService.getExchanges().subscribe(
+        (data) => {
+          exchangeList = data.data;
+        },
+        (error) => {
+          console.log('Error: ', error);
+        },
+        () => {
+          console.log('Petición realizada correctamente');
+          resolve(exchangeList);
+        }
+      )
+    })
   }
 
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,7 +10,7 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
   templateUrl: './clients-list.component.html',
   styleUrls: ['./clients-list.component.css']
 })
-export class ClientsListComponent implements AfterViewInit {
+export class ClientsListComponent implements OnInit {
   public client: Client;
   public clientList: any;
   public displayedColumns= ["client_id", "client_name", "client_surname", "email", "entry_date", "start_capital", "edit"];
@@ -23,7 +23,7 @@ export class ClientsListComponent implements AfterViewInit {
     this.clientList = [];
    }
 
-  async ngAfterViewInit(): Promise<void>{
+  async ngOnInit(): Promise<void>{
     this.clientList = await this.getClients();
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;

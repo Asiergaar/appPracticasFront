@@ -1,24 +1,40 @@
 <div id="pairList" class="lists">
 
-  <h1>Listado de pairs</h1>
+  <h1 class="tituloPagina">Listado de pairs</h1>
 
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Token A</th>
-      <th>Token B</th>
-      <th>Exchange</th>
-      <th>Edit</th>
-    </tr>
-    <tr *ngFor="let pair of pairList">
-      <td>{{ pair.id }}</td>
-      <td>{{ pair.tkA }}</td>
-      <td><span *ngIf="pair.tkB; else other">{{ pair.tkB }}</span> </td>
-      <ng-template #other>-</ng-template>
-      <td>{{ pair.exch }}</td>
-      <a routerLink="/ModPair/{{ pair.id }}" class="editlink"> <td class="edit"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </td> </a>
-    </tr>
-  </table>
+  <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
-  <p></p>
+    <ng-container matColumnDef="pair_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let pair">{{pair.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tokenA">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Token A</mat-header-cell>
+        <mat-cell *matCellDef="let pair">{{pair.tkA}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tokenB">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Token B</mat-header-cell>
+        <mat-cell *matCellDef="let pair">{{pair.tkB}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pair_exchange">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Exchange</mat-header-cell>
+        <mat-cell *matCellDef="let pair">{{pair.exch}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+        <mat-cell *matCellDef="let pair"><a routerLink="/ModPair/{{ pair.id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+
+
 </div>

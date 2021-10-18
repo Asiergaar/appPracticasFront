@@ -31,7 +31,7 @@ export class ExchangeModComponent implements OnInit {
         this.exchangeInfo = data.data[0];
         this.exchange.exchange_id = this.exchangeInfo.exchange_id;
         this.exchange.exchange_name = this.exchangeInfo.exchange_name;
-        this.exchange.url = this.exchangeInfo.url;
+        this.exchange.url = this.exchangeInfo.URL;
       },
       (error) => {
         console.log('Error: ', error);

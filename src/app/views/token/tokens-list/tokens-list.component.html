@@ -1,20 +1,34 @@
 <div id="tokenList" class="lists">
 
-  <h1>Listado de tokens</h1>
+  <h1 class="tituloPagina">Listado de tokens</h1>
 
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Ticker</th>
-      <th>Edit</th>
-    </tr>
-    <tr *ngFor="let token of tokenList">
-      <td>{{ token.token_id }}</td>
-      <td>{{ token.token_name }}</td>
-      <td>{{ token.ticker }}</td>
-      <a routerLink="/ModToken/{{ token.token_id }}" class="editlink"> <td class="edit"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </td> </a>
-    </tr>
-  </table>
+  <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+    <ng-container matColumnDef="token_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let token">{{token.token_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="token_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let token">{{token.token_name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ticker">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let token">{{token.ticker}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+        <mat-cell *matCellDef="let token"><a routerLink="/ModToken/{{ token.token_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
 
 </div>

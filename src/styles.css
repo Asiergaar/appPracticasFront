@@ -66,19 +66,20 @@ body {
   margin-bottom: 30px;
 }
 
-table, tr, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 5px 10px;
+.mat-table {
   margin: auto;
   vertical-align: middle;
-  font-size: 1.1em;
+  text-align: center;
+}
+
+.mat-cell {
+  text-align: center !important;
 }
 
 .editlink {
   background-color: transparent;
   display: block;
-  border-radius: 10px;
+  border-radius: 100px;
   color: black;
   text-decoration: none;
   padding: 10px;
@@ -108,10 +109,30 @@ table, tr, th, td {
 
 #contenedor {
   box-shadow: 0px 4px 6px 0px #00000040;
+  background-color: whitesmoke;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  border-radius: 15px;
+}
+
+.tituloPagina {
+  background-color: rgb(44, 44, 44);
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+  margin: 0;
+  border-radius: 15px 15px 0 0;
+  line-height: 2em;
+  padding: 10px 0;
 }
 
 .bloque h1 {
   text-align: center;
+}
+
+.tablelist {
+  margin: 0 20px;
 }
 
 form {
