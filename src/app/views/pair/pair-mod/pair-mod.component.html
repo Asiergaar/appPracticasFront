@@ -12,6 +12,8 @@
   <div class="forminput">
     <label for="tokenB">Token B</label>
     <select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel">
+      <option *ngIf="pair.tokenB == null; else elseBlock" value="{{-1}}" selected>Sin token</option>
+      <ng-template #elseBlock><option value="{{-1}}" >Sin token</option></ng-template>
       <option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</option>
     </select>
   </div>

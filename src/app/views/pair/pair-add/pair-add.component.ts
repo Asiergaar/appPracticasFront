@@ -36,12 +36,11 @@ export class PairAddComponent implements OnInit {
   }
 
   public submit(): void {
+    if (this.pair.tokenB == -1) {
+      this.pair.tokenB = null;
+    }
     this.pairsService.addPair(this.pair).subscribe(
       (data: any) => {
-        localStorage.setItem('tokenA', this.pair.tokenA.toString());
-        localStorage.setItem('tokenB', this.pair.tokenB.toString());
-        localStorage.setItem('pair_exchange', this.pair.pair_exchange.toString());
-
         this.router.navigate(['/PairsList']);
       },
       (error: Error) => {
