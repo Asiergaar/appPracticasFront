@@ -1,23 +1,26 @@
 <h1 class="tituloPagina">Añade un nuevo pool</h1>
 
-<form (ngSubmit)="submit()" #poolForm="ngForm">
-  <div class="forminput">
-    <label for="invested_quantity">invested quantity</label>
-    <input type="number"  [(ngModel)]="pool.invested_quantity" id="invested_quantity"
-      name="invested_quantity" #invested_quantity="ngModel" required>
-      <div *ngIf="invested_quantity.invalid && invested_quantity.dirty" class="alert">
-        <div *ngIf="invested_quantity.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
+<form (ngSubmit)="submit()" #poolForm="ngForm" class="forms">
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Invested quantity</mat-label>
+      <input type="number" matInput [(ngModel)]="pool.invested_quantity" id="invested_quantity"
+      name="invested_quantity" #invested_quantity="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Select pair</mat-label>
+      <mat-select [(ngModel)]="pool.pool_pair" id="pool_pair" name="pool_pair" #name="ngModel">
+        <mat-option *ngFor="let pair of pairList" value="{{ pair.id }}">{{pair.id}} - {{ pair.tkA }} <span *ngIf="pair.tkB">/ {{pair.tkB}}</span> ({{ pair.exch }})</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
 
-  <div class="forminput">
-    <label for="pool_pair">Pool Pair</label>
-    <select [(ngModel)]="pool.pool_pair" id="pool_pair" name="pool_pair" #name="ngModel">
-      <option *ngFor="let pair of pairList" value="{{ pair.id }}">{{pair.id}} - {{ pair.tkA }} <span *ngIf="pair.tkB">/ {{pair.tkB}}</span> ({{ pair.exch }})</option>
-    </select>
-  </div>
   <div class="forminput">
     <button type="button" routerLink="/PoolsList" class="btnback">Volver</button>
     <button type="submit" [disabled]="!poolForm.form.valid" class="btnsubmit">Añadir</button>
   </div>
+
+
 </form>

@@ -1,7 +1,33 @@
 <h1 class="tituloPagina">Modifica el pair #{{ pair.pair_id }}</h1>
 
 <form (ngSubmit)="submit()" #pairForm="ngForm">
+  <p>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Token A</mat-label>
+      <mat-select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel" [(value)]="numero">
+        <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Token B</mat-label>
+      <mat-select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel" [(value)]="pair.tokenB">
+        <mat-option value="{{-1}}">Sin token</mat-option>
+        <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Exchange</mat-label>
+      <mat-select [(ngModel)]="pair.pair_exchange" id="pair_exchange" name="pair_exchange" #name="ngModel" [(value)]="pair.pair_exchange">
+        <mat-option *ngFor="let exchange of exchangeList" value="{{ exchange.exchange_id }}">{{ exchange.exchange_name }}</mat-option>
+    </mat-select>
+    </mat-form-field>
+  </p>
 
+  <!--
   <div class="forminput">
     <label for="tokenA">Token A</label>
     <select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel">
@@ -24,6 +50,7 @@
       <option *ngFor="let exchange of exchangeList" value="{{ exchange.exchange_id }}">{{ exchange.exchange_name }}</option>
     </select>
   </div>
+-->
 
   <div class="forminput">
     <button type="button" routerLink="/PairsList" class="btnback">Volver</button>

@@ -1,22 +1,21 @@
 <h1 class="tituloPagina">Añade un nuevo exchange</h1>
 
-<form (ngSubmit)="submit()" #exchangeForm="ngForm">
-  <div class="forminput">
-    <label for="exchange_name">Name</label>
-    <input type="text" [(ngModel)]="exchange.exchange_name" id="exchange_name"
-      name="exchange_name" #name="ngModel" required>
-      <div *ngIf="name.invalid && name.dirty" class="alert">
-        <div *ngIf="name.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
-  <div class="forminput">
-    <label for="url">URL</label>
-    <input type="text" id="url" [(ngModel)]="exchange.url"
-      name="url" #url="ngModel" required>
-      <div *ngIf="url.invalid && url.dirty" class="alert">
-        <div *ngIf="url.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
+<form (ngSubmit)="submit()" #exchangeForm="ngForm" class="forms">
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [(ngModel)]="exchange.exchange_name" id="exchange_name"
+      name="exchange_name" #name="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>URL</mat-label>
+      <input type="text" matInput [(ngModel)]="exchange.url" id="url"
+      name="url" #url="ngModel" placeholder="">
+    </mat-form-field>
+  </p>
+
   <div class="forminput">
     <button type="button" routerLink="/ExchangesList" class="btnback">Volver</button>
     <button type="submit" [disabled]="!exchangeForm.form.valid" class="btnsubmit">Añadir</button>

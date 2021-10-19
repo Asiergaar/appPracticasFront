@@ -31,10 +31,11 @@ import { PairAddComponent } from './views/pair/pair-add/pair-add.component';
 import { PairModComponent } from './views/pair/pair-mod/pair-mod.component';
 import { HomeComponent } from './views/home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { ErrorStateMatcher, MatOptionModule, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
 import { PoolModComponent } from './views/pool/pool-mod/pool-mod.component';
 import { PoolsListComponent } from './views/pool/pools-list/pools-list.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,9 @@ import { PoolsListComponent } from './views/pool/pools-list/pools-list.component
     FormsModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]

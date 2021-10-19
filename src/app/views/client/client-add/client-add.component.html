@@ -1,6 +1,8 @@
 <h1 class="tituloPagina">Añade un nuevo cliente</h1>
 
-<form (ngSubmit)="submit()" #clientForm="ngForm">
+<form (ngSubmit)="submit()" #clientForm="ngForm" class="forms">
+
+  <!--  ASI ESTABA ANTES
   <div class="forminput">
     <label for="client_name">Name</label>
     <input type="text" [(ngModel)]="client.client_name" id="client_name"
@@ -9,32 +11,40 @@
         <div *ngIf="name.errors?.required" class="errorform">*Campo requerido</div>
       </div>
   </div>
-  <div class="forminput">
-    <label for="client_surname">Surname</label>
-    <input type="text" [(ngModel)]="client.client_surname" id="client_surname"
-      name="client_surname" #surname="ngModel" required>
-    <div *ngIf="surname.invalid && surname.dirty" class="alert">
-      <div *ngIf="surname.errors?.required" class="errorform">*Campo requerido</div>
-    </div>
-  </div>
-  <div class="forminput">
-    <label for="email">Email</label>
-    <input type="text" id="email" [(ngModel)]="client.email"
-      name="email" #email="ngModel" required>
-      <div *ngIf="email.invalid && email.dirty" class="alert">
-        <div *ngIf="email.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
-  <div class="forminput">
-    <label for="start_capital">Start capital</label>
-    <input type="number"  [(ngModel)]="client.start_capital" id="start_capital"
-      name="start_capital" #start_capital="ngModel" required>
-      <div *ngIf="start_capital.invalid && start_capital.dirty" class="alert">
-        <div *ngIf="start_capital.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
+  -->
+
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [(ngModel)]="client.client_name" id="client_name"
+      name="client_name" #name="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Surname</mat-label>
+      <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname"
+      name="client_surname" #surname="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [(ngModel)]="client.email" id="email"
+      name="email" #email="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Start capital</mat-label>
+      <input type="number" matInput [(ngModel)]="client.start_capital" id="start_capital"
+      name="start_capital" #start_capital="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+
   <div class="forminput">
     <button type="button" routerLink="/ClientsList" class="btnback">Volver</button>
     <button type="submit" [disabled]="!clientForm.form.valid" class="btnsubmit">Añadir</button>
   </div>
+
 </form>

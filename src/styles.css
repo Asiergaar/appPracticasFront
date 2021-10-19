@@ -3,6 +3,15 @@ body {
   background-color: rgb(182, 218, 182);
 }
 
+.logodiv {
+  margin: auto;
+  width: 200px;
+}
+
+.logo {
+  width: 200px;
+}
+
 /* Lateral Menu */
 
 #menu {
@@ -175,6 +184,18 @@ form {
   text-align: right;
   font-size: 1.5em;
   padding: 15px 15px 40px;
+}
+
+.forms {
+  width: 80%;
+}
+
+.forms p {
+  margin-bottom: 30px;
+}
+
+.input {
+  width: 100%;
 }
 
 .forminput {

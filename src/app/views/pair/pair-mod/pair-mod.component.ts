@@ -19,6 +19,7 @@ export class PairModComponent implements OnInit {
   public pairList: any;
   public tokenList: any;
   public exchangeList: any;
+  numero: number = 1;
 
   constructor(private pairsService: PairsService, private router: Router, private tokensService: TokensService, private exchangesService: ExchangesService) {
     this.pair = new Pair();
