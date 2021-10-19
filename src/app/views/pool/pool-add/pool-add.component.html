@@ -11,15 +11,15 @@
   <p>
     <mat-form-field appearance="fill" class="input">
       <mat-label>Select pair</mat-label>
-      <mat-select [(ngModel)]="pool.pool_pair" id="pool_pair" name="pool_pair" #name="ngModel">
+      <mat-select [(ngModel)]="pool.pool_pair" id="pool_pair" name="pool_pair" #name="ngModel" required>
         <mat-option *ngFor="let pair of pairList" value="{{ pair.id }}">{{pair.id}} - {{ pair.tkA }} <span *ngIf="pair.tkB">/ {{pair.tkB}}</span> ({{ pair.exch }})</mat-option>
       </mat-select>
     </mat-form-field>
   </p>
 
   <div class="forminput">
-    <button type="button" routerLink="/PoolsList" class="btnback">Volver</button>
-    <button type="submit" [disabled]="!poolForm.form.valid" class="btnsubmit">Añadir</button>
+    <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/PoolsList">Volver</button>
+    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">Añadir</button>
   </div>
 
 

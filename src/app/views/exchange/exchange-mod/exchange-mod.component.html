@@ -16,8 +16,8 @@
     </mat-form-field>
   </p>
   <div class="forminput">
-    <button type="button" routerLink="/ExchangesList" class="btnback">Volver</button>
-    <button type="submit" [disabled]="!exchangeForm.form.valid" class="btnsubmit">Modificar</button>
+    <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ExchangesList">Volver</button>
+    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!exchangeForm.form.valid">Modificar</button>
   </div>
 </form>
 

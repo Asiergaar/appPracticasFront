@@ -1,24 +1,23 @@
 <h1 class="tituloPagina">Añade un nuevo token</h1>
 
-<form (ngSubmit)="submit()" #tokenForm="ngForm">
+<form (ngSubmit)="submit()" #tokenForm="ngForm" class="forms">
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [(ngModel)]="token.token_name" id="token_name"
+      name="token_name" #name="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Ticker</mat-label>
+      <input type="text" matInput [(ngModel)]="token.ticker" id="ticker"
+      name="ticker" #ticker="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
+
   <div class="forminput">
-    <label for="token_name">Name</label>
-    <input type="text" [(ngModel)]="token.token_name" id="token_name"
-      name="token_name" #name="ngModel" required>
-      <div *ngIf="name.invalid && name.dirty" class="alert">
-        <div *ngIf="name.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
-  <div class="forminput">
-    <label for="ticker">Ticker</label>
-    <input type="text" id="ticker" [(ngModel)]="token.ticker"
-      name="ticker" #ticker="ngModel" required>
-      <div *ngIf="ticker.invalid && ticker.dirty" class="alert">
-        <div *ngIf="ticker.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
-  <div class="forminput">
-    <button type="button" routerLink="/TokensList" class="btnback">Volver</button>
-    <button type="submit" [disabled]="!tokenForm.form.valid" class="btnsubmit">Añadir</button>
+    <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/TokensList">Volver</button>
+    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!tokenForm.form.valid">Añadir</button>
   </div>
 </form>

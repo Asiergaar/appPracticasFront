@@ -202,35 +202,26 @@ form {
   margin: 25px auto;
 }
 
-.forminput label {
-  margin: 0 25px;
-  font-weight: bold;
-}
-
-.forminput input {
-  padding: 5px;
-  text-align: center;
-  font-size: 0.8em;
-}
-
-.forminput select {
-  padding: 5px;
-  font-size: 0.8em;
-}
-
-.submitbtn{
-  margin: auto;
-}
-
 .forminput button {
-  padding: 10px;
-  font-size: 0.8em;
-  border-radius: 10px;
   margin: 0 25px;
+  padding: 5px 20px;
+  font-size: 0.8em;
 }
 
-.btnsubmit { background-color: rgb(121, 241, 137); cursor: pointer; }
-.btnback { background-color: rgb(255, 91, 91); cursor: pointer;}
+.submitbtn {
+  background-color: rgb(37, 151, 37);
+  color: white;
+}
+
+.submitbtn:hover {
+  background-color: rgb(12, 141, 12);
+  color: black;
+}
+
+.backbtn:hover {
+  background-color: rgb(231, 38, 38);
+  color: black;
+}
 
 .errorform {
   color: crimson;
