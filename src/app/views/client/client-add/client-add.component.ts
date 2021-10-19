@@ -23,10 +23,6 @@ export class ClientAddComponent implements OnInit {
   public submit(): void {
     this.clientsService.addClient(this.client).subscribe(
       (data: any) => {
-        localStorage.setItem('client_name', this.client.client_name);
-        localStorage.setItem('client_surname', this.client.client_surname);
-        localStorage.setItem('email', this.client.email);
-
         this.router.navigate(['/ClientsList']);
       },
       (error: Error) => {

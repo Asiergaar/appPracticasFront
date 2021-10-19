@@ -32,6 +32,9 @@ import { PairModComponent } from './views/pair/pair-mod/pair-mod.component';
 import { HomeComponent } from './views/home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
+import { PoolModComponent } from './views/pool/pool-mod/pool-mod.component';
+import { PoolsListComponent } from './views/pool/pools-list/pools-list.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     PairsListComponent,
     PairAddComponent,
     PairModComponent,
-    HomeComponent
+    HomeComponent,
+    PoolAddComponent,
+    PoolModComponent,
+    PoolsListComponent
   ],
   imports: [
     BrowserModule,

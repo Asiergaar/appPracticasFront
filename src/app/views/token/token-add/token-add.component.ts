@@ -23,9 +23,6 @@ export class TokenAddComponent implements OnInit {
   public submit(): void {
     this.tokensService.addToken(this.token).subscribe(
       (data: any) => {
-        localStorage.setItem('token_name', this.token.token_name);
-        localStorage.setItem('ticker', this.token.ticker);
-
         this.router.navigate(['/TokensList']);
       },
       (error: Error) => {

@@ -1,0 +1,39 @@
+<div id="poolList" class="lists">
+
+  <h1 class="tituloPagina">Listado de pools</h1>
+
+  <mat-form-field class="listFilter">
+    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+  </mat-form-field>
+
+  <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+    <ng-container matColumnDef="pool_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let pool">{{pool.pool_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pool_pair">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pair</mat-header-cell>
+        <mat-cell *matCellDef="let pool">{{pool.tokenA}} <span *ngIf="pool.tokenB">/{{pool.tokenB}}</span> ({{ pool.exchange }})</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="invested_quantity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Invested quantity</mat-header-cell>
+        <mat-cell *matCellDef="let pool">{{pool.invested_quantity}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pool_date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pool date</mat-header-cell>
+        <mat-cell *matCellDef="let pool">{{pool.pool_date | date: 'dd/MM/yyyy' }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
+
+
+</div>

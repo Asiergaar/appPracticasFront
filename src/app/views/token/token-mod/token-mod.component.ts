@@ -45,9 +45,6 @@ export class TokenModComponent implements OnInit {
   public submit(): void {
     this.tokensService.modToken(this.tokenInfo.token_id, this.token).subscribe(
       (data: any) => {
-        localStorage.setItem('token_name', this.token.token_name);
-        localStorage.setItem('ticker', this.token.ticker);
-
         this.router.navigate(['/TokensList']);
       },
       (error: Error) => {

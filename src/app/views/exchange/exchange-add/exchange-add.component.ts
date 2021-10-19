@@ -23,9 +23,6 @@ export class ExchangeAddComponent implements OnInit {
   public submit(): void {
     this.exchangesService.addExchange(this.exchange).subscribe(
       (data: any) => {
-        localStorage.setItem('exchange_name', this.exchange.exchange_name);
-        localStorage.setItem('URL', this.exchange.url);
-
         this.router.navigate(['/ExchangesList']);
       },
       (error: Error) => {

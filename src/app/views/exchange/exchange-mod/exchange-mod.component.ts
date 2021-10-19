@@ -45,9 +45,6 @@ export class ExchangeModComponent implements OnInit {
   public submit(): void {
     this.exchangesService.modExchange(this.exchangeInfo.exchange_id, this.exchange).subscribe(
       (data: any) => {
-        localStorage.setItem('exchange_name', this.exchange.exchange_name);
-        localStorage.setItem('email', this.exchange.url);
-
         this.router.navigate(['/ExchangesList']);
       },
       (error: Error) => {

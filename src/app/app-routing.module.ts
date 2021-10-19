@@ -14,6 +14,9 @@ import { ExchangeModComponent } from './views/exchange/exchange-mod/exchange-mod
 import { PairsListComponent } from './views/pair/pairs-list/pairs-list.component';
 import { PairAddComponent } from './views/pair/pair-add/pair-add.component';
 import { PairModComponent } from './views/pair/pair-mod/pair-mod.component';
+import { PoolsListComponent } from './views/pool/pools-list/pools-list.component';
+import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
+import { PoolModComponent } from './views/pool/pool-mod/pool-mod.component';
 import { HomeComponent } from './views/home/home.component';
 
 const routes: Routes = [
@@ -34,6 +37,10 @@ const routes: Routes = [
   { path: 'PairsList', component: PairsListComponent},
   { path: 'AddPair', component: PairAddComponent},
   { path: 'ModPair/:id', component: PairModComponent},
+
+  { path: 'PoolsList', component: PoolsListComponent},
+  { path: 'AddPool', component: PoolAddComponent},
+  { path: 'ModPool/:id', component: PoolModComponent},
 
   { path: '', redirectTo: '/Home', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent}
