@@ -10,7 +10,6 @@ import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.ser
   styleUrls: ['./exchange-mod.component.css']
 })
 export class ExchangeModComponent implements OnInit {
-
   public exchange: Exchange;
   public exchangeInfo: any;
   public id: any;
@@ -25,6 +24,7 @@ export class ExchangeModComponent implements OnInit {
    this.getExchange();
   }
 
+  // get exchange data to show on form
   public getExchange() {
     this.exchangesService.getExchange(this.id).subscribe(
       (data) => {
@@ -42,6 +42,7 @@ export class ExchangeModComponent implements OnInit {
     )
   }
 
+  // On form submit => modify exchange on DB
   public submit(): void {
     this.exchangesService.modExchange(this.exchangeInfo.exchange_id, this.exchange).subscribe(
       (data: any) => {

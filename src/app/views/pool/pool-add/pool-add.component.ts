@@ -11,7 +11,6 @@ import { PairsService } from 'src/app/shared/services/pair/pairs.service';
   styleUrls: ['./pool-add.component.css']
 })
 export class PoolAddComponent implements OnInit {
-
   public pool: Pool;
   public pairList: any;
 
@@ -21,6 +20,7 @@ export class PoolAddComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    // Gets pairs list
     this.pairsService.getPairsName().subscribe(
       (data) => {
         this.pairList = data.data;
@@ -28,6 +28,8 @@ export class PoolAddComponent implements OnInit {
     )
   }
 
+
+  // On form submit => create pool on DB
   public submit(): void {
     this.poolsService.addPool(this.pool).subscribe(
       (data: any) => {

@@ -12,14 +12,12 @@ import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.ser
   styleUrls: ['./pair-mod.component.css']
 })
 export class PairModComponent implements OnInit {
-
   public pair: Pair;
   public pairInfo: any;
   public id: any;
   public pairList: any;
   public tokenList: any;
   public exchangeList: any;
-  numero: number = 1;
 
   constructor(private pairsService: PairsService, private router: Router, private tokensService: TokensService, private exchangesService: ExchangesService) {
     this.pair = new Pair();
@@ -44,6 +42,7 @@ export class PairModComponent implements OnInit {
    this.getPair();
   }
 
+  // get pair data to show on form
   public getPair() {
     this.pairsService.getPair(this.id).subscribe(
       (data) => {
@@ -68,6 +67,7 @@ export class PairModComponent implements OnInit {
     )
   }
 
+  // On form submit => modify pair on DB
   public submit(): void {
     if (this.pair.tokenB == -1) {
       this.pair.tokenB = null;

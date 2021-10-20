@@ -23,13 +23,14 @@ export class PairsListComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void>{
-   this.pairList = await this.getPairsName();
-   this.dataSource = new MatTableDataSource(this.pairList);
-   this.dataSource.sort = this.sort;
-   this.dataSource.paginator = this.paginator;
- }
+    // await to get the list for paginator and sorting
+    this.pairList = await this.getPairsName();
+    this.dataSource = new MatTableDataSource(this.pairList);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
-
+  // get pairs data to show on form
   private getPairsName(): Promise<any> {
     return new Promise(resolve => {
       let pairList: any[];
@@ -48,6 +49,7 @@ export class PairsListComponent implements OnInit {
     })
   }
 
+  // event and filter for the filtering
   target(event: KeyboardEvent): HTMLInputElement {
     if (!(event.target instanceof HTMLInputElement)) {
       throw new Error("wrong target");

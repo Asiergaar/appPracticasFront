@@ -4,7 +4,7 @@
   <p>
     <mat-form-field appearance="fill" class="input">
       <mat-label>Token A</mat-label>
-      <mat-select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel" [(value)]="numero" required>
+      <mat-select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel" [(value)]="pair.tokenA" required>
         <mat-option *ngFor="let token of tokenList" [value]="token.token_id">{{ token.token_name }}</mat-option>
       </mat-select>
     </mat-form-field>

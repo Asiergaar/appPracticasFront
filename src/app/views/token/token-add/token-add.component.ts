@@ -10,7 +10,6 @@ import { TokensService } from 'src/app/shared/services/token/tokens.service';
   styleUrls: ['./token-add.component.css']
 })
 export class TokenAddComponent implements OnInit {
-
   public token: Token;
 
   constructor(private tokensService: TokensService, private router: Router) {
@@ -20,6 +19,8 @@ export class TokenAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  // On form submit => create token on DB
   public submit(): void {
     this.tokensService.addToken(this.token).subscribe(
       (data: any) => {

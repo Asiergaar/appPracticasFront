@@ -25,12 +25,14 @@ export class TokensListComponent implements OnInit {
    }
 
    async ngOnInit(): Promise<void>{
+    // await to get the list for paginator and sorting
     this.tokenList = await this.getTokens();
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // get tokens data to show on form
   private getTokens(): Promise<any> {
     return new Promise(resolve => {
       let tokenList: any[];
@@ -49,6 +51,7 @@ export class TokensListComponent implements OnInit {
     })
   }
 
+  // event and filter for the filtering
   target(event: KeyboardEvent): HTMLInputElement {
     if (!(event.target instanceof HTMLInputElement)) {
       throw new Error("wrong target");

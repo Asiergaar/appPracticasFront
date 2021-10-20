@@ -10,7 +10,6 @@ import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.ser
   styleUrls: ['./exchange-add.component.css']
 })
 export class ExchangeAddComponent implements OnInit {
-
   public exchange: Exchange;
 
   constructor(private exchangesService: ExchangesService, private router: Router) {
@@ -20,6 +19,8 @@ export class ExchangeAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  // On form submit => create exchange on DB
   public submit(): void {
     this.exchangesService.addExchange(this.exchange).subscribe(
       (data: any) => {

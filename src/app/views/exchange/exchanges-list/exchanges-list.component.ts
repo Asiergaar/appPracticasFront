@@ -23,12 +23,14 @@ export class ExchangesListComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void>{
+    // await to get the list for paginator and sorting
     this.exchangeList = await this.getExchanges();
     this.dataSource = new MatTableDataSource(this.exchangeList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // get exchanges data to show on form
   private async getExchanges(): Promise<any> {
     return new Promise(resolve => {
       let exchangeList: any[];
@@ -47,6 +49,7 @@ export class ExchangesListComponent implements OnInit {
     })
   }
 
+  // event and filter for the filtering
   target(event: KeyboardEvent): HTMLInputElement {
     if (!(event.target instanceof HTMLInputElement)) {
       throw new Error("wrong target");

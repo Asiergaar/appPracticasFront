@@ -26,12 +26,14 @@ export class PoolsListComponent implements OnInit {
    }
 
   async ngOnInit(): Promise<void>{
+    // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsName();
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // get pools data to show on form
   private async getPoolsName(): Promise<any> {
     return new Promise(resolve => {
       let poolList: any[];
@@ -50,6 +52,7 @@ export class PoolsListComponent implements OnInit {
     })
   }
 
+  // event and filter for the filtering
   target(event: KeyboardEvent): HTMLInputElement {
     if (!(event.target instanceof HTMLInputElement)) {
       throw new Error("wrong target");

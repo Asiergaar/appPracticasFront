@@ -10,7 +10,6 @@ import { TokensService } from 'src/app/shared/services/token/tokens.service';
   styleUrls: ['./token-mod.component.css']
 })
 export class TokenModComponent implements OnInit {
-
   public token: Token;
   public tokenInfo: any;
   public id: any;
@@ -25,6 +24,7 @@ export class TokenModComponent implements OnInit {
    this.getToken();
   }
 
+  // get token data to show on form
   public getToken() {
     this.tokensService.getToken(this.id).subscribe(
       (data) => {
@@ -42,6 +42,7 @@ export class TokenModComponent implements OnInit {
     )
   }
 
+  // On form submit => modify token on DB
   public submit(): void {
     this.tokensService.modToken(this.tokenInfo.token_id, this.token).subscribe(
       (data: any) => {

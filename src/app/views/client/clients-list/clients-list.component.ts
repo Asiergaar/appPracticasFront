@@ -26,12 +26,14 @@ export class ClientsListComponent implements OnInit {
    }
 
   async ngOnInit(): Promise<void>{
+    // await to get the list for paginator and sorting
     this.clientList = await this.getClients();
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // get clients data to show on form
   private async getClients(): Promise<any> {
     return new Promise(resolve => {
       let clientList: any[];
@@ -50,6 +52,7 @@ export class ClientsListComponent implements OnInit {
     })
   }
 
+  // event and filter for the filtering
   target(event: KeyboardEvent): HTMLInputElement {
     if (!(event.target instanceof HTMLInputElement)) {
       throw new Error("wrong target");

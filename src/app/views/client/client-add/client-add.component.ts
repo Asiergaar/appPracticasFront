@@ -10,7 +10,6 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
   styleUrls: ['./client-add.component.css']
 })
 export class ClientAddComponent implements OnInit {
-
   public client: Client;
 
   constructor(private clientsService: ClientsService, private router: Router) {
@@ -20,6 +19,7 @@ export class ClientAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // On form submit => create client on DB
   public submit(): void {
     this.clientsService.addClient(this.client).subscribe(
       (data: any) => {

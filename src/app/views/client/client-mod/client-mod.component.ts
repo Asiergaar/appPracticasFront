@@ -10,7 +10,6 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
   styleUrls: ['./client-mod.component.css']
 })
 export class ClientModComponent implements OnInit {
-
   public client: Client;
   public clientInfo: any;
   public id: any;
@@ -25,6 +24,7 @@ export class ClientModComponent implements OnInit {
    this.getClient();
   }
 
+  // get client data to show on form
   public getClient() {
     this.clientsService.getClient(this.id).subscribe(
       (data) => {
@@ -43,6 +43,8 @@ export class ClientModComponent implements OnInit {
     )
   }
 
+
+  // On form submit => modify client on DB
   public submit(): void {
     this.clientsService.modClient(this.clientInfo.client_id, this.client).subscribe(
       (data: any) => {

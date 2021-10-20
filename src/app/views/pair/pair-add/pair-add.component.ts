@@ -35,6 +35,8 @@ export class PairAddComponent implements OnInit {
     )
   }
 
+
+  // On form submit => create token on DB
   public submit(): void {
     if (this.pair.tokenB == -1) {
       this.pair.tokenB = null;
