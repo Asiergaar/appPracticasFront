@@ -1,0 +1,60 @@
+<div id="poolList" class="lists">
+
+  <h1 class="tituloPagina">Actualiza los pools</h1>
+
+  <div *ngIf="!poolToDo; else elseBlock" class="poolsdone">
+    <h2>Today's pools are updated!</h2>
+    <img class="logo" src="../../../assets/images/pandaface.png">
+  </div>
+
+  <ng-template #elseBlock>
+
+    <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
+      <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+        <ng-container matColumnDef="pool_pair">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Pool pair</mat-header-cell>
+            <mat-cell *matCellDef="let pool">{{pool.pool_pair}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="exchange">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Exchange</mat-header-cell>
+            <mat-cell *matCellDef="let pool">{{pool.exchange}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="tokenA">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Token A</mat-header-cell>
+            <mat-cell *matCellDef="let pool">{{pool.tokenA}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="tokenB">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Token B</mat-header-cell>
+            <mat-cell *matCellDef="let pool">{{pool.tokenB}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="add">
+            <mat-header-cell *matHeaderCellDef>Add</mat-header-cell>
+            <mat-cell *matCellDef="let pool">
+                <p>
+                  <mat-form-field appearance="legacy" class="input">
+                    <mat-label>Quantity</mat-label>
+                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" ngModel required>
+                  </mat-form-field>
+                </p>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      </mat-table>
+
+      <div class="forminput">
+        <button type="reset" mat-raised-button class="backbtn" color="warn">Reset</button>
+        <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">Añadir</button>
+      </div>
+    </form>
+  </ng-template>
+
+
+</div>

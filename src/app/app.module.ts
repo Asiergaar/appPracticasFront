@@ -33,9 +33,9 @@ import { HomeComponent } from './views/home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorStateMatcher, MatOptionModule, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
-import { PoolModComponent } from './views/pool/pool-mod/pool-mod.component';
 import { PoolsListComponent } from './views/pool/pools-list/pools-list.component';
 import { MatSelectModule } from '@angular/material/select';
+import { PoolUpdateComponent } from './views/pool-update/pool-update.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +58,8 @@ import { MatSelectModule } from '@angular/material/select';
     PairModComponent,
     HomeComponent,
     PoolAddComponent,
-    PoolModComponent,
-    PoolsListComponent
+    PoolsListComponent,
+    PoolUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import { PairsService } from 'src/app/shared/services/pair/pairs.service';
   styleUrls: ['./pairs-list.component.css']
 })
 export class PairsListComponent implements OnInit {
-  public pairList: any;
+  public pairList: Array<any>;
   public displayedColumns= ["pair_id", "tokenA", "tokenB", "pair_exchange", "edit"];
   public dataSource: any;
 
@@ -31,7 +31,7 @@ export class PairsListComponent implements OnInit {
   }
 
   // get pairs data to show on form
-  private getPairsName(): Promise<any> {
+  private async getPairsName(): Promise<any> {
     return new Promise(resolve => {
       let pairList: any[];
       this.pairsService.getPairsName().subscribe(

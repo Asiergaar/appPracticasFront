@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: rgb(182, 218, 182);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .logodiv {
@@ -190,6 +191,14 @@ form {
   width: 80%;
 }
 
+.forms.pools p {
+  margin: 0;
+}
+
+.forms.pools .mat-form-field-should-float{
+  margin: 10px 0 -10px 0px;
+}
+
 .forms p {
   margin-bottom: 30px;
 }
@@ -228,5 +237,15 @@ form {
   font-size: 0.8em;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.poolsdone {
+  margin: 25px auto;
+  text-align: center;
+}
+
+.poolsdone h2 {
+  font-size: 2em;
+}
+
+.poolsdone img {
+  margin: auto;
+}
