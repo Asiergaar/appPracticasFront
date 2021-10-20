@@ -6,7 +6,7 @@
     <mat-form-field appearance="fill" class="input">
       <mat-label>Token A</mat-label>
       <mat-select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel" required>
-        <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</mat-option>
+        <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}"><img src="../../../../assets/images/coins/{{token.token_id}}.webp" class="tokenimg">{{ token.token_name }}</mat-option>
       </mat-select>
     </mat-form-field>
   </p>
@@ -15,7 +15,7 @@
       <mat-label>Token B</mat-label>
       <mat-select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel" required>
         <mat-option value="{{-1}}">Sin token</mat-option>
-        <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}">{{ token.token_name }}</mat-option>
+        <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}"><img src="../../../../assets/images/coins/{{token.token_id}}.webp" class="tokenimg">{{ token.token_name }}</mat-option>
       </mat-select>
     </mat-form-field>
   </p>
@@ -23,7 +23,7 @@
     <mat-form-field appearance="fill" class="input">
       <mat-label>Exchange</mat-label>
       <mat-select [(ngModel)]="pair.pair_exchange" id="pair_exchange" name="pair_exchange" #name="ngModel" required>
-        <mat-option *ngFor="let exchange of exchangeList" value="{{ exchange.exchange_id }}">{{ exchange.exchange_name }}</mat-option>
+        <mat-option *ngFor="let exchange of exchangeList" value="{{ exchange.exchange_id }}"><img src="../../../../assets/images/exchanges/{{exchange.exchange_id}}.png" class="tokenimg">{{ exchange.exchange_name }}</mat-option>
     </mat-select>
     </mat-form-field>
   </p>
