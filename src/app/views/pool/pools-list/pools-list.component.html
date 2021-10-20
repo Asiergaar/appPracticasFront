@@ -15,7 +15,14 @@
 
     <ng-container matColumnDef="pool_pair">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Pair</mat-header-cell>
-        <mat-cell *matCellDef="let pool">{{pool.tokenA}} <span *ngIf="pool.tokenB">/{{pool.tokenB}}</span> ({{ pool.exchange }})</mat-cell>
+        <mat-cell *matCellDef="let pool"> <!--
+          <img src="../../../../assets/images/coins/{{pool.tokenA_id}}.webp" class="tokenimg">
+          <img src="../../../../assets/images/coins/{{pool.tokenB_id}}.webp" class="tokenimg">
+        -->
+          {{pool.tokenA}}
+          <span *ngIf="pool.tokenB">/{{pool.tokenB}}</span>
+          ({{ pool.exchange }})
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="invested_quantity">
