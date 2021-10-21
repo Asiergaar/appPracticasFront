@@ -16,7 +16,7 @@ export class PoolDailyComponent implements OnInit {
   public pool: Pool;
   public poolList: any;
   public pairList: any;
-  public displayedColumns= ["date"];
+  public displayedColumns= ["Date"];
   public dataSource: any;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -30,13 +30,16 @@ export class PoolDailyComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsByDay();
+    for(let po in this.poolList){
+      console.log(this.poolList[po]);
+    }
     // Get list of pairs on pools
     this.pairList = await this.getPoolsDistinct();
     for (let pa in this.pairList) {
-      this.displayedColumns.push("p" + this.pairList[pa].pool_pair);
+      this.displayedColumns.push(this.pairList[pa].exchange + ": " + this.pairList[pa].tokenA + " / " + this.pairList[pa].tokenB);
+
     }
-    this.displayedColumns.push("total");
-    console.log(this.displayedColumns);
+    this.displayedColumns.push("TOTAL", "Increment", "Benefit");
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

@@ -1,6 +1,6 @@
 <div id="tokenList" class="lists">
 
-  <h1 class="tituloPagina">Listado de tokens</h1>
+  <h1 class="tituloPagina">Daily Pools</h1>
 
   <mat-form-field class="listFilter">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
@@ -9,10 +9,18 @@
   <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
     <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>{{col}}</mat-header-cell>
-        <mat-cell *matCellDef="let pool">{{pool[col]}}</mat-cell>
-    </ng-container>
+        <mat-header-cell *matHeaderCellDef mat-sort-header><div *ngIf="col == 'Date'; else second">{{col}}</div></mat-header-cell>
+          <ng-template #second><div *ngIf="col == 'TOTAL'; else third">{{col}}</div></ng-template>
+          <ng-template #third><div *ngIf="col == 'Increment'; else four">{{col}}</div></ng-template>
+          <ng-template #four><div *ngIf="col == 'Benefit'; else five"><span>{{col}}</span></div></ng-template>
+          <ng-template #five>{{col.substring(0, col.indexOf(":")+1)}}<br>{{col.substring(col.indexOf(":")+2, col.length)}}</ng-template>
+        <mat-cell *matCellDef="let pool"><span *ngIf="col != 'Benefit'; else benefit">{{pool[col]}}</span>
+          <ng-template #benefit><span *ngIf="pool[col] < 0; else pos" class="negBenefit">{{pool[col]}}</span></ng-template>
+          <ng-template #pos><span class="posBenefit">{{pool[col]}}</span></ng-template>
 
+        </mat-cell>
+
+    </ng-container>
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

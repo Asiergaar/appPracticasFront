@@ -272,3 +272,11 @@ form {
 .poolsdone img {
   margin: auto;
 }
+
+.negBenefit {
+  background-color: red;
+}
+
+.posBenefit {
+  background-color: green;
+}
