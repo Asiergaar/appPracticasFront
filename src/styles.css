@@ -81,8 +81,15 @@ body {
 .mat-column-token_id,
 .mat-column-exchange_id,
 .mat-column-pair_id,
+.mat-column-pool_id,
 .mat-column-edit {
   flex: 0 0 80px !important;
+}
+
+.mat-column-poolupdate_pair {
+  flex: 0 0 100px !important;
+  justify-content: center !important;
+  padding: 0 !important;
 }
 
 .mat-table {
@@ -259,6 +266,7 @@ form {
 
 .poolsdone h2 {
   font-size: 2em;
+  margin: 16px 0 16px;
 }
 
 .poolsdone img {

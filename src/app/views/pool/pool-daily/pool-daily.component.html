@@ -1,0 +1,25 @@
+<div id="tokenList" class="lists">
+
+  <h1 class="tituloPagina">Listado de tokens</h1>
+
+  <mat-form-field class="listFilter">
+    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+  </mat-form-field>
+
+  <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+    <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{col}}</mat-header-cell>
+        <mat-cell *matCellDef="let pool">{{pool[col]}}</mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
+
+</div>

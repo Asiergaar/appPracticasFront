@@ -23,6 +23,10 @@ export class PoolsService {
     return this.httpClient.get<any>(environment.api + 'pools/getPoolsDistinct');
   }
 
+  public getPoolsByDay(): Observable<any> {
+    return this.httpClient.get<any>(environment.api + 'pools/getPoolsByDay');
+  }
+
   public getPoolStatus(): Observable<any> {
     return this.httpClient.get<any>(environment.api + 'pools/getPoolStatus');
   }

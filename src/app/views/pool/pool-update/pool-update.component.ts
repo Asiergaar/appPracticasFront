@@ -16,7 +16,7 @@ export class PoolUpdateComponent implements OnInit {
   public pool: Pool;
   public poolList: Array<any>;
   public poolStatus: Array<any>;
-  public displayedColumns= ["pool_pair", "exchange", "tokenA", "tokenB", "add"];
+  public displayedColumns= ["poolupdate_pair", "exchange", "tokenA", "tokenB", "add"];
   public dataSource: any;
   public poolToDo: boolean = true;
 

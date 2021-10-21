@@ -35,7 +35,8 @@ import { ErrorStateMatcher, MatOptionModule, ShowOnDirtyErrorStateMatcher } from
 import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
 import { PoolsListComponent } from './views/pool/pools-list/pools-list.component';
 import { MatSelectModule } from '@angular/material/select';
-import { PoolUpdateComponent } from './views/pool-update/pool-update.component';
+import { PoolUpdateComponent } from './views/pool/pool-update/pool-update.component';
+import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { PoolUpdateComponent } from './views/pool-update/pool-update.component';
     HomeComponent,
     PoolAddComponent,
     PoolsListComponent,
-    PoolUpdateComponent
+    PoolUpdateComponent,
+    PoolDailyComponent
   ],
   imports: [
     BrowserModule,

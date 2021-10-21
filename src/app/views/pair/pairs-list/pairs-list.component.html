@@ -15,17 +15,17 @@
 
     <ng-container matColumnDef="tokenA">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Token A</mat-header-cell>
-        <mat-cell *matCellDef="let pair"><img src="../../../../assets/images/coins/{{pair.tokenA_id}}.webp" class="tokenimg">{{pair.tokenA}}</mat-cell>
+        <mat-cell *matCellDef="let pair"><img src="../../../../assets/images/coins/{{pair.tokenA}}.png" class="tokenimg">{{pair.tokenA}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tokenB">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Token B</mat-header-cell>
-        <mat-cell *matCellDef="let pair"><img *ngIf="pair.tokenB_id" src="../../../../assets/images/coins/{{pair.tokenB_id}}.webp" class="tokenimg">{{pair.tokenB}}</mat-cell>
+        <mat-cell *matCellDef="let pair"><img *ngIf="pair.tokenB" src="../../../../assets/images/coins/{{pair.tokenB}}.png" class="tokenimg">{{pair.tokenB}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="pair_exchange">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Exchange</mat-header-cell>
-        <mat-cell *matCellDef="let pair"><img src="../../../../assets/images/exchanges/{{pair.exchange_id}}.png" class="tokenimg">{{pair.exchange}}</mat-cell>
+        <mat-cell *matCellDef="let pair"><img src="../../../../assets/images/exchanges/{{pair.exchange}}.png" class="tokenimg">{{pair.exchange}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">
