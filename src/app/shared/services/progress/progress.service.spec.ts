@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CapitalService } from './capital.service';
+import { ProgressService } from './progress.service';
 
-describe('CapitalService', () => {
-  let service: CapitalService;
+describe('ProgressService', () => {
+  let service: ProgressService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CapitalService);
+    service = TestBed.inject(ProgressService);
   });
 
   it('should be created', () => {

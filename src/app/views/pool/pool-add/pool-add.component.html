@@ -12,7 +12,7 @@
     <mat-form-field appearance="fill" class="input">
       <mat-label>Select pair</mat-label>
       <mat-select [(ngModel)]="pool.pool_pair" id="pool_pair" name="pool_pair" #name="ngModel" required>
-        <mat-option *ngFor="let pair of pairList" value="{{ pair.id }}">{{pair.id}} - {{ pair.tkA }} <span *ngIf="pair.tkB">/ {{pair.tkB}}</span> ({{ pair.exch }})</mat-option>
+        <mat-option *ngFor="let pair of pairList" value="{{ pair.id }}">{{pair.id}} - {{ pair.tokenA }} <span *ngIf="pair.tkB">/ {{pair.tokenB}}</span> ({{ pair.exchange }})</mat-option>
       </mat-select>
     </mat-form-field>
   </p>

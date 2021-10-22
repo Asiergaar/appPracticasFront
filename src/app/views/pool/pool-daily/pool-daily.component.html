@@ -14,9 +14,11 @@
           <ng-template #third><div *ngIf="col == 'Increment'; else four">{{col}}</div></ng-template>
           <ng-template #four><div *ngIf="col == 'Benefit'; else five"><span>{{col}}</span></div></ng-template>
           <ng-template #five>{{col.substring(0, col.indexOf(":")+1)}}<br>{{col.substring(col.indexOf(":")+2, col.length)}}</ng-template>
-        <mat-cell *matCellDef="let pool"><span *ngIf="col != 'Benefit'; else benefit">{{pool[col]}}</span>
-          <ng-template #benefit><span *ngIf="pool[col] < 0; else pos" class="negBenefit">{{pool[col]}}</span></ng-template>
-          <ng-template #pos><span class="posBenefit">{{pool[col]}}</span></ng-template>
+        <mat-cell *matCellDef="let pool"><span *ngIf="col == 'Increment'; else benefit">{{pool[col] | number: '1.2-2'}}</span>
+          <ng-template #benefit><span *ngIf="col != 'Benefit'; else neg">{{pool[col]}}</span></ng-template>
+          <ng-template #neg><span *ngIf="pool[col] < 0; else pos" class="negBenefit">{{pool[col] | number: '1.6-6'}}%</span></ng-template>
+          <ng-template #pos><span  *ngIf="pool[col] > 0; else pos2" class="posBenefit">{{pool[col] | number: '1.6-6'}}%</span></ng-template>
+          <ng-template #pos2><span class="zeroBenefit">{{pool[col] | number: '1.6-6'}}%</span></ng-template>
 
         </mat-cell>
 

@@ -26,4 +26,8 @@ export class ClientsService {
   public modClient(id: number, client: Client) {
     return this.httpClient.post<Client>(environment.api + 'clients/editClient/'+id, client);
   }
+
+  public getClientsCapitals(): Observable<any> {
+    return this.httpClient.get<any>(environment.api + 'clients/getClients');
+  }
 }

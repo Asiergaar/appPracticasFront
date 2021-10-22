@@ -186,6 +186,21 @@ body {
   width: 100%;
 }
 
+.listFilter.poolslist {
+  margin-top: -45px;
+}
+
+.pbdbtn {
+  background-color: rgb(36, 62, 146);
+  color: white;
+  margin: 0px 20px !important;
+  z-index: 1;
+}
+
+.pbdbtn:hover {
+  background-color: rgb(57, 92, 207);
+}
+
 .listFilter .mat-form-field-wrapper {
   margin: 0 20px;
   width: 200px !important;
@@ -273,10 +288,20 @@ form {
   margin: auto;
 }
 
+.zeroBenefit {
+  font-weight: bold;
+  padding: 14px 500px 14px 14px;
+  background-color: rgb(238, 235, 198);
+}
+
 .negBenefit {
-  background-color: red;
+  font-weight: bold;
+  padding: 14px 500px 14px 14px;
+  background-color: rgb(212, 59, 59);
 }
 
 .posBenefit {
-  background-color: green;
+  font-weight: bold;
+  padding: 14px 500px 14px 14px;
+  background-color: rgb(70, 151, 70);
 }

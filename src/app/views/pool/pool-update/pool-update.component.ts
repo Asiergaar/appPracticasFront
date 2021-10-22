@@ -5,7 +5,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { Pool } from 'src/app/shared/classes/pool/pool';
+import { Progress } from 'src/app/shared/classes/progress/progress';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
+import { ProgressService } from 'src/app/shared/services/progress/progress.service';
+import { ClientsService } from 'src/app/shared/services/client/clients.service';
+import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
 
 @Component({
   selector: 'app-pool-update',
@@ -14,6 +18,7 @@ import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 })
 export class PoolUpdateComponent implements OnInit {
   public pool: Pool;
+  public progress: Progress;
   public poolList: Array<any>;
   public poolStatus: Array<any>;
   public displayedColumns= ["poolupdate_pair", "exchange", "tokenA", "tokenB", "add"];
@@ -22,8 +27,9 @@ export class PoolUpdateComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private poolsService: PoolsService, private router: Router) {
+  constructor(private poolsService: PoolsService, private progressService: ProgressService, private clientsService: ClientsService, private capitalsService: CapitalsService, private router: Router) {
     this.pool = new Pool();
+    this.progress = new Progress();
     this.poolList = [];
     this.poolStatus = [];
   }
@@ -93,6 +99,21 @@ export class PoolUpdateComponent implements OnInit {
         }
       )
     }
+    // Create progress of the pool
+    this.progressService.addProgress().subscribe(
+      (data: any) => {
+        this.progress = data.progress;
+        this.router.navigate(['/PoolsList']);
+      },
+      (error: Error) => {
+        console.error("Error al realizar el acceso");
+      }
+    );
+
+    // Create capitals with that progress
+    this.capitalsService.addCapitals(this.progress);
+
+    this.clientsService.getClientsCapitals();
   }
 
 }
