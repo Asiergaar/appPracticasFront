@@ -2,9 +2,7 @@
 
   <h1 class="tituloPagina">Listado de pools</h1>
 
-  <button type="submit" routerLink="/PoolsByDay" mat-raised-button class="pbdbtn">Pools by day</button>
-
-  <mat-form-field class="listFilter poolslist">
+  <mat-form-field class="listFilter">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
   </mat-form-field>
 

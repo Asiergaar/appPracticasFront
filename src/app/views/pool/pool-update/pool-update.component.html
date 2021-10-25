@@ -30,7 +30,7 @@
 
         <ng-container matColumnDef="tokenB">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Token B</mat-header-cell>
-            <mat-cell *matCellDef="let pool"><img src="../../../../assets/images/coins/{{pool.tokenB}}.png" class="tokenimg">{{pool.tokenB}}</mat-cell>
+            <mat-cell *matCellDef="let pool"><img *ngIf="pool.tokenB" src="../../../../assets/images/coins/{{pool.tokenB}}.png" class="tokenimg">{{pool.tokenB}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="add">

@@ -30,9 +30,7 @@ export class PoolDailyComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsByDay();
-    for(let po in this.poolList){
-      console.log(this.poolList[po]);
-    }
+
     // Get list of pairs on pools
     this.pairList = await this.getPoolsDistinct();
     for (let pa in this.pairList) {

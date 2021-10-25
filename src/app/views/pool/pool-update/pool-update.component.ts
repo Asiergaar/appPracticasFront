@@ -83,8 +83,8 @@ export class PoolUpdateComponent implements OnInit {
     })
   }
 
-  // On form submit => create pool on DB
-  public submit(value:Array<any>): void {
+  // On form submit => create pools on DB
+  public async submit(value:Array<any>): Promise<void> {
 
     for (var key in value) {
       let pool2 = new Pool();
@@ -99,21 +99,41 @@ export class PoolUpdateComponent implements OnInit {
         }
       )
     }
-    // Create progress of the pool
-    this.progressService.addProgress().subscribe(
+
+    this. progress = await this.addProgress();
+    await this.addCapitals();
+  }
+
+  private async addProgress(): Promise<any> {
+    return new Promise(resolve => {
+      let prog = new Progress();
+      // Create progress of the pool
+      this.progressService.addProgress().subscribe(
+        (data: any) => {
+          prog = data.progress;
+          this.router.navigate(['/PoolsList']);
+        },
+        (error: Error) => {
+          console.error("Error al realizar el acceso");
+        },
+        () => {
+          console.log('Petición realizada correctamente');
+          resolve(prog);
+        }
+      )
+    })
+  }
+
+  private async addCapitals(): Promise<any> {
+    // Create capitals with that progress
+      this.capitalsService.addCapitals(this.progress).subscribe(
       (data: any) => {
-        this.progress = data.progress;
         this.router.navigate(['/PoolsList']);
       },
       (error: Error) => {
         console.error("Error al realizar el acceso");
       }
-    );
-
-    // Create capitals with that progress
-    this.capitalsService.addCapitals(this.progress);
-
-    this.clientsService.getClientsCapitals();
+    )
   }
 
 }

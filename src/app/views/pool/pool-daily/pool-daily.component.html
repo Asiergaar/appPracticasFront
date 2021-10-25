@@ -1,8 +1,10 @@
-<div id="tokenList" class="lists">
+<div id="poolList" class="lists">
 
   <h1 class="tituloPagina">Daily Pools</h1>
 
-  <mat-form-field class="listFilter">
+  <button type="submit" routerLink="/PoolsList" mat-raised-button class="pbdbtn">Pools list</button>
+
+  <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
   </mat-form-field>
 
