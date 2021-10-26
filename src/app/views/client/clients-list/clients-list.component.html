@@ -14,37 +14,37 @@
 
     <ng-container matColumnDef="client_id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{client.client_id}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="client_name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{client.client_name}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_name}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="client_surname">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Surname</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{client.client_surname}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_surname}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{client.email}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.email}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="entry_date">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Entry date</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{client.entry_date | date: 'dd/MM/yyyy' }}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.entry_date | date: 'dd/MM/yyyy' }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="start_capital">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Start capital</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{client.start_capital}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.start_capital}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="benefit">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Benefit</mat-header-cell>
-        <mat-cell *matCellDef="let client"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
           <ng-template #neg><span *ngIf="totalBenefit < 0; else pos" class="negBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
           <ng-template #pos><span *ngIf="totalBenefit > 0" class="posBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
         </mat-cell>
@@ -52,7 +52,7 @@
 
     <ng-container matColumnDef="last_capital">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Last capital</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{client.last_capital | number: '1.2-2' }}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.last_capital | number: '1.2-2' }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">

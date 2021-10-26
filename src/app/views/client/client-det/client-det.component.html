@@ -1,1 +1,37 @@
-<p>client-det works!</p>
+<h1 class="tituloPagina">Cliente #{{ client.client_id }}</h1>
+  <div class="clientInfo">
+    <h2>Name: {{client.client_name}} {{client.client_surname}}</h2>
+    <h2>Client since: {{client.entry_date | date: "dd/MM/yyyy"}}</h2>
+    <h2>Email: {{client.email}}</h2>
+  </div>
+
+  <div class="clientStats">
+    <div class="clientProgress">
+      <h2 class="titulo">Últimos progresos</h2>
+      <div *ngFor="let p of progress.reverse()" class="progressData">
+        <h3 *ngIf="p == 0; else neg">{{ p | number: "1.6-6" }}% &nbsp;<i class="fa fa-minus" aria-hidden="true"></i></h3>
+        <ng-template #neg> <h3 *ngIf="p < 0; else pos">{{ p | number: "1.6-6" }}% &nbsp;<i class="fa fa-arrow-down" aria-hidden="true"></i></h3> </ng-template>
+        <ng-template #pos> <h3 *ngIf="p > 0">{{ p | number: "1.6-6" }}% &nbsp;<i class="fa fa-arrow-up" aria-hidden="true"></i></h3> </ng-template>
+      </div>
+    </div>
+
+    <div class="capitalProgress">
+      <h2 class="titulo">Progreso del capital</h2>
+      <div class="capitalData">
+        <div>
+          <h2>Initial capital:</h2>
+          <h2>${{ client.start_capital | number: "1.2-2"}}</h2>
+        </div>
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        <div>
+          <h2>Actual capital:</h2>
+          <h2>${{ actual_capital | number: "1.2-2"}}</h2>
+        </div>
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        <div>
+          <h2>Benefit:</h2>
+          <h2>${{ actual_capital - client.start_capital | number: "1.2-2"}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>

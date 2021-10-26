@@ -5,8 +5,9 @@ import { PaginaNoEncontradaComponent } from './views/pagina-no-encontrada/pagina
 import { ClientsListComponent } from './views/client/clients-list/clients-list.component';
 import { ClientsCapitalsComponent } from './views/client/clients-capitals/clients-capitals.component';
 import { ClientAddComponent } from './views/client/client-add/client-add.component';
-import { ClientModComponent } from './views/client/client-mod/client-mod.component'
-import { TokensListComponent } from './views/token/tokens-list/tokens-list.component';;
+import { ClientModComponent } from './views/client/client-mod/client-mod.component';
+import { ClientDetComponent } from './views/client/client-det/client-det.component';
+import { TokensListComponent } from './views/token/tokens-list/tokens-list.component';
 import { TokenAddComponent } from './views/token/token-add/token-add.component';
 import { TokenModComponent } from './views/token/token-mod/token-mod.component';
 import { ExchangesListComponent } from './views/exchange/exchanges-list/exchanges-list.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'ClientsList', component: ClientsListComponent },
   { path: 'AddClient', component: ClientAddComponent },
   { path: 'ModClient/:id', component: ClientModComponent },
+  { path: 'ClientDetail/:id', component: ClientDetComponent },
   { path: 'ClientsCapitals', component: ClientsCapitalsComponent },
 
   { path: 'TokensList', component: TokensListComponent},

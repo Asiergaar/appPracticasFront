@@ -13,6 +13,10 @@ body {
   width: 200px;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /* Lateral Menu */
 
 #menu {
@@ -70,7 +74,49 @@ body {
 .buttonlist:hover{ background-color: rgb(116, 170, 252); }
 .buttonadd2:hover{ background-color: rgb(73, 211, 91); }
 
+.web {
+  width: 99%;
+  display: flex;
+}
+
+.menulateral{
+  position: fixed;
+  width: 250px;
+  padding-left: 15px;
+  margin-top: 20px;
+}
+
 /* Screen */
+
+.contenido{
+  width: inherit;
+  padding: 20px;
+  margin-left: 265px;
+}
+
+#contenedor {
+  box-shadow: 0px 4px 6px 0px #00000040;
+  background-color: whitesmoke;
+  border-radius: 15px;
+}
+
+.tituloPagina {
+  background-color: rgb(44, 44, 44);
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+  margin: 0;
+  border-radius: 15px 15px 0 0;
+  line-height: 2em;
+  padding: 10px 0;
+}
+
+.bloque h1 {
+  text-align: center;
+}
+
+/* TABLES STUFF (multiple pages) */
 
 .lists {
   margin-bottom: 30px;
@@ -124,6 +170,8 @@ body {
   background-color: rgb(219, 219, 219);
 }
 
+/* Tokens and exchange images */
+
 .tokenimg {
   height: 20px;
   width: 20px;
@@ -136,6 +184,8 @@ body {
   margin-right: 25px;
   margin-left: 15px;
 }
+
+/* Edit link on tables */
 
 .editlink {
   background-color: transparent;
@@ -151,45 +201,7 @@ body {
   background-color: rgb(252, 134, 66);
 }
 
-.web {
-  width: 99%;
-  display: flex;
-}
-
-.menulateral{
-  position: fixed;
-  width: 250px;
-  padding-left: 15px;
-  margin-top: 20px;
-}
-
-.contenido{
-  width: inherit;
-  padding: 20px;
-  margin-left: 265px;
-}
-
-#contenedor {
-  box-shadow: 0px 4px 6px 0px #00000040;
-  background-color: whitesmoke;
-  border-radius: 15px;
-}
-
-.tituloPagina {
-  background-color: rgb(44, 44, 44);
-  color: white;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 2em;
-  margin: 0;
-  border-radius: 15px 15px 0 0;
-  line-height: 2em;
-  padding: 10px 0;
-}
-
-.bloque h1 {
-  text-align: center;
-}
+/* Pagination and filter */
 
 .tablelist, .pagination {
   margin: 0 20px;
@@ -202,6 +214,14 @@ body {
 .listFilter.poolslist {
   margin-top: -45px;
 }
+
+.listFilter .mat-form-field-wrapper {
+  margin: 0 20px;
+  width: 200px !important;
+  float: right;
+}
+
+/* Table superior buttons */
 
 .pbdbtn {
   background-color: rgb(36, 62, 146);
@@ -225,11 +245,7 @@ body {
   background-color: rgb(43, 156, 52);
 }
 
-.listFilter .mat-form-field-wrapper {
-  margin: 0 20px;
-  width: 200px !important;
-  float: right;
-}
+/* FORMS STUFF (multiple pages) */
 
 form {
   width: max-content;
@@ -298,6 +314,8 @@ form {
   font-size: 0.8em;
 }
 
+/* POOLS DONE PAGE */
+
 .poolsdone {
   margin: 25px auto;
   text-align: center;
@@ -311,6 +329,8 @@ form {
 .poolsdone img {
   margin: auto;
 }
+
+/* BENEFITS CELLS COLOR */
 
 .zeroBenefit {
   font-weight: bold;
@@ -329,6 +349,142 @@ form {
   padding: 14px 500px 14px 14px;
   background-color: rgb(70, 151, 70);
 }
+
+/* CLIENT DETAIL PAGE */
+
+.clientInfo {
+  display: flex;
+}
+
+.clientInfo h2 {
+  width: 33%;
+  padding: 10px 40px 20px;
+  text-align: center;
+  border-bottom: 3px solid rgb(44, 44, 44);
+}
+
+.clientStats{
+  display: flex;
+  padding-bottom: 25px;
+}
+
+.clientProgress {
+  background-color:rgb(230, 230, 230);
+  box-shadow: 3px 3px 6px 2px #00000040;
+  border-radius: 15px;
+  margin: 85px 10px 10px 40px;
+  width: 200px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.clientProgress::before {
+  content: "";
+  background-image: url(/assets/images/pandaface.png);
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  width: 165px;
+  height: 100px;
+  bottom: 99%;
+  left: 10px;
+}
+
+.clientProgress::after {
+  content: "Last progress";
+  background-color: red;
+  background-size: cover;
+  position: absolute;
+  color: white;
+  font-size: 0.8em;
+  z-index: 3;
+  padding: 0px 8px;
+  border-radius: 0 0 15px 0;
+  bottom: 0px;
+  right: 0px;
+}
+
+.progressData h3 {
+  font-size: 1.5em;
+}
+
+.clientProgress h2 {
+  background: rgb(44, 44, 44);
+  color: white;
+  margin: 0 0 10px 0;
+  padding: 5px;
+  border-radius: 15px 15px 0 0;
+}
+
+.progressData {
+  padding: 5px;
+}
+
+.progressData i {
+  width: 30px;
+}
+
+.clientProgress .fa-minus {
+  color: rgb(44, 44, 44);
+}
+
+.clientProgress .fa-arrow-down {
+  color: red;
+}
+
+.clientProgress .fa-arrow-up {
+  color: green;
+}
+
+.capitalProgress {
+  background-color:rgb(230, 230, 230);
+  box-shadow: 3px 3px 6px 2px #00000040;
+  border-radius: 15px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  height: fit-content;
+}
+
+.capitalProgress::before {
+  content: "";
+  background-image: url(/assets/images/wallet.png);
+  background-size: cover;
+  position: absolute;
+  width: 61px;
+  height: 70px;
+  top: -40px;
+  right: -20px;
+}
+
+.capitalProgress .titulo {
+  background: rgb(44, 44, 44);
+  color: white;
+  margin: 0 0 10px 0;
+  padding: 5px;
+  border-radius: 15px 15px 0 0;
+}
+
+.capitalData {
+  display: flex;
+  margin: 10px auto;
+}
+
+.capitalData h2 {
+  margin: 0 30px;
+  text-align: center;
+
+}
+
+.capitalData i {
+  margin: 15px auto;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* NOT FOUND PAGE */
 
 .notfound {
   margin: 25px auto;
