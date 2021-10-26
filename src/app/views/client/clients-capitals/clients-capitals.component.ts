@@ -4,49 +4,55 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { Pool } from 'src/app/shared/interfaces/pool';
-import { PoolsService } from 'src/app/shared/services/pool/pools.service';
+import { Client } from 'src/app/shared/interfaces/client';
+import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
 @Component({
-  selector: 'app-pools-list',
-  templateUrl: './pools-list.component.html',
-  styleUrls: ['./pools-list.component.css']
+  selector: 'app-clients-capitals',
+  templateUrl: './clients-capitals.component.html',
+  styleUrls: ['./clients-capitals.component.css']
 })
-export class PoolsListComponent implements OnInit {
-  public pool: Pool;
-  public poolList: any;
-  public displayedColumns= ["pool_id", "pool_coins", "pool_pair", "invested_quantity", "pool_date"];
+export class ClientsCapitalsComponent implements OnInit {
+  public client: Client;
+  public clientsCapitals: Array<any>;
+  public displayedColumns: Array<string>;
   public dataSource: any;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService) {
-    this.poolList = [];
+  constructor(private clientsService: ClientsService) {
+    this.clientsCapitals = [];
+    this.displayedColumns = [];
    }
 
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
-    this.poolList = await this.getPoolsName();
-    this.dataSource = new MatTableDataSource(this.poolList);
+    this.clientsCapitals = await this.getClientsCapitals();
+      for (let c in this.clientsCapitals[0]) {
+        console.log(c);
+        this.displayedColumns.push(c);
+      }
+    console.log(this.displayedColumns);
+    this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
-  // get pools data to show on form
-  private async getPoolsName(): Promise<any> {
+  // get clients data to show on form
+  private async getClientsCapitals(): Promise<any> {
     return new Promise(resolve => {
-      let poolList: any[];
-      this.poolsService.getPoolsName().subscribe(
+      let query: any[];
+      this.clientsService.getClientsCapitals().subscribe(
         (data) => {
-          poolList = data.data;
+          query = data.data;
         },
         (error) => {
           console.log('Error: ', error);
         },
         () => {
           console.log('Petición realizada correctamente');
-          resolve(poolList);
+          resolve(query);
         }
       )
     })

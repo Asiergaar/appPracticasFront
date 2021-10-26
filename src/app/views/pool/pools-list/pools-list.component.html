@@ -2,7 +2,9 @@
 
   <h1 class="tituloPagina">Listado de pools</h1>
 
-  <mat-form-field class="listFilter">
+  <button type="submit" routerLink="/PoolsByDay" mat-raised-button class="pbdbtn">Pools by day</button>
+
+  <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
   </mat-form-field>
 
@@ -13,12 +15,18 @@
         <mat-cell *matCellDef="let pool">{{pool.pool_id}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="pool_coins">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Coins</mat-header-cell>
+        <mat-cell *matCellDef="let pool">
+          <img *ngIf="pool.tokenB; else noimg" src="../../../../assets/images//coins/{{pool.tokenA}}.png" class="tokenimg">
+          <ng-template #noimg> <img src="../../../../assets/images//coins/{{pool.tokenA}}.png" class="tokenimgalone"> </ng-template>
+          <img *ngIf="pool.tokenB" src="../../../../assets/images/coins/{{pool.tokenB}}.png" class="tokenimg">
+        </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="pool_pair">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Pair</mat-header-cell>
-        <mat-cell *matCellDef="let pool"> <!--
-          <img src="../../../../assets/images/coins/{{pool.tokenA_id}}.png" class="tokenimg">
-          <img src="../../../../assets/images/coins/{{pool.tokenB_id}}.png" class="tokenimg">
-        -->
+        <mat-cell *matCellDef="let pool">
           {{pool.tokenA}}
           <span *ngIf="pool.tokenB">/{{pool.tokenB}}</span>
           ({{ pool.exchange }})

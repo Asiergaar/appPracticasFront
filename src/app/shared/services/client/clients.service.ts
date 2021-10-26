@@ -28,6 +28,6 @@ export class ClientsService {
   }
 
   public getClientsCapitals(): Observable<any> {
-    return this.httpClient.get<any>(environment.api + 'clients/getClients');
+    return this.httpClient.get<any>(environment.api + 'clients/getClientsCapitals');
   }
 }

@@ -82,8 +82,14 @@ body {
 .mat-column-exchange_id,
 .mat-column-pair_id,
 .mat-column-pool_id,
+.mat-column-pool_coins,
 .mat-column-edit {
   flex: 0 0 80px !important;
+}
+
+.mat-cell,
+.mat-header-cell {
+  padding-left: 20px;
 }
 
 .mat-column-poolupdate_pair {
@@ -122,6 +128,13 @@ body {
   height: 20px;
   width: 20px;
   margin-right: 10px;
+}
+
+.tokenimgalone {
+  height: 20px;
+  width: 20px;
+  margin-right: 25px;
+  margin-left: 15px;
 }
 
 .editlink {

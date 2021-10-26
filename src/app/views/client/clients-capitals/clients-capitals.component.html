@@ -1,0 +1,31 @@
+<div id="clientList" class="lists">
+
+  <h1 class="tituloPagina">Evolución del Capital de los clientes</h1>
+
+  <button type="submit" routerLink="/ClientsList" mat-raised-button class="pbdbtn">Clients list</button>
+
+  <mat-form-field class="listFilter poolslist">
+    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+  </mat-form-field>
+
+  <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+    <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>{{col}}</mat-header-cell>
+      <mat-cell *matCellDef="let caps"><span *ngIf="col == 'Date'; else clients">{{caps[col]}}</span>
+        <ng-template #clients><span *ngIf="col != 'Benefit'; else neg">{{caps[col] | number: '1.2-2'}}</span></ng-template>
+        <ng-template #neg><span *ngIf="caps[col] < 0; else pos" class="negBenefit">{{caps[col] | number: '1.6-6'}}%</span></ng-template>
+        <ng-template #pos><span  *ngIf="caps[col] > 0; else pos2" class="posBenefit">{{caps[col] | number: '1.6-6'}}%</span></ng-template>
+        <ng-template #pos2><span class="zeroBenefit">{{caps[col] | number: '1.6-6'}}%</span></ng-template>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
+
+
+</div>

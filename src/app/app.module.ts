@@ -37,6 +37,7 @@ import { PoolsListComponent } from './views/pool/pools-list/pools-list.component
 import { MatSelectModule } from '@angular/material/select';
 import { PoolUpdateComponent } from './views/pool/pool-update/pool-update.component';
 import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component';
+import { ClientsCapitalsComponent } from './views/client/clients-capitals/clients-capitals.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component
     PoolAddComponent,
     PoolsListComponent,
     PoolUpdateComponent,
-    PoolDailyComponent
+    PoolDailyComponent,
+    ClientsCapitalsComponent
   ],
   imports: [
     BrowserModule,
