@@ -30,10 +30,8 @@ export class ClientsCapitalsComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.clientsCapitals = await this.getClientsCapitals();
       for (let c in this.clientsCapitals[0]) {
-        console.log(c);
         this.displayedColumns.push(c);
       }
-    console.log(this.displayedColumns);
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

@@ -214,6 +214,17 @@ body {
   background-color: rgb(57, 92, 207);
 }
 
+.addbtn {
+  background-color: rgb(14, 124, 23);
+  color: white;
+  margin: 0px 20px !important;
+  z-index: 1;
+}
+
+.addbtn:hover {
+  background-color: rgb(43, 156, 52);
+}
+
 .listFilter .mat-form-field-wrapper {
   margin: 0 20px;
   width: 200px !important;
@@ -317,4 +328,19 @@ form {
   font-weight: bold;
   padding: 14px 500px 14px 14px;
   background-color: rgb(70, 151, 70);
+}
+
+.notfound {
+  margin: 25px auto;
+  text-align: center;
+}
+
+.notfound h2 {
+  font-size: 2em;
+  padding: 16px 0 16px;
+}
+
+.notfound img {
+  margin: auto;
+  width: 350px;
 }

@@ -2,7 +2,9 @@
 
   <h1 class="tituloPagina">Listado de tokens</h1>
 
-  <mat-form-field class="listFilter">
+  <button type="submit" routerLink="/AddToken" mat-raised-button class="addbtn">Add Token</button>
+
+  <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
   </mat-form-field>
 

@@ -15,8 +15,9 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
 export class ClientsListComponent implements OnInit {
   public client: Client;
   public clientList: any;
-  public displayedColumns= ["client_id", "client_name", "client_surname", "email", "entry_date", "start_capital", "edit"];
+  public displayedColumns= ["client_id", "client_name", "client_surname", "email", "entry_date", "start_capital", 'benefit', 'last_capital', "edit"];
   public dataSource: any;
+  public totalBenefit: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -40,6 +41,7 @@ export class ClientsListComponent implements OnInit {
       this.clientsService.getClients().subscribe(
         (data) => {
           clientList = data.data;
+          this.totalBenefit = (data.benefit - 1) * 100;
         },
         (error) => {
           console.log('Error: ', error);

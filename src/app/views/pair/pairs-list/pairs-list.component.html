@@ -2,7 +2,9 @@
 
   <h1 class="tituloPagina">Listado de pairs</h1>
 
-    <mat-form-field class="listFilter">
+  <button type="submit" routerLink="/AddPair" mat-raised-button class="addbtn">Add Pair</button>
+
+    <mat-form-field class="listFilter poolslist">
       <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
     </mat-form-field>
 
