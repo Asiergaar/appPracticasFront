@@ -92,7 +92,7 @@ export class PoolUpdateComponent implements OnInit {
       pool2.invested_quantity = value[key];
       this.poolsService.addPool(pool2).subscribe(
         (data: any) => {
-          this.router.navigate(['/PoolsList']);
+          this.router.navigate(['/PoolsByDay']);
         },
         (error: Error) => {
           console.error("Error al realizar el acceso");
@@ -111,7 +111,7 @@ export class PoolUpdateComponent implements OnInit {
       this.progressService.addProgress().subscribe(
         (data: any) => {
           prog = data.progress;
-          this.router.navigate(['/PoolsList']);
+          this.router.navigate(['/PoolsByDay']);
         },
         (error: Error) => {
           console.error("Error al realizar el acceso");
@@ -128,7 +128,7 @@ export class PoolUpdateComponent implements OnInit {
     // Create capitals with that progress
       this.capitalsService.addCapitals(this.progress).subscribe(
       (data: any) => {
-        this.router.navigate(['/PoolsList']);
+        this.router.navigate(['/PoolsByDay']);
       },
       (error: Error) => {
         console.error("Error al realizar el acceso");

@@ -19,6 +19,10 @@ export class PoolsService {
     return this.httpClient.get<any>(environment.api + 'pools/getPoolsName');
   }
 
+  public getPoolsData(): Observable<any> {
+    return this.httpClient.get<any>(environment.api + 'pools/getPoolsData');
+  }
+
   public getPoolsDistinct(): Observable<any> {
     return this.httpClient.get<any>(environment.api + 'pools/getPoolsDistinct');
   }

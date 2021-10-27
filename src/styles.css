@@ -365,15 +365,19 @@ form {
 
 .clientStats{
   display: flex;
+  width: fit-content;
+  margin: auto;
   padding-bottom: 25px;
+  padding-right: 35px;
 }
 
 .clientProgress {
   background-color:rgb(230, 230, 230);
   box-shadow: 3px 3px 6px 2px #00000040;
   border-radius: 15px;
-  margin: 85px 10px 10px 40px;
+  margin: 85px 40px 10px 40px;
   width: 200px;
+  min-width: 200px;
   text-align: center;
   z-index: 2;
   position: relative;
@@ -407,6 +411,10 @@ form {
 
 .progressData h3 {
   font-size: 1.5em;
+}
+
+.progressData:last-child {
+  margin-bottom: 5px;
 }
 
 .clientProgress h2 {
@@ -482,6 +490,109 @@ form {
   font-size: 2em;
   text-align: center;
   vertical-align: middle;
+}
+
+/* HOME PAGE */
+
+.home{
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.homePoolCard {
+  background-color: rgb(230, 230, 230);
+  box-shadow: 3px 3px 6px 2px #00000040;
+  border-radius: 15px;
+  margin: 30px 40px;
+  text-align: center;
+  min-width: 600px;
+}
+
+.homePoolCard .titulo {
+  background: rgb(44, 44, 44);
+  color: white;
+  margin: 0;
+  padding: 5px;
+  border-radius: 15px 15px 0 0;
+}
+
+.homePoolCard .titulo img {
+  margin-left: 15px;
+}
+
+.homePoolCard .titulo .homeexchange {
+  float: left;
+  margin-left: 10px;
+}
+
+.homePoolCard .titulo .hometoken {
+  margin: 0 5%;
+}
+
+.homeDayData, .homeTotalData {
+  margin: auto;
+  text-align: center;
+}
+
+.homeDayData {
+  width: -webkit-fill-available;
+  border-right: 1px solid black;
+  font-size: 1.2em;
+}
+
+.homeDayData .homezero,
+.homeDayData .homeneg,
+.homeDayData .homepos {
+  padding: 10px 0;
+}
+
+.homeDayData .homezero p:last-child,
+.homeDayData .homeneg p:last-child,
+.homeDayData .homepos p:last-child {
+  margin-bottom: 0;
+}
+
+.homeDayData .homeneg {
+  background-color: rgb(243, 172, 172);
+}
+
+.homeDayData .homepos {
+  background-color: rgb(197, 240, 203);
+}
+
+.homeDayData:last-child {
+  border-right: unset;
+}
+
+.homeDayData .fa-angle-double-right {
+  font-size: 2.5em;
+}
+
+.homePoolData, .homePoolTotal{
+  display: flex;
+}
+
+.homePoolData .fa-arrow-down,
+.homeTotalData .fa-arrow-down {
+  color: red;
+}
+
+.homePoolData .fa-arrow-up,
+.homeTotalData .fa-arrow-up {
+  color: green;
+}
+
+.homePoolTotal {
+  background: rgb(230, 230, 230);
+  font-size: 1.4em;
+  margin: 0;
+  padding: 10px;
+  border-radius: 0 0 15px 15px;
+  border-top: 1px solid black;
+}
+
+.homePoolTotal p {
+  margin: 0;
 }
 
 /* NOT FOUND PAGE */
