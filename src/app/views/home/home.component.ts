@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.poolData = [];
     this.dataLength = [];
     // change this to set result quantity
-    this.len = 100;
+    this.len = 7;
   }
 
   async ngOnInit(): Promise<void> {
