@@ -29,12 +29,14 @@ export class ClientsCapitalsComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.clientsCapitals = await this.getClientsCapitals();
+    console.log(this.clientsCapitals)
       for (let c in this.clientsCapitals[0]) {
         this.displayedColumns.push(c);
       }
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageIndex = this.paginator.pageSize;
   }
 
   // get clients data to show on form

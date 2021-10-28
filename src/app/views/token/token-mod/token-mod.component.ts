@@ -32,6 +32,7 @@ export class TokenModComponent implements OnInit {
         this.token.token_id = this.tokenInfo.token_id;
         this.token.token_name = this.tokenInfo.token_name;
         this.token.ticker = this.tokenInfo.ticker;
+        this.token.token_img_url = this.tokenInfo.token_img_url;
       },
       (error) => {
         console.log('Error: ', error);

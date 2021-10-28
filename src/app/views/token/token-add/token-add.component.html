@@ -15,6 +15,13 @@
       name="ticker" #ticker="ngModel" placeholder="" required>
     </mat-form-field>
   </p>
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Logo URL</mat-label>
+      <input type="text" matInput [(ngModel)]="token.token_img_url" id="token_img_url"
+      name="token_img_url" #url="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
 
   <div class="forminput">
     <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/TokensList">Volver</button>

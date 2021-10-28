@@ -15,6 +15,13 @@
       name="url" #url="ngModel" placeholder="">
     </mat-form-field>
   </p>
+  <p>
+    <mat-form-field appearance="legacy" class="input">
+      <mat-label>Logo URL</mat-label>
+      <input type="text" matInput [(ngModel)]="exchange.exchange_img_url" id="exchange_img_url"
+      name="exchange_img_url" #url="ngModel" placeholder="" required>
+    </mat-form-field>
+  </p>
 
   <div class="forminput">
     <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ExchangesList">Volver</button>

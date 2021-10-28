@@ -20,17 +20,17 @@
 
         <ng-container matColumnDef="exchange">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Exchange</mat-header-cell>
-            <mat-cell *matCellDef="let pool"><img src="../../../../assets/images/exchanges/{{pool.exchange}}.png" class="tokenimg">{{pool.exchange}}</mat-cell>
+            <mat-cell *matCellDef="let pool"><img src="{{pool.exchange_img_url}}" class="tokenimg">{{pool.exchange}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tokenA">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Token A</mat-header-cell>
-            <mat-cell *matCellDef="let pool"><img src="../../../../assets/images/coins/{{pool.tokenA}}.png" class="tokenimg">{{pool.tokenA}}</mat-cell>
+            <mat-cell *matCellDef="let pool"><img src="{{pool.tokenA_img_url}}" class="tokenimg">{{pool.tokenA}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tokenB">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Token B</mat-header-cell>
-            <mat-cell *matCellDef="let pool"><img *ngIf="pool.tokenB" src="../../../../assets/images/coins/{{pool.tokenB}}.png" class="tokenimg">{{pool.tokenB}}</mat-cell>
+            <mat-cell *matCellDef="let pool"><img *ngIf="pool.tokenB" src="{{pool.tokenB_img_url}}" class="tokenimg">{{pool.tokenB}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="add">

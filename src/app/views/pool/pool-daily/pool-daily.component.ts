@@ -41,6 +41,7 @@ export class PoolDailyComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageIndex = this.paginator.pageSize;
   }
 
   // get pools data to show on form
