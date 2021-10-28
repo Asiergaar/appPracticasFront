@@ -86,6 +86,8 @@ export class PoolUpdateComponent implements OnInit {
   // On form submit => create pools on DB
   public async submit(value:Array<any>): Promise<void> {
 
+    await this.progressService.checkProgress();
+
     for (var key in value) {
       let pool2 = new Pool();
       pool2.pool_pair = parseInt(key);
@@ -100,7 +102,7 @@ export class PoolUpdateComponent implements OnInit {
       )
     }
 
-    this. progress = await this.addProgress();
+    this.progress = await this.addProgress();
     await this.addCapitals();
   }
 

@@ -14,4 +14,8 @@ export class ProgressService {
   public addProgress() {
     return this.httpClient.get<any>(environment.api + 'progress/addProgress/');
   }
+
+  public checkProgress() {
+    return this.httpClient.get<any>(environment.api + 'progress/checkProgress/');
+  }
 }
