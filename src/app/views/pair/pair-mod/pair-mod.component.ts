@@ -49,7 +49,6 @@ export class PairModComponent implements OnInit {
         this.pairInfo = data.data[0];
         this.pair.pair_id = this.pairInfo.pair_id;
         this.pair.tokenA = this.pairInfo.tokenA;
-        console.log(this.pair.tokenB);
         if(this.pairInfo.tokenB == null){
           this.pair.tokenB = -1;
         } else {

@@ -1,71 +1,92 @@
-<div id="clientList" class="lists">
-
+<!-- IF NO CLIENTS ON DB
+<div *ngIf="clientList.length == 0; else elseBlock" id="clientList" class="lists">
   <h1 class="tituloPagina">Listado de clientes</h1>
 
-  <button type="submit" routerLink="/ClientsCapitals" mat-raised-button class="pbdbtn">Clients capitals</button>
-
-  <button type="submit" routerLink="/AddClient" mat-raised-button class="addbtn">Add Client</button>
-
-  <mat-form-field class="listFilter poolslist">
-    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
-  </mat-form-field>
-
-  <mat-table matSort [dataSource]="dataSource" class="tablelist">
-
-    <ng-container matColumnDef="client_id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_id}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="client_name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_name}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="client_surname">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Surname</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_surname}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.email}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="entry_date">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Entry date</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.entry_date | date: 'dd/MM/yyyy' }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="start_capital">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Start capital</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.start_capital}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="benefit">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Benefit</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
-          <ng-template #neg><span *ngIf="totalBenefit < 0; else pos" class="negBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
-          <ng-template #pos><span *ngIf="totalBenefit > 0" class="posBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="last_capital">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Last capital</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.last_capital | number: '1.2-2' }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
-        <mat-cell *matCellDef="let client"><a routerLink="/ModClient/{{ client.client_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
-</mat-table>
-
-<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
-
-
+  <div class="nodata">
+    <h2>No hay clientes en la base de datos</h2>
+    <img class="logo" src="../../../assets/images/pandaface.png">
+    <h2>Añade algunos:</h2>
+    <button type="submit" routerLink="/AddClient" mat-raised-button class="hmbtn">Add Client</button>
+  </div>
 </div>
+
+<ng-template #elseBlock>
+-->
+
+
+  <div id="clientList" class="lists">
+
+    <h1 class="tituloPagina">Listado de clientes</h1>
+
+    <button type="submit" routerLink="/ClientsCapitals" mat-raised-button class="pbdbtn">Clients capitals</button>
+
+    <button type="submit" routerLink="/AddClient" mat-raised-button class="addbtn">Add Client</button>
+
+    <mat-form-field class="listFilter poolslist">
+      <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+    </mat-form-field>
+
+    <mat-table matSort [dataSource]="dataSource" class="tablelist">
+
+      <ng-container matColumnDef="client_id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="client_name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="client_surname">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Surname</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_surname}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.email}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="entry_date">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Entry date</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.entry_date | date: 'dd/MM/yyyy' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="start_capital">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Start capital</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.start_capital}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="benefit">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Benefit</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
+            <ng-template #neg><span *ngIf="totalBenefit < 0; else pos" class="negBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
+            <ng-template #pos><span *ngIf="totalBenefit > 0" class="posBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
+          </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="last_capital">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Last capital</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.last_capital | number: '1.2-2' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+          <mat-cell *matCellDef="let client"><a routerLink="/ModClient/{{ client.client_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
+
+
+  </div>
+
+
+<!--
+</ng-template>
+-->

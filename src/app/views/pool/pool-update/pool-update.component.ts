@@ -86,24 +86,21 @@ export class PoolUpdateComponent implements OnInit {
   // On form submit => create pools on DB
   public async submit(value:Array<any>): Promise<void> {
 
-    await this.progressService.checkProgress();
+    await this.checkProgress();
 
     for (var key in value) {
       let pool2 = new Pool();
       pool2.pool_pair = parseInt(key);
       pool2.invested_quantity = value[key];
-      this.poolsService.addPool(pool2).subscribe(
-        (data: any) => {
-          this.router.navigate(['/PoolsByDay']);
-        },
-        (error: Error) => {
-          console.error("Error al realizar el acceso");
-        }
-      )
+      this.poolsService.addPool(pool2).subscribe( () => { console.log("pool added"); } )
     }
 
     this.progress = await this.addProgress();
     await this.addCapitals();
+  }
+
+  private async checkProgress(): Promise<any> {
+    this.progressService.checkProgress().subscribe( () => { console.log("progresses checked"); } );
   }
 
   private async addProgress(): Promise<any> {

@@ -23,10 +23,12 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.poolData = await this.getPoolsData();
     // Adjust len to max of poolData length, can't be higher
-    if (this.poolData[0].length < this.len) {
-      this.len = this.poolData[0].length;
+    if (this.poolData != []){
+      if (this.poolData[0].length < this.len) {
+        this.len = this.poolData[0].length;
+      }
+      for (let i = 0; i < this.len; i++){ this.dataLength.push(i) };
     }
-    for (let i = 0; i < this.len; i++){ this.dataLength.push(i) };
   }
 
 

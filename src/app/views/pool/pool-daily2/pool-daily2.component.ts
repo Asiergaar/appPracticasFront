@@ -8,20 +8,17 @@ import { Pool } from 'src/app/shared/interfaces/pool';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 
 @Component({
-  selector: 'app-pool-daily',
-  templateUrl: './pool-daily.component.html',
-  styleUrls: ['./pool-daily.component.css']
+  selector: 'app-pool-daily2',
+  templateUrl: './pool-daily2.component.html',
+  styleUrls: ['./pool-daily2.component.css']
 })
-export class PoolDailyComponent implements OnInit {
+export class PoolDaily2Component implements OnInit {
   public pool: Pool;
   public poolList: any;
   public pairList: any;
-  public displayedColumns = ["Date", "TOTAL", "Increment", "Benefit"];
-  public displayedColumnsLong = ["Date", "Hide Pairs"];
-  public displayedColumnsShort = ["Date", "Show Pairs", "TOTAL", "Increment", "Benefit"];
+  public displayedColumns1 = ["Date", "Empty", "TOTAL", "Increment", "Benefit"];
+  public displayedColumnsLong: Array<any> = [];
   public dataSource: any;
-  public columnsShown: boolean = false;
-  public columnsBtn: string = "Show Pairs";
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -40,8 +37,6 @@ export class PoolDailyComponent implements OnInit {
     for (let pa in this.pairList) {
       this.displayedColumnsLong.push(this.pairList[pa].exchange + ": " + this.pairList[pa].tokenA + " / " + this.pairList[pa].tokenB);
     }
-    this.displayedColumnsLong.push("TOTAL", "Increment", "Benefit");
-    this.displayedColumns = this.displayedColumnsShort;
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -95,18 +90,6 @@ export class PoolDailyComponent implements OnInit {
 
   applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  submit(){
-    if (!this.columnsShown) {
-      this.displayedColumns = this.displayedColumnsLong;
-      this.columnsBtn = "Hide Pairs";
-      this.columnsShown = true;
-    } else {
-      this.displayedColumns = this.displayedColumnsShort;
-      this.columnsBtn = "Show Pairs";
-      this.columnsShown = false;
-    }
   }
 
 }

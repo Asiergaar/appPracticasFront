@@ -20,6 +20,7 @@ import { PoolsListComponent } from './views/pool/pools-list/pools-list.component
 import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
 import { PoolUpdateComponent } from './views/pool/pool-update/pool-update.component';
 import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component';
+import { PoolDaily2Component } from './views/pool/pool-daily2/pool-daily2.component';
 import { HomeComponent } from './views/home/home.component';
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'PoolsList', component: PoolsListComponent},
   { path: 'AddPool', component: PoolAddComponent},
   { path: 'PoolsByDay', component: PoolDailyComponent},
+  { path: 'PoolsByDay2', component: PoolDaily2Component},
   { path: 'UpdatePools', component: PoolUpdateComponent},
 
   { path: '', redirectTo: '/Home', pathMatch: 'full'},

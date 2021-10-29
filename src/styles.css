@@ -10,6 +10,7 @@ body {
 .mat-paginator-container,
 .listFilter .mat-form-field-wrapper,
 .poolsdone h2,
+.nodata h2,
 .mat-form-field {
   font-family: 'Exo 2', sans-serif !important;
   font-weight: bold;
@@ -160,20 +161,9 @@ form {
 .mat-column-pair_id,
 .mat-column-pool_id,
 .mat-column-pool_coins,
-.mat-column-edit {
+.mat-column-edit{
   flex: 0 0 40px !important;
   min-width: 40px !important;
-}
-
-.mat-column-Date,
-.mat-column-Increment {
-  flex: 0 0 80px !important;
-  min-width: 80px !important;
-}
-
-.mat-column-Benefit {
-  flex: 0 0 100px !important;
-  min-width: 100px !important;
 }
 
 .mat-column-pool_coins {
@@ -183,7 +173,7 @@ form {
 
 .mat-cell,
 .mat-header-cell {
-  padding-left: 20px;
+  margin-left: 20px;
   min-width: 70px;
 }
 
@@ -217,6 +207,90 @@ form {
 
 .mat-row:hover {
   background-color: rgb(219, 219, 219);
+}
+
+.mat-sort-header.mat-column-Show-Pairs {
+  position: relative;
+  padding: 0;
+}
+
+.mat-sort-header.mat-column-Hide-Pairs {
+  position: relative;
+  padding: 15px 0;
+}
+
+.mat-sort-header.mat-column-Show-Pairs .mat-sort-header-container,
+.mat-sort-header.mat-column-Hide-Pairs .mat-sort-header-container {
+  width: 100%;
+}
+
+.mat-sort-header.mat-column-Show-Pairs .mat-sort-header-container .mat-sort-header-content,
+.mat-sort-header.mat-column-Hide-Pairs .mat-sort-header-container .mat-sort-header-content {
+  position: absolute;
+  width: 100%;
+}
+
+.mat-sort-header.mat-column-Show-Pairs .mat-sort-header-container .mat-sort-header-arrow,
+.mat-sort-header.mat-column-Hide-Pairs .mat-sort-header-container .mat-sort-header-arrow {
+  display: none;
+}
+
+.mat-sort-header.mat-column-Show-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted,
+.mat-sort-header.mat-column-Hide-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted {
+  width: 100%;
+  padding: 100px 0;
+}
+
+.mat-sort-header.mat-column-Show-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
+.mat-sort-header.mat-column-Hide-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover {
+  background-color: rgb(78, 78, 78);
+}
+
+.cdk-column-Show-Pairs {
+  padding: 0;
+}
+
+.mat-cell.cdk-column-Hide-Pairs,
+.mat-cell.cdk-column-Show-Pairs {
+  position: relative;
+  background-color: #2c2c2c;
+  color: white;
+}
+
+.mat-column-Hide-Pairs .ng-star-inserted,
+.mat-column-Show-Pairs .ng-star-inserted {
+  position: absolute;
+  width: 100%;
+  margin: auto;
+  padding: 100px 0;
+}
+
+.mat-column-Show-Pairs .ng-star-inserted:hover::before {
+  content: "<";
+  font-weight: normal;
+  position: absolute;
+  left: 5px;
+}
+
+.mat-column-Show-Pairs .ng-star-inserted:hover::after {
+  content: ">";
+  font-weight: normal;
+  position: absolute;
+  right: 5px;
+}
+
+.mat-column-Hide-Pairs .ng-star-inserted:hover::before {
+  content: ">";
+  font-weight: normal;
+  position: absolute;
+  left: 5px;
+}
+
+.mat-column-Hide-Pairs .ng-star-inserted:hover::after {
+  content: "<";
+  font-weight: normal;
+  position: absolute;
+  right: 5px;
 }
 
 /* Tokens and exchange images */
@@ -363,8 +437,9 @@ form {
   font-size: 0.8em;
 }
 
-/* POOLS DONE PAGE */
+/* POOLS DONE PAGE  &  NO DATA*/
 
+.nodata,
 .poolsdone {
   margin: 25px auto;
   text-align: center;
@@ -375,9 +450,22 @@ form {
   margin: 16px 0 16px;
 }
 
+.nodata h2 {
+  font-size: 2em;
+  margin: 16px 0 16px;
+}
+
+.nodata,
 .poolsdone img {
   margin: auto;
 }
+
+.nodata .hmbtn {
+  margin: 10px !important;
+  font-size: 1.5em;
+  padding: 5px 20px !important;
+}
+
 
 /* BENEFITS CELLS COLOR */
 
@@ -548,6 +636,49 @@ form {
   text-align: center;
 }
 
+.firsthome h2 {
+  font-size: 1.9em;
+}
+
+.firsthome .info {
+  margin: 20px 0 25px 0;
+  font-weight: bold;
+}
+
+.home .steps{
+  text-align: center;
+  background-color: rgb(230, 230, 230);
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px 2px #00000040;
+  margin: 30px 40px;
+  min-width: 600px;
+}
+
+.home .steps p{
+  text-align: center;
+  background-color: rgb(44,44,44);
+  color: white;
+  border-radius: 15px 15px 0 0;
+  padding: 10px 0;
+}
+
+.firsthome p {
+  font-size: 1.3em;
+}
+
+.hmbtn {
+  background-color: rgb(36, 116, 26);
+  color: white;
+  margin: 0px 5% 20px !important;
+  z-index: 1;
+  padding: 2px 20px !important;
+  font-size: 1.2em;
+}
+
+.hmbtn:hover {
+  background-color: rgb(14, 177, 49);
+}
+
 .homePoolCard {
   background-color: rgb(230, 230, 230);
   box-shadow: 3px 3px 6px 2px #00000040;
@@ -662,3 +793,88 @@ form {
   margin: auto;
   width: 350px;
 }
+
+
+
+
+
+
+
+
+/* POOLS BY DAY 2 */
+
+.tablemix .mat-column-Date {
+  flex: 0 0 90px !important;
+  min-width: 90px !important;
+}
+
+.tablemix .mat-column-Empty {
+  flex: 0 0 300px !important;
+  min-width: 300px !important;
+}
+
+.tablemix .mat-header-row {
+  height: 101px;
+}
+
+.dailyPools2.table2 .mat-table {
+  position: absolute;
+  width: 300px;
+  overflow: scroll;
+  top: 0px;
+  left: 145px;
+}
+/*
+
+
+.tablesx3 {
+  display: flex;
+}
+
+.dailyPools2 {
+}
+
+.dailyPools2:first-child .mat-table {
+  margin: 0 0 0 20px;
+}
+
+.dailyPools2 .mat-table {
+  margin: 0;
+  width: min-content;
+}
+
+.dailyPools2:last-child .mat-table {
+  margin: 0 20px 0 0;
+}
+
+.dailyPools2 .mat-header-row {
+  height: 100px;
+}
+
+.dailyPools2.table2 .mat-cell,
+.dailyPools2.table2 .mat-header-cell {
+  flex: 0 0 130px !important;
+  min-width: 130px !important;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+
+.dailyPools2.table2 .mat-cell .ng-star-inserted,
+.dailyPools2.table2 .mat-header-cell .ng-star-inserted {
+  margin: auto;
+}
+
+.dailyPools2.table3 .mat-column-TOTAL,
+.dailyPools2.table3 .mat-column-Increment,
+.dailyPools2.table3 .mat-column-Benefit {
+  flex: 0 0 150px !important;
+  min-width: 150px !important;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+
+.dailyPools2.table3 .mat-header-row,
+.dailyPools2.table3 .mat-row {
+  width: min-content;
+}
+*/
