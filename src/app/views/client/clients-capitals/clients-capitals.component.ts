@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
+import { NewCapital } from 'src/app/shared/interfaces/newcapital';
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
@@ -14,7 +15,9 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
 })
 export class ClientsCapitalsComponent implements OnInit {
   public client: Client;
+  public newCapital: NewCapital;
   public clientsCapitals: Array<any>;
+  public clients: Array<any>;
   public displayedColumns: Array<string>;
   public dataSource: any;
 
@@ -23,19 +26,28 @@ export class ClientsCapitalsComponent implements OnInit {
 
   constructor(private clientsService: ClientsService) {
     this.clientsCapitals = [];
+    this.clients = [];
     this.displayedColumns = [];
    }
 
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.clientsCapitals = await this.getClientsCapitals();
+    this.clientsService.getClients().subscribe(
+      (data) => {
+        this.clients = data.data;
+      }
+    )
     for (let c in this.clientsCapitals[0]) {
-      this.displayedColumns.push(c);
+      if (!c.includes('newcapital')) {
+        this.displayedColumns.push(c);
+      }
     }
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.paginator.pageIndex = this.paginator.pageSize;
+    console.log(this.clientsCapitals);
   }
 
   // get clients data to show on form
@@ -58,7 +70,7 @@ export class ClientsCapitalsComponent implements OnInit {
   }
 
   // event and filter for the filtering
-  target(event: KeyboardEvent): HTMLInputElement {
+  public target(event: KeyboardEvent): HTMLInputElement {
     if (!(event.target instanceof HTMLInputElement)) {
       throw new Error("wrong target");
     }
@@ -67,6 +79,13 @@ export class ClientsCapitalsComponent implements OnInit {
 
   applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public async submit(value:Array<any>): Promise<void> {
+    for (var key in value) {
+      console.log(parseInt(key));
+      console.log(value[key]);
+    }
   }
 
 }

@@ -16,9 +16,9 @@ export class PoolDailyComponent implements OnInit {
   public pool: Pool;
   public poolList: any;
   public pairList: any;
-  public displayedColumns = ["Date", "TOTAL", "Increment", "Benefit"];
+  public displayedColumns = ["Date", "TOTAL", "Increment", "Benefit", "New Capital"];
   public displayedColumnsLong = ["Date", "Hide Pairs"];
-  public displayedColumnsShort = ["Date", "Show Pairs", "TOTAL", "Increment", "Benefit"];
+  public displayedColumnsShort = ["Date", "Show Pairs", "TOTAL", "Increment", "Benefit", "New Capital"];
   public dataSource: any;
   public columnsShown: boolean = false;
   public columnsBtn: string = "Show Pairs";
@@ -46,6 +46,7 @@ export class PoolDailyComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.paginator.pageIndex = this.paginator.pageSize;
+    console.log(this.poolList);
   }
 
   // get pools data to show on form

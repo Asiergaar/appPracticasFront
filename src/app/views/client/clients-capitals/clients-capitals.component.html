@@ -4,6 +4,9 @@
 
   <button type="submit" routerLink="/ClientsList" mat-raised-button class="pbdbtn">Clients list</button>
 
+  <button type="submit" routerLink="/AddClient" mat-raised-button class="addbtn">Add Client</button>
+
+
   <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
   </mat-form-field>
@@ -13,7 +16,9 @@
     <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header>{{col}}</mat-header-cell>
       <mat-cell *matCellDef="let caps"><span *ngIf="col == 'Date'; else clients">{{caps[col]}}</span>
-        <ng-template #clients><span *ngIf="col != 'Benefit'; else neg">{{caps[col] | number: '1.2-2'}}</span></ng-template>
+        <ng-template #clients><span *ngIf="col != 'Benefit'; else neg">{{caps[col] | number: '1.2-2'}}
+                  <p *ngIf="caps['newcapital' + col.substring(col.length-1, col.length)]" class="newcapital">{{ ' (' + caps['newcapital' + col.substring(col.length-1, col.length)] + ')'}}</p></span>
+        </ng-template>
         <ng-template #neg><span *ngIf="caps[col] < 0; else pos" class="negBenefit">{{caps[col] | number: '1.6-6'}}%</span></ng-template>
         <ng-template #pos><span  *ngIf="caps[col] > 0; else pos2" class="posBenefit">{{caps[col] | number: '1.6-6'}}%</span></ng-template>
         <ng-template #pos2><span class="zeroBenefit">{{caps[col] | number: '1.6-6'}}%</span></ng-template>
@@ -25,4 +30,23 @@
 
   </mat-table>
   <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
+
+  <span>
+    <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms">
+
+      <mat-form-field appearance="fill" class="input">
+        <mat-label>Select client</mat-label>
+        <mat-select id="newcapital_client" ngModel name="newcapital_client" required>
+          <mat-option *ngFor="let cli of clients" value="{{ cli.client_id }}">{{cli.client_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>New capital</mat-label>
+        <input type="number" ngModel matInput id="newcapital_quantity" name="newcapital_quantity" required>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button class="addbtn" [disabled]="!poolForm.form.valid">Add New Capital</button>
+    </form>
+  </span>
 </div>

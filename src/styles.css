@@ -293,6 +293,10 @@ form {
   right: 5px;
 }
 
+.newcapital {
+  margin: 0 !important;
+}
+
 /* Tokens and exchange images */
 
 .tokenimg {
