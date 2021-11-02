@@ -13,7 +13,9 @@
     <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
         <mat-header-cell *matHeaderCellDef mat-sort-header><div *ngIf="col == 'Date'|| col == 'TOTAL' || col == 'Increment' || col == 'Benefit'; else show">{{col}}</div></mat-header-cell>
           <ng-template #show> <div *ngIf="col == 'Show Pairs' || col == 'Hide Pairs'; else othercols" (click)="submit()">{{col}} </div> </ng-template>
-          <ng-template #othercols> {{col.substring(0, col.indexOf(":")+1)}}<br>{{col.substring(col.indexOf(":")+2, col.length)}}</ng-template>
+          <ng-template #othercols> <span *ngIf="col.substring(col.length - 4, col.length) == 'null'; else nullcol">{{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length - 6)}}</span>
+            <ng-template #nullcol> {{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length)}}</ng-template>
+          </ng-template>
         <mat-cell *matCellDef="let pool"><span *ngIf="col == 'Increment'; else show">${{pool[col] | number: '1.2-2'}}</span>
           <ng-template #show><div *ngIf="col == 'Show Pairs' || col == 'Hide Pairs'; else benefit" (click)="submit()" class="pointer">...</div></ng-template>
           <ng-template #benefit><span *ngIf="col == 'TOTAL'; else date">${{pool[col] | number: '1.2-2'}}</span></ng-template>

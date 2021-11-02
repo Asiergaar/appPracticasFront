@@ -37,7 +37,6 @@ import { PoolsListComponent } from './views/pool/pools-list/pools-list.component
 import { MatSelectModule } from '@angular/material/select';
 import { PoolUpdateComponent } from './views/pool/pool-update/pool-update.component';
 import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component';
-import { PoolDaily2Component } from './views/pool/pool-daily2/pool-daily2.component';
 import { ClientsCapitalsComponent } from './views/client/clients-capitals/clients-capitals.component';
 import { ClientDetComponent } from './views/client/client-det/client-det.component';
 
@@ -65,7 +64,6 @@ import { ClientDetComponent } from './views/client/client-det/client-det.compone
     PoolsListComponent,
     PoolUpdateComponent,
     PoolDailyComponent,
-    PoolDaily2Component,
     ClientsCapitalsComponent,
     ClientDetComponent
   ],

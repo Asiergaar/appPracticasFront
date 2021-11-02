@@ -21,6 +21,8 @@ export class PoolUpdateComponent implements OnInit {
   public progress: Progress;
   public poolList: Array<any>;
   public poolStatus: Array<any>;
+  public poolStat: string;
+  public donePools: Array<number>;
   public displayedColumns= ["poolupdate_pair", "exchange", "tokenA", "tokenB", "add"];
   public dataSource: any;
   public poolToDo: boolean = true;
@@ -32,14 +34,25 @@ export class PoolUpdateComponent implements OnInit {
     this.progress = new Progress();
     this.poolList = [];
     this.poolStatus = [];
+    this.poolStat = '';
+    this.donePools = [];
   }
 
   async ngOnInit(): Promise<void>{
+    // Check if previous day's pools are done
+    await this.checkProgress();
+
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsDistinct();
     this.poolStatus = await this.getPoolStatus();
-    if(this.poolStatus.toString() != 'empty') {
+    if(this.poolStat == 'done') {
       this.poolToDo = false;
+    }
+    else if (this.poolStat == 'half') {
+        for (let p in this.poolStatus) {
+          this.donePools[this.poolStatus[p].pool_pair] = this.poolStatus[p].invested_quantity;
+      }
+          console.log(this.donePools);
     }
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
@@ -51,7 +64,8 @@ export class PoolUpdateComponent implements OnInit {
       let poolStatus: any[];
       this.poolsService.getPoolStatus().subscribe(
         (data) => {
-          poolStatus = data.data;
+          poolStatus = data.data,
+          this.poolStat = data.status;
         },
         (error) => {
           console.log('Error: ', error);
@@ -86,13 +100,11 @@ export class PoolUpdateComponent implements OnInit {
   // On form submit => create pools on DB
   public async submit(value:Array<any>): Promise<void> {
 
-    await this.checkProgress();
-
     for (var key in value) {
       let pool2 = new Pool();
       pool2.pool_pair = parseInt(key);
       pool2.invested_quantity = value[key];
-      this.poolsService.addPool(pool2).subscribe( () => { console.log("pool added"); } )
+      this.poolsService.addPools(pool2).subscribe( () => { console.log("pool " + parseInt(key) + " added"); } )
     }
 
     this.progress = await this.addProgress();
@@ -120,7 +132,7 @@ export class PoolUpdateComponent implements OnInit {
           resolve(prog);
         }
       )
-    })
+    });
   }
 
   private async addCapitals(): Promise<any> {
