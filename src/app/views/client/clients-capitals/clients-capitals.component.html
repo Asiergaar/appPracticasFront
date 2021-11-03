@@ -6,6 +6,8 @@
 
   <button type="submit" routerLink="/AddClient" mat-raised-button class="addbtn">Add Client</button>
 
+  <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
+
 
   <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
@@ -32,21 +34,6 @@
   <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
 
   <span>
-    <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms">
 
-      <mat-form-field appearance="fill" class="input">
-        <mat-label>Select client</mat-label>
-        <mat-select id="newcapital_client" ngModel name="newcapital_client" required>
-          <mat-option *ngFor="let cli of clients" value="{{ cli.client_id }}">{{cli.client_name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="legacy" class="input">
-        <mat-label>New capital</mat-label>
-        <input type="number" ngModel matInput id="newcapital_quantity" name="newcapital_quantity" required>
-      </mat-form-field>
-
-      <button type="submit" mat-raised-button class="addbtn" [disabled]="!poolForm.form.valid">Add New Capital</button>
-    </form>
   </span>
 </div>

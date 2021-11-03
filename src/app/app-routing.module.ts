@@ -21,6 +21,7 @@ import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
 import { PoolUpdateComponent } from './views/pool/pool-update/pool-update.component';
 import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component';
 import { HomeComponent } from './views/home/home.component';
+import { CapitalAddComponent } from './views/capital/capital-add/capital-add.component';
 
 const routes: Routes = [
   { path: 'Home', component: HomeComponent },
@@ -47,6 +48,8 @@ const routes: Routes = [
   { path: 'AddPool', component: PoolAddComponent},
   { path: 'PoolsByDay', component: PoolDailyComponent},
   { path: 'UpdatePools', component: PoolUpdateComponent},
+
+  { path: 'AddCapital', component: CapitalAddComponent},
 
   { path: '', redirectTo: '/Home', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent}

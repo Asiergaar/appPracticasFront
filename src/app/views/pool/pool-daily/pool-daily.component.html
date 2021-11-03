@@ -29,7 +29,12 @@
 
           <ng-template #benefit><span *ngIf="col == 'TOTAL'; else date">${{pool[col] | number: '1.2-2'}}</span></ng-template>
 
-          <ng-template #date><span *ngIf="col == 'Date'; else cols">{{pool[col]}}</span></ng-template>
+          <ng-template #date><span *ngIf="col == 'Date'; else newcaps">{{pool[col]}}</span></ng-template>
+
+          <ng-template #newcaps><span *ngIf="col == 'NewCapital'; else cols">
+            <span *ngIf="pool[col] < 0; else otro2">-${{pool[col]*(-1)}}</span>
+            <ng-template #otro2><span *ngIf="pool[col]">${{pool[col]}}</span></ng-template>
+          </span></ng-template>
 
           <ng-template #cols><span *ngIf="col != 'Benefit'; else neg">
             <span *ngIf="pool[col] < 0; else otro2">-${{pool[col]*(-1)}}</span>

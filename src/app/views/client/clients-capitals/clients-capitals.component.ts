@@ -5,10 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { NewCapital } from 'src/app/shared/classes/newcapital/newcapital';
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
-import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
 
 @Component({
   selector: 'app-clients-capitals',
@@ -17,30 +15,21 @@ import { CapitalsService } from 'src/app/shared/services/capital/capitals.servic
 })
 export class ClientsCapitalsComponent implements OnInit {
   public client: Client;
-  public newCapital: NewCapital;
   public clientsCapitals: Array<any>;
-  public clients: Array<any>;
   public displayedColumns: Array<string>;
   public dataSource: any;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService, private capitalsService: CapitalsService, private router: Router) {
-    this.newCapital = new NewCapital();
+  constructor(private clientsService: ClientsService, private router: Router) {
     this.clientsCapitals = [];
-    this.clients = [];
     this.displayedColumns = [];
    }
 
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.clientsCapitals = await this.getClientsCapitals();
-    this.clientsService.getClients().subscribe(
-      (data) => {
-        this.clients = data.data;
-      }
-    )
     for (let c in this.clientsCapitals[0]) {
       if (!c.includes('newcapital')) {
         this.displayedColumns.push(c);
@@ -82,23 +71,6 @@ export class ClientsCapitalsComponent implements OnInit {
 
   applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  public async submit(value:any): Promise<void> {
-      this.newCapital.newcapital_client = value.newcapital_client;
-      this.newCapital.newcapital_quantity = value.newcapital_quantity;
-      console.log(this.newCapital);
-
-      this.capitalsService.newCapital(this.newCapital).subscribe(
-        (data: any) => {
-          this.router.navigate(['/ClientsCapitals']).then(() => {
-            window.location.reload();
-          });
-        },
-        (error: Error) => {
-          console.error("Error al realizar el acceso");
-        }
-      )
   }
 
 }

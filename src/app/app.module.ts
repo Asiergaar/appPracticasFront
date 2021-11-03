@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule  } from "@angular/material/paginator";
 import { MatProgressSpinnerModule  } from "@angular/material/progress-spinner";
 import { MatSortModule  } from "@angular/material/sort";
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { MenuComponent } from './menu/menu.component';
 import { PantallaComponent } from './views/pantalla/pantalla.component';
@@ -39,6 +40,7 @@ import { PoolUpdateComponent } from './views/pool/pool-update/pool-update.compon
 import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component';
 import { ClientsCapitalsComponent } from './views/client/clients-capitals/clients-capitals.component';
 import { ClientDetComponent } from './views/client/client-det/client-det.component';
+import { CapitalAddComponent } from './views/capital/capital-add/capital-add.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { ClientDetComponent } from './views/client/client-det/client-det.compone
     PoolUpdateComponent,
     PoolDailyComponent,
     ClientsCapitalsComponent,
-    ClientDetComponent
+    ClientDetComponent,
+    CapitalAddComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,8 @@ import { ClientDetComponent } from './views/client/client-det/client-det.compone
     MatSortModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatCheckboxModule
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
