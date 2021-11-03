@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { NewCapital } from 'src/app/shared/interfaces/newcapital';
+import { NewCapital } from 'src/app/shared/classes/newcapital/newcapital';
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
+import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
 
 @Component({
   selector: 'app-clients-capitals',
@@ -24,7 +26,8 @@ export class ClientsCapitalsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService) {
+  constructor(private clientsService: ClientsService, private capitalsService: CapitalsService, private router: Router) {
+    this.newCapital = new NewCapital();
     this.clientsCapitals = [];
     this.clients = [];
     this.displayedColumns = [];
@@ -81,11 +84,21 @@ export class ClientsCapitalsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  public async submit(value:Array<any>): Promise<void> {
-    for (var key in value) {
-      console.log(parseInt(key));
-      console.log(value[key]);
-    }
+  public async submit(value:any): Promise<void> {
+      this.newCapital.newcapital_client = value.newcapital_client;
+      this.newCapital.newcapital_quantity = value.newcapital_quantity;
+      console.log(this.newCapital);
+
+      this.capitalsService.newCapital(this.newCapital).subscribe(
+        (data: any) => {
+          this.router.navigate(['/ClientsCapitals']).then(() => {
+            window.location.reload();
+          });
+        },
+        (error: Error) => {
+          console.error("Error al realizar el acceso");
+        }
+      )
   }
 
 }

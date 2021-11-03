@@ -16,9 +16,9 @@ export class PoolDailyComponent implements OnInit {
   public pool: Pool;
   public poolList: any;
   public pairList: any;
-  public displayedColumns = ["Date", "TOTAL", "Increment", "Benefit", "New Capital"];
+  public displayedColumns = ["Date", "TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital"];
   public displayedColumnsLong = ["Date", "Hide Pairs"];
-  public displayedColumnsShort = ["Date", "Show Pairs", "TOTAL", "Increment", "Benefit", "New Capital"];
+  public displayedColumnsShort = ["Date", "Show Pairs", "TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital"];
   public dataSource: any;
   public columnsShown: boolean = false;
   public columnsBtn: string = "Show Pairs";
@@ -40,7 +40,7 @@ export class PoolDailyComponent implements OnInit {
     for (let pa in this.pairList) {
       this.displayedColumnsLong.push(this.pairList[pa].exchange + ": " + this.pairList[pa].tokenA + " / " + this.pairList[pa].tokenB);
     }
-    this.displayedColumnsLong.push("TOTAL", "Increment", "Benefit");
+    this.displayedColumnsLong.push("TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital");
     this.displayedColumns = this.displayedColumnsShort;
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
