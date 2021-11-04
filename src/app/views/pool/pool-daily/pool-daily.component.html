@@ -37,8 +37,8 @@
           </span></ng-template>
 
           <ng-template #cols><span *ngIf="col != 'Benefit'; else neg">
-            <span *ngIf="pool[col] < 0; else otro2">-${{pool[col]*(-1)}}</span>
-            <ng-template #otro2><span *ngIf="pool[col]">${{pool[col]}}</span></ng-template>
+            <span *ngIf="pool[col] < 0; else otro2">-${{pool[col]*(-1) | number: '1.2-2'}}</span>
+            <ng-template #otro2><span *ngIf="pool[col] || pool[col] == 0">${{pool[col] | number: '1.2-2'}}</span></ng-template>
           </span></ng-template>
 
           <ng-template #neg><span *ngIf="pool[col] < 0; else pos" class="negBenefit">{{pool[col] | number: '1.6-6'}}%</span></ng-template>
@@ -53,6 +53,6 @@
 
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="pagination"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[12, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
 
 </div>

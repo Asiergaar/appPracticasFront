@@ -18,6 +18,7 @@ export class ClientsCapitalsComponent implements OnInit {
   public clientsCapitals: Array<any>;
   public displayedColumns: Array<string>;
   public dataSource: any;
+  public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -35,11 +36,11 @@ export class ClientsCapitalsComponent implements OnInit {
         this.displayedColumns.push(c);
       }
     }
+    this.max = this.clientsCapitals.length;
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.paginator.pageIndex = this.paginator.pageSize;
-    console.log(this.clientsCapitals);
   }
 
   // get clients data to show on form

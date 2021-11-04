@@ -17,6 +17,7 @@ export class PoolsListComponent implements OnInit {
   public poolList: any;
   public displayedColumns= ["pool_id", "pool_coins", "pool_pair", "invested_quantity", "pool_date"];
   public dataSource: any;
+  public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -28,6 +29,7 @@ export class PoolsListComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsName();
+    this.max = this.poolList.length;
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

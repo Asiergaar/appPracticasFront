@@ -16,6 +16,7 @@ export class TokensListComponent implements OnInit {
   public tokenList: any;
   public displayedColumns= ["token_id", "token_name", "ticker", "edit"];
   public dataSource: any;
+  public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -27,6 +28,7 @@ export class TokensListComponent implements OnInit {
    async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.tokenList = await this.getTokens();
+    this.max = this.tokenList.length;
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

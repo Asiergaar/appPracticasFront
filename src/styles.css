@@ -372,6 +372,10 @@ form {
   background-color: rgb(43, 156, 52);
 }
 
+.poolupdate.addbtn {
+  margin-bottom: 20px !important;
+}
+
 /* FORMS STUFF (multiple pages) */
 
  form {

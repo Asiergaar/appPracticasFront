@@ -52,7 +52,6 @@ export class PoolUpdateComponent implements OnInit {
         for (let p in this.poolStatus) {
           this.donePools[this.poolStatus[p].pool_pair] = this.poolStatus[p].invested_quantity;
       }
-          console.log(this.donePools);
     }
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
@@ -100,19 +99,25 @@ export class PoolUpdateComponent implements OnInit {
   // On form submit => create pools on DB
   public async submit(value:Array<any>): Promise<void> {
 
-    for (var key in value) {
-      let pool2 = new Pool();
-      pool2.pool_pair = parseInt(key);
-      pool2.invested_quantity = value[key];
-      this.poolsService.addPools(pool2).subscribe( () => { console.log("pool " + parseInt(key) + " added"); } )
-    }
 
+    await this.createPools(value);
     this.progress = await this.addProgress();
     await this.addCapitals();
   }
 
   private async checkProgress(): Promise<any> {
     this.progressService.checkProgress().subscribe( () => { console.log("progresses checked"); } );
+  }
+
+  private async createPools(value: Array<any>):Promise<any> {
+    return new Promise( resolve => {
+      this.poolsService.addPools(value).subscribe(
+        () => {
+          console.log("pools added");
+          resolve("pools added");
+        },
+      );
+    });
   }
 
   private async addProgress(): Promise<any> {

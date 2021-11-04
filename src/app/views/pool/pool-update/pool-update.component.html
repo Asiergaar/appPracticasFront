@@ -9,6 +9,7 @@
   </div>
 
   <ng-template #elseBlock>
+    <button type="submit" routerLink="/AddPool" mat-raised-button class="poolupdate addbtn">Add pool</button>
 
     <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
       <mat-table matSort [dataSource]="dataSource" class="tablelist">

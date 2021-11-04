@@ -22,6 +22,7 @@ export class PoolDailyComponent implements OnInit {
   public dataSource: any;
   public columnsShown: boolean = false;
   public columnsBtn: string = "Show Pairs";
+  public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -42,11 +43,11 @@ export class PoolDailyComponent implements OnInit {
     }
     this.displayedColumnsLong.push("TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital");
     this.displayedColumns = this.displayedColumnsShort;
+    this.max = this.poolList.length;
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.paginator.pageIndex = this.paginator.pageSize;
-    console.log(this.poolList);
   }
 
   // get pools data to show on form

@@ -14,6 +14,7 @@ export class PairsListComponent implements OnInit {
   public pairList: Array<any>;
   public displayedColumns= ["pair_id", "pair_exchange", "tokenA", "tokenB", "edit"];
   public dataSource: any;
+  public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -25,6 +26,7 @@ export class PairsListComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.pairList = await this.getPairsName();
+    this.max = this.pairList.length;
     this.dataSource = new MatTableDataSource(this.pairList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

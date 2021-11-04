@@ -30,7 +30,6 @@ export class CapitalAddComponent implements OnInit {
   public async submit(value:any): Promise<void> {
       this.newCapital.newcapital_client = value.newcapital_client;
       this.newCapital.newcapital_quantity = value.newcapital_quantity;
-      console.log(this.newCapital);
 
       this.capitalsService.newCapital(this.newCapital).subscribe(
         (data: any) => {

@@ -18,6 +18,7 @@ export class ClientsListComponent implements OnInit {
   public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", 'benefit', 'last_capital', "edit"];
   public dataSource: any;
   public totalBenefit: number;
+  public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -29,6 +30,7 @@ export class ClientsListComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.clientList = await this.getClients();
+    this.max = this.clientList.length;
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

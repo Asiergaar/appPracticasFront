@@ -14,6 +14,7 @@ export class ExchangesListComponent implements OnInit {
   public exchangeList: any;
   public displayedColumns= ["exchange_id", "exchange_name", "url", "edit"];
   public dataSource: any;
+  public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -25,6 +26,7 @@ export class ExchangesListComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.exchangeList = await this.getExchanges();
+    this.max = this.exchangeList.length;
     this.dataSource = new MatTableDataSource(this.exchangeList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
