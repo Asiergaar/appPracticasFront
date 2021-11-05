@@ -37,15 +37,10 @@ export class PairsListComponent implements OnInit {
     return new Promise(resolve => {
       let pairList: any[];
       this.pairsService.getPairsName().subscribe(
-        (data) => {
-          pairList = data.data;
-        },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(pairList);
+        (data: any)    => { pairList = data.data; },
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(pairList);
         }
       )
     })

@@ -50,7 +50,12 @@
 
       <ng-container matColumnDef="start_capital">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Start capital</mat-header-cell>
-          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.start_capital}} <span *ngIf="client.nwcap">&nbsp; {{' (' + client.nwcap + ')'}}</span></mat-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.start_capital}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nwcap">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Modified capital</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="client.nwcap">&nbsp; {{ client.nwcap }}</span></mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="benefit">

@@ -37,15 +37,10 @@ export class ExchangesListComponent implements OnInit {
     return new Promise(resolve => {
       let exchangeList: any[];
       this.exchangesService.getExchanges().subscribe(
-        (data) => {
-          exchangeList = data.data;
-        },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(exchangeList);
+        (data: any)    => { exchangeList = data.data; },
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(exchangeList);
         }
       )
     })

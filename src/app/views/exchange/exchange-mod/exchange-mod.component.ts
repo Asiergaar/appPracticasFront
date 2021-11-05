@@ -27,31 +27,22 @@ export class ExchangeModComponent implements OnInit {
   // get exchange data to show on form
   public getExchange() {
     this.exchangesService.getExchange(this.id).subscribe(
-      (data) => {
-        this.exchangeInfo = data.data[0];
-        this.exchange.exchange_id = this.exchangeInfo.exchange_id;
-        this.exchange.exchange_name = this.exchangeInfo.exchange_name;
-        this.exchange.url = this.exchangeInfo.URL;
-        this.exchange.exchange_img_url = this.exchangeInfo.exchange_img_url;
+      (data: any)    => { this.exchangeInfo = data.data[0];
+                          this.exchange.exchange_id = this.exchangeInfo.exchange_id;
+                          this.exchange.exchange_name = this.exchangeInfo.exchange_name;
+                          this.exchange.url = this.exchangeInfo.URL;
+                          this.exchange.exchange_img_url = this.exchangeInfo.exchange_img_url;
       },
-      (error) => {
-        console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
-      }
+      (error: Error) => { console.log('Error: ', error); },
+      ()             => { console.log('Petición realizada correctamente'); }
     )
   }
 
   // On form submit => modify exchange on DB
   public submit(): void {
     this.exchangesService.modExchange(this.exchangeInfo.exchange_id, this.exchange).subscribe(
-      (data: any) => {
-        this.router.navigate(['/ExchangesList']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
+      (data: any)    => { this.router.navigate(['/ExchangesList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); }
     )
   }
 }

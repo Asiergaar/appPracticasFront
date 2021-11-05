@@ -23,12 +23,8 @@ export class ExchangeAddComponent implements OnInit {
   // On form submit => create exchange on DB
   public submit(): void {
     this.exchangesService.addExchange(this.exchange).subscribe(
-      (data: any) => {
-        this.router.navigate(['/ExchangesList']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
+      (data: any)    => { this.router.navigate(['/ExchangesList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); }
     )
   }
 

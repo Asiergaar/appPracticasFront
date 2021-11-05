@@ -24,14 +24,10 @@ export class PairAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.exchangesService.getExchanges().subscribe(
-      (data) => {
-        this.exchangeList = data.data;
-      }
+      (data: any) => { this.exchangeList = data.data; }
     )
     this.tokensService.getTokens().subscribe(
-      (data) => {
-        this.tokenList = data.data;
-      }
+      (data: any) => { this.tokenList = data.data; }
     )
   }
 
@@ -42,12 +38,8 @@ export class PairAddComponent implements OnInit {
       this.pair.tokenB = null;
     }
     this.pairsService.addPair(this.pair).subscribe(
-      (data: any) => {
-        this.router.navigate(['/PairsList']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
+      (data: any) => { this.router.navigate(['/PairsList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); }
     )
   }
 

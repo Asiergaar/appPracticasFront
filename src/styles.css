@@ -445,6 +445,30 @@ form {
   font-size: 0.8em;
 }
 
+.radioinput {
+  text-align: left;
+}
+
+.radioinput .radiolabel {
+  display: block;
+  font-weight: bold;
+}
+
+.radioinput .radiobutton {
+  margin: 15px 25px;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color: #0011ff;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #0011ff;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color: rgb(0, 17, 255, 0.2);
+}
+
 /* POOLS DONE PAGE  &  NO DATA*/
 
 .nodata,

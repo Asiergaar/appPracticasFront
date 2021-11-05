@@ -30,12 +30,12 @@ export class PairModComponent implements OnInit {
 
   ngOnInit(): void {
     this.exchangesService.getExchanges().subscribe(
-      (data) => {
+      (data: any) => {
         this.exchangeList = data.data;
       }
     )
     this.tokensService.getTokens().subscribe(
-      (data) => {
+      (data: any) => {
         this.tokenList = data.data;
       }
     )
@@ -45,24 +45,18 @@ export class PairModComponent implements OnInit {
   // get pair data to show on form
   public getPair() {
     this.pairsService.getPair(this.id).subscribe(
-      (data) => {
-        this.pairInfo = data.data[0];
-        this.pair.pair_id = this.pairInfo.pair_id;
-        this.pair.tokenA = this.pairInfo.tokenA;
-        if(this.pairInfo.tokenB == null){
-          this.pair.tokenB = -1;
-        } else {
-          this.pair.tokenB = this.pairInfo.tokenB;
-        }
-
-        this.pair.pair_exchange = this.pairInfo.pair_exchange;
+      (data: any)    => { this.pairInfo = data.data[0];
+                          this.pair.pair_id = this.pairInfo.pair_id;
+                          this.pair.tokenA = this.pairInfo.tokenA;
+                          if(this.pairInfo.tokenB == null){
+                            this.pair.tokenB = -1;
+                          } else {
+                            this.pair.tokenB = this.pairInfo.tokenB;
+                          }
+                          this.pair.pair_exchange = this.pairInfo.pair_exchange;
       },
-      (error) => {
-        console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
-      }
+      (error: Error) => { console.log('Error: ', error); },
+      () => { console.log('Petición realizada correctamente'); }
     )
   }
 
@@ -72,12 +66,8 @@ export class PairModComponent implements OnInit {
       this.pair.tokenB = null;
     }
     this.pairsService.modPair(this.pairInfo.pair_id, this.pair).subscribe(
-      (data: any) => {
-        this.router.navigate(['/PairsList']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
+      (data: any)    => { this.router.navigate(['/PairsList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); }
     )
   }
 }

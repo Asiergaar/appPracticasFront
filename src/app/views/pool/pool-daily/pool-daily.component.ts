@@ -55,15 +55,10 @@ export class PoolDailyComponent implements OnInit {
     return new Promise(resolve => {
       let poolList: any[];
       this.poolsService.getPoolsByDay().subscribe(
-        (data) => {
-          poolList = data.data;
-        },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(poolList);
+        (data: any)    => { poolList = data.data; },
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(poolList);
         }
       )
     })
@@ -73,15 +68,10 @@ export class PoolDailyComponent implements OnInit {
     return new Promise(resolve => {
       let poolList: any[];
       this.poolsService.getPoolsDistinct().subscribe(
-        (data) => {
-          poolList = data.data;
-        },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(poolList);
+        (data: any)    => { poolList = data.data; },
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(poolList);
         }
       )
     })

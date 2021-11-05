@@ -2,46 +2,39 @@
 
 <form (ngSubmit)="submit()" #clientForm="ngForm" class="forms">
 
-  <!--  ASI ESTABA ANTES
-  <div class="forminput">
-    <label for="client_name">Name</label>
-    <input type="text" [(ngModel)]="client.client_name" id="client_name"
-      name="client_name" #name="ngModel" required>
-      <div *ngIf="name.invalid && name.dirty" class="alert">
-        <div *ngIf="name.errors?.required" class="errorform">*Campo requerido</div>
-      </div>
-  </div>
-  -->
-
   <p>
     <mat-form-field appearance="legacy" class="input">
       <mat-label>Name</mat-label>
-      <input type="text" matInput [(ngModel)]="client.client_name" id="client_name"
-      name="client_name" #name="ngModel" placeholder="" required>
+      <input type="text" matInput [(ngModel)]="client.client_name" id="client_name" name="client_name" #name="ngModel" placeholder="" required>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="legacy" class="input">
       <mat-label>Surname</mat-label>
-      <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname"
-      name="client_surname" #surname="ngModel" placeholder="" required>
+      <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname" name="client_surname" #surname="ngModel" placeholder="" required>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="legacy" class="input">
       <mat-label>Email</mat-label>
-      <input type="email" matInput [(ngModel)]="client.email" id="email"
-      name="email" #email="ngModel" placeholder="" required>
+      <input type="email" matInput [(ngModel)]="client.email" id="email" name="email" #email="ngModel" placeholder="" required>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="legacy" class="input">
       <mat-label>Start capital</mat-label>
-      <input type="number" matInput [(ngModel)]="client.start_capital" id="start_capital"
-      name="start_capital" #start_capital="ngModel" placeholder="" required>
+      <input type="number" matInput [(ngModel)]="client.start_capital" id="start_capital" name="start_capital" #start_capital="ngModel" placeholder="" required>
     </mat-form-field>
   </p>
-
+  <!--
+  <div class="radioinput">
+    <mat-radio-group matInput [(ngModel)]="client.pools_started" name="pools_started" aria-label="pools_started" required>
+    <mat-label class="radiolabel">Pools started *</mat-label>
+      <mat-radio-button [value]="true" name="true" class="radiobutton">Yes</mat-radio-button>
+      <mat-radio-button [value]="false" name="false" class="radiobutton">No</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  -->
   <div class="forminput">
     <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ClientsList">Volver</button>
     <button type="submit" mat-raised-button class="submitbtn" [disabled]="!clientForm.form.valid">Añadir</button>

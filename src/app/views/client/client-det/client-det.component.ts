@@ -37,24 +37,21 @@ export class ClientDetComponent implements OnInit {
     return new Promise(resolve => {
       let querydata: any[];
       this.clientsService.getClient(this.id).subscribe(
-        (data) => {
-          querydata = data.data;
-          this.client.client_id = querydata[0].client_id;
-          this.client.client_name = querydata[0].client_name;
-          this.client.entry_date = querydata[0].entry_date;
-          this.client.client_surname = querydata[0].client_surname;
-          this.client.email = querydata[0].email;
-          this.client.start_capital = querydata[0].start_capital;
-          this.actual_capital = querydata[querydata.length - 1].capital_quantity;
+        (data: any)    => { querydata = data.data;
+                            this.client.client_id = querydata[0].client_id;
+                            this.client.client_name = querydata[0].client_name;
+                            this.client.entry_date = querydata[0].entry_date;
+                            this.client.client_surname = querydata[0].client_surname;
+                            this.client.email = querydata[0].email;
+                            this.client.start_capital = querydata[0].start_capital;
+                            this.actual_capital = querydata[querydata.length - 1].capital_quantity;
         },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(querydata);
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(querydata);
         }
       )
     })
   }
+
 }

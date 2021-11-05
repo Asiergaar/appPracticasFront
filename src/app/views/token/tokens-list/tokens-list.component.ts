@@ -39,15 +39,10 @@ export class TokensListComponent implements OnInit {
     return new Promise(resolve => {
       let tokenList: any[];
       this.tokensService.getTokens().subscribe(
-        (data) => {
-          tokenList = data.data;
-        },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(tokenList);
+        (data: any)    => { tokenList = data.data; },
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(tokenList);
         }
       )
     })

@@ -23,12 +23,8 @@ export class TokenAddComponent implements OnInit {
   // On form submit => create token on DB
   public submit(): void {
     this.tokensService.addToken(this.token).subscribe(
-      (data: any) => {
-        this.router.navigate(['/TokensList']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
+      (data: any)    => { this.router.navigate(['/TokensList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); }
     )
   }
 

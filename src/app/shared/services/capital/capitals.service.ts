@@ -20,4 +20,8 @@ export class CapitalsService {
   public newCapital(newCapital: NewCapital) {
     return this.httpClient.post<Progress>(environment.api + 'capitals/newCapital/', newCapital);
   }
+
+  public setCapital(capital: Capital) {
+    return this.httpClient.post<Capital>(environment.api + 'capitals/setCapital/', capital);
+  }
 }

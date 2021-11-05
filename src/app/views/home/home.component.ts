@@ -37,15 +37,10 @@ export class HomeComponent implements OnInit {
     return new Promise(resolve => {
       let querydata: any[];
       this.poolsService.getPoolsData().subscribe(
-        (data) => {
-          querydata = data.data;
-        },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(querydata);
+        (data: any)    => { querydata = data.data; },
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(querydata);
         }
       )
     })

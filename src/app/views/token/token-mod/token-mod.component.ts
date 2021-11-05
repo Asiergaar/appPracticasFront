@@ -27,31 +27,22 @@ export class TokenModComponent implements OnInit {
   // get token data to show on form
   public getToken() {
     this.tokensService.getToken(this.id).subscribe(
-      (data) => {
-        this.tokenInfo = data.data[0];
-        this.token.token_id = this.tokenInfo.token_id;
-        this.token.token_name = this.tokenInfo.token_name;
-        this.token.ticker = this.tokenInfo.ticker;
-        this.token.token_img_url = this.tokenInfo.token_img_url;
+      (data: any)    => { this.tokenInfo = data.data[0];
+                          this.token.token_id = this.tokenInfo.token_id;
+                          this.token.token_name = this.tokenInfo.token_name;
+                          this.token.ticker = this.tokenInfo.ticker;
+                          this.token.token_img_url = this.tokenInfo.token_img_url;
       },
-      (error) => {
-        console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
-      }
+      (error: Error) => { console.log('Error: ', error); },
+      ()             => { console.log('Petición realizada correctamente'); }
     )
   }
 
   // On form submit => modify token on DB
   public submit(): void {
     this.tokensService.modToken(this.tokenInfo.token_id, this.token).subscribe(
-      (data: any) => {
-        this.router.navigate(['/TokensList']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
+      (data: any)    => { this.router.navigate(['/TokensList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); }
     )
   }
 }

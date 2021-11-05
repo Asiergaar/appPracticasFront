@@ -27,19 +27,14 @@ export class ClientModComponent implements OnInit {
   // get client data to show on form
   public getClient() {
     this.clientsService.getClient(this.id).subscribe(
-      (data) => {
-        this.clientInfo = data.data[0];
-        this.client.client_id = this.clientInfo.client_id;
-        this.client.client_name = this.clientInfo.client_name;
-        this.client.client_surname = this.clientInfo.client_surname;
-        this.client.email = this.clientInfo.email;
+      (data: any)    => { this.clientInfo = data.data[0];
+                          this.client.client_id = this.clientInfo.client_id;
+                          this.client.client_name = this.clientInfo.client_name;
+                          this.client.client_surname = this.clientInfo.client_surname;
+                          this.client.email = this.clientInfo.email;
       },
-      (error) => {
-        console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
-      }
+      (error: Error) => { console.log('Error: ', error); },
+      ()             => { console.log('Petición realizada correctamente'); }
     )
   }
 
@@ -47,12 +42,8 @@ export class ClientModComponent implements OnInit {
   // On form submit => modify client on DB
   public submit(): void {
     this.clientsService.modClient(this.clientInfo.client_id, this.client).subscribe(
-      (data: any) => {
-        this.router.navigate(['/ClientsList']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
+      (data: any)    => { this.router.navigate(['/ClientsList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); }
     )
   }
 }

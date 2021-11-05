@@ -21,9 +21,7 @@ export class CapitalAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientsService.getClients().subscribe(
-      (data) => {
-        this.clients = data.data;
-      }
+      (data: any) => { this.clients = data.data; }
     )
   }
 
@@ -32,14 +30,8 @@ export class CapitalAddComponent implements OnInit {
       this.newCapital.newcapital_quantity = value.newcapital_quantity;
 
       this.capitalsService.newCapital(this.newCapital).subscribe(
-        (data: any) => {
-          this.router.navigate(['/ClientsCapitals']).then(() => {
-            window.location.reload();
-          });
-        },
-        (error: Error) => {
-          console.error("Error al realizar el acceso");
-        }
+        (data: any)    => { this.router.navigate(['/ClientsCapitals']).then(() => { window.location.reload(); }); },
+        (error: Error) => { console.error("Error al realizar el acceso"); }
       )
   }
 

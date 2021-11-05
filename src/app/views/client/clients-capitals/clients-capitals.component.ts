@@ -48,15 +48,10 @@ export class ClientsCapitalsComponent implements OnInit {
     return new Promise(resolve => {
       let query: any[];
       this.clientsService.getClientsCapitals().subscribe(
-        (data) => {
-          query = data.data;
-        },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(query);
+        (data: any)    => { query = data.data; },
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(query);
         }
       )
     })

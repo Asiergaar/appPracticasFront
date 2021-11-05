@@ -15,7 +15,7 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
 export class ClientsListComponent implements OnInit {
   public client: Client;
   public clientList: any;
-  public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", 'benefit', 'last_capital', "edit"];
+  public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", "benefit", "nwcap", 'last_capital', "edit"];
   public dataSource: any;
   public totalBenefit: number;
   public max: number;
@@ -41,16 +41,12 @@ export class ClientsListComponent implements OnInit {
     return new Promise(resolve => {
       let clientList: any[];
       this.clientsService.getClients().subscribe(
-        (data) => {
-          clientList = data.data;
-          this.totalBenefit = (data.benefit);
+        (data: any)    => { clientList = data.data;
+                            this.totalBenefit = (data.benefit);
         },
-        (error) => {
-          console.log('Error: ', error);
-        },
-        () => {
-          console.log('Petición realizada correctamente');
-          resolve(clientList);
+        (error: Error) => { console.log('Error: ', error); },
+        ()             => { console.log('Petición realizada correctamente');
+                            resolve(clientList);
         }
       )
     })
