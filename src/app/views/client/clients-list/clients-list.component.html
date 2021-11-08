@@ -1,11 +1,11 @@
 <!-- IF NO CLIENTS ON DB
 <div *ngIf="clientList.length == 0; else elseBlock" id="clientList" class="lists">
-  <h1 class="tituloPagina">Listado de clientes</h1>
+  <h1 class="tituloPagina">List of clients</h1>
 
   <div class="nodata">
-    <h2>No hay clientes en la base de datos</h2>
+    <h2>No clients on the database</h2>
     <img class="logo" src="../../../assets/images/pandaface.png">
-    <h2>Añade algunos:</h2>
+    <h2>Add some:</h2>
     <button type="submit" routerLink="/AddClient" mat-raised-button class="hmbtn">Add Client</button>
   </div>
 </div>
@@ -16,11 +16,11 @@
 
   <div id="clientList" class="lists">
 
-    <h1 class="tituloPagina">Listado de clientes</h1>
+    <h1 class="tituloPagina">List of clients</h1>
 
     <button type="submit" routerLink="/ClientsCapitals" mat-raised-button class="pbdbtn">Clients capitals</button>
-
     <button type="submit" routerLink="/AddClient" mat-raised-button class="addbtn">Add Client</button>
+    <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
 
     <mat-form-field class="listFilter poolslist">
       <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
@@ -58,14 +58,6 @@
           <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="client.nwcap">&nbsp; {{ client.nwcap }}</span></mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="benefit">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Benefit</mat-header-cell>
-          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
-            <ng-template #neg><span *ngIf="totalBenefit < 0; else pos" class="negBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
-            <ng-template #pos><span *ngIf="totalBenefit > 0" class="posBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
-          </mat-cell>
-      </ng-container>
-
       <ng-container matColumnDef="last_capital">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Last capital</mat-header-cell>
           <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.last_capital | number: '1.2-2' }}</mat-cell>
@@ -81,7 +73,7 @@
 
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[12, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[9, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
 
 
   </div>

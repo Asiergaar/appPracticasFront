@@ -17,25 +17,32 @@ export class ClientsCapitalsComponent implements OnInit {
   public client: Client;
   public clientsCapitals: Array<any>;
   public displayedColumns: Array<string>;
+  public displayedColumnsLong: Array<string> = [];
+  public displayedColumnsShort: Array<string> = ['Date', 'Benefit', 'Total', 'Divergencia', 'Show Clients'];
   public dataSource: any;
   public max: number;
+  public columnsShown: boolean = false;
+  public columnsBtn: string = "Show Clients";
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private clientsService: ClientsService, private router: Router) {
     this.clientsCapitals = [];
-    this.displayedColumns = [];
-   }
+  }
 
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.clientsCapitals = await this.getClientsCapitals();
     for (let c in this.clientsCapitals[0]) {
       if (!c.includes('newcapital')) {
-        this.displayedColumns.push(c);
+        this.displayedColumnsLong.push(c);
+        if (c == 'Divergencia') {
+          this.displayedColumnsLong.push('Hide Clients');
+        }
       }
     }
+    this.displayedColumns = this.displayedColumnsShort;
     this.max = this.clientsCapitals.length;
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
@@ -67,6 +74,18 @@ export class ClientsCapitalsComponent implements OnInit {
 
   applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  submit(){
+    if (!this.columnsShown) {
+      this.displayedColumns = this.displayedColumnsLong;
+      this.columnsBtn = "Hide Clients";
+      this.columnsShown = true;
+    } else {
+      this.displayedColumns = this.displayedColumnsShort;
+      this.columnsBtn = "Show Clients";
+      this.columnsShown = false;
+    }
   }
 
 }

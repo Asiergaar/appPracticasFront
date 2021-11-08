@@ -2,17 +2,16 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-pool-variation',
+  templateUrl: './pool-variation.component.html',
+  styleUrls: ['./pool-variation.component.css']
 })
-export class HomeComponent implements OnInit {
+export class PoolVariationComponent implements OnInit {
   public poolData: Array<any>;
   public dataLength: Array<number>;
   public len: number;
 
   @ViewChild('homepools') private divElement:ElementRef;
-  showinfo: boolean = false;
 
   constructor(private poolsService: PoolsService) {
     this.poolData = [];
@@ -45,14 +44,6 @@ export class HomeComponent implements OnInit {
         }
       )
     })
-  }
-
-  appinfo(){
-    if(this.showinfo){
-      this.showinfo = false;
-    } else {
-      this.showinfo = true;
-    }
   }
 
 }

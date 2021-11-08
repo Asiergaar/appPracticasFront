@@ -12,7 +12,7 @@ import { TokensService } from 'src/app/shared/services/token/tokens.service';
   styleUrls: ['./tokens-list.component.css']
 })
 export class TokensListComponent implements OnInit {
-  public tituloPagina: string = "Listado de Tokens";
+  public tituloPagina: string = "List of Tokens";
   public tokenList: any;
   public displayedColumns= ["token_id", "token_name", "ticker", "edit"];
   public dataSource: any;
@@ -32,6 +32,9 @@ export class TokensListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    let menus = document.getElementsByClassName('menuhover');
+    menus[0].classList.remove('menuhover');
+    document.getElementById('menutoken')?.classList.add('menuhover');
   }
 
   // get tokens data to show on form

@@ -1,0 +1,64 @@
+<div class="home">
+  <h1 class="tituloPagina">Last {{len}} days variation</h1>
+
+  <div class="homePoolCard" *ngFor="let p1 of poolData">
+    <h2 class="titulo">
+      <span class="homeexchange"><img src="{{p1[0].exchange_img_url}}" class="tokenimg">{{ p1[0].exchange_name + ": "}}</span>
+      <span class="hometoken"><img src="{{p1[0].tokenA_img_url}}" class="tokenimg">{{p1[0].tokenA}}</span>
+      <span class="hometoken" *ngIf="p1[0].tokenB"><i class="fa fa-arrows-h" aria-hidden="true"></i></span>
+      <span class="hometoken" *ngIf="p1[0].tokenB"><img src="{{p1[0].tokenB_img_url}}" class="tokenimg">{{p1[0].tokenB }}</span>
+    </h2>
+
+    <div class="homePoolData">
+      <div *ngFor="let d of dataLength" class="homeDayData">
+
+        <div *ngIf="!p1[len - d - 1 + 1]; else noprev" class="homezero">
+          <p>{{p1[len - d - 1].date}}</p>
+          <p>{{p1[len - d - 1].invested_quantity}}</p>
+          <p>-</p>
+        </div>
+          <ng-template #noprev>
+            <div *ngIf="p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity == 0; else neg" class="homezero">
+              <p>{{p1[len - d - 1].date}}</p>
+              <p>{{p1[len - d - 1].invested_quantity}}</p>
+              <p>{{p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity | number: '1.2-2'}}</p>
+            </div>
+            <ng-template #neg>
+              <div *ngIf="p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity < 0; else pos" class="homeneg">
+                <p>{{p1[len - d - 1].date}}</p>
+                <p>{{p1[len - d - 1].invested_quantity}}</p>
+                <p>{{p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity | number: '1.2-2'}} &nbsp;<i class="fa fa-arrow-down" aria-hidden="true"></i></p>
+              </div>
+            </ng-template>
+            <ng-template #pos>
+              <div class="homepos">
+                <p>{{p1[len - d - 1].date}}</p>
+                <p>{{p1[len - d - 1].invested_quantity}}</p>
+                <p>{{p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity | number: '1.2-2'}} &nbsp;<i class="fa fa-arrow-up" aria-hidden="true"></i></p>
+              </div>
+            </ng-template>
+          </ng-template>
+      </div>
+    </div>
+
+    <div class="homePoolTotal">
+      <div class="homeTotalData">
+          <p>TOTAL: </p>
+      </div>
+      <div class="homeTotalData">
+          <p>Initial: {{p1[p1.length - 1].invested_quantity}}</p>
+      </div>
+      <div class="homeTotalData">
+          <p>
+            {{p1[0].invested_quantity - p1[p1.length - 1].invested_quantity | number: '1.2-2'}}
+            <i *ngIf="p1[0].invested_quantity - p1[p1.length - 1].invested_quantity > 0; else neg" class="fa fa-arrow-up" aria-hidden="true"></i>
+            <ng-template #neg><i *ngIf="p1[0].invested_quantity - p1[p1.length - 1].invested_quantity < 0" class="fa fa-arrow-down" aria-hidden="true"></i></ng-template>
+          </p>
+      </div>
+      <div class="homeTotalData">
+          <p>Actual: {{p1[0].invested_quantity}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

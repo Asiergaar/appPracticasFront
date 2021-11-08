@@ -15,7 +15,7 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
 export class ClientsListComponent implements OnInit {
   public client: Client;
   public clientList: any;
-  public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", "benefit", "nwcap", 'last_capital', "edit"];
+  public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", "nwcap", 'last_capital', "edit"];
   public dataSource: any;
   public totalBenefit: number;
   public max: number;

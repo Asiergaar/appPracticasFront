@@ -42,6 +42,8 @@ import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component
 import { ClientsCapitalsComponent } from './views/client/clients-capitals/clients-capitals.component';
 import { ClientDetComponent } from './views/client/client-det/client-det.component';
 import { CapitalAddComponent } from './views/capital/capital-add/capital-add.component';
+import { PoolVariationComponent } from './views/pool/pool-variation/pool-variation.component';
+import { HeaderComponent } from './views/header/header.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { CapitalAddComponent } from './views/capital/capital-add/capital-add.com
     PoolDailyComponent,
     ClientsCapitalsComponent,
     ClientDetComponent,
-    CapitalAddComponent
+    CapitalAddComponent,
+    PoolVariationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

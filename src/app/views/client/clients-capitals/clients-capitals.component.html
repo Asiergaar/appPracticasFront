@@ -1,11 +1,9 @@
 <div id="clientList" class="lists">
 
-  <h1 class="tituloPagina">Evolución del Capital de los clientes</h1>
+  <h1 class="tituloPagina">Clients capitals evolution</h1>
 
   <button type="submit" routerLink="/ClientsList" mat-raised-button class="pbdbtn">Clients list</button>
-
   <button type="submit" routerLink="/AddClient" mat-raised-button class="addbtn">Add Client</button>
-
   <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
 
 
@@ -16,8 +14,12 @@
   <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
     <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>{{col}}</mat-header-cell>
-      <mat-cell *matCellDef="let caps"><span *ngIf="col == 'Date'; else clients">{{caps[col]}}</span>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> <div *ngIf="col == 'Show Clients' || col == 'Hide Clients'; else othercols" (click)="submit()">{{col}} </div> </mat-header-cell>
+      <ng-template #othercols> {{col}} </ng-template>
+      <mat-cell *matCellDef="let caps"><span *ngIf="col == 'Date'; else show">{{caps[col]}}</span>
+
+        <ng-template #show><div *ngIf="col == 'Show Clients' || col == 'Hide Clients'; else clients" (click)="submit()" class="pointer">...</div></ng-template>
+
         <ng-template #clients><span *ngIf="col != 'Benefit'; else neg">{{caps[col] | number: '1.2-2'}}
                   <p *ngIf="caps['newcapital' + col.substring(col.length-1, col.length)]" class="newcapital">{{ ' (' + caps['newcapital' + col.substring(col.length-1, col.length)] + ')'}}</p></span>
         </ng-template>
@@ -31,7 +33,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
   </mat-table>
-  <mat-paginator [pageSizeOptions]="[12, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[9, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
 
   <span>
 
