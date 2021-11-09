@@ -8,6 +8,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-clients-capitals',
   templateUrl: './clients-capitals.component.html',
@@ -27,7 +29,7 @@ export class ClientsCapitalsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router) {
     this.clientsCapitals = [];
   }
 
@@ -48,6 +50,7 @@ export class ClientsCapitalsComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.paginator.pageIndex = this.paginator.pageSize;
+    this.utils.menuHover('menuclient');
   }
 
   // get clients data to show on form

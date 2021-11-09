@@ -4,6 +4,10 @@ body {
   font-family: 'Exo 2', sans-serif !important;
 }
 
+.displaynone {
+  display: none;
+}
+
 .tituloPagina,
 .mat-table,
 .mat-select-value-text,
@@ -52,6 +56,41 @@ form {
   padding: 20px 0px;
 }
 
+#darklight {
+  position: absolute !important;
+  z-index: 7;
+  right: 15px;
+  top: 8px;
+  font-size: 2em;
+}
+
+#darklight span {
+  margin: 0 10px;
+}
+
+#darklight .dark {
+  color: black;
+}
+
+#darklight .light {
+  color: white;
+}
+
+#darklight .light i,
+#darklight .dark i {
+  transition: transform 3s ease-in-out;
+}
+
+#darklight .light:hover i {
+  transform: rotate(360deg);
+  text-shadow: 0px 0px 5px rgba(255,255,0,1);
+}
+
+#darklight .dark:hover i {
+  transform: rotate(360deg);
+  text-shadow: 0px 0px 5px rgba(255,255,255,1);
+}
+
 .plants {
   position: absolute;
   background-image: url(/assets/images/plant.png);
@@ -61,7 +100,7 @@ form {
   width: 100%;
   height: 15px;
   animation: plant;
-  animation-duration: 25s;
+  animation-duration: 50s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -82,7 +121,7 @@ form {
   width: 0%;
   height: 15px;
   animation: greenanim;
-  animation-duration: 25s;
+  animation-duration: 50s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -103,7 +142,7 @@ form {
   position: absolute;
   bottom: -3px;
   animation: logo;
-  animation-duration: 25s;
+  animation-duration: 50s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -136,7 +175,6 @@ form {
 
 .itemmenu {
   width: 16%;
-  font-size: 1.5em;
   line-height: 50px;
   border-radius: 5px;
   background-color: rgb(230, 230, 230);
@@ -145,18 +183,22 @@ form {
 }
 
 .itemmenu:hover {
-  background-color: rgb(90, 90, 90);
-}
-
-.menuhover {
-  background-color: rgb(90, 90, 90);
-}
-
-.menuhover p {
-  color: white;
+  background-color: rgb(120, 120, 120);
+  outline: 2px solid black;
+  outline-offset: 0px;
 }
 
 .itemmenu:hover p {
+  color: white;
+}
+
+.menuhover {
+  background-color: rgb(120, 120, 120);
+  outline: 2px solid black;
+  outline-offset: 0px;
+}
+
+.menuhover p {
   color: white;
 }
 
@@ -165,19 +207,25 @@ form {
 }
 
 .itemmenu p {
-  margin-bottom: 0;
+  font-size: 1.6em;
   font-weight: bold;
+  line-height: 1.8em;
+  margin-bottom: 0;
+}
+
+.itemmenu:first-child p {
+  padding: 10px;
 }
 
 .buttons {
   display: flex;
-  height: 30px;
+  height: 25px;
 }
 
 .buttons i {
   display: block;
-  font-size: 22px;
-  line-height: 33px;
+  font-size: 1.3em;
+  line-height: 1.5em;
 }
 
 .buttons2 div { width: 50%; }
@@ -185,8 +233,10 @@ form {
 .buttonlist{ background-color: rgb(159, 197, 255); border-radius: 0px 0px 0px 5px; }
 .buttonadd2{ background-color: rgb(121, 241, 137); border-radius: 0px 0px 5px 0px; }
 
-.buttonlist:hover{ background-color: rgb(116, 170, 252); }
-.buttonadd2:hover{ background-color: rgb(73, 211, 91); }
+.buttonlist:hover { background-color: rgb(22, 93, 201); }
+.buttonadd2:hover { background-color: rgb(22, 181, 43); }
+.buttonlist:hover i { color: white; }
+.buttonadd2:hover i { color: white; }
 
 .web {
   /*width: 100vw;*/
@@ -230,8 +280,14 @@ form {
 /* TABLES STUFF (multiple pages) */
 
 .lists {
-  margin-bottom: 30px;
-  padding-bottom: 25px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.mat-row,
+.mat-header-row {
+  height: 50px !important;
+  min-height: 50px !important;
 }
 
 .mat-column-client_id,
@@ -288,6 +344,11 @@ form {
   background-color: rgb(219, 219, 219);
 }
 
+.pairsTable {
+  font-size: 0.8em;
+  line-height: 1em;
+}
+
 .mat-sort-header.mat-column-Show-Pairs,
 .mat-sort-header.mat-column-Show-Clients {
   position: relative;
@@ -333,8 +394,12 @@ form {
 .mat-sort-header.mat-column-Show-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
 .mat-sort-header.mat-column-Hide-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
 .mat-sort-header.mat-column-Show-Clients .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
-.mat-sort-header.mat-column-Hide-Clients .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover {
-  background-color: rgb(78, 78, 78);
+.mat-sort-header.mat-column-Hide-Clients .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
+.mat-column-Hide-Pairs .ng-star-inserted:hover,
+.mat-column-Show-Pairs .ng-star-inserted:hover,
+.mat-column-Hide-Clients .ng-star-inserted:hover,
+.mat-column-Show-Clients .ng-star-inserted:hover {
+  color: rgb(115, 224, 115);
 }
 
 .cdk-column-Show-Pairs,
@@ -468,6 +533,14 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   float: right;
 }
 
+.mat-select-min-line {
+  padding-left: 10px;
+}
+
+.mat-button.mat-primary.mat-button-disabled, .mat-button.mat-accent.mat-button-disabled, .mat-button.mat-warn.mat-button-disabled, .mat-button.mat-button-disabled.mat-button-disabled, .mat-icon-button.mat-primary.mat-button-disabled, .mat-icon-button.mat-accent.mat-button-disabled, .mat-icon-button.mat-warn.mat-button-disabled, .mat-icon-button.mat-button-disabled.mat-button-disabled, .mat-stroked-button.mat-primary.mat-button-disabled, .mat-stroked-button.mat-accent.mat-button-disabled, .mat-stroked-button.mat-warn.mat-button-disabled, .mat-stroked-button.mat-button-disabled.mat-button-disabled {
+  background-color: transparent !important;
+}
+
 /* Table superior buttons */
 
 .pbdbtn {
@@ -493,7 +566,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 }
 
 .poolupdate.addbtn {
-  margin-bottom: 20px !important;
+  margin-bottom: 15px !important;
 }
 
 /* FORMS STUFF (multiple pages) */
@@ -523,8 +596,30 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   font-size: 0.8em;
 }
 
-.forms.pools .mat-form-field-should-float{
+.forms.pools .mat-form-field-should-float {
   margin: 10px 0px -10px 0px;
+}
+
+.mat-form-field-flex {
+  background-color: rgba(0,0,0,.04); border-radius: 5px 5px 0 0;
+}
+
+.mat-input-element,
+.mat-form-field-label {
+  padding-left: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.mat-column-add .mat-input-element {
+  padding-bottom: 0 !important;
+}
+
+.mat-column-add .mat-form-field-flex {
+  margin: 20px auto auto;
+}
+
+.mat-column-add .mat-form-field-should-float {
+  margin: 0 !important;
 }
 
 .forms p {
@@ -565,28 +660,17 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   font-size: 0.8em;
 }
 
-.radioinput {
-  text-align: left;
+.nopairtopool {
+  text-align: center;
+  margin: 50px 20px;
 }
 
-.radioinput .radiolabel {
-  display: block;
-  font-weight: bold;
+.nopairtopool p {
+  font-size: 1.5em;
 }
 
-.radioinput .radiobutton {
-  margin: 15px 25px;
-}
-
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
-  border-color: #0011ff;
-}
-.mat-radio-button.mat-accent .mat-radio-inner-circle {
-  background-color: #0011ff;
-}
-
-.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-    background-color: rgb(0, 17, 255, 0.2);
+.nopairtopool .addbtn {
+  margin: 30px 0 !important;
 }
 
 /* POOLS DONE PAGE  &  NO DATA*/
@@ -801,7 +885,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 }
 
 .firsthome .info {
-  margin: 20px 0 25px 0;
+  margin: 15px 0 20px 0;
   font-weight: bold;
 }
 
@@ -810,7 +894,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   background-color: rgb(230, 230, 230);
   border-radius: 15px;
   box-shadow: 3px 3px 6px 2px #00000040;
-  margin: 30px 40px;
+  margin: 25px 40px;
   min-width: 600px;
 }
 
@@ -962,4 +1046,101 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   margin: auto;
   width: 350px;
 }
+
+
+
+/* Dark mode */
+
+body.dark { background-color: rgb(50, 60, 90) !important; }
+.dark .nopairtopool p { color: white !important; }
+.dark .poolsdone h2 { color: white; font-weight: normal; }
+
+/* Header */
+.dark .header { background-color: #282d42 !important; }
+.dark .plants { filter: invert(1) !important; }
+.dark .green{ background-color: #282d42 !important; }
+.dark .logo { background-color: #282d42 !important; }
+
+/* Lateral Menu */
+.dark #menu { background-color: rgb(20, 20, 20) !important; }
+.dark #menu a { color: black !important; }
+.dark .itemmenu { color: white; background-color: rgb(120, 120, 120) !important; }
+.dark .itemmenu p { color: white; }
+.dark .itemmenu:hover { background-color: rgb(230, 230, 230) !important; outline: 2px solid white !important; }
+.dark .itemmenu:hover p { color: black !important; }
+.dark .menuhover { background-color: rgb(7, 7, 7) !important; outline: 2px solid white !important; }
+
+/* Screen */
+.dark #contenedor { background-color: #606060 !important; }
+.dark .tituloPagina { background-color: rgb(20, 20, 20); }
+
+
+/* TABLES STUFF (multiple pages) */
+.dark .mat-header-row { background-color: rgb(20, 20, 20) !important; }
+.dark .mat-row:nth-child(odd) { background-color: rgb(40, 40, 40) !important; }
+.dark .mat-row:nth-child(even) { background-color: rgb(60, 60, 60) !important; }
+.dark .mat-row:hover { background-color: rgb(100, 100, 100) !important; }
+.dark .mat-cell { color: white !important; font-weight: normal !important; }
+.dark .mat-column-url a { color: #c1d4ff !important; }
+.dark .mat-cell.cdk-column-Hide-Pairs,
+.dark .mat-cell.cdk-column-Show-Pairs,
+.dark .mat-cell.cdk-column-Hide-Clients,
+.dark .mat-cell.cdk-column-Show-Clients { background-color: #101010 !important; }
+.dark .negBenefit, .dark .posBenefit { font-weight: normal !important; }
+.dark .zeroBenefit { color: black !important; }
+
+.mat-sort-header.mat-column-Show-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
+.mat-sort-header.mat-column-Hide-Pairs .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
+.mat-sort-header.mat-column-Show-Clients .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
+.mat-sort-header.mat-column-Hide-Clients .mat-sort-header-container .mat-sort-header-content .ng-star-inserted:hover,
+.mat-column-Hide-Pairs .ng-star-inserted:hover,
+.mat-column-Show-Pairs .ng-star-inserted:hover,
+.mat-column-Hide-Clients .ng-star-inserted:hover,
+.mat-column-Show-Clients .ng-star-inserted:hover {
+  color: rgb(115, 224, 115);
+}
+
+/* Edit link on tables */
+.dark .editlink { color: white !important; }
+.dark .editlink:hover { background-color: rgb(185, 96, 45) !important; }
+
+
+/* FORMS STUFF (multiple pages) */
+.dark .mat-form-field-flex { background-color: #202020 !important; border-radius: 5px 5px 0 0; }
+.dark .mat-select-arrow { color: white !important; }
+.dark .mat-select-value { color: white !important; font-weight: normal !important; }
+.dark .mat-form-field-label { color: #cccccc !important; font-weight: normal !important; }
+.dark .mat-select-panel { background-color: #666666 !important; }
+.dark .mat-option-text { background-color: #666666 !important; color: white !important; }
+.dark .mat-option-text:hover { background-color: #474747 !important; color: white !important; }
+.dark .mat-button-disabled { background-color: #959595 !important; }
+.dark .mat-input-element { color: white !important; font-weight: normal !important; }
+.mat-form-field-appearance-legacy .mat-form-field-underline { background-color: rgba(218, 218, 218, 0.9); }
+
+/* PAGINATOR */
+.dark .mat-paginator-container { background-color: #141414 !important; color: white !important; font-weight: normal !important; }
+.mat-button.mat-primary.mat-button-disabled, .mat-button.mat-accent.mat-button-disabled, .mat-button.mat-warn.mat-button-disabled, .mat-button.mat-button-disabled.mat-button-disabled, .mat-icon-button.mat-primary.mat-button-disabled, .mat-icon-button.mat-accent.mat-button-disabled, .mat-icon-button.mat-warn.mat-button-disabled, .mat-icon-button.mat-button-disabled.mat-button-disabled, .mat-stroked-button.mat-primary.mat-button-disabled, .mat-stroked-button.mat-accent.mat-button-disabled, .mat-stroked-button.mat-warn.mat-button-disabled, .mat-stroked-button.mat-button-disabled.mat-button-disabled {
+  color: rgb(185 185 185 / 26%) !important;
+}
+
+/* CLIENT DETAIL PAGE */
+.dark .clientInfo h2 { border-bottom: 3px solid white; color: white !important; }
+.dark .clientProgress { background-color:rgb(230, 230, 230); box-shadow: 3px 3px 6px 2px #00000040; }
+.dark .clientProgress::after { background-color: red; color: white; }
+.dark .clientProgress h2 { background: rgb(44, 44, 44); color: white; }
+.dark .clientProgress .fa-minus { color: rgb(44, 44, 44); }
+.dark .clientProgress .fa-arrow-down { color: red; }
+.dark .clientProgress .fa-arrow-up { color: green; }
+.dark .capitalProgress { background-color:rgb(230, 230, 230); box-shadow: 3px 3px 6px 2px #00000040; }
+.dark .capitalProgress .titulo { background: rgb(44, 44, 44); color: white; }
+
+
+/* HOME PAGE */
+.dark .firsthome h2 { color: white !important;}
+.dark .firsthome .info { color: white !important; font-weight: normal !important;}
+.dark .homeinfo {background: #858585 !important; color: white !important; font-weight: normal !important; }
+.dark .homeDayData { border-right: 1px solid white !important;}
+.dark .homePoolTotal { color: white !important;  background-color: #898989 !important; border-top: 1px solid white; }
+.dark .homePoolTotal p { font-weight: normal !important; }
+.dark .homeinfo { background: white; }
 

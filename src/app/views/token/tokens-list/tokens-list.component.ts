@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-tokens-list',
@@ -21,7 +22,7 @@ export class TokensListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private tokensService: TokensService) {
+  constructor(private tokensService: TokensService, private utils: UtilsService) {
     this.tokenList = [];
    }
 
@@ -32,9 +33,7 @@ export class TokensListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    let menus = document.getElementsByClassName('menuhover');
-    menus[0].classList.remove('menuhover');
-    document.getElementById('menutoken')?.classList.add('menuhover');
+    this.utils.menuHover('menutoken');
   }
 
   // get tokens data to show on form

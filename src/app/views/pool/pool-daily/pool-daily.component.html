@@ -16,8 +16,8 @@
           <ng-template #realinc> <span *ngIf="col == 'NewCapital'; else newcap">{{col.substring(0,3) + ' ' + col.substring(3,col.length)}} </span> </ng-template>
           <ng-template #newcap> <span *ngIf="col == 'RealIncrement'; else show">{{col.substring(0,4) + ' ' + col.substring(4,col.length)}} </span> </ng-template>
           <ng-template #show> <div *ngIf="col == 'Show Pairs' || col == 'Hide Pairs'; else othercols" (click)="submit()">{{col}} </div> </ng-template>
-          <ng-template #othercols> <span *ngIf="col.substring(col.length - 4, col.length) == 'null'; else nullcol">{{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length - 6)}}</span>
-            <ng-template #nullcol> {{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length)}}</ng-template>
+          <ng-template #othercols> <span *ngIf="col.substring(col.length - 4, col.length) == 'null'; else nullcol" class="pairsTable">{{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length - 6)}}</span>
+            <ng-template #nullcol> <span class="pairsTable">{{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length)}}</span></ng-template>
           </ng-template>
         <mat-cell *matCellDef="let pool">
 

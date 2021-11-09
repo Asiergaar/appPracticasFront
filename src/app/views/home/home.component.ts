@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +16,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('homepools') private divElement:ElementRef;
   showinfo: boolean = false;
 
-  constructor(private poolsService: PoolsService) {
+  constructor(private poolsService: PoolsService, private utils: UtilsService) {
     this.poolData = [];
     this.dataLength = [];
     // change this to set result quantity
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit {
       }
       for (let i = 0; i < this.len; i++){ this.dataLength.push(i) };
     }
+    this.utils.menuHover('home');
   }
 
 

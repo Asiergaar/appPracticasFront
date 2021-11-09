@@ -26,15 +26,6 @@
       <input type="number" matInput [(ngModel)]="client.start_capital" id="start_capital" name="start_capital" #start_capital="ngModel" placeholder="" required>
     </mat-form-field>
   </p>
-  <!--
-  <div class="radioinput">
-    <mat-radio-group matInput [(ngModel)]="client.pools_started" name="pools_started" aria-label="pools_started" required>
-    <mat-label class="radiolabel">Pools started *</mat-label>
-      <mat-radio-button [value]="true" name="true" class="radiobutton">Yes</mat-radio-button>
-      <mat-radio-button [value]="false" name="false" class="radiobutton">No</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  -->
   <div class="forminput">
     <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ClientsList">Volver</button>
     <button type="submit" mat-raised-button class="submitbtn" [disabled]="!clientForm.form.valid">Añadir</button>

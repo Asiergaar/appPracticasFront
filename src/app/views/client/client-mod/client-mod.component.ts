@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Client } from 'src/app/shared/classes/client/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-client-mod',
   templateUrl: './client-mod.component.html',
@@ -14,7 +16,7 @@ export class ClientModComponent implements OnInit {
   public clientInfo: any;
   public id: any;
 
-  constructor(private clientsService: ClientsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router) {
     this.client = new Client();
     this.id = router.url.split('/').pop();
     this.clientInfo = [];
@@ -22,6 +24,7 @@ export class ClientModComponent implements OnInit {
 
   ngOnInit(): void {
    this.getClient();
+   this.utils.menuHover('menuclient');
   }
 
   // get client data to show on form

@@ -5,6 +5,7 @@ import { Pair } from 'src/app/shared/classes/pair/pair';
 import { PairsService } from 'src/app/shared/services/pair/pairs.service';
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-pair-mod',
@@ -19,7 +20,7 @@ export class PairModComponent implements OnInit {
   public tokenList: any;
   public exchangeList: any;
 
-  constructor(private pairsService: PairsService, private router: Router, private tokensService: TokensService, private exchangesService: ExchangesService) {
+  constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private utils: UtilsService, private router: Router) {
     this.pair = new Pair();
     this.id = router.url.split('/').pop();
     this.pairInfo = [];
@@ -40,6 +41,7 @@ export class PairModComponent implements OnInit {
       }
     )
    this.getPair();
+   this.utils.menuHover('menupair');
   }
 
   // get pair data to show on form

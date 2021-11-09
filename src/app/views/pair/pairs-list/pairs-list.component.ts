@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 import { PairsService } from 'src/app/shared/services/pair/pairs.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-pairs-list',
@@ -19,7 +20,7 @@ export class PairsListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private pairsService: PairsService) {
+  constructor(private pairsService: PairsService, private utils: UtilsService) {
     this.pairList = [];
   }
 
@@ -30,6 +31,7 @@ export class PairsListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.pairList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menupair');
   }
 
   // get pairs data to show on form

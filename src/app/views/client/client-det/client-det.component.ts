@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Client } from 'src/app/shared/classes/client/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-client-det',
   templateUrl: './client-det.component.html',
@@ -18,7 +20,7 @@ export class ClientDetComponent implements OnInit {
   public id: any;
 
 
-  constructor(private clientsService: ClientsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router) {
     this.client = new Client();
     this.id = router.url.split('/').pop();
     this.clientInfo = [];
@@ -30,6 +32,7 @@ export class ClientDetComponent implements OnInit {
    for(let i = this.clientInfo.length - 1; i > this.clientInfo.length - 6; i--) {
     this.progress.push(this.clientInfo[i].progress_percentage);
    }
+   this.utils.menuHover('menuclient');
   }
 
   // get client data to show on form

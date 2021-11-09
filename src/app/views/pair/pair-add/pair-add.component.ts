@@ -5,6 +5,7 @@ import { Pair } from 'src/app/shared/classes/pair/pair';
 import { PairsService } from 'src/app/shared/services/pair/pairs.service';
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-pair-add',
@@ -16,7 +17,7 @@ export class PairAddComponent implements OnInit {
   public tokenList: any;
   public exchangeList: any;
 
-  constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private router: Router) {
+  constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private utils: UtilsService, private router: Router) {
     this.pair = new Pair();
     this.tokenList = [];
     this.exchangeList = [];
@@ -29,6 +30,7 @@ export class PairAddComponent implements OnInit {
     this.tokensService.getTokens().subscribe(
       (data: any) => { this.tokenList = data.data; }
     )
+    this.utils.menuHover('menupair');
   }
 
 

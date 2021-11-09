@@ -7,6 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-clients-list',
   templateUrl: './clients-list.component.html',
@@ -23,7 +25,7 @@ export class ClientsListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService) {
+  constructor(private clientsService: ClientsService, private utils: UtilsService) {
     this.clientList = [];
    }
 
@@ -34,6 +36,7 @@ export class ClientsListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menuclient');
   }
 
   // get clients data to show on form

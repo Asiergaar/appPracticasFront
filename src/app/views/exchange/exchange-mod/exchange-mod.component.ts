@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Exchange } from 'src/app/shared/classes/exchange/exchange';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-exchange-mod',
   templateUrl: './exchange-mod.component.html',
@@ -14,7 +16,7 @@ export class ExchangeModComponent implements OnInit {
   public exchangeInfo: any;
   public id: any;
 
-  constructor(private exchangesService: ExchangesService, private router: Router) {
+  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router) {
     this.exchange = new Exchange();
     this.id = router.url.split('/').pop();
     this.exchangeInfo = [];
@@ -22,6 +24,7 @@ export class ExchangeModComponent implements OnInit {
 
   ngOnInit(): void {
    this.getExchange();
+   this.utils.menuHover('menuexchange');
   }
 
   // get exchange data to show on form

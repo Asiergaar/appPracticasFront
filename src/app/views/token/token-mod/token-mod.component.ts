@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Token } from 'src/app/shared/classes/token/token';
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-token-mod',
@@ -14,7 +15,7 @@ export class TokenModComponent implements OnInit {
   public tokenInfo: any;
   public id: any;
 
-  constructor(private tokensService: TokensService, private router: Router) {
+  constructor(private tokensService: TokensService, private utils: UtilsService, private router: Router) {
     this.token = new Token();
     this.id = router.url.split('/').pop();
     this.tokenInfo = [];
@@ -36,6 +37,7 @@ export class TokenModComponent implements OnInit {
       (error: Error) => { console.log('Error: ', error); },
       ()             => { console.log('Petición realizada correctamente'); }
     )
+    this.utils.menuHover('menutoken');
   }
 
   // On form submit => modify token on DB

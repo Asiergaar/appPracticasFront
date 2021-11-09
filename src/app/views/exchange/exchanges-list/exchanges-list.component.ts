@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-exchanges-list',
   templateUrl: './exchanges-list.component.html',
@@ -19,7 +21,7 @@ export class ExchangesListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private exchangesService: ExchangesService) {
+  constructor(private exchangesService: ExchangesService, private utils: UtilsService) {
     this.exchangeList = [];
   }
 
@@ -30,6 +32,7 @@ export class ExchangesListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.exchangeList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menuexchange');
   }
 
   // get exchanges data to show on form

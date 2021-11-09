@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Pool } from 'src/app/shared/interfaces/pool';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-pools-list',
@@ -22,7 +23,7 @@ export class PoolsListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService) {
+  constructor(private poolsService: PoolsService,private utils: UtilsService) {
     this.poolList = [];
    }
 
@@ -33,6 +34,7 @@ export class PoolsListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menupool');
   }
 
   // get pools data to show on form

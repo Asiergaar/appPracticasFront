@@ -1,9 +1,16 @@
 <a routerLink="/Home" class="nodecoration">
   <div class="header">
 
-    <a routerLink="/Home">
-      <img class="logo" src="../assets/images/logo.gif">
-    </a>
+    <div id="darklight">
+      <span class="light displaynone" id="light" href="#" (click)="changemode($event, 'light')">
+        <i class="fa fa-sun-o" aria-hidden="true"></i>
+      </span>
+      <span class="dark " id="dark" href="#" (click)="changemode($event, 'dark')">
+        <i class="fa fa-moon-o" aria-hidden="true" ></i>
+      </span>
+    </div>
+
+    <img class="logo" src="../assets/images/logo.gif">
 
     <div class="green"></div>
     <div class="plants"></div>

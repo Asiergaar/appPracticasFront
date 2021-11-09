@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Pool } from 'src/app/shared/interfaces/pool';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-pool-daily',
@@ -27,7 +28,7 @@ export class PoolDailyComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService) {
+  constructor(private poolsService: PoolsService, private utils: UtilsService) {
     this.poolList = [];
     this.pairList = [];
    }
@@ -39,7 +40,7 @@ export class PoolDailyComponent implements OnInit {
     // Get list of pairs on pools
     this.pairList = await this.getPoolsDistinct();
     for (let pa in this.pairList) {
-      this.displayedColumnsLong.push(this.pairList[pa].exchange + ": " + this.pairList[pa].tokenA + " / " + this.pairList[pa].tokenB);
+      this.displayedColumnsLong.push(this.pairList[pa].exchange + ": " + this.pairList[pa].tickerA + " / " + this.pairList[pa].tickerB);
     }
     this.displayedColumnsLong.push("TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital");
     this.displayedColumns = this.displayedColumnsShort;
@@ -48,6 +49,7 @@ export class PoolDailyComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.paginator.pageIndex = this.paginator.pageSize;
+    this.utils.menuHover('menupool');
   }
 
   // get pools data to show on form

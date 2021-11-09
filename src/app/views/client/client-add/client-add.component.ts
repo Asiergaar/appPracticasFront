@@ -8,6 +8,8 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-client-add',
   templateUrl: './client-add.component.html',
@@ -21,7 +23,7 @@ export class ClientAddComponent implements OnInit {
   public newCapital: NewCapital;
   public capital: Capital;
 
-  constructor(private clientsService: ClientsService, private poolsService: PoolsService, private capitalsService: CapitalsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private poolsService: PoolsService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
     this.newCapital = new NewCapital();
     this.capital = new Capital();
     this.client = new Client();
@@ -32,6 +34,7 @@ export class ClientAddComponent implements OnInit {
     if (this.pools.length > 1) {
       this.poolsStarted = true;
     }
+    this.utils.menuHover('menuclient');
   }
 
 

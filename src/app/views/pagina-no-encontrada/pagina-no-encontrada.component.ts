@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-pagina-no-encontrada',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaNoEncontradaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private utils: UtilsService) { }
 
   ngOnInit(): void {
+    this.utils.menuHover('notfound');
   }
 
 }

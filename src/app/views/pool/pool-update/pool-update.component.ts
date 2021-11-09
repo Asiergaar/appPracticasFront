@@ -10,6 +10,7 @@ import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 import { ProgressService } from 'src/app/shared/services/progress/progress.service';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-pool-update',
@@ -29,7 +30,7 @@ export class PoolUpdateComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private poolsService: PoolsService, private progressService: ProgressService, private clientsService: ClientsService, private capitalsService: CapitalsService, private router: Router) {
+  constructor(private poolsService: PoolsService, private progressService: ProgressService, private clientsService: ClientsService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
     this.pool = new Pool();
     this.progress = new Progress();
     this.poolList = [];
@@ -55,6 +56,7 @@ export class PoolUpdateComponent implements OnInit {
     }
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
+    this.utils.menuHover('menuupdate');
   }
 
   // get pairs data to show on form
