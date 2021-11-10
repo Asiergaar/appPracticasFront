@@ -17,7 +17,7 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 export class ClientsListComponent implements OnInit {
   public client: Client;
   public clientList: any;
-  public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", "nwcap", 'last_capital', "edit"];
+  public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", "benefit", "nwcap", 'last_capital', "edit"];
   public dataSource: any;
   public totalBenefit: number;
   public max: number;
@@ -37,6 +37,7 @@ export class ClientsListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.utils.menuHover('menuclient');
+    console.log(this.clientList);
   }
 
   // get clients data to show on form

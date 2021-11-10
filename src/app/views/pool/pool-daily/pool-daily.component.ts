@@ -49,7 +49,9 @@ export class PoolDailyComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.paginator.pageIndex = this.paginator.pageSize;
-    this.utils.menuHover('menupool');
+    if(!window.location.href.includes('Home')) {
+      this.utils.menuHover('menupool');
+    }
   }
 
   // get pools data to show on form

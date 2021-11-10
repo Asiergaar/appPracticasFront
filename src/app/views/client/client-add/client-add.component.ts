@@ -52,12 +52,13 @@ export class ClientAddComponent implements OnInit {
 
   // On form submit => create client on DB
   public submit(): void {
+    console.log(this.client);
 
-
+/*
     // If the pools are started
     if(this.poolsStarted) {
-    const quantity = this.client.start_capital;
-    this.client.start_capital = 0;
+      const quantity = this.client.start_capital;
+      this.client.start_capital = 0;
       this.clientsService.addClient(this.client).subscribe(
         (data: any)    => { this.client.client_id = data.data.client_id; },
         (error: Error) => { console.error("Error al realizar el acceso"); },
@@ -82,6 +83,8 @@ export class ClientAddComponent implements OnInit {
         (error: Error) => { console.error("Error al realizar el acceso"); }
       )
     }
-
+*/
   }
+
+
 }

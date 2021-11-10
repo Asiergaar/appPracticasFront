@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
   public poolData: Array<any>;
   public dataLength: Array<number>;
   public len: number;
+  public showinfo: boolean = false;
 
   @ViewChild('homepools') private divElement:ElementRef;
-  showinfo: boolean = false;
 
   constructor(private poolsService: PoolsService, private utils: UtilsService) {
     this.poolData = [];

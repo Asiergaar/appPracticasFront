@@ -1,30 +1,31 @@
-<h1 class="tituloPagina">Modifica el exchange #{{ exchange.exchange_id }}</h1>
+<div id="exchangeMod" class="lists tarjeta">
+  <h1 class="tituloPagina">Modifica el exchange #{{ exchange.exchange_id }}</h1>
 
-<form (ngSubmit)="submit()" #exchangeForm="ngForm" class="forms">
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>Name</mat-label>
-      <input type="text" matInput [(ngModel)]="exchange.exchange_name" id="exchange_name"
-      name="exchange_name" #exchange_name="ngModel" placeholder="" required>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>URL</mat-label>
-      <input type="text" matInput [(ngModel)]="exchange.url" id="url"
-      name="url" #url="ngModel" placeholder="">
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>Logo URL</mat-label>
-      <input type="text" matInput [(ngModel)]="exchange.exchange_img_url" id="exchange_img_url"
-      name="exchange_img_url" #url="ngModel" placeholder="" required>
-    </mat-form-field>
-  </p>
-  <div class="forminput">
-    <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ExchangesList">Volver</button>
-    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!exchangeForm.form.valid">Modificar</button>
-  </div>
-</form>
-
+  <form (ngSubmit)="submit()" #exchangeForm="ngForm" class="forms">
+    <p>
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput [(ngModel)]="exchange.exchange_name" id="exchange_name"
+        name="exchange_name" #exchange_name="ngModel" placeholder="" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>URL</mat-label>
+        <input type="text" matInput [(ngModel)]="exchange.url" id="url"
+        name="url" #url="ngModel" placeholder="">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>Logo URL</mat-label>
+        <input type="text" matInput [(ngModel)]="exchange.exchange_img_url" id="exchange_img_url"
+        name="exchange_img_url" #url="ngModel" placeholder="" required>
+      </mat-form-field>
+    </p>
+    <div class="forminput">
+      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ExchangesList">Volver</button>
+      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!exchangeForm.form.valid">Modificar</button>
+    </div>
+  </form>
+</div>

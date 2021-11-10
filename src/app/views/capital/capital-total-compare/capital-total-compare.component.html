@@ -1,0 +1,27 @@
+<div *ngIf="totals[1] || totals[1] != null" class="tarjeta">
+  <h1 class="tituloPagina">Monthly capital comparison</h1>
+  <div class="totalCompare">
+    <div class="totalCompareData totalcard">
+      <p class="totalDate">{{ totals[1].Date }}</p>
+      <p>${{ totals[1].Total | number: '1.2-2'}}</p>
+    </div>
+    <div class="totalCompareData totalarrows">
+      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </div>
+    <div class="totalCompareData totalcard">
+      <p class="totalDate">Benefit</p>
+      <p *ngIf="totals[0].Total - totals[1].Total < 0; else pos">-${{ (totals[0].Total - totals[1].Total) *-1 | number: '1.2-2'}}</p>
+        <ng-template #pos><p *ngIf="totals[0].Total - totals[1].Total > 0; else pos">${{ totals[0].Total - totals[1].Total | number: '1.2-2'}}</p></ng-template>
+    </div>
+    <div class="totalCompareData totalarrows">
+      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </div>
+    <div class="totalCompareData totalcard">
+      <p class="totalDate">{{ totals[0].Date }}</p>
+      <p>${{ totals[0].Total | number: '1.2-2'}}</p>
+    </div>
+    <div class="capsbtn">
+      <button routerLink="/ClientsCapitals" mat-raised-button class="pbdbtn">Clients Capitals</button>
+    </div>
+  </div>
+</div>

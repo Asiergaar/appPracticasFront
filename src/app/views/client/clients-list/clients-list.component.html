@@ -14,7 +14,7 @@
 -->
 
 
-  <div id="clientList" class="lists">
+  <div id="clientList" class="lists tarjeta">
 
     <h1 class="tituloPagina">List of clients</h1>
 
@@ -56,6 +56,14 @@
       <ng-container matColumnDef="nwcap">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Modified capital</mat-header-cell>
           <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="client.nwcap">&nbsp; {{ client.nwcap }}</span></mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="benefit">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Benefit</mat-header-cell>
+          <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
+            <ng-template #neg><span *ngIf="totalBenefit < 0; else pos" class="negBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
+            <ng-template #pos><span *ngIf="totalBenefit > 0" class="posBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
+          </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="last_capital">

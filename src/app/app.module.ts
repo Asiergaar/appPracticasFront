@@ -44,6 +44,7 @@ import { ClientDetComponent } from './views/client/client-det/client-det.compone
 import { CapitalAddComponent } from './views/capital/capital-add/capital-add.component';
 import { PoolVariationComponent } from './views/pool/pool-variation/pool-variation.component';
 import { HeaderComponent } from './views/header/header.component';
+import { CapitalTotalCompareComponent } from './views/capital/capital-total-compare/capital-total-compare.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { HeaderComponent } from './views/header/header.component';
     ClientDetComponent,
     CapitalAddComponent,
     PoolVariationComponent,
-    HeaderComponent
+    HeaderComponent,
+    CapitalTotalCompareComponent
   ],
   imports: [
     BrowserModule,

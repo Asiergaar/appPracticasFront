@@ -1,37 +1,37 @@
-<div class="home">
+<div class="poolvariation tarjeta">
   <h1 class="tituloPagina">Last {{len}} days variation</h1>
 
-  <div class="homePoolCard" *ngFor="let p1 of poolData">
+  <div class="poolvarPoolCard" *ngFor="let p1 of poolData">
     <h2 class="titulo">
-      <span class="homeexchange"><img src="{{p1[0].exchange_img_url}}" class="tokenimg">{{ p1[0].exchange_name + ": "}}</span>
-      <span class="hometoken"><img src="{{p1[0].tokenA_img_url}}" class="tokenimg">{{p1[0].tokenA}}</span>
-      <span class="hometoken" *ngIf="p1[0].tokenB"><i class="fa fa-arrows-h" aria-hidden="true"></i></span>
-      <span class="hometoken" *ngIf="p1[0].tokenB"><img src="{{p1[0].tokenB_img_url}}" class="tokenimg">{{p1[0].tokenB }}</span>
+      <span class="poolvarexchange"><img src="{{p1[0].exchange_img_url}}" class="tokenimg">{{ p1[0].exchange_name + ": "}}</span>
+      <span class="poolvartoken"><img src="{{p1[0].tokenA_img_url}}" class="tokenimg">{{p1[0].tokenA}}</span>
+      <span class="poolvartoken" *ngIf="p1[0].tokenB"><i class="fa fa-arrows-h" aria-hidden="true"></i></span>
+      <span class="poolvartoken" *ngIf="p1[0].tokenB"><img src="{{p1[0].tokenB_img_url}}" class="tokenimg">{{p1[0].tokenB }}</span>
     </h2>
 
-    <div class="homePoolData">
-      <div *ngFor="let d of dataLength" class="homeDayData">
+    <div class="poolvarPoolData">
+      <div *ngFor="let d of dataLength" class="poolvarDayData">
 
-        <div *ngIf="!p1[len - d - 1 + 1]; else noprev" class="homezero">
+        <div *ngIf="!p1[len - d - 1 + 1]; else noprev" class="poolvarzero">
           <p>{{p1[len - d - 1].date}}</p>
           <p>{{p1[len - d - 1].invested_quantity}}</p>
           <p>-</p>
         </div>
           <ng-template #noprev>
-            <div *ngIf="p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity == 0; else neg" class="homezero">
+            <div *ngIf="p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity == 0; else neg" class="poolvarzero">
               <p>{{p1[len - d - 1].date}}</p>
               <p>{{p1[len - d - 1].invested_quantity}}</p>
               <p>{{p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity | number: '1.2-2'}}</p>
             </div>
             <ng-template #neg>
-              <div *ngIf="p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity < 0; else pos" class="homeneg">
+              <div *ngIf="p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity < 0; else pos" class="poolvarneg">
                 <p>{{p1[len - d - 1].date}}</p>
                 <p>{{p1[len - d - 1].invested_quantity}}</p>
                 <p>{{p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity | number: '1.2-2'}} &nbsp;<i class="fa fa-arrow-down" aria-hidden="true"></i></p>
               </div>
             </ng-template>
             <ng-template #pos>
-              <div class="homepos">
+              <div class="poolvarpos">
                 <p>{{p1[len - d - 1].date}}</p>
                 <p>{{p1[len - d - 1].invested_quantity}}</p>
                 <p>{{p1[len - d - 1].invested_quantity - p1[len - d - 1 + 1].invested_quantity | number: '1.2-2'}} &nbsp;<i class="fa fa-arrow-up" aria-hidden="true"></i></p>
@@ -41,21 +41,21 @@
       </div>
     </div>
 
-    <div class="homePoolTotal">
-      <div class="homeTotalData">
+    <div class="poolvarPoolTotal">
+      <div class="poolvarTotalData">
           <p>TOTAL: </p>
       </div>
-      <div class="homeTotalData">
+      <div class="poolvarTotalData">
           <p>Initial: {{p1[p1.length - 1].invested_quantity}}</p>
       </div>
-      <div class="homeTotalData">
+      <div class="poolvarTotalData">
           <p>
             {{p1[0].invested_quantity - p1[p1.length - 1].invested_quantity | number: '1.2-2'}}
             <i *ngIf="p1[0].invested_quantity - p1[p1.length - 1].invested_quantity > 0; else neg" class="fa fa-arrow-up" aria-hidden="true"></i>
             <ng-template #neg><i *ngIf="p1[0].invested_quantity - p1[p1.length - 1].invested_quantity < 0" class="fa fa-arrow-down" aria-hidden="true"></i></ng-template>
           </p>
       </div>
-      <div class="homeTotalData">
+      <div class="poolvarTotalData">
           <p>Actual: {{p1[0].invested_quantity}}</p>
       </div>
     </div>

@@ -1,33 +1,37 @@
-
-
 <div *ngIf="poolData.length == 0 || poolData[0] == 0 || poolData[0][1] == null || showinfo == true; else data">
-  <p class="homeinfo" (click)="appinfo()">Back</p>
-  <div class="home firsthome">
+  <div class="homeinfo">
+    <button  *ngIf="poolData.length != 0 || poolData[0] != 0 || poolData[0][1] != null" type="submit" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">Back</button>
+  </div>
+  <div class="home firsthome tarjeta">
     <h1 class="tituloPagina">Farming Tool</h1>
-    <h2>This is the tool for the farming.</h2>
-    <p class="info">For a correct workflow, add the data in the following order:</p>
-    <div class="steps">
-      <p>1 - Add: Tokens, Exchanges & Clientes</p>
-      <button type="submit" routerLink="/AddToken" mat-raised-button class="hmbtn">Add Token</button>
-      <button type="submit" routerLink="/AddExchange" mat-raised-button class="hmbtn">Add Exchange</button>
-      <button type="submit" routerLink="/AddClient" mat-raised-button class="hmbtn">Add Client</button>
-    </div>
-    <div class="steps">
-      <p>2 - Create the Pairs</p>
-      <button type="submit" routerLink="/AddPair" mat-raised-button class="hmbtn">Add Pair</button>
-    </div>
-    <div class="steps">
-      <p>3 - Add the Pairs to the Pools</p>
-      <button type="submit" routerLink="/AddPool" mat-raised-button class="hmbtn">Add Pool</button>
-    </div>
-    <div class="steps">
-      <p>4 - Update the information of the Pools daily</p>
-      <button type="submit" routerLink="/UpdatePools" mat-raised-button class="hmbtn">Update Pools</button>
+    <h2>For a correct workflow, add the data in the following order:</h2>
+    <div class="stepslist">
+      <div class="steps">
+        <p>1 - Add: Tokens, Exchanges & Clientes</p>
+        <button type="submit" routerLink="/AddToken" mat-raised-button class="hmbtn">Add Token</button>
+        <button type="submit" routerLink="/AddExchange" mat-raised-button class="hmbtn">Add Exchange</button>
+        <button type="submit" routerLink="/AddClient" mat-raised-button class="hmbtn">Add Client</button>
+      </div>
+      <div class="steps">
+        <p>2 - Create the Pairs</p>
+        <button type="submit" routerLink="/AddPair" mat-raised-button class="hmbtn">Add Pair</button>
+      </div>
+      <div class="steps">
+        <p>3 - Add the Pairs to the Pools</p>
+        <button type="submit" routerLink="/AddPool" mat-raised-button class="hmbtn">Add Pool</button>
+      </div>
+      <div class="steps">
+        <p>4 - Update the information of the Pools daily</p>
+        <button type="submit" routerLink="/UpdatePools" mat-raised-button class="hmbtn">Update Pools</button>
+      </div>
     </div>
   </div>
 </div>
 
 <ng-template #data>
-  <p class="homeinfo" (click)="appinfo()">App info</p>
+  <div class="homeinfo">
+    <button type="submit" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">App Info</button>
+  </div>
+  <app-capital-total-compare></app-capital-total-compare>
   <app-pool-daily></app-pool-daily>
 </ng-template>

@@ -1,9 +1,10 @@
-<div id="poolList" class="lists">
+<div id="poolDaily" class="lists tarjeta">
 
   <h1 class="tituloPagina">Daily Pools</h1>
 
   <button type="submit" routerLink="/PoolsList" mat-raised-button class="pbdbtn">Pools list</button>
   <button type="submit" routerLink="/AddPool" mat-raised-button class="addbtn">Add Pool</button>
+  <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
 
   <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
@@ -57,3 +58,4 @@
 <mat-paginator [pageSizeOptions]="[9, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
 
 </div>
+

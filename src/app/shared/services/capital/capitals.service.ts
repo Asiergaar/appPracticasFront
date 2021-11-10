@@ -24,4 +24,8 @@ export class CapitalsService {
   public setCapital(capital: Capital) {
     return this.httpClient.post<Capital>(environment.api + 'capitals/setCapital/', capital);
   }
+
+  public getMonthTotals(): Observable<any> {
+    return this.httpClient.get<any>(environment.api + 'capitals/getMonthTotals/');
+  }
 }
