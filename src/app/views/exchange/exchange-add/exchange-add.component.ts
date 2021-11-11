@@ -5,6 +5,7 @@ import { Exchange } from 'src/app/shared/classes/exchange/exchange';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { ValidatorService } from 'src/app/shared/services/validator/validator.service';
 
 @Component({
   selector: 'app-exchange-add',
@@ -13,8 +14,9 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 })
 export class ExchangeAddComponent implements OnInit {
   public exchange: Exchange;
+  public isOnDB: boolean = true;
 
-  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router) {
+  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
     this.exchange = new Exchange();
    }
 
@@ -25,10 +27,34 @@ export class ExchangeAddComponent implements OnInit {
 
   // On form submit => create exchange on DB
   public submit(): void {
-    this.exchangesService.addExchange(this.exchange).subscribe(
-      (data: any)    => { this.router.navigate(['/ExchangesList']); },
-      (error: Error) => { console.error("Error al realizar el acceso"); }
-    )
+    document.getElementById('exchangeexists')?.classList.add('displaynone');
+    document.getElementById('exchangeformalert')?.classList.remove('formalert');
+
+    this.validator.checkExchange(this.exchange).subscribe(
+      (data: any)    => { console.log(data); if(!data.data || data.data == null) {
+                            this.isOnDB = false;
+                          } else {
+                            this.isOnDB = true;
+                          }
+                        },
+      (error: Error) => { console.error("Error al realizar el acceso"); },
+      ()             => {
+                          if(!this.isOnDB) {
+                            this.exchangesService.addExchange(this.exchange).subscribe(
+                              (data: any)    => { this.router.navigate(['/ExchangesList']); },
+                              (error: Error) => { console.error("Error al realizar el acceso");
+                                                  console.log(error);
+                                                }
+                            )
+                          } else {
+                            if (this.isOnDB){
+                              document.getElementById('exchangeexists')?.classList.remove('displaynone');
+                              document.getElementById('exchangeformalert')?.classList.add('formalert');
+                            }
+                          }
+                        }
+      )
   }
+
 
 }

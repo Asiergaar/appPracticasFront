@@ -6,6 +6,7 @@ import { PairsService } from 'src/app/shared/services/pair/pairs.service';
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { ValidatorService } from 'src/app/shared/services/validator/validator.service';
 
 @Component({
   selector: 'app-pair-mod',
@@ -19,8 +20,9 @@ export class PairModComponent implements OnInit {
   public pairList: any;
   public tokenList: any;
   public exchangeList: any;
+  public isOnDB: boolean = true;
 
-  constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private utils: UtilsService, private router: Router) {
+  constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
     this.pair = new Pair();
     this.id = router.url.split('/').pop();
     this.pairInfo = [];
@@ -67,9 +69,32 @@ export class PairModComponent implements OnInit {
     if (this.pair.tokenB == -1) {
       this.pair.tokenB = null;
     }
-    this.pairsService.modPair(this.pairInfo.pair_id, this.pair).subscribe(
-      (data: any)    => { this.router.navigate(['/PairsList']); },
-      (error: Error) => { console.error("Error al realizar el acceso"); }
-    )
+    document.getElementById('pairexists')?.classList.add('displaynone');
+    document.getElementById('pairformalert')?.classList.remove('formalert');
+
+    this.validator.checkPair(this.pair).subscribe(
+      (data: any)    => { if((!data.pair1 || data.pair1 == null) && (!data.pair2 || data.pair2 == null)) {
+                            this.isOnDB = false;
+                          } else {
+                            this.isOnDB = true;
+                          }
+                        },
+      (error: Error) => { console.error("Error al realizar el acceso"); },
+      ()             => {
+                          if(!this.isOnDB) {
+                            this.pairsService.modPair(this.pairInfo.pair_id, this.pair).subscribe(
+                              (data: any)    => { this.router.navigate(['/PairsList']); },
+                              (error: Error) => { console.error("Error al realizar el acceso"); }
+                            )
+                          } else {
+                            if (this.isOnDB){
+                              document.getElementById('pairexists')?.classList.remove('displaynone');
+                              document.getElementById('pairformalert')?.classList.add('formalert');
+                            }
+                          }
+                        }
+      )
   }
+
+
 }

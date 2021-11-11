@@ -3,28 +3,31 @@
 
   <form (ngSubmit)="submit()" #clientForm="ngForm" class="forms">
 
-    <p>
-      <mat-form-field appearance="legacy" class="input">
-        <mat-label>Name</mat-label>
-        <input type="text" matInput [(ngModel)]="client.client_name" id="client_name" name="client_name" #name="ngModel" placeholder="" required>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="legacy" class="input">
-        <mat-label>Surname</mat-label>
-        <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname" name="client_surname" #surname="ngModel" placeholder="" required>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="legacy" class="input">
-        <mat-label>Email</mat-label>
-        <input type="email" email matInput [(ngModel)]="client.email" id="email" name="email" #email="ngModel" placeholder="" required>
-      </mat-form-field>
-    </p>
+    <div class="" id="clientformalert">
+      <p>
+        <mat-form-field appearance="legacy" class="input">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput [(ngModel)]="client.client_name" id="client_name" name="client_name" #name="ngModel" placeholder="" required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy" class="input">
+          <mat-label>Surname</mat-label>
+          <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname" name="client_surname" #surname="ngModel" placeholder="" required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy" class="input">
+          <mat-label>Email</mat-label>
+          <input type="email" email matInput [(ngModel)]="client.email" id="email" name="email" #email="ngModel" placeholder="" (ngModelChange)="client.email = $event.toLowerCase()" required>
+        </mat-form-field>
+      </p>
+      <p class="displaynone alertinfo" id="clientexists">The combination of name, surname and email already exists on database</p>
+    </div>
     <p>
       <mat-form-field appearance="legacy" class="input">
         <mat-label>Start capital</mat-label>
-        <input type="number" matInput [(ngModel)]="client.start_capital" id="start_capital" name="start_capital" #start_capital="ngModel" placeholder="" required>
+        <input type="number" min="1" matInput [(ngModel)]="client.start_capital" id="start_capital" name="start_capital" #start_capital="ngModel" placeholder="" required>
       </mat-form-field>
     </p>
     <div class="forminput">

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Token } from 'src/app/shared/classes/token/token';
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { ValidatorService } from 'src/app/shared/services/validator/validator.service';
 
 @Component({
   selector: 'app-token-add',
@@ -12,22 +13,46 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 })
 export class TokenAddComponent implements OnInit {
   public token: Token;
+  public isOnDB: boolean = true;
 
-  constructor(private tokensService: TokensService, private utils: UtilsService, private router: Router) {
+  constructor(private tokensService: TokensService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
     this.token = new Token();
    }
 
   ngOnInit(): void {
+    this.utils.menuHover('menutoken');
   }
 
 
   // On form submit => create token on DB
   public submit(): void {
-    this.tokensService.addToken(this.token).subscribe(
-      (data: any)    => { this.router.navigate(['/TokensList']); },
-      (error: Error) => { console.error("Error al realizar el acceso"); }
-    )
-    this.utils.menuHover('menutoken');
+    document.getElementById('tokenexists')?.classList.add('displaynone');
+    document.getElementById('tokenformalert')?.classList.remove('formalert');
+
+    this.validator.checkToken(this.token).subscribe(
+      (data: any)    => { console.log(data); if(!data.data || data.data == null) {
+                            this.isOnDB = false;
+                          } else {
+                            this.isOnDB = true;
+                          }
+                        },
+      (error: Error) => { console.error("Error al realizar el acceso"); },
+      ()             => {
+                          if(!this.isOnDB) {
+                            this.tokensService.addToken(this.token).subscribe(
+                              (data: any)    => { this.router.navigate(['/TokensList']); },
+                              (error: Error) => { console.error("Error al realizar el acceso"); }
+                            )
+                          } else {
+                            if (this.isOnDB){
+                              document.getElementById('tokenexists')?.classList.remove('displaynone');
+                              document.getElementById('tokenformalert')?.classList.add('formalert');
+                            }
+                          }
+                        }
+      )
   }
+
+
 
 }

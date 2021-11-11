@@ -612,6 +612,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 .mat-form-field-label {
   padding-left: 10px !important;
   padding-bottom: 10px !important;
+  width: 98% !important;
 }
 
 .mat-column-add .mat-input-element {
@@ -662,6 +663,18 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 .errorform {
   color: crimson;
   font-size: 0.8em;
+}
+
+.formalert {
+  border: 2px solid crimson;
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 15px;
+}
+
+.alertinfo{
+  text-align: center;
+  color: crimson;
+  margin: -30px 0 20px !important;
 }
 
 /* POOLS DONE PAGE  &  NO DATA*/
@@ -1162,6 +1175,8 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 .dark .mat-button-disabled { background-color: #959595 !important; }
 .dark .mat-input-element { color: white !important; font-weight: normal !important; }
 .mat-form-field-appearance-legacy .mat-form-field-underline { background-color: rgba(218, 218, 218, 0.9); }
+.dark .alertinfo{color: #ffb8b8 !important;
+}
 
 /* PAGINATOR */
 .dark .mat-paginator-container { background-color: #141414 !important; color: white !important; font-weight: normal !important; }

@@ -2,32 +2,34 @@
   <h1 class="tituloPagina">Add new pair</h1>
 
   <form (ngSubmit)="submit()" #pairForm="ngForm" class="forms">
-
-    <p>
-      <mat-form-field appearance="fill" class="input">
-        <mat-label>Token A</mat-label>
-        <mat-select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel" required>
-          <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}"><img src="{{token.token_img_url}}" class="tokenimg">{{ token.token_name + " (" + token.ticker + ")" }}</mat-option>
+    <div class="" id="pairformalert">
+      <p>
+        <mat-form-field appearance="fill" class="input">
+          <mat-label>Token A</mat-label>
+          <mat-select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel" required>
+            <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}"><img src="{{token.token_img_url}}" class="tokenimg">{{ token.token_name + " (" + token.ticker + ")" }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill" class="input">
+          <mat-label>Token B</mat-label>
+          <mat-select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel" required>
+            <mat-option value="{{-1}}">Sin token</mat-option>
+            <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}"><img src="{{token.token_img_url}}" class="tokenimg">{{ token.token_name + " (" + token.ticker + ")" }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill" class="input">
+          <mat-label>Exchange</mat-label>
+          <mat-select [(ngModel)]="pair.pair_exchange" id="pair_exchange" name="pair_exchange" #name="ngModel" required>
+            <mat-option *ngFor="let exchange of exchangeList" value="{{ exchange.exchange_id }}"><img src="{{exchange.exchange_img_url}}" class="tokenimg">{{ exchange.exchange_name }}</mat-option>
         </mat-select>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill" class="input">
-        <mat-label>Token B</mat-label>
-        <mat-select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel" required>
-          <mat-option value="{{-1}}">Sin token</mat-option>
-          <mat-option *ngFor="let token of tokenList" value="{{ token.token_id }}"><img src="{{token.token_img_url}}" class="tokenimg">{{ token.token_name + " (" + token.ticker + ")" }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill" class="input">
-        <mat-label>Exchange</mat-label>
-        <mat-select [(ngModel)]="pair.pair_exchange" id="pair_exchange" name="pair_exchange" #name="ngModel" required>
-          <mat-option *ngFor="let exchange of exchangeList" value="{{ exchange.exchange_id }}"><img src="{{exchange.exchange_img_url}}" class="tokenimg">{{ exchange.exchange_name }}</mat-option>
-      </mat-select>
-      </mat-form-field>
-    </p>
+        </mat-form-field>
+      </p>
+      <p class="displaynone alertinfo" id="pairexists">This pair combination already exists on database</p>
+    </div>
 
     <div class="forminput">
       <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/PairsList">Volver</button>

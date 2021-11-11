@@ -33,12 +33,10 @@ export class PoolAddComponent implements OnInit {
         this.poolsService.getPoolsDistinct().subscribe(
           (data: any) => {
             this.poolList = data.data;
-              console.log(this.poolList);
               for (let p in this.pairList){
                 if (!this.poolList.some(item => item.pool_pair === this.pairList[p].id)) {
                   this.notUsedPairs.push(this.pairList[p]);
               }
-              console.log(this.notUsedPairs);
             }
             if (this.poolList.length == this.pairList.length) {
               this.pairsleft = false;

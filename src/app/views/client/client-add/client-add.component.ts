@@ -7,6 +7,7 @@ import { NewCapital } from 'src/app/shared/classes/newcapital/newcapital';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
+import { ValidatorService } from 'src/app/shared/services/validator/validator.service';
 
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
@@ -22,8 +23,9 @@ export class ClientAddComponent implements OnInit {
   public poolsStarted: boolean;
   public newCapital: NewCapital;
   public capital: Capital;
+  public isOnDB: boolean = true;
 
-  constructor(private clientsService: ClientsService, private poolsService: PoolsService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private poolsService: PoolsService, private capitalsService: CapitalsService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
     this.newCapital = new NewCapital();
     this.capital = new Capital();
     this.client = new Client();
@@ -52,38 +54,54 @@ export class ClientAddComponent implements OnInit {
 
   // On form submit => create client on DB
   public submit(): void {
-    console.log(this.client);
+    document.getElementById('clientexists')?.classList.add('displaynone');
+    document.getElementById('clientformalert')?.classList.remove('formalert');
 
-/*
-    // If the pools are started
-    if(this.poolsStarted) {
-      const quantity = this.client.start_capital;
-      this.client.start_capital = 0;
-      this.clientsService.addClient(this.client).subscribe(
-        (data: any)    => { this.client.client_id = data.data.client_id; },
-        (error: Error) => { console.error("Error al realizar el acceso"); },
-        () => {
-            // Set the capital
-            this.capital.capital_client =  this.client.client_id;
-            this.capital.capital_quantity = quantity;
-            this.capitalsService.setCapital(this.capital).subscribe();
-            // Adds new capital
-            this.newCapital.newcapital_client = this.client.client_id;
-            this.newCapital.newcapital_quantity = quantity;
-            this.capitalsService.newCapital(this.newCapital).subscribe(
-              (data: any)    => { this.router.navigate(['/ClientsCapitals']).then(() => { window.location.reload(); }); },
-              (error: Error) => { console.error("Error al realizar el acceso"); }
-            )
-        }
-      )
-    } else{
-      // If it's the firs day of pools
-      this.clientsService.addClient(this.client).subscribe(
-        (data: any)    => { this.router.navigate(['/ClientsCapitals']); },
-        (error: Error) => { console.error("Error al realizar el acceso"); }
-      )
-    }
-*/
+    this.validator.checkClient(this.client).subscribe(
+      (data: any)    => { if(!data.data || data.data == null) {
+                            this.isOnDB = false;
+                          } else {
+                            this.isOnDB = true;
+                          }
+                        },
+      (error: Error) => { console.error("Error al realizar el acceso"); },
+      ()             => {
+                          if(!this.isOnDB) {
+                            // If the pools are started
+                            if(this.poolsStarted) {
+                              const quantity = this.client.start_capital;
+                              this.client.start_capital = 0;
+                              this.clientsService.addClient(this.client).subscribe(
+                                (data: any)    => { this.client.client_id = data.data.client_id; },
+                                (error: Error) => { console.error("Error al realizar el acceso"); },
+                                () => {
+                                    // Set the capital
+                                    this.capital.capital_client =  this.client.client_id;
+                                    this.capital.capital_quantity = quantity;
+                                    this.capitalsService.setCapital(this.capital).subscribe();
+                                    // Adds new capital
+                                    this.newCapital.newcapital_client = this.client.client_id;
+                                    this.newCapital.newcapital_quantity = quantity;
+                                    this.capitalsService.newCapital(this.newCapital).subscribe(
+                                      (data: any)    => { this.router.navigate(['/ClientsList']).then(() => { window.location.reload(); }); },
+                                      (error: Error) => { console.error("Error al realizar el acceso"); }
+                                    )
+                                }
+                              )
+                            } else{
+                              // If it's the firs day of pools
+                              this.clientsService.addClient(this.client).subscribe(
+                                (data: any)    => { this.router.navigate(['/ClientsList']); },
+                                (error: Error) => { console.error("Error al realizar el acceso"); }
+                              )
+                            }
+                          } else {
+                            if (this.isOnDB){
+                              document.getElementById('clientexists')?.classList.remove('displaynone');
+                              document.getElementById('clientformalert')?.classList.add('formalert');
+                            }
+                          }
+    })
   }
 
 

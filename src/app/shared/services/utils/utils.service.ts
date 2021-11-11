@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   public menuHover(item: string) {
     let menus = ['menuupdate', 'menupool', 'menupair', 'menutoken', 'menuexchange', 'menuclient'];
@@ -16,6 +17,7 @@ export class UtilsService {
         document.getElementById(item)?.classList.add('menuhover');
       }
     }
-
   }
+
+
 }

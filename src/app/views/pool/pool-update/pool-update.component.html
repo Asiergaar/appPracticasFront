@@ -41,7 +41,7 @@
                 <p *ngIf="!donePools[pool.pool_pair]; else done">
                   <mat-form-field appearance="legacy" class="input">
                     <mat-label>Quantity</mat-label>
-                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" ngModel autofocus required>
+                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" class="autofocus" ngModel required>
                   </mat-form-field>
                 </p>
                 <ng-template #done>${{donePools[pool.pool_pair]}}</ng-template>
