@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tokens-list',
@@ -14,15 +15,15 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 })
 export class TokensListComponent implements OnInit {
   public tituloPagina: string = "List of Tokens";
-  public tokenList: any;
-  public displayedColumns= ["token_id", "token_name", "ticker", "edit"];
+  public tokenList: Array<any>;
+  public displayedColumns: Array<string> = ["token_id", "token_name", "ticker", "edit"];
   public dataSource: any;
   public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private tokensService: TokensService, private utils: UtilsService) {
+  constructor(private tokensService: TokensService, private utils: UtilsService, private router: Router) {
     this.tokenList = [];
    }
 
@@ -42,7 +43,7 @@ export class TokensListComponent implements OnInit {
       let tokenList: any[];
       this.tokensService.getTokens().subscribe(
         (data: any)    => { tokenList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(tokenList);
         }

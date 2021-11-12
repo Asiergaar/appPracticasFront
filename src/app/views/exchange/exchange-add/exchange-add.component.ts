@@ -31,20 +31,18 @@ export class ExchangeAddComponent implements OnInit {
     document.getElementById('exchangeformalert')?.classList.remove('formalert');
 
     this.validator.checkExchange(this.exchange).subscribe(
-      (data: any)    => { console.log(data); if(!data.data || data.data == null) {
+      (data: any)    => { if(!data.data || data.data == null) {
                             this.isOnDB = false;
                           } else {
                             this.isOnDB = true;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             this.exchangesService.addExchange(this.exchange).subscribe(
-                              (data: any)    => { this.router.navigate(['/ExchangesList']); },
-                              (error: Error) => { console.error("Error al realizar el acceso");
-                                                  console.log(error);
-                                                }
+                              (data: any)    => { this.router.navigate(['/ExchangesList']);  },
+                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
                             if (this.isOnDB){

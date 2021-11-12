@@ -17,9 +17,9 @@ export class PairModComponent implements OnInit {
   public pair: Pair;
   public pairInfo: any;
   public id: any;
-  public pairList: any;
-  public tokenList: any;
-  public exchangeList: any;
+  public pairList: Array<any>;
+  public tokenList: Array<any>;
+  public exchangeList: Array<any>;
   public isOnDB: boolean = true;
 
   constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
@@ -59,7 +59,7 @@ export class PairModComponent implements OnInit {
                           }
                           this.pair.pair_exchange = this.pairInfo.pair_exchange;
       },
-      (error: Error) => { console.log('Error: ', error); },
+      (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       () => { console.log('Petición realizada correctamente'); }
     )
   }
@@ -79,12 +79,12 @@ export class PairModComponent implements OnInit {
                             this.isOnDB = true;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             this.pairsService.modPair(this.pairInfo.pair_id, this.pair).subscribe(
                               (data: any)    => { this.router.navigate(['/PairsList']); },
-                              (error: Error) => { console.error("Error al realizar el acceso"); }
+                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
                             if (this.isOnDB){

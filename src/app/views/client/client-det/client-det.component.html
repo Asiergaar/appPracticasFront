@@ -6,6 +6,11 @@
     <h2>Email: {{client.email}}</h2>
   </div>
 
+  <div>
+    <button type="submit" routerLink="/ClientsList" mat-raised-button class="pbdbtn">Back</button>
+    <button type="submit" routerLink="/ModClient/{{ client.client_id }}" mat-raised-button class="addbtn">Modify Client</button>
+  </div>
+
   <div class="clientStats">
     <div class="clientProgress">
       <h2 class="titulo">Últimos progresos</h2>

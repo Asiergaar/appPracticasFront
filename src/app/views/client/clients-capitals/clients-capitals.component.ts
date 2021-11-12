@@ -20,7 +20,7 @@ export class ClientsCapitalsComponent implements OnInit {
   public clientsCapitals: Array<any>;
   public displayedColumns: Array<string>;
   public displayedColumnsLong: Array<string> = [];
-  public displayedColumnsShort: Array<string> = ['Date', 'Benefit', 'Total', 'Divergencia', 'Show Clients'];
+  public displayedColumnsShort: Array<string> = ['Date', 'Benefit', 'Total', 'Divergence', 'Show Clients'];
   public dataSource: any;
   public max: number;
   public columnsShown: boolean = false;
@@ -39,7 +39,7 @@ export class ClientsCapitalsComponent implements OnInit {
     for (let c in this.clientsCapitals[0]) {
       if (!c.includes('newcapital')) {
         this.displayedColumnsLong.push(c);
-        if (c == 'Divergencia') {
+        if (c == 'Divergence') {
           this.displayedColumnsLong.push('Hide Clients');
         }
       }
@@ -59,7 +59,7 @@ export class ClientsCapitalsComponent implements OnInit {
       let query: any[];
       this.clientsService.getClientsCapitals().subscribe(
         (data: any)    => { query = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(query);
         }

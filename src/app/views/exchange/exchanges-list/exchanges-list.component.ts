@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exchanges-list',
@@ -13,15 +14,15 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
   styleUrls: ['./exchanges-list.component.css']
 })
 export class ExchangesListComponent implements OnInit {
-  public exchangeList: any;
-  public displayedColumns= ["exchange_id", "exchange_name", "url", "edit"];
+  public exchangeList: Array<any>;
+  public displayedColumns: Array<string> = ["exchange_id", "exchange_name", "url", "edit"];
   public dataSource: any;
   public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private exchangesService: ExchangesService, private utils: UtilsService) {
+  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router) {
     this.exchangeList = [];
   }
 
@@ -41,7 +42,7 @@ export class ExchangesListComponent implements OnInit {
       let exchangeList: any[];
       this.exchangesService.getExchanges().subscribe(
         (data: any)    => { exchangeList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(exchangeList);
         }

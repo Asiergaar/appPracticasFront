@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CapitalTotalCompareComponent implements OnInit {
   public displayedColumns: Array<string>;
   public dataSource: any;
 
-  constructor(private capitalsService: CapitalsService) {
+  constructor(private capitalsService: CapitalsService, private router: Router) {
     this.totals = [];
     this.displayedColumns = ['pastmonth', 'comparison', 'thismonth'];
   }
@@ -27,7 +28,7 @@ export class CapitalTotalCompareComponent implements OnInit {
       let querydata: any[];
       this.capitalsService.getMonthTotals().subscribe(
         (data: any)    => { querydata = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(querydata);
         }

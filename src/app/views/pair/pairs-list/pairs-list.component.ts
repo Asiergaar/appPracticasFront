@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { PairsService } from 'src/app/shared/services/pair/pairs.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pairs-list',
@@ -13,14 +14,14 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 })
 export class PairsListComponent implements OnInit {
   public pairList: Array<any>;
-  public displayedColumns= ["pair_id", "pair_exchange", "tokenA", "tokenB", "edit"];
+  public displayedColumns: Array<string> = ["pair_id", "pair_exchange", "tokenA", "tokenB", "edit"];
   public dataSource: any;
   public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private pairsService: PairsService, private utils: UtilsService) {
+  constructor(private pairsService: PairsService, private utils: UtilsService, private router: Router) {
     this.pairList = [];
   }
 
@@ -40,7 +41,7 @@ export class PairsListComponent implements OnInit {
       let pairList: any[];
       this.pairsService.getPairsName().subscribe(
         (data: any)    => { pairList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(pairList);
         }

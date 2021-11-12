@@ -33,7 +33,7 @@ export class CapitalAddComponent implements OnInit {
 
       this.capitalsService.newCapital(this.newCapital).subscribe(
         (data: any)    => { this.router.navigate(['/ClientsCapitals']).then(() => { window.location.reload(); }); },
-        (error: Error) => { console.error("Error al realizar el acceso"); }
+        (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } );}
       )
   }
 

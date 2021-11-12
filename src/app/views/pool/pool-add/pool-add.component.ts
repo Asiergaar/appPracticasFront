@@ -53,8 +53,8 @@ export class PoolAddComponent implements OnInit {
   // On form submit => create pool on DB
   public submit(): void {
     this.poolsService.addPool(this.pool).subscribe(
-      (data: any)    => { this.router.navigate(['/PoolsList']);  },
-      (error: Error) => { console.error("Error al realizar el acceso"); }
+      (data: any)    => { this.router.navigate(['/PoolsList']); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
     )
   }
 

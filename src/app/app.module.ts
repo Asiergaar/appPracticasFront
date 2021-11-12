@@ -46,6 +46,7 @@ import { PoolVariationComponent } from './views/pool/pool-variation/pool-variati
 import { HeaderComponent } from './views/header/header.component';
 import { CapitalTotalCompareComponent } from './views/capital/capital-total-compare/capital-total-compare.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ServerErrorComponent } from './views/server-error/server-error.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CapitalAddComponent,
     PoolVariationComponent,
     HeaderComponent,
-    CapitalTotalCompareComponent
+    CapitalTotalCompareComponent,
+    ServerErrorComponent
 
   ],
   imports: [

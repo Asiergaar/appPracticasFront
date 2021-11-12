@@ -8,7 +8,6 @@ import { Pool } from 'src/app/shared/classes/pool/pool';
 import { Progress } from 'src/app/shared/classes/progress/progress';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 import { ProgressService } from 'src/app/shared/services/progress/progress.service';
-import { ClientsService } from 'src/app/shared/services/client/clients.service';
 import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
@@ -24,13 +23,13 @@ export class PoolUpdateComponent implements OnInit {
   public poolStatus: Array<any>;
   public poolStat: string;
   public donePools: Array<number>;
-  public displayedColumns= ["poolupdate_pair", "exchange", "tokenA", "tokenB", "add"];
+  public displayedColumns: Array<string> = ["poolupdate_pair", "exchange", "tokenA", "tokenB", "add"];
   public dataSource: any;
   public poolToDo: boolean = true;
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private poolsService: PoolsService, private progressService: ProgressService, private clientsService: ClientsService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
+  constructor(private poolsService: PoolsService, private progressService: ProgressService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
     this.pool = new Pool();
     this.progress = new Progress();
     this.poolList = [];
@@ -67,7 +66,7 @@ export class PoolUpdateComponent implements OnInit {
         (data: any)    => { poolStatus = data.data,
                             this.poolStat = data.status;
         },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(poolStatus);
         }
@@ -81,7 +80,7 @@ export class PoolUpdateComponent implements OnInit {
       let poolList: any[];
       this.poolsService.getPoolsDistinct().subscribe(
         (data: any)    => { poolList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(poolList);
         }
@@ -118,7 +117,7 @@ export class PoolUpdateComponent implements OnInit {
         (data: any)    => { prog = data.progress;
                             this.router.navigate(['/PoolsByDay']);
         },
-        (error: Error) => { console.error("Error al realizar el acceso"); },
+        (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(prog);
         }
@@ -130,7 +129,7 @@ export class PoolUpdateComponent implements OnInit {
     // Create capitals with that progress
       this.capitalsService.addCapitals(this.progress).subscribe(
       (data: any)    => { this.router.navigate(['/PoolsByDay']); },
-      (error: Error) => { console.error("Error al realizar el acceso"); }
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
     )
   }
 

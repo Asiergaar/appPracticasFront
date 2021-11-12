@@ -15,8 +15,8 @@ import { ValidatorService } from 'src/app/shared/services/validator/validator.se
 })
 export class PairAddComponent implements OnInit {
   public pair: Pair;
-  public tokenList: any;
-  public exchangeList: any;
+  public tokenList: Array<any>;
+  public exchangeList: Array<any>;
   public isOnDB: boolean = true;
 
   constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
@@ -51,12 +51,12 @@ export class PairAddComponent implements OnInit {
                             this.isOnDB = true;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             this.pairsService.addPair(this.pair).subscribe(
                               (data: any) => { this.router.navigate(['/PairsList']); },
-                              (error: Error) => { console.error("Error al realizar el acceso"); }
+                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
                             if (this.isOnDB){

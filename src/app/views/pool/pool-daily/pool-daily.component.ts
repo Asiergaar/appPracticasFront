@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Pool } from 'src/app/shared/interfaces/pool';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pool-daily',
@@ -15,8 +16,8 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 })
 export class PoolDailyComponent implements OnInit {
   public pool: Pool;
-  public poolList: any;
-  public pairList: any;
+  public poolList: Array<any>;
+  public pairList: Array<any>;
   public displayedColumns = ["Date", "TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital"];
   public displayedColumnsLong = ["Date", "Hide Pairs"];
   public displayedColumnsShort = ["Date", "Show Pairs", "TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital"];
@@ -28,7 +29,7 @@ export class PoolDailyComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService, private utils: UtilsService) {
+  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router) {
     this.poolList = [];
     this.pairList = [];
    }
@@ -60,7 +61,7 @@ export class PoolDailyComponent implements OnInit {
       let poolList: any[];
       this.poolsService.getPoolsByDay().subscribe(
         (data: any)    => { poolList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(poolList);
         }
@@ -73,7 +74,7 @@ export class PoolDailyComponent implements OnInit {
       let poolList: any[];
       this.poolsService.getPoolsDistinct().subscribe(
         (data: any)    => { poolList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(poolList);
         }

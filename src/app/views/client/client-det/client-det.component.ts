@@ -49,7 +49,7 @@ export class ClientDetComponent implements OnInit {
                             this.client.start_capital = querydata[0].start_capital;
                             this.actual_capital = querydata[querydata.length - 1].capital_quantity;
         },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(querydata);
         }

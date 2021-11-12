@@ -38,7 +38,7 @@ export class ClientModComponent implements OnInit {
                           this.client.client_surname = this.clientInfo.client_surname;
                           this.client.email = this.clientInfo.email;
       },
-      (error: Error) => { console.log('Error: ', error); },
+      (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => { console.log('Petición realizada correctamente'); }
     )
   }
@@ -50,18 +50,18 @@ export class ClientModComponent implements OnInit {
     document.getElementById('clientformalert')?.classList.remove('formalert');
 
     this.validator.checkClient(this.client).subscribe(
-      (data: any)    => { console.log(data); if(!data.data || data.data == null) {
+      (data: any)    => { if(!data.data || data.data == null) {
                             this.isOnDB = false;
                           } else {
                             this.isOnDB = true;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             this.clientsService.modClient(this.clientInfo.client_id, this.client).subscribe(
                               (data: any)    => { this.router.navigate(['/ClientsList']); },
-                              (error: Error) => { console.error("Error al realizar el acceso"); }
+                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             );
                           } else {
                             if (this.isOnDB){

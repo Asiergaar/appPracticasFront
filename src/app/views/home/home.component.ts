@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('homepools') private divElement:ElementRef;
 
-  constructor(private poolsService: PoolsService, private utils: UtilsService) {
+  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router) {
     this.poolData = [];
     this.dataLength = [];
     // change this to set result quantity
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
       let querydata: any[];
       this.poolsService.getPoolsData().subscribe(
         (data: any)    => { querydata = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(querydata);
         }

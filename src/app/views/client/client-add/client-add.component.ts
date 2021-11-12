@@ -19,7 +19,7 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 export class ClientAddComponent implements OnInit {
   public client: Client;
-  public pools: any;
+  public pools: Array<any>;
   public poolsStarted: boolean;
   public newCapital: NewCapital;
   public capital: Capital;
@@ -46,7 +46,7 @@ export class ClientAddComponent implements OnInit {
     return new Promise( resolve => {
       this.poolsService.getPools().subscribe(
         (data: any)    => { list = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente'); resolve(list);}
       )
     })
@@ -64,7 +64,7 @@ export class ClientAddComponent implements OnInit {
                             this.isOnDB = true;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             // If the pools are started
@@ -73,7 +73,7 @@ export class ClientAddComponent implements OnInit {
                               this.client.start_capital = 0;
                               this.clientsService.addClient(this.client).subscribe(
                                 (data: any)    => { this.client.client_id = data.data.client_id; },
-                                (error: Error) => { console.error("Error al realizar el acceso"); },
+                                (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
                                 () => {
                                     // Set the capital
                                     this.capital.capital_client =  this.client.client_id;
@@ -84,7 +84,7 @@ export class ClientAddComponent implements OnInit {
                                     this.newCapital.newcapital_quantity = quantity;
                                     this.capitalsService.newCapital(this.newCapital).subscribe(
                                       (data: any)    => { this.router.navigate(['/ClientsList']).then(() => { window.location.reload(); }); },
-                                      (error: Error) => { console.error("Error al realizar el acceso"); }
+                                      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                                     )
                                 }
                               )
@@ -92,7 +92,7 @@ export class ClientAddComponent implements OnInit {
                               // If it's the firs day of pools
                               this.clientsService.addClient(this.client).subscribe(
                                 (data: any)    => { this.router.navigate(['/ClientsList']); },
-                                (error: Error) => { console.error("Error al realizar el acceso"); }
+                                (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } );}
                               )
                             }
                           } else {
