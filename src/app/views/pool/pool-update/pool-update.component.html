@@ -44,7 +44,7 @@
                     <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" class="autofocus" ngModel required>
                   </mat-form-field>
                 </p>
-                <ng-template #done>${{donePools[pool.pool_pair]}}</ng-template>
+                <ng-template #done>{{ dollarUS.format(donePools[pool.pool_pair]) }}</ng-template>
             </mat-cell>
         </ng-container>
 

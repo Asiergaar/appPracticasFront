@@ -26,6 +26,7 @@ export class PoolUpdateComponent implements OnInit {
   public displayedColumns: Array<string> = ["poolupdate_pair", "exchange", "tokenA", "tokenB", "add"];
   public dataSource: any;
   public poolToDo: boolean = true;
+  public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
   @ViewChild(MatSort) sort: MatSort;
 

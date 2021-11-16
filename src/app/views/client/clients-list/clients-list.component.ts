@@ -22,6 +22,7 @@ export class ClientsListComponent implements OnInit {
   public dataSource: any;
   public totalBenefit: number;
   public max: number;
+  public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

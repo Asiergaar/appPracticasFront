@@ -33,13 +33,13 @@
     </ng-container>
 
     <ng-container matColumnDef="start_capital">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Start capital</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.start_capital}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Initial capital</mat-header-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.start_capital)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nwcap">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Modified capital</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="client.nwcap">&nbsp; {{ client.nwcap }}</span></mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="client.nwcap">&nbsp; {{ dollarUS.format(client.nwcap) }}</span></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="benefit">
@@ -52,7 +52,7 @@
 
     <ng-container matColumnDef="last_capital">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Last capital</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.last_capital | number: '1.2-2' }}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.last_capital)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">
@@ -64,5 +64,5 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
   </mat-table>
-  <mat-paginator [pageSizeOptions]="[9, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 15, 21, max]" showFirstLastButtons class="pagination"></mat-paginator>
 </div>

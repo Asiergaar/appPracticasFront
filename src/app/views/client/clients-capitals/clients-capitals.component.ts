@@ -25,6 +25,7 @@ export class ClientsCapitalsComponent implements OnInit {
   public max: number;
   public columnsShown: boolean = false;
   public columnsBtn: string = "Show Clients";
+  public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

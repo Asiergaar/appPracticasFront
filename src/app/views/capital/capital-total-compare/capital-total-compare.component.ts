@@ -11,6 +11,7 @@ export class CapitalTotalCompareComponent implements OnInit {
   public totals: Array<any>;
   public displayedColumns: Array<string>;
   public dataSource: any;
+  public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
   constructor(private capitalsService: CapitalsService, private router: Router) {
     this.totals = [];

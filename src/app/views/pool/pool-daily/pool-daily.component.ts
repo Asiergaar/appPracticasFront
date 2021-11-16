@@ -25,6 +25,7 @@ export class PoolDailyComponent implements OnInit {
   public columnsShown: boolean = false;
   public columnsBtn: string = "Show Pairs";
   public max: number;
+  public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

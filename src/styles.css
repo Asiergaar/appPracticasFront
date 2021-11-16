@@ -18,6 +18,10 @@ body {
 .notfound h2,
 .mat-form-field,
 .nopairtopool h2,
+.clientInfo h2,
+.clientStats h2,
+.firsthome h2,
+.clientStats h3,
 .header h1 {
   font-family: 'Exo 2', sans-serif !important;
   font-weight: bold;
@@ -209,7 +213,7 @@ form {
 }
 
 .itemmenu p {
-  font-size: 1.6em;
+  font-size: 1.4em;
   font-weight: bold;
   line-height: 1.8em;
   margin-bottom: 0;
@@ -278,6 +282,7 @@ form {
 
 .bloque h1 {
   text-align: center;
+  margin: 0 0 10px !important;
 }
 
 /* TABLES STUFF (multiple pages) */
@@ -722,23 +727,28 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 
 .zeroBenefit {
   font-weight: bold;
-  padding: 14px 500px 14px 14px;
+  padding: 15px 500px 14px 14px;
   background-color: rgb(238, 235, 198);
 }
 
 .negBenefit {
   font-weight: bold;
-  padding: 14px 500px 14px 14px;
+  padding: 15px 500px 14px 14px;
   background-color: rgb(212, 59, 59);
 }
 
 .posBenefit {
   font-weight: bold;
-  padding: 14px 500px 14px 14px;
+  padding: 15px 500px 14px 14px;
   background-color: rgb(70, 151, 70);
 }
 
 /* CLIENT DETAIL PAGE */
+
+#clientDet {
+  margin: auto;
+  width: 1100px;
+}
 
 .clientInfo {
   display: flex;
@@ -766,6 +776,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   margin: 85px 40px 10px 40px;
   width: 200px;
   min-width: 200px;
+  height: 350px;
   text-align: center;
   z-index: 2;
   position: relative;
@@ -799,6 +810,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 
 .progressData h3 {
   font-size: 1.5em;
+  margin: 8px;
 }
 
 .progressData:last-child {
@@ -808,6 +820,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 .clientProgress h2 {
   background: rgb(44, 44, 44);
   color: white;
+  font-weight: normal;
   margin: 0 0 10px 0;
   padding: 5px;
   border-radius: 15px 15px 0 0;
@@ -834,16 +847,21 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 }
 
 .capitalProgress {
+  margin: auto;
+}
+
+.capitalProgressData {
   background-color:rgb(230, 230, 230);
   box-shadow: 3px 3px 6px 2px #00000040;
   border-radius: 15px;
-  margin: auto;
+  margin: 40px 0px 40px 40px;
+  padding-bottom: 10px;
   text-align: center;
   position: relative;
   height: fit-content;
 }
 
-.capitalProgress::before {
+.capitalProgressData.wallet::before {
   content: "";
   background-image: url(/assets/images/wallet.png);
   background-size: cover;
@@ -854,9 +872,40 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   right: -20px;
 }
 
-.capitalProgress .titulo {
+.capitalProgressData.bamboo::after {
+  content: "";
+  background-image: url(/assets/images/bamboos.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 66px;
+  height: 90px;
+  top: -60px;
+  left: 0px;
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -ms-filter: fliph; /*IE*/
+  filter: fliph; /*IE*/
+}
+
+.capitalProgressData.bamboo::before {
+  content: "";
+  background-image: url(/assets/images/bamboos.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 66px;
+  height: 90px;
+  top: -60px;
+  right: 0px;
+}
+
+.capitalProgressData .titulo {
   background: rgb(44, 44, 44);
   color: white;
+  font-weight: normal;
   margin: 0 0 10px 0;
   padding: 5px;
   border-radius: 15px 15px 0 0;
@@ -878,6 +927,10 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   font-size: 2em;
   text-align: center;
   vertical-align: middle;
+}
+
+.clientDetNwc {
+  margin-bottom: 0px !important;
 }
 
 /* HOME PAGE */
@@ -1129,7 +1182,7 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 .dark #menu { background-color: rgb(20, 20, 20) !important; }
 .dark #menu a { color: black !important; }
 .dark .itemmenu { color: white; background-color: rgb(120, 120, 120) !important; }
-.dark .itemmenu p { color: white; }
+.dark .itemmenu p { color: white; font-weight: normal !important;}
 .dark .itemmenu:hover { background-color: rgb(230, 230, 230) !important; outline: 2px solid white !important; }
 .dark .itemmenu:hover p { color: black !important; }
 .dark .menuhover { background-color: rgb(7, 7, 7) !important; outline: 2px solid white !important; }
@@ -1179,7 +1232,7 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 .dark .mat-option-text:hover { background-color: #474747 !important; color: white !important; }
 .dark .mat-button-disabled { background-color: #959595 !important; }
 .dark .mat-input-element { color: white !important; font-weight: normal !important; }
-.mat-form-field-appearance-legacy .mat-form-field-underline { background-color: rgba(218, 218, 218, 0.9); }
+.dark .mat-form-field-appearance-legacy .mat-form-field-underline { background-color: rgba(218, 218, 218, 0.3); }
 .dark .alertinfo{color: #ffb8b8 !important;
 }
 
@@ -1190,14 +1243,13 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 }
 
 /* CLIENT DETAIL PAGE */
-.dark .clientInfo h2 { border-bottom: 3px solid white; color: white !important; }
+.dark .clientInfo h2 { border-bottom: 2px solid white; color: white !important; font-weight: normal !important; }
 .dark .clientProgress { background-color:rgb(230, 230, 230); box-shadow: 3px 3px 6px 2px #00000040; }
 .dark .clientProgress::after { background-color: red; color: white; }
 .dark .clientProgress h2 { background: rgb(44, 44, 44); color: white; }
 .dark .clientProgress .fa-minus { color: rgb(44, 44, 44); }
 .dark .clientProgress .fa-arrow-down { color: red; }
 .dark .clientProgress .fa-arrow-up { color: green; }
-.dark .capitalProgress { background-color:rgb(230, 230, 230); box-shadow: 3px 3px 6px 2px #00000040; }
 .dark .capitalProgress .titulo { background: rgb(44, 44, 44); color: white; }
 
 

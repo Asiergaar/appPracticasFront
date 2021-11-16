@@ -12,6 +12,7 @@ export class PoolVariationComponent implements OnInit {
   public poolData: Array<any>;
   public dataLength: Array<number>;
   public len: number;
+  public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
   @ViewChild('homepools') private divElement:ElementRef;
 
