@@ -60,7 +60,7 @@ export class ClientModComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.clientsService.modClient(this.clientInfo.client_id, this.client).subscribe(
-                              (data: any)    => { this.router.navigate(['/ClientsList']); },
+                              (data: any)    => { this.router.navigate(['/ClientsList'], { queryParams: { message: "Client: " + this.client.client_name + ", " + this.client.client_surname + " modified."} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             );
                           } else {

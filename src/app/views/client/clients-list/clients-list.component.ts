@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,12 +23,16 @@ export class ClientsListComponent implements OnInit {
   public totalBenefit: number;
   public max: number;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
+  public message: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.clientList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+    });
    }
 
   async ngOnInit(): Promise<void>{

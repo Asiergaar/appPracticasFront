@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { PairsService } from 'src/app/shared/services/pair/pairs.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pairs-list',
@@ -17,12 +17,16 @@ export class PairsListComponent implements OnInit {
   public displayedColumns: Array<string> = ["pair_id", "pair_exchange", "tokenA", "tokenB", "edit"];
   public dataSource: any;
   public max: number;
+  public message: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private pairsService: PairsService, private utils: UtilsService, private router: Router) {
+  constructor(private pairsService: PairsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.pairList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+    });
   }
 
   async ngOnInit(): Promise<void>{

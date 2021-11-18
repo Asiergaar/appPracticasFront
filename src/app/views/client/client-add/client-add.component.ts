@@ -83,7 +83,7 @@ export class ClientAddComponent implements OnInit {
                                     this.newCapital.newcapital_client = this.client.client_id;
                                     this.newCapital.newcapital_quantity = quantity;
                                     this.capitalsService.newCapital(this.newCapital).subscribe(
-                                      (data: any)    => { this.router.navigate(['/ClientsList']).then(() => { window.location.reload(); }); },
+                                      (data: any)    => { this.router.navigate(['/ClientsList'], { queryParams: { message: "Client: " + this.client.client_name + ", " + this.client.client_surname + " added."} } ).then(() => { window.location.reload(); }); },
                                       (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                                     )
                                 }
@@ -91,7 +91,7 @@ export class ClientAddComponent implements OnInit {
                             } else{
                               // If it's the firs day of pools
                               this.clientsService.addClient(this.client).subscribe(
-                                (data: any)    => { this.router.navigate(['/ClientsList']); },
+                                (data: any)    => { this.router.navigate(['/ClientsList'], { queryParams: { message: "Client: " + this.client.client_name + ", " + this.client.client_surname + " added."} } ); },
                                 (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } );}
                               )
                             }

@@ -83,7 +83,11 @@ export class PairModComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.pairsService.modPair(this.pairInfo.pair_id, this.pair).subscribe(
-                              (data: any)    => { this.router.navigate(['/PairsList']); },
+                              (data: any)    => { let messageend = "";
+                                                  if (this.pair.tokenB) { messageend = ", with tokens " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name + " & " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenB)].token_name + ".";}
+                                                  else { messageend = ", with " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name;}
+                                                  this.router.navigate(['/PairsList'], { queryParams: { message: "Pair (" + this.pair.pair_id + ") modified: exchange " + this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name + messageend} } );
+                                                },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

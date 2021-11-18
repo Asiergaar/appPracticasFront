@@ -6,7 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tokens-list',
@@ -19,12 +19,18 @@ export class TokensListComponent implements OnInit {
   public displayedColumns: Array<string> = ["token_id", "token_name", "ticker", "edit"];
   public dataSource: any;
   public max: number;
+  public message: string;
+  public imgurl: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private tokensService: TokensService, private utils: UtilsService, private router: Router) {
+  constructor(private tokensService: TokensService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.tokenList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+      this.imgurl = params['url'];
+    });
    }
 
    async ngOnInit(): Promise<void>{

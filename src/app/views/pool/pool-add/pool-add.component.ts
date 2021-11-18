@@ -45,7 +45,6 @@ export class PoolAddComponent implements OnInit {
         )
       }
     )
-
     this.utils.menuHover('menupool');
   }
 
@@ -53,7 +52,10 @@ export class PoolAddComponent implements OnInit {
   // On form submit => create pool on DB
   public submit(): void {
     this.poolsService.addPool(this.pool).subscribe(
-      (data: any)    => { this.router.navigate(['/PoolsList']); },
+      (data: any)    => { let messageend = "";
+                          if (this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenB == null) { messageend = ", token: " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenA + ")."; }
+                          else { messageend = ", tokens: " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenA + " & " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenB + ")."; }
+                          this.router.navigate(['/PoolsByDay'], { queryParams: { message: "Pool succesfully added (exchange: " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].exchange + messageend } } ); },
       (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
     )
   }

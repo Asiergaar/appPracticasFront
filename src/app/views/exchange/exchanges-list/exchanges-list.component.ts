@@ -6,7 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-exchanges-list',
@@ -18,12 +18,18 @@ export class ExchangesListComponent implements OnInit {
   public displayedColumns: Array<string> = ["exchange_id", "exchange_name", "url", "edit"];
   public dataSource: any;
   public max: number;
+  public message: string;
+  public imgurl: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router) {
+  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.exchangeList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+      this.imgurl = params['url'];
+    });
   }
 
   async ngOnInit(): Promise<void>{

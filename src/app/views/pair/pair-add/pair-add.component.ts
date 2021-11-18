@@ -33,6 +33,7 @@ export class PairAddComponent implements OnInit {
       (data: any) => { this.tokenList = data.data; }
     )
     this.utils.menuHover('menupair');
+
   }
 
 
@@ -55,7 +56,7 @@ export class PairAddComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.pairsService.addPair(this.pair).subscribe(
-                              (data: any) => { this.router.navigate(['/PairsList']); },
+                              (data: any) => { this.router.navigate(['/PairsList'], { queryParams: { message: "Pair added: exchange " + this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name + ", with tokens " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name + " & " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenB)].token_name + "."} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

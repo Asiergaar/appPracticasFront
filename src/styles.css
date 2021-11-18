@@ -285,6 +285,27 @@ form {
   margin: 0 0 10px !important;
 }
 
+.addmodmessage {
+  width: fit-content;
+  margin: 5px auto 20px;
+}
+
+.addmodmessage p {
+  box-shadow: 3px 3px 6px 2px #00000040;
+  border: 3px solid green;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 8px 25px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.addmodmessage i {
+  height: 10px;
+}
+
 /* TABLES STUFF (multiple pages) */
 
 .lists {
@@ -1171,6 +1192,7 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 .dark .poolsdone h2, .dark .nopairtopool h2 { color: white; font-weight: normal; }
 .dark .notfound h2 { color: white !important; }
 .dark .totalarrows { color: white !important; }
+.dark .addmodmessage p { border: 3px solid #35b935 !important; background-color: #545454 !important; font-weight: normal !important; color: white !important; }
 
 /* Header */
 .dark .header { background-color: #282d42 !important; }

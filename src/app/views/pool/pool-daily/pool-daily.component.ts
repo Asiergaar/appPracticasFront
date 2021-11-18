@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Pool } from 'src/app/shared/interfaces/pool';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pool-daily',
@@ -26,13 +26,17 @@ export class PoolDailyComponent implements OnInit {
   public columnsBtn: string = "Show Pairs";
   public max: number;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
+  public message: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router) {
+  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.poolList = [];
     this.pairList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+    });
    }
 
   async ngOnInit(): Promise<void>{

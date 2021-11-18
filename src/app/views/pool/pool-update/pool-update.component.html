@@ -11,6 +11,7 @@
 
   <ng-template #elseBlock>
     <button type="submit" routerLink="/AddPool" mat-raised-button class="poolupdate addbtn">Add pool</button>
+    <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
 
     <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
       <mat-table matSort [dataSource]="dataSource" class="tablelist">

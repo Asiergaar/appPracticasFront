@@ -65,7 +65,7 @@ export class TokenModComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.tokensService.modToken(this.tokenInfo.token_id, this.token).subscribe(
-                              (data: any)    => { this.router.navigate(['/TokensList']); },
+                              (data: any)    => { this.router.navigate(['/TokensList'], { queryParams: { message: "Token: " + this.token.token_name + "(" + this.token.ticker + ") modified.",  url: this.token.token_img_url} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

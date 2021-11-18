@@ -115,9 +115,7 @@ export class PoolUpdateComponent implements OnInit {
       let prog = new Progress();
       // Create progress of the pool
       this.progressService.addProgress().subscribe(
-        (data: any)    => { prog = data.progress;
-                            this.router.navigate(['/PoolsByDay']);
-        },
+        (data: any)    => { prog = data.progress; },
         (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(prog);
@@ -129,7 +127,7 @@ export class PoolUpdateComponent implements OnInit {
   private async addCapitals(): Promise<any> {
     // Create capitals with that progress
       this.capitalsService.addCapitals(this.progress).subscribe(
-      (data: any)    => { this.router.navigate(['/PoolsByDay']); },
+      (data: any)    => { this.router.navigate(['/PoolsByDay'], { queryParams: { message: "Pools succesfully added on:" + new Date()} } ); },
       (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
     )
   }

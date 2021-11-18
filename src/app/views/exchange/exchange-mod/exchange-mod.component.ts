@@ -63,7 +63,7 @@ export class ExchangeModComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.exchangesService.modExchange(this.exchangeInfo.exchange_id, this.exchange).subscribe(
-                              (data: any)    => { this.router.navigate(['/ExchangesList']); },
+                              (data: any)    => { this.router.navigate(['/ExchangesList'], { queryParams: { message: "Exchange: " + this.exchange.exchange_name + " modified.",  url: this.exchange.exchange_img_url} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
