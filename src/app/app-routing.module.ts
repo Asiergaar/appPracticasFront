@@ -20,8 +20,10 @@ import { PoolsListComponent } from './views/pool/pools-list/pools-list.component
 import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
 import { PoolUpdateComponent } from './views/pool/pool-update/pool-update.component';
 import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component';
+import { PoolVariationComponent } from './views/pool/pool-variation/pool-variation.component';
 import { HomeComponent } from './views/home/home.component';
 import { CapitalAddComponent } from './views/capital/capital-add/capital-add.component';
+import { ServerErrorComponent } from './views/server-error/server-error.component';
 
 const routes: Routes = [
   { path: 'Home', component: HomeComponent },
@@ -48,9 +50,11 @@ const routes: Routes = [
   { path: 'AddPool', component: PoolAddComponent},
   { path: 'PoolsByDay', component: PoolDailyComponent},
   { path: 'UpdatePools', component: PoolUpdateComponent},
+  { path: 'PoolVariation', component: PoolVariationComponent},
 
   { path: 'AddCapital', component: CapitalAddComponent},
 
+  { path: 'ServerError', component: ServerErrorComponent},
   { path: '', redirectTo: '/Home', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent}
 ];

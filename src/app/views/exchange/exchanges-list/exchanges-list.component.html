@@ -1,6 +1,10 @@
-<div id="exchangeList" class="lists">
+<div *ngIf="message" class="addmodmessage">
+  <p>{{message}} <img src="{{imgurl}}" style="height: 10px;"> </p>
+</div>
 
-  <h1 class="tituloPagina">Listado de exchanges</h1>
+<div id="exchangeList" class="lists tarjeta">
+
+  <h1 class="tituloPagina">List of exchanges</h1>
 
   <button type="submit" routerLink="/AddExchange" mat-raised-button class="addbtn">Add Exchange</button>
 
@@ -35,6 +39,6 @@
 
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[12, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 15, 21, max]" showFirstLastButtons class="pagination"></mat-paginator>
 
 </div>

@@ -1,29 +1,34 @@
-<h1 class="tituloPagina">Modifica el cliente #{{ client.client_id }}</h1>
+<div id="clientMod" class="lists tarjeta">
+  <h1 class="tituloPagina">Modifica el cliente #{{ client.client_id }}</h1>
 
-<form (ngSubmit)="submit()" #clientForm="ngForm" class="forms">
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>Name</mat-label>
-      <input type="text" matInput [(ngModel)]="client.client_name" id="client_name"
-      name="client_name" #name="ngModel" placeholder="" required>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>Surname</mat-label>
-      <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname"
-      name="client_surname" #surname="ngModel" placeholder="" required>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>Email</mat-label>
-      <input type="email" matInput [(ngModel)]="client.email" id="email"
-      name="email" #email="ngModel" placeholder="" required>
-    </mat-form-field>
-  </p>
-  <div class="forminput">
-    <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ClientsList">Volver</button>
-    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!clientForm.form.valid">Modificar</button>
-  </div>
-</form>
+  <form (ngSubmit)="submit()" #clientForm="ngForm" class="forms">
+    <div class="" id="clientformalert">
+      <p>
+        <mat-form-field appearance="legacy" class="input">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput [(ngModel)]="client.client_name" id="client_name"
+          name="client_name" #name="ngModel" placeholder="" required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy" class="input">
+          <mat-label>Surname</mat-label>
+          <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname"
+          name="client_surname" #surname="ngModel" placeholder="" required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy" class="input">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [(ngModel)]="client.email" id="email"
+          name="email" #email="ngModel" placeholder="" required>
+        </mat-form-field>
+      </p>
+      <p class="displaynone alertinfo" id="clientexists">The combination of name, surname and email already exists on database</p>
+    </div>
+    <div class="forminput">
+      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ClientsList">Volver</button>
+      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!clientForm.form.valid">Modificar</button>
+    </div>
+  </form>
+</div>

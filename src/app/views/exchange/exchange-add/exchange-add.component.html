@@ -1,30 +1,35 @@
-<h1 class="tituloPagina">Añade un nuevo exchange</h1>
+<div id="exchangeAdd" class="lists tarjeta">
+  <h1 class="tituloPagina">Add new exchange</h1>
 
-<form (ngSubmit)="submit()" #exchangeForm="ngForm" class="forms">
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>Name</mat-label>
-      <input type="text" matInput [(ngModel)]="exchange.exchange_name" id="exchange_name"
-      name="exchange_name" #name="ngModel" placeholder="" required>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>URL</mat-label>
-      <input type="text" matInput [(ngModel)]="exchange.url" id="url"
-      name="url" #url="ngModel" placeholder="">
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="legacy" class="input">
-      <mat-label>Logo URL</mat-label>
-      <input type="text" matInput [(ngModel)]="exchange.exchange_img_url" id="exchange_img_url"
-      name="exchange_img_url" #url="ngModel" placeholder="" required>
-    </mat-form-field>
-  </p>
+  <form (ngSubmit)="submit()" #exchangeForm="ngForm" class="forms">
+    <div class="" id="exchangeformalert">
+      <p>
+        <mat-form-field appearance="legacy" class="input">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput [(ngModel)]="exchange.exchange_name" id="exchange_name"
+          name="exchange_name" #name="ngModel" placeholder="" required>
+        </mat-form-field>
+      </p>
+      <p class="displaynone alertinfo" id="exchangeexists">This exchange already exists on database</p>
+    </div>
+    <p>
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>URL</mat-label>
+        <input type="text" matInput [(ngModel)]="exchange.url" id="url"
+        name="url" #url="ngModel" placeholder="">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>Logo URL</mat-label>
+        <input type="text" matInput [(ngModel)]="exchange.exchange_img_url" id="exchange_img_url"
+        name="exchange_img_url" #url="ngModel" placeholder="" required>
+      </mat-form-field>
+    </p>
 
-  <div class="forminput">
-    <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ExchangesList">Volver</button>
-    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!exchangeForm.form.valid">Añadir</button>
-  </div>
-</form>
+    <div class="forminput">
+      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ExchangesList">Volver</button>
+      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!exchangeForm.form.valid">Añadir</button>
+    </div>
+  </form>
+</div>

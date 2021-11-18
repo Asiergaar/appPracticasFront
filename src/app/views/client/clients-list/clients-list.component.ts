@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,6 +8,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+
 @Component({
   selector: 'app-clients-list',
   templateUrl: './clients-list.component.html',
@@ -14,17 +17,22 @@ import { ClientsService } from 'src/app/shared/services/client/clients.service';
 })
 export class ClientsListComponent implements OnInit {
   public client: Client;
-  public clientList: any;
-  public displayedColumns= ["client_id", "client_name", "email", "entry_date", "start_capital", "benefit", "nwcap", 'last_capital', "edit"];
+  public clientList: Array<any>;
+  public displayedColumns: Array<string> = ["client_id", "client_name", "email", "entry_date", "start_capital", "benefit", "nwcap", 'last_capital', "edit"];
   public dataSource: any;
   public totalBenefit: number;
   public max: number;
+  public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
+  public message: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService) {
+  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.clientList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+    });
    }
 
   async ngOnInit(): Promise<void>{
@@ -34,6 +42,7 @@ export class ClientsListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menuclient');
   }
 
   // get clients data to show on form
@@ -44,7 +53,7 @@ export class ClientsListComponent implements OnInit {
         (data: any)    => { clientList = data.data;
                             this.totalBenefit = (data.benefit);
         },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(clientList);
         }

@@ -1,6 +1,10 @@
-<div id="pairList" class="lists">
+<div *ngIf="message" class="addmodmessage">
+  <p>{{message}} </p>
+</div>
 
-  <h1 class="tituloPagina">Listado de pairs</h1>
+<div id="pairList" class="lists tarjeta">
+
+  <h1 class="tituloPagina">List of pairs</h1>
 
   <button type="submit" routerLink="/AddPair" mat-raised-button class="addbtn">Add Pair</button>
 
@@ -40,7 +44,7 @@
 
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[12, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 15, 21, max]" showFirstLastButtons class="pagination"></mat-paginator>
 
 
 </div>

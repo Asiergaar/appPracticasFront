@@ -1,0 +1,26 @@
+<div *ngIf="totals[1] || totals[1] != null" class="tarjeta">
+  <h1 class="tituloPagina">Monthly capital comparison</h1>
+  <div class="totalCompare">
+    <div class="totalCompareData totalcard">
+      <p class="totalDate">{{ totals[1].Date }}</p>
+      <p>{{ dollarUS.format(totals[1].Total) }}</p>
+    </div>
+    <div class="totalCompareData totalarrows">
+      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </div>
+    <div class="totalCompareData totalcard">
+      <p class="totalDate">Benefit</p>
+      <p >{{ dollarUS.format(totals[0].Total - totals[1].Total) }}</p>
+    </div>
+    <div class="totalCompareData totalarrows">
+      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </div>
+    <div class="totalCompareData totalcard">
+      <p class="totalDate">{{ totals[0].Date }}</p>
+      <p>{{ dollarUS.format(totals[0].Total) }}</p>
+    </div>
+    <div class="capsbtn">
+      <button routerLink="/ClientsCapitals" mat-raised-button class="pbdbtn">Clients Capitals</button>
+    </div>
+  </div>
+</div>

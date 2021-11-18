@@ -1,8 +1,13 @@
-<div id="tokenList" class="lists">
+<div *ngIf="message" class="addmodmessage">
+  <p>{{message}} <img src="{{imgurl}}" style="height: 10px;"> </p>
+</div>
 
-  <h1 class="tituloPagina">Listado de tokens</h1>
+<div id="tokenList" class="lists tarjeta">
+
+<h1 class="tituloPagina">List of tokens</h1>
 
   <button type="submit" routerLink="/AddToken" mat-raised-button class="addbtn">Add Token</button>
+
 
   <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
@@ -35,6 +40,6 @@
 
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[12, 15, 20, max]" showFirstLastButtons class="pagination"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 15, 21, max]" showFirstLastButtons class="pagination"></mat-paginator>
 
 </div>

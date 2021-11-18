@@ -1,15 +1,17 @@
-<div id="poolList" class="lists">
+<div id="poolUpdate" class="lists tarjeta">
 
-  <h1 class="tituloPagina">Actualiza los pools</h1>
+  <h1 class="tituloPagina">Update the pools</h1>
 
   <div *ngIf="!poolToDo; else elseBlock" class="poolsdone">
     <h2>Today's pools are done!</h2>
-    <img class="logo" src="../../../assets/images/pandaface.png">
+    <img class="logopooldone" src="../../../assets/images/pandaface.png">
     <h2>Last update: {{poolStatus[0].pool_date | date: 'dd/MM/yyyy HH:MM' }}</h2>
+    <button type="submit" routerLink="/PoolsByDay" mat-raised-button class="poolupdate addbtn">View daily pools</button>
   </div>
 
   <ng-template #elseBlock>
     <button type="submit" routerLink="/AddPool" mat-raised-button class="poolupdate addbtn">Add pool</button>
+    <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
 
     <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
       <mat-table matSort [dataSource]="dataSource" class="tablelist">
@@ -40,10 +42,10 @@
                 <p *ngIf="!donePools[pool.pool_pair]; else done">
                   <mat-form-field appearance="legacy" class="input">
                     <mat-label>Quantity</mat-label>
-                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" ngModel autofocus required>
+                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" class="autofocus" ngModel required>
                   </mat-form-field>
                 </p>
-                <ng-template #done>${{donePools[pool.pool_pair]}}</ng-template>
+                <ng-template #done>{{ dollarUS.format(donePools[pool.pool_pair]) }}</ng-template>
             </mat-cell>
         </ng-container>
 

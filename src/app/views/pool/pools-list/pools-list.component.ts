@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Pool } from 'src/app/shared/interfaces/pool';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pools-list',
@@ -14,15 +16,15 @@ import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 })
 export class PoolsListComponent implements OnInit {
   public pool: Pool;
-  public poolList: any;
-  public displayedColumns= ["pool_id", "pool_coins", "pool_pair", "invested_quantity", "pool_date"];
+  public poolList: Array<any>;
+  public displayedColumns: Array<string> = ["pool_id", "pool_coins", "pool_pair", "invested_quantity", "pool_date"];
   public dataSource: any;
   public max: number;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService) {
+  constructor(private poolsService: PoolsService,private utils: UtilsService, private router: Router) {
     this.poolList = [];
    }
 
@@ -33,6 +35,7 @@ export class PoolsListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menupool');
   }
 
   // get pools data to show on form
@@ -41,7 +44,7 @@ export class PoolsListComponent implements OnInit {
       let poolList: any[];
       this.poolsService.getPoolsName().subscribe(
         (data: any)    => { poolList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(poolList);
         }

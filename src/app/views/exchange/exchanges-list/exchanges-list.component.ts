@@ -5,22 +5,31 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { ExchangesService } from 'src/app/shared/services/exchange/exchanges.service';
 
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-exchanges-list',
   templateUrl: './exchanges-list.component.html',
   styleUrls: ['./exchanges-list.component.css']
 })
 export class ExchangesListComponent implements OnInit {
-  public exchangeList: any;
-  public displayedColumns= ["exchange_id", "exchange_name", "url", "edit"];
+  public exchangeList: Array<any>;
+  public displayedColumns: Array<string> = ["exchange_id", "exchange_name", "url", "edit"];
   public dataSource: any;
   public max: number;
+  public message: string;
+  public imgurl: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private exchangesService: ExchangesService) {
+  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.exchangeList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+      this.imgurl = params['url'];
+    });
   }
 
   async ngOnInit(): Promise<void>{
@@ -30,6 +39,7 @@ export class ExchangesListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.exchangeList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menuexchange');
   }
 
   // get exchanges data to show on form
@@ -38,7 +48,7 @@ export class ExchangesListComponent implements OnInit {
       let exchangeList: any[];
       this.exchangesService.getExchanges().subscribe(
         (data: any)    => { exchangeList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(exchangeList);
         }

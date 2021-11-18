@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 import { TokensService } from 'src/app/shared/services/token/tokens.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tokens-list',
@@ -12,17 +14,23 @@ import { TokensService } from 'src/app/shared/services/token/tokens.service';
   styleUrls: ['./tokens-list.component.css']
 })
 export class TokensListComponent implements OnInit {
-  public tituloPagina: string = "Listado de Tokens";
-  public tokenList: any;
-  public displayedColumns= ["token_id", "token_name", "ticker", "edit"];
+  public tituloPagina: string = "List of Tokens";
+  public tokenList: Array<any>;
+  public displayedColumns: Array<string> = ["token_id", "token_name", "ticker", "edit"];
   public dataSource: any;
   public max: number;
+  public message: string;
+  public imgurl: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private tokensService: TokensService) {
+  constructor(private tokensService: TokensService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.tokenList = [];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.message = params['message'];
+      this.imgurl = params['url'];
+    });
    }
 
    async ngOnInit(): Promise<void>{
@@ -32,6 +40,7 @@ export class TokensListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.utils.menuHover('menutoken');
   }
 
   // get tokens data to show on form
@@ -40,7 +49,7 @@ export class TokensListComponent implements OnInit {
       let tokenList: any[];
       this.tokensService.getTokens().subscribe(
         (data: any)    => { tokenList = data.data; },
-        (error: Error) => { console.log('Error: ', error); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(tokenList);
         }

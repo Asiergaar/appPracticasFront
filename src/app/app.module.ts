@@ -42,6 +42,11 @@ import { PoolDailyComponent } from './views/pool/pool-daily/pool-daily.component
 import { ClientsCapitalsComponent } from './views/client/clients-capitals/clients-capitals.component';
 import { ClientDetComponent } from './views/client/client-det/client-det.component';
 import { CapitalAddComponent } from './views/capital/capital-add/capital-add.component';
+import { PoolVariationComponent } from './views/pool/pool-variation/pool-variation.component';
+import { HeaderComponent } from './views/header/header.component';
+import { CapitalTotalCompareComponent } from './views/capital/capital-total-compare/capital-total-compare.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ServerErrorComponent } from './views/server-error/server-error.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +74,12 @@ import { CapitalAddComponent } from './views/capital/capital-add/capital-add.com
     PoolDailyComponent,
     ClientsCapitalsComponent,
     ClientDetComponent,
-    CapitalAddComponent
+    CapitalAddComponent,
+    PoolVariationComponent,
+    HeaderComponent,
+    CapitalTotalCompareComponent,
+    ServerErrorComponent
+
   ],
   imports: [
     BrowserModule,
@@ -88,7 +98,8 @@ import { CapitalAddComponent } from './views/capital/capital-add/capital-add.com
     MatSelectModule,
     MatOptionModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]

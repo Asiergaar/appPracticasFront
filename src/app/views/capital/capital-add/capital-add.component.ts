@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
 import { NewCapital } from 'src/app/shared/classes/newcapital/newcapital';
 import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
+import { UtilsService } from 'src/app/shared/services/utils/utils.service';
 
 @Component({
   selector: 'app-capital-add',
@@ -14,7 +15,7 @@ export class CapitalAddComponent implements OnInit {
   public newCapital: NewCapital;
   public clients: Array<any>;
 
-  constructor(private clientsService: ClientsService, private capitalsService: CapitalsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
     this.newCapital = new NewCapital();
     this.clients = [];
   }
@@ -23,6 +24,7 @@ export class CapitalAddComponent implements OnInit {
     this.clientsService.getClients().subscribe(
       (data: any) => { this.clients = data.data; }
     )
+    this.utils.menuHover('menuclient');
   }
 
   public async submit(value:any): Promise<void> {
@@ -31,7 +33,7 @@ export class CapitalAddComponent implements OnInit {
 
       this.capitalsService.newCapital(this.newCapital).subscribe(
         (data: any)    => { this.router.navigate(['/ClientsCapitals']).then(() => { window.location.reload(); }); },
-        (error: Error) => { console.error("Error al realizar el acceso"); }
+        (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } );}
       )
   }
 
