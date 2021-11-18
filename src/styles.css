@@ -65,8 +65,8 @@ form {
 #darklight {
   position: absolute !important;
   z-index: 7;
-  right: 15px;
-  top: 10px;
+  right: -25px;
+  top: -30px;
   font-size: 2em;
 }
 
@@ -85,6 +85,7 @@ form {
 #darklight .light i,
 #darklight .dark i {
   transition: transform 3s ease-in-out;
+  padding: 40px;
 }
 
 #darklight .light:hover i {
@@ -259,10 +260,12 @@ form {
 
 #contenedor {
   min-width: fit-content;
+  min-width: -moz-fit-content;
 }
 
 .tarjeta {
   min-width: fit-content;
+  min-width: -moz-fit-content;
   box-shadow: 0px 4px 6px 0px #00000040;
   background-color: whitesmoke;
   border-radius: 15px;
@@ -287,6 +290,7 @@ form {
 
 .addmodmessage {
   width: fit-content;
+  width: -moz-fit-content;
   margin: 5px auto 20px;
 }
 
@@ -785,6 +789,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 .clientStats{
   display: flex;
   width: fit-content;
+  width: -moz-fit-content;
   margin: 25px auto 0px;
   padding-bottom: 25px;
   padding-right: 35px;
@@ -880,6 +885,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   text-align: center;
   position: relative;
   height: fit-content;
+  height: -moz-fit-content;
 }
 
 .capitalProgressData.wallet::before {
@@ -1006,6 +1012,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 
 .homeinfo {
   width: fit-content;
+  width: -moz-fit-content;
   margin: 5px auto 25px;
 }
 
@@ -1100,6 +1107,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 
 .poolvarDayData {
   width: -webkit-fill-available;
+  width: -moz-available;
   min-width: 100px;
   border-right: 1px solid black;
   font-size: 1.2em;

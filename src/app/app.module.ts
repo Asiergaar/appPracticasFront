@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { MatPaginatorModule  } from "@angular/material/paginator";
 import { MatProgressSpinnerModule  } from "@angular/material/progress-spinner";
 import { MatSortModule  } from "@angular/material/sort";
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MenuComponent } from './menu/menu.component';
 import { PantallaComponent } from './views/pantalla/pantalla.component';
@@ -47,6 +48,8 @@ import { HeaderComponent } from './views/header/header.component';
 import { CapitalTotalCompareComponent } from './views/capital/capital-total-compare/capital-total-compare.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ServerErrorComponent } from './views/server-error/server-error.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -99,7 +102,8 @@ import { ServerErrorComponent } from './views/server-error/server-error.componen
     MatOptionModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
