@@ -1,38 +1,38 @@
 <div id="clientAdd" class="lists tarjeta">
-  <h1 class="tituloPagina">Add new client</h1>
+  <h1 class="tituloPagina">{{ 'title.clientAdd' | translate }}</h1>
 
   <form (ngSubmit)="submit()" #clientForm="ngForm" class="forms">
 
     <div class="" id="clientformalert">
       <p>
         <mat-form-field appearance="legacy" class="input">
-          <mat-label>Name</mat-label>
+          <mat-label>{{ 'data.name' | translate }}</mat-label>
           <input type="text" matInput [(ngModel)]="client.client_name" id="client_name" name="client_name" #name="ngModel" placeholder="" required>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="legacy" class="input">
-          <mat-label>Surname</mat-label>
+          <mat-label>{{ 'data.surname' | translate }}</mat-label>
           <input type="text" matInput [(ngModel)]="client.client_surname" id="client_surname" name="client_surname" #surname="ngModel" placeholder="" required>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="legacy" class="input">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ 'data.email' | translate }}</mat-label>
           <input type="email" email matInput [(ngModel)]="client.email" id="email" name="email" #email="ngModel" placeholder="" (ngModelChange)="client.email = $event.toLowerCase()" required>
         </mat-form-field>
       </p>
-      <p class="displaynone alertinfo" id="clientexists">The combination of name, surname and email already exists on database</p>
+      <p class="displaynone alertinfo" id="clientexists">{{ 'error.clientForm' | translate }}</p>
     </div>
     <p>
       <mat-form-field appearance="legacy" class="input">
-        <mat-label>Start capital</mat-label>
+        <mat-label>{{ 'data.initialCapital' | translate }}</mat-label>
         <input type="number" min="1" matInput [(ngModel)]="client.start_capital" id="start_capital" name="start_capital" #start_capital="ngModel" placeholder="" required>
       </mat-form-field>
     </p>
     <div class="forminput">
-      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ClientsList">Volver</button>
-      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!clientForm.form.valid">Añadir</button>
+      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/ClientsList">{{ 'btn.back' | translate }}</button>
+      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!clientForm.form.valid">{{ 'btn.add' | translate }}</button>
     </div>
 
   </form>

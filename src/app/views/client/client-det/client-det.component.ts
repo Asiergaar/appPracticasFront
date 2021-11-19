@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { Client } from 'src/app/shared/classes/client/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
@@ -16,27 +17,37 @@ export class ClientDetComponent implements OnInit {
   public clientInfo: Array<any>;
   public MonthInfo: Array<any>;
   public progress: Array<number>;
+  public monthList: any;
   public start_capital: number;
   public actual_capital: number;
   public id: any;
   public loaded: boolean = false;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
+  public currentLang: string;
 
-  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router) {
+  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router,private translate: TranslateService) {
     this.client = new Client();
     this.id = router.url.split('/').pop();
     this.clientInfo = [];
     this.MonthInfo = [];
     this.progress = [];
+    this.monthList = [
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      ['Urtarrilak', 'Otsailak', 'Martxoak', 'Apirilak', 'Maiatzak', 'Ekainak', 'Uztailak', 'Abuztuak', 'Irailak', 'Urriak', 'Azaroak', 'Abenduak'],
+      ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'],
+      ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+    ]
    }
 
   async ngOnInit(): Promise<void>{
-   this.clientInfo =  await this.getClient();
-   for(let i = this.clientInfo.length - 1; i > this.clientInfo.length - 6; i--) {
-    this.progress.push(this.clientInfo[i].progress_percentage);
-   }
-   this.MonthInfo =  await this.clientMonthlyData();
-   this.utils.menuHover('menuclient');
+    this.currentLang = this.translate.currentLang;
+    this.clientInfo =  await this.getClient();
+    for(let i = this.clientInfo.length - 1; i > this.clientInfo.length - 6; i--) {
+      this.progress.push(this.clientInfo[i].progress_percentage);
+    }
+    this.MonthInfo =  await this.clientMonthlyData();
+    this.utils.menuHover('menuclient');
   }
 
   // get client data to show on form
@@ -76,21 +87,22 @@ export class ClientDetComponent implements OnInit {
   }
 
   public getMonth(date: string): string | undefined {
+    this.currentLang;
     let m = parseInt(date.substring(date.indexOf('-')+1, date.lastIndexOf('-')));
     let month;
     switch(m){
-      case 1:  month = 'January';   break;
-      case 2:  month = 'February';  break;
-      case 3:  month = 'March';     break;
-      case 4:  month = 'April';     break;
-      case 5:  month = 'May';       break;
-      case 6:  month = 'June';      break;
-      case 7:  month = 'July';      break;
-      case 8:  month = 'August';    break;
-      case 9:  month = 'September'; break;
-      case 10: month = 'October';   break;
-      case 11: month = 'November';  break;
-      case 12: month = 'December';  break;
+      case 1:  month = this.monthList[0][0]; break;
+      case 2:  month = this.monthList[0][1]; break;
+      case 3:  month = this.monthList[0][2]; break;
+      case 4:  month = this.monthList[0][3]; break;
+      case 5:  month = this.monthList[0][4]; break;
+      case 6:  month = this.monthList[0][5]; break;
+      case 7:  month = this.monthList[0][6]; break;
+      case 8:  month = this.monthList[0][7]; break;
+      case 9:  month = this.monthList[0][8]; break;
+      case 10: month = this.monthList[0][9]; break;
+      case 11: month = this.monthList[0][10]; break;
+      case 12: month = this.monthList[0][11]; break;
     }
     return month;
   }

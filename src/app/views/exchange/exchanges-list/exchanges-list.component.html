@@ -4,33 +4,33 @@
 
 <div id="exchangeList" class="lists tarjeta">
 
-  <h1 class="tituloPagina">List of exchanges</h1>
+  <h1 class="tituloPagina">{{'title.exchangeList' | translate}}</h1>
 
-  <button type="submit" routerLink="/AddExchange" mat-raised-button class="addbtn">Add Exchange</button>
+  <button type="submit" routerLink="/AddExchange" mat-raised-button class="addbtn">{{'btn.addExchange' | translate}}</button>
 
   <mat-form-field class="listFilter poolslist">
-    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="{{'nav.search' | translate}}">
   </mat-form-field>
 
   <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
     <ng-container matColumnDef="exchange_id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.id' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let exchange">{{exchange.exchange_id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="exchange_name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.name' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let exchange"><img src="{{exchange.exchange_img_url}}" class="tokenimg">{{exchange.exchange_name}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="url">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>URL</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.url' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let exchange"><a href="{{exchange.URL}}" target="blank">{{exchange.URL}}</a></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>{{'data.edit' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let exchange"><a routerLink="/ModExchange/{{ exchange.exchange_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
     </ng-container>
 

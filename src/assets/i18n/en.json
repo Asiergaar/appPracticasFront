@@ -1,0 +1,161 @@
+{
+  "btn": {
+    "add": "Add",
+    "addCapital": "Add Capital",
+    "addClient": "Add Client",
+    "addExchange": "Add Exchange",
+    "addPair": "Add Pair",
+    "addPool": "Add Pool",
+    "addToken": "Add Token",
+    "appInfo": "App info",
+    "back": "Back",
+    "clientsCapitals": "Clients Capitals",
+    "clientsList": "Clients list",
+    "mod": "Modify",
+    "modClient": "Modify Client",
+    "poolsByDay": "Daily pools",
+    "poolsList": "Pools list",
+    "reset": "Reset",
+    "updatePools": "Update Pools",
+    "viewDailyPools": "View daily pools"
+  },
+
+  "clientDet": {
+    "actual": "Actual capital",
+    "benefit": "Benefit",
+    "benefitPercentage": "Benefit percentage",
+    "email": "Email",
+    "initialCapital": "Initial capital",
+    "lastProgress": "Last progresses",
+    "modified1": "Modified capital",
+    "modified2": "on",
+    "name": "Name",
+    "progress": "progress",
+    "since": "Client since",
+    "totalProgress": "Total capital progress",
+    "variousDates": "various dates"
+  },
+
+  "data": {
+    "add": "Add",
+    "actual": "Actual",
+    "benefit": "Benefit",
+    "coins": "Coins",
+    "date": "Date",
+    "divergence": "Divergence",
+    "edit": "Edit",
+    "email": "Email",
+    "entryDate": "Entry date",
+    "exchange": "Exchange",
+    "hideClients": "Hide Clients",
+    "hidePairs": "Hide Pairs",
+    "id": "id",
+    "increment": "Increment",
+    "initial": "Initial",
+    "initialCapital": "Initial capital",
+    "investedQuantity": "Invested quantity",
+    "lastCapital": "Last capital",
+    "logoUrl": "logo URL",
+    "modifiedCapital": "Modified capital",
+    "name": "Name",
+    "newCapital": "New capital",
+    "noToken": "No token",
+    "pair": "Pair",
+    "poolDate": "Pools date",
+    "poolPair": "Pool pair",
+    "quantity": "Quantity",
+    "realIncrement": "Real increment",
+    "selectClient": "Select client",
+    "selectPair": "Select pair",
+    "showClients": "Show Clients",
+    "showPairs": "Show Pairs",
+    "surname": "Surname",
+    "ticker": "Ticker",
+    "tokenA": "Token A",
+    "tokenB": "Token B",
+    "total": "Total",
+    "url": "URL",
+    "variation": "Variation"
+  },
+
+  "error": {
+    "clientForm": "The combination of name, surname and email already exists on database",
+    "exchangeForm": "This exchange already exists on database",
+    "pairForm": "This pair combination already exists on database",
+    "tokenForm": "This token name or ticker already exists on database"
+  },
+
+  "home": {
+    "subtitle": "For a correct workflow, add the data in the following order",
+    "step1": "1 - Add: Tokens, Exchanges & Clientes",
+    "step2": "2 - Create the Pairs",
+    "step3": "3 - Add the Pairs to the Pools",
+    "step4": "4 - Update the information of the Pools daily"
+  },
+
+  "menu": {
+    "client": "Client",
+    "exchange": "Exchange",
+    "liquidityPool": "Liquidity Pool",
+    "pair": "Pair",
+    "token": "Token",
+    "updatePools": "Update Pools"
+  },
+
+  "nav": {
+    "search": "Search..."
+  },
+
+  "notFound": {
+    "textUp": "Oops! Something went wrong...",
+    "textDown": "We can't find the page you were looking for."
+  },
+
+  "poolAdd": {
+    "textUp": "No pair available for the pool.",
+    "textDown": "Add a new pair"
+  },
+
+  "poolUpdate": {
+    "lastUpdate": "Last update",
+    "poolsDone": "Today's pools are done!"
+  },
+
+  "title": {
+    "capitalAdd": "Add new capital",
+    "capitalCompare": "Monthly capital comparison",
+
+    "clientAdd": "Add new client",
+    "clientDet": "Details of client ",
+    "clientMod": "Modify client ",
+    "clientCapitals": "Clients capitals evolution",
+    "clientList": "List of clients",
+
+    "exchangeAdd": "Add new exchange",
+    "exchangeMod": "Modify exchange ",
+    "exchangeList": "List of exchanges",
+
+    "header": "FARMING TOOL",
+
+    "info": "Instructions",
+
+    "notFound": "Page not found",
+
+    "pairAdd": "Add new pair",
+    "pairMod": "Modify pair ",
+    "pairList": "List of pairs",
+
+    "poolAdd": "Add new pool",
+    "poolDaily": "Daily Pools",
+    "poolUpdate": "Update pools",
+    "poolVariation1": "Last ",
+    "poolVariation2": " days variation",
+    "poolList": "List of pools",
+
+    "serverError": "Server Error",
+
+    "tokenAdd": "Add new token",
+    "tokenMod": "Modify token ",
+    "tokenList": "List of tokens"
+  }
+}

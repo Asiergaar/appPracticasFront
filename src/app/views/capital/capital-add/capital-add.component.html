@@ -1,11 +1,11 @@
 <div id="clientList" class="lists tarjeta">
 
-  <h1 class="tituloPagina">Nuevo Capital</h1>
+  <h1 class="tituloPagina">{{'title.capitalAdd' | translate}}</h1>
 
   <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms forminput">
     <p>
       <mat-form-field appearance="fill" class="input">
-        <mat-label>Select client</mat-label>
+        <mat-label>{{'data.selectClient' | translate}}</mat-label>
         <mat-select id="newcapital_client" ngModel name="newcapital_client" required>
           <mat-option *ngFor="let cli of clients" value="{{ cli.client_id }}">{{cli.client_name}}, {{cli.client_surname}}</mat-option>
         </mat-select>
@@ -13,11 +13,11 @@
     </p>
     <p>
       <mat-form-field appearance="legacy" class="input">
-        <mat-label>New capital</mat-label>
+        <mat-label>{{'data.newCapital' | translate}}</mat-label>
         <input type="number" ngModel matInput id="newcapital_quantity" name="newcapital_quantity" required>
       </mat-form-field>
     </p>
-    <button routerLink="/ClientsCapitals" mat-raised-button color="warn" class="backbtn">Volver</button>
-    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">Añadir Capital</button>
+    <button routerLink="/ClientsCapitals" mat-raised-button color="warn" class="backbtn">{{'btn.back' | translate}}</button>
+    <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">{{'btn.add' | translate}}</button>
   </form>
 </div>

@@ -32,8 +32,6 @@ import { PairsListComponent } from './views/pair/pairs-list/pairs-list.component
 import { PairAddComponent } from './views/pair/pair-add/pair-add.component';
 import { PairModComponent } from './views/pair/pair-mod/pair-mod.component';
 import { HomeComponent } from './views/home/home.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ErrorStateMatcher, MatOptionModule, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { PoolAddComponent } from './views/pool/pool-add/pool-add.component';
 import { PoolsListComponent } from './views/pool/pools-list/pools-list.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -48,6 +46,10 @@ import { HeaderComponent } from './views/header/header.component';
 import { CapitalTotalCompareComponent } from './views/capital/capital-total-compare/capital-total-compare.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ServerErrorComponent } from './views/server-error/server-error.component';
+
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorStateMatcher, MatOptionModule, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -103,9 +105,24 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     MatCheckboxModule,
     MatRadioModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    // ngx-translate and the loader module
+    HttpClientModule,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    })
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+    return new TranslateHttpLoader(http);
+}

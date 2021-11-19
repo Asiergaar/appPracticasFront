@@ -1,0 +1,161 @@
+{
+  "btn": {
+    "add": "Ajouter",
+    "addCapital": "Ajouter capital",
+    "addClient": "Ajouter client",
+    "addExchange": "Ajouter Exchange",
+    "addPair": "Ajouter Par",
+    "addPool": "Ajouter Pool",
+    "addToken": "Ajouter Token",
+    "appInfo": "Information sur l'application",
+    "back": "Arrière",
+    "clientsCapitals": "Capital client",
+    "clientsList": "Liste des clients",
+    "mod": "Modifier",
+    "modClient": "Modifier Client",
+    "poolsByDay": "Pools quotidiennes",
+    "poolsList": "Liste des Pools",
+    "reset": "Réinitialiser",
+    "updatePools": "Actualiser les Pools",
+    "viewDailyPools": "Voir les pools quotidiennes"
+  },
+
+  "clientDet": {
+    "actual": "Capital actuel",
+    "benefit": "Bénéfice",
+    "benefitPercentage": "Pourcentage de bénéfice",
+    "email": "Email",
+    "initialCapital": "Capital initial",
+    "lastProgress": "Derniers progrès",
+    "modified1": "Capital modifié",
+    "modified2": "le",
+    "name": "Nom",
+    "progress": "progrès",
+    "since": "Client depuis",
+    "totalProgress": "Progrès total du capital",
+    "variousDates": "dates diverses"
+  },
+
+  "data": {
+    "add": "Ajouter",
+    "actual": "Actuel",
+    "benefit": "Bénéfice",
+    "coins": "Pièces",
+    "date": "Date",
+    "divergence": "Divergence",
+    "edit": "Éditer",
+    "email": "Email",
+    "entryDate": "Date d'entrée",
+    "exchange": "Exchange",
+    "hideClients": "Cacher des clients",
+    "hidePairs": "Cacher des Pairs",
+    "id": "id",
+    "increment": "Augmentation",
+    "initial": "Initial",
+    "initialCapital": "Capital initial",
+    "investedQuantity": "Montant investi",
+    "lastCapital": "Dernière capitale",
+    "logoUrl": "URL du logo",
+    "modifiedCapital": "Capital modifié",
+    "name": "Nom",
+    "newCapital": "Nouvelle capitale",
+    "noToken": "Pas de token",
+    "pair": "Pair",
+    "poolDate": "Date des Pools",
+    "poolPair": "Pair de Pool",
+    "quantity": "Quantité",
+    "realIncrement": "Augmentation réelle",
+    "selectClient": "Choisir un client",
+    "selectPair": "Choisir un pair",
+    "showClients": "Montrer les Clients",
+    "showPairs": "Montrer les Pairs",
+    "surname": "Prenom",
+    "ticker": "Ticker",
+    "tokenA": "Token A",
+    "tokenB": "Token B",
+    "total": "Total",
+    "url": "URL",
+    "variation": "Variation"
+  },
+
+  "error": {
+    "clientForm": "La combinaison nom, prénom et email est déjà dans la base de données",
+    "exchangeForm": "Cet échange est déjà dans la base de données",
+    "pairForm": "Cette combinaison de pair existe déjà dans la base de données",
+    "tokenForm": "Un token portant ce nom ou ce ticker existe déjà dans la base de données"
+  },
+
+  "home": {
+    "subtitle": "Pour un flux de travail correct, ajoutez les données dans l'ordre suivant",
+    "updatePools": "Actualiser Pools",
+    "step1": "1 - Ajouter: Tokens, Exchanges et Clients",
+    "step2": "2 - Crée les Pairs",
+    "step3": "3 - Ajouter des paires aux pools",
+    "step4": "4 - Mettre à jour les informations quotidiennes des Pools"
+  },
+
+  "menu": {
+    "client": "Client",
+    "exchange": "Exchange",
+    "liquidityPool": "Réserve de liquidité",
+    "pair": "Pair",
+    "token": "Token"
+  },
+
+  "nav": {
+    "search": "Chercher..."
+  },
+
+  "notFound": {
+    "textUp": "Oups! Quelque chose s'est mal passé...",
+    "textDown": "Nous ne trouvons pas la page que vous recherchez."
+  },
+
+  "poolAdd": {
+    "textUp": "Pas de pairs disponibles pour le pool.",
+    "textDown": "Ajouter une nouvelle paire"
+  },
+
+  "poolUpdate": {
+    "lastUpdate": "Dernière mise à jour",
+    "poolsDone": "Les pools d'aujourd'hui sont terminées!"
+  },
+
+  "title": {
+    "capitalAdd": "Ajouter une nouvelle capitale",
+    "capitalCompare": "Comparatif mensuel du capital",
+
+    "clientAdd": "Ajouter un nouveau client",
+    "clientDet": "Détails du client ",
+    "clientMod": "Modifier le client ",
+    "clientCapitals": "Évolution du capital des clients",
+    "clientList": "Liste des clients",
+
+    "exchangeAdd": "Ajouter un nouvel exchange",
+    "exchangeMod": "Modifier l'exchange ",
+    "exchangeList": "Liste des exchanges",
+
+    "header": "OUTIL DE FARMING",
+
+    "info": "Instructions",
+
+    "notFound": "Page non trouvée",
+
+    "pairAdd": "Ajouter une nouvelle pair",
+    "pairMod": "Modifier le par ",
+    "pairList": "Liste des pares",
+
+    "poolAdd": "Ajouter une nouvelle pool",
+    "poolDaily": "Pools quotidiennes",
+    "poolUpdate": "Actualiser les pools",
+    "poolVariation1": "Variation des ",
+    "poolVariation2": " derniers jours",
+    "poolList": "Liste des pools",
+
+    "serverError": "Erreur du serveur",
+
+    "tokenAdd": "Ajouter une nouvelle token",
+    "tokenMod": "Modifier le token ",
+    "tokenList": "Liste des tokens"
+  }
+}

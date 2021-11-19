@@ -65,7 +65,7 @@ form {
 #darklight {
   position: absolute !important;
   z-index: 7;
-  right: -25px;
+  left: 0px;
   top: -30px;
   font-size: 2em;
 }
@@ -166,7 +166,7 @@ form {
   cursor: pointer;
 }
 
-/* Lateral Menu */
+/* Nav Menu */
 
 #menu {
   display: flex;
@@ -250,6 +250,79 @@ form {
   height: 100vh;
 }
 
+/* Language selector */
+
+.langcontainer {
+  position: absolute;
+  overflow: hidden;
+  z-index: 5;
+  height: fit-content;
+  height: -moz-fit-content;
+  width: 150px;
+  top: 0;
+  right: 0;
+}
+
+.langselector {
+  position: relative;
+  background-color: #eaeaea;
+  border: 1px solid;
+  padding: 10px;
+  width: 100px;
+  top: -1px;
+  right: -150px;
+  transition: right 2s;
+  border-radius: 0 0 0 10px;
+}
+
+.langselector::before {
+  border-width: 1px 1px 0 1px;
+    border-style: solid;
+    cursor: pointer;
+    content: 'lang';
+    background-color: #eaeaea;
+    position: absolute;
+    transform: rotate(-90deg);
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    height: 20px;
+    width: 40px;
+    left: -31px;
+    top: 15px;
+}
+
+.langselector:hover {
+  right: -40px;
+}
+
+.lang {
+  display: inline-flex;
+  width: 49%;
+}
+
+.langselector .lang a {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 8px 8px;
+  margin: 0px 6px;
+}
+
+.langselector .lang a:hover {
+  text-decoration: underline;
+}
+
+.langselector .lang a.selectedlang:hover {
+  cursor: default;
+  text-decoration: none;
+}
+
+a.selectedlang {
+  background: #5a5a5a;
+  color: white;
+  font-weight: normal !important;
+  border-radius: 2000px;
+}
 
 /* Screen */
 
@@ -321,22 +394,6 @@ form {
 .mat-header-row {
   height: 50px !important;
   min-height: 50px !important;
-}
-
-.mat-column-client_id,
-.mat-column-token_id,
-.mat-column-exchange_id,
-.mat-column-pair_id,
-.mat-column-pool_id,
-.mat-column-pool_coins,
-.mat-column-edit{
-  flex: 0 0 40px !important;
-  min-width: 40px !important;
-}
-
-.mat-column-pool_coins {
-  flex: 0 0 50px !important;
-  min-width: 50px !important;
 }
 
 .mat-cell,

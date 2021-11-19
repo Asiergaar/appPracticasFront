@@ -1,11 +1,11 @@
 <div id="pairMod" class="lists tarjeta">
-  <h1 class="tituloPagina">Modifica el pair #{{ pair.pair_id }}</h1>
+  <h1 class="tituloPagina">{{'title.clientMod' | translate}} #{{ pair.pair_id }}</h1>
 
   <form (ngSubmit)="submit()" #pairForm="ngForm" class="forms">
     <div class="" id="pairformalert">
       <p>
         <mat-form-field appearance="fill" class="input">
-          <mat-label>Token A</mat-label>
+          <mat-label>{{'data.tokenA' | translate}}</mat-label>
           <mat-select [(ngModel)]="pair.tokenA" id="tokenA" name="tokenA" #name="ngModel" [(value)]="pair.tokenA" required>
             <mat-option *ngFor="let token of tokenList" [value]="token.token_id"><img src="{{token.token_img_url}}" class="tokenimg">{{ token.token_name }}</mat-option>
           </mat-select>
@@ -13,27 +13,27 @@
       </p>
       <p>
         <mat-form-field appearance="fill" class="input">
-          <mat-label>Token B</mat-label>
+          <mat-label>{{'data.tokenB' | translate}}</mat-label>
           <mat-select [(ngModel)]="pair.tokenB" id="tokenB" name="tokenB" #name="ngModel" [(value)]="pair.tokenB" required>
-            <mat-option [value]="-1">Sin token</mat-option>
+            <mat-option [value]="-1">{{'data.noToken' | translate}}</mat-option>
             <mat-option *ngFor="let token of tokenList" [value]="token.token_id"><img src="{{token.token_img_url}}" class="tokenimg">{{ token.token_name }}</mat-option>
           </mat-select>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill" class="input">
-          <mat-label>Exchange</mat-label>
+          <mat-label>{{'data.exchange' | translate}}</mat-label>
           <mat-select [(ngModel)]="pair.pair_exchange" id="pair_exchange" name="pair_exchange" #name="ngModel" [(value)]="pair.pair_exchange" required>
             <mat-option *ngFor="let exchange of exchangeList" [value]="exchange.exchange_id"><img src="{{exchange.exchange_img_url}}" class="tokenimg">{{ exchange.exchange_name }}</mat-option>
         </mat-select>
         </mat-form-field>
       </p>
-      <p class="displaynone alertinfo" id="pairexists">This pair combination already exists on database</p>
+      <p class="displaynone alertinfo" id="pairexists">{{'error.pairForm' | translate}}</p>
     </div>
 
     <div class="forminput">
-      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/PairsList">Volver</button>
-      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!pairForm.form.valid">Modificar</button>
+      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/PairsList">{{'btn.back' | translate}}</button>
+      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!pairForm.form.valid">{{'btn.mod' | translate}}</button>
     </div>
   </form>
 </div>

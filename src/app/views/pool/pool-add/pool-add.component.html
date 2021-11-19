@@ -1,17 +1,17 @@
 <div id="poolAdd" class="lists tarjeta">
-  <h1 class="tituloPagina">Add new pool</h1>
+  <h1 class="tituloPagina">{{'title.poolAdd' | translate}}</h1>
 
   <form (ngSubmit)="submit()" #poolForm="ngForm" class="forms" *ngIf="pairsleft != false; else addpair">
     <p>
       <mat-form-field appearance="legacy" class="input">
-        <mat-label>Invested quantity</mat-label>
+        <mat-label>{{'data.investedQuantity' | translate}}</mat-label>
         <input type="number" matInput [(ngModel)]="pool.invested_quantity" id="invested_quantity"
         name="invested_quantity" #invested_quantity="ngModel" placeholder="" required>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="fill" class="input">
-        <mat-label>Select pair</mat-label>
+        <mat-label>{{'data.selectPair' | translate}}</mat-label>
         <mat-select [(ngModel)]="pool.pool_pair" id="pool_pair" name="pool_pair" #name="ngModel" required>
           <mat-option *ngFor="let pair of notUsedPairs" value="{{ pair.id }}">{{pair.id}} - <img src="{{pair.tokenA_img_url}}" class="tokenimg">{{ pair.tokenA + " (" + pair.tickerA + ")" }} <span *ngIf="pair.tokenB">/ <img src="{{pair.tokenB_img_url}}" class="tokenimg">{{pair.tokenB + " (" + pair.tickerB + ")" }}</span> (<img src="{{pair.exchange_img_url}}" class="tokenimg">{{ pair.exchange }})</mat-option>
         </mat-select>
@@ -19,8 +19,8 @@
     </p>
 
     <div class="forminput">
-      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/PoolsList">Volver</button>
-      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">Añadir</button>
+      <button type="button" mat-raised-button class="backbtn" color="warn" routerLink="/PoolsList">{{'btn.back' | translate}}</button>
+      <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">{{'btn.add' | translate}}</button>
     </div>
 
 
@@ -28,10 +28,10 @@
 
   <ng-template #addpair>
     <div class="nopairtopool">
-      <h2>No pairs available for the pool.</h2>
+      <h2>{{'poolAdd.textUp' | translate}}</h2>
       <img class="logopooldone" src="../../../assets/images/pandaface.png">
-      <h2>Add a new pair:</h2>
-      <button type="submit" routerLink="/AddPair" mat-raised-button class="addbtn">Add Pair</button>
+      <h2>{{'poolAdd.textDown' | translate}}:</h2>
+      <button type="submit" routerLink="/AddPair" mat-raised-button class="addbtn">{{'btn.addPair' | translate}}</button>
     </div>
   </ng-template>
 </div>

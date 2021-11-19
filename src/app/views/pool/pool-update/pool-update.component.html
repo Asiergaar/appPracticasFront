@@ -1,47 +1,47 @@
 <div id="poolUpdate" class="lists tarjeta">
 
-  <h1 class="tituloPagina">Update the pools</h1>
+  <h1 class="tituloPagina">{{'title.poolUpdate' | translate}}</h1>
 
   <div *ngIf="!poolToDo; else elseBlock" class="poolsdone">
-    <h2>Today's pools are done!</h2>
+    <h2>{{'poolUpdate.poolsDone' | translate}}</h2>
     <img class="logopooldone" src="../../../assets/images/pandaface.png">
-    <h2>Last update: {{poolStatus[0].pool_date | date: 'dd/MM/yyyy HH:MM' }}</h2>
-    <button type="submit" routerLink="/PoolsByDay" mat-raised-button class="poolupdate addbtn">View daily pools</button>
+    <h2>{{'poolUpdate.lastUpdate' | translate}}: {{poolStatus[0].pool_date | date: 'dd/MM/yyyy HH:MM' }}</h2>
+    <button type="submit" routerLink="/PoolsByDay" mat-raised-button class="poolupdate addbtn">{{'btn.viewDailyPools' | translate}}</button>
   </div>
 
   <ng-template #elseBlock>
-    <button type="submit" routerLink="/AddPool" mat-raised-button class="poolupdate addbtn">Add pool</button>
-    <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
+    <button type="submit" routerLink="/AddPool" mat-raised-button class="poolupdate addbtn">{{'btn.addPool' | translate}}</button>
+    <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">{{'btn.addCapital' | translate}}</button>
 
     <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
       <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
         <ng-container matColumnDef="poolupdate_pair">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Pool pair</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.poolPair' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pool">{{pool.pool_pair}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="exchange">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Exchange</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.exchange' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pool"><img src="{{pool.exchange_img_url}}" class="tokenimg">{{pool.exchange}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tokenA">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Token A</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenA' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pool"><img src="{{pool.tokenA_img_url}}" class="tokenimg">{{pool.tokenA}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tokenB">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Token B</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenB' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pool"><img *ngIf="pool.tokenB" src="{{pool.tokenB_img_url}}" class="tokenimg">{{pool.tokenB}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="add">
-            <mat-header-cell *matHeaderCellDef>Add</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{'data.add' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pool">
                 <p *ngIf="!donePools[pool.pool_pair]; else done">
                   <mat-form-field appearance="legacy" class="input">
-                    <mat-label>Quantity</mat-label>
+                    <mat-label>{{'data.quantity' | translate}}</mat-label>
                     <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" class="autofocus" ngModel required>
                   </mat-form-field>
                 </p>
@@ -55,8 +55,8 @@
       </mat-table>
 
       <div class="forminput">
-        <button type="reset" mat-raised-button class="backbtn" color="warn">Reset</button>
-        <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">Añadir</button>
+        <button type="reset" mat-raised-button class="backbtn" color="warn">{{'btn.reset' | translate}}</button>
+        <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">{{'data.add' | translate}}</button>
       </div>
     </form>
   </ng-template>

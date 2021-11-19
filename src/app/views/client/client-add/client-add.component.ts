@@ -10,6 +10,7 @@ import { CapitalsService } from 'src/app/shared/services/capital/capitals.servic
 import { ValidatorService } from 'src/app/shared/services/validator/validator.service';
 
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-client-add',
@@ -103,6 +104,5 @@ export class ClientAddComponent implements OnInit {
                           }
     })
   }
-
 
 }

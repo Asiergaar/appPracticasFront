@@ -1,28 +1,28 @@
 <div *ngIf="poolData.length == 0 || poolData[0] == 0 || poolData[0][1] == null || showinfo == true; else data">
   <div class="homeinfo">
-    <button  *ngIf="poolData.length != 0 || poolData[0] != 0 || poolData[0][1] != null" type="submit" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">Back</button>
+    <button  *ngIf="poolData.length != 0 || poolData[0] != 0 || poolData[0][1] != null" type="submit" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">{{'btn.back' | translate}}</button>
   </div>
   <div class="home firsthome tarjeta">
-    <h1 class="tituloPagina">Farming Tool</h1>
-    <h2>For a correct workflow, add the data in the following order:</h2>
+    <h1 class="tituloPagina">{{'title.info' | translate}}</h1>
+    <h2>{{'home.subtitle' | translate}}:</h2>
     <div class="stepslist">
       <div class="steps">
-        <p>1 - Add: Tokens, Exchanges & Clientes</p>
-        <button type="submit" routerLink="/AddToken" mat-raised-button class="hmbtn">Add Token</button>
-        <button type="submit" routerLink="/AddExchange" mat-raised-button class="hmbtn">Add Exchange</button>
-        <button type="submit" routerLink="/AddClient" mat-raised-button class="hmbtn">Add Client</button>
+        <p>{{'home.step1' | translate}}</p>
+        <button type="submit" routerLink="/AddToken" mat-raised-button class="hmbtn">{{'btn.addToken' | translate}}</button>
+        <button type="submit" routerLink="/AddExchange" mat-raised-button class="hmbtn">{{'btn.addExchange' | translate}}</button>
+        <button type="submit" routerLink="/AddClient" mat-raised-button class="hmbtn">{{'btn.addClient' | translate}}</button>
       </div>
       <div class="steps">
-        <p>2 - Create the Pairs</p>
-        <button type="submit" routerLink="/AddPair" mat-raised-button class="hmbtn">Add Pair</button>
+        <p>{{'home.step2' | translate}}</p>
+        <button type="submit" routerLink="/AddPair" mat-raised-button class="hmbtn">{{'btn.addPair' | translate}}</button>
       </div>
       <div class="steps">
-        <p>3 - Add the Pairs to the Pools</p>
-        <button type="submit" routerLink="/AddPool" mat-raised-button class="hmbtn">Add Pool</button>
+        <p>{{'home.step3' | translate}}</p>
+        <button type="submit" routerLink="/AddPool" mat-raised-button class="hmbtn">{{'btn.addPool' | translate}}</button>
       </div>
       <div class="steps">
-        <p>4 - Update the information of the Pools daily</p>
-        <button type="submit" routerLink="/UpdatePools" mat-raised-button class="hmbtn">Update Pools</button>
+        <p>{{'home.step4' | translate}}</p>
+        <button type="submit" routerLink="/UpdatePools" mat-raised-button class="hmbtn">{{'btn.updatePools' | translate}}</button>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@
 
 <ng-template #data>
   <div class="homeinfo">
-    <button type="submit" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">App Info</button>
+    <button type="submit" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">{{'btn.appInfo' | translate}}</button>
   </div>
   <app-capital-total-compare></app-capital-total-compare>
   <app-pool-daily></app-pool-daily>

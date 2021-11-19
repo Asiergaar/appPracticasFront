@@ -7,8 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Client } from 'src/app/shared/interfaces/client';
 import { ClientsService } from 'src/app/shared/services/client/clients.service';
-
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-clients-list',

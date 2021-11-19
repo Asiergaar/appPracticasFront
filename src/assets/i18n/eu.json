@@ -1,0 +1,161 @@
+{
+  "btn": {
+    "add": "Gehitu",
+    "addCapital": "Kapitala Gehitu",
+    "addClient": "Bezeroa Gehitu",
+    "addExchange": "Exchange-a Gehitu",
+    "addPair": "Pair-a Gehitu",
+    "addPool": "Pool-a Gehitu",
+    "addToken": "Token-a Gehitu",
+    "appInfo": "Aplikazioaren informazioa",
+    "back": "Atzera",
+    "clientsCapitals": "Bezeroen Kapitalak",
+    "clientsList": "Bezeroen zerrenda",
+    "mod": "Aldatu",
+    "modClient": "Bezeroa Aldatu",
+    "poolsByDay": "Eguneko pool-ak",
+    "poolsList": "Pool zerrenda",
+    "reset": "Berrabiarazi",
+    "updatePools": "Pool-ak eguneratu",
+    "viewDailyPools": "Ikusi eguneko pool-ak"
+  },
+
+  "clientDet": {
+    "actual": "Egungo Kapitala",
+    "benefit": "Etekina",
+    "benefitPercentage": "Ehuneko etekina",
+    "email": "Email-a",
+    "initialCapital": "Hasierako kapitala",
+    "lastProgress": "Azkeneko aurrerapena",
+    "modified1": "Aldatutako kapitala",
+    "modified2": "",
+    "name": "Izena",
+    "progress": "aurrerapena",
+    "since": "Bezero sartze data",
+    "totalProgress": "Kapital totalaren aurrerapena",
+    "variousDates": "data ezberdinak"
+  },
+
+  "data": {
+    "add": "Gehitu",
+    "actual": "Egungo",
+    "benefit": "Etekina",
+    "coins": "Txanponak",
+    "date": "Data",
+    "divergence": "Dibergentzia",
+    "edit": "Editatu",
+    "email": "Email-a",
+    "entryDate": "Sartze data",
+    "exchange": "Exchange",
+    "hideClients": "Bezeroak Ezkutatu",
+    "hidePairs": "Pair-ak Ezkutatu",
+    "id": "id",
+    "increment": "Gehikuntza",
+    "initial": "Hasierako",
+    "initialCapital": "Hasierako Kapitala",
+    "investedQuantity": "Inbertitutako kopurua",
+    "lastCapital": "Azkeneko Kapitala",
+    "logoUrl": "logoaren URL-a",
+    "modifiedCapital": "ALdatutako Kapitala",
+    "name": "Izena",
+    "newCapital": "Kapital berria",
+    "noToken": "Token gabe",
+    "pair": "Pair",
+    "poolDate": "Pool-aren data",
+    "poolPair": "Pool-aren pair-a",
+    "quantity": "Kopurua",
+    "realIncrement": "Gehikuntza erreala",
+    "selectClient": "Bezeroa aukeratu",
+    "selectPair": "Pair-a aukeratu",
+    "showClients": "Bezeroak erakutsi",
+    "showPairs": "Pair-ak erakutsi",
+    "surname": "Abizenak",
+    "ticker": "Ticker",
+    "tokenA": "Token A",
+    "tokenB": "Token B",
+    "total": "Totala",
+    "url": "URL-a",
+    "variation": "Aldakuntza"
+  },
+
+  "error": {
+    "clientForm": "Izen, abizen eta email konbinazioa datu-basean jada sartuta dago",
+    "exchangeForm": "Exchange hau datu-basean jada sartuta dago",
+    "pairForm": "Pair konbinazio hau datu-basean jada sartuta dago",
+    "tokenForm": "Token izen edo ticker hau datu-basean jada sartuta dago"
+  },
+
+  "home": {
+    "subtitle": "Lan-fluxu egoki baterako, gehitu datuak hurrengo ordenean",
+    "step1": "1 - Gehitu: Token-ak, Exchange-ak eta Bezeroak",
+    "step2": "2 - Sortu Pair-ak",
+    "step3": "3 - Gehitu Pair-ak Pool-etara",
+    "step4": "4 - Eguneratu Pool-en informazioa egunero"
+  },
+
+  "menu": {
+    "client": "Bezeroak",
+    "exchange": "Exchange",
+    "liquidityPool": "Pool-en Liquidezia",
+    "pair": "Pair",
+    "token": "Token",
+    "updatePools": "Pool-ak eguneratu"
+  },
+
+  "nav": {
+    "search": "Bilatu..."
+  },
+
+  "notFound": {
+    "textUp": "Kontxo! Zerbait gaiki joan da...",
+    "textDown": "Ezin dugu aurkitu bilatzen duzun orrialdea."
+  },
+
+  "poolAdd": {
+    "textUp": "Ez daude pair-ak eskuragarri pool-etarako.",
+    "textDown": "Gehitu pair berri bat"
+  },
+
+  "poolUpdate": {
+    "lastUpdate": "Azkeneko eguneratzea",
+    "poolsDone": "Gaurko pool-ak eginak daude!"
+  },
+
+  "title": {
+    "capitalAdd": "Gehitu kapital berri bat",
+    "capitalCompare": "Hileko kapitalen konparazioa",
+
+    "clientAdd": "Gehitu bezero berri bat",
+    "clientDet": "Bezeroaren xehetasunak ",
+    "clientMod": "Bezeroa aldatu ",
+    "clientCapitals": "Bezeroen kapitalen eboluzioa",
+    "clientList": "Bezeroen zerrenda",
+
+    "exchangeAdd": "Gehitu exchange berri bat",
+    "exchangeMod": "Exchange-a aldatu ",
+    "exchangeList": "Exchange-en zerrenda",
+
+    "header": "FARMING TRESNA",
+
+    "info": "Argibideak",
+
+    "notFound": "Orrialdea ezin da aurkitu",
+
+    "pairAdd": "Gehitu pair berri bat",
+    "pairMod": "Pair-a aldatu ",
+    "pairList": "Pair-en zerrenda",
+
+    "poolAdd": "Gehitu pool berri bat",
+    "poolDaily": "Eguneroko Pool-ak",
+    "poolUpdate": "Pool-ak eguneratu",
+    "poolVariation1": "Azken ",
+    "poolVariation2": " egunetako aldakuntza",
+    "poolList": "Pool-en zerrenda",
+
+    "serverError": "Zerbitzarian errorea",
+
+    "tokenAdd": "Gehitu token berri bat",
+    "tokenMod": "Token-a aldatu ",
+    "tokenList": "Token-en zerrenda"
+  }
+}

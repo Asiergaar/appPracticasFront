@@ -4,26 +4,32 @@
 
 <div id="poolDaily" class="lists tarjeta">
 
-  <h1 class="tituloPagina">Daily Pools</h1>
+  <h1 class="tituloPagina">{{'title.poolDaily' | translate}}</h1>
 
-  <button type="submit" routerLink="/PoolsList" mat-raised-button class="pbdbtn">Pools list</button>
-  <button type="submit" routerLink="/AddPool" mat-raised-button class="addbtn">Add Pool</button>
-  <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">Add Capital</button>
+  <button type="submit" routerLink="/PoolsList" mat-raised-button class="pbdbtn">{{'btn.poolsList' | translate}}</button>
+  <button type="submit" routerLink="/AddPool" mat-raised-button class="addbtn">{{'btn.addPool' | translate}}</button>
+  <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">{{'btn.addCapital' | translate}}</button>
 
   <mat-form-field class="listFilter poolslist">
-    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+    <input (keyup)="applyFilter(target($event).value)" matInput placeholder="{{'nav.search' | translate}}">
   </mat-form-field>
 
   <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
     <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header><div *ngIf="col == 'Date'|| col == 'TOTAL' || col == 'Increment' || col == 'Benefit'; else realinc">{{col}}</div></mat-header-cell>
-          <ng-template #realinc> <span *ngIf="col == 'NewCapital'; else newcap">{{col.substring(0,3) + ' ' + col.substring(3,col.length)}} </span> </ng-template>
-          <ng-template #newcap> <span *ngIf="col == 'RealIncrement'; else show">{{col.substring(0,4) + ' ' + col.substring(4,col.length)}} </span> </ng-template>
-          <ng-template #show> <div *ngIf="col == 'Show Pairs' || col == 'Hide Pairs'; else othercols" (click)="submit()">{{col}} </div> </ng-template>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div *ngIf="col == 'Date'; else tot">{{'data.date' | translate}}</div>
+          <ng-template #tot><div *ngIf="col == 'TOTAL'; else inc">{{('data.total' | translate).toUpperCase()}}</div></ng-template>
+          <ng-template #inc><div *ngIf="col == 'Increment'; else ben">{{'data.increment' | translate}}</div></ng-template>
+          <ng-template #ben><div *ngIf="col == 'Benefit'; else nwc">{{'data.benefit' | translate}}</div></ng-template>
+          <ng-template #nwc> <span *ngIf="col == 'NewCapital'; else rei">{{'data.newCapital' | translate}}</span></ng-template>
+          <ng-template #rei> <span *ngIf="col == 'RealIncrement'; else sho">{{'data.realIncrement' | translate}}</span> </ng-template>
+          <ng-template #sho> <div *ngIf="col == 'Show Pairs'; else hid" (click)="submit()">{{'data.showPairs' | translate}}</div></ng-template>
+          <ng-template #hid> <div *ngIf="col == 'Hide Pairs'; else othercols" (click)="submit()">{{'data.hidePairs' | translate}}</div></ng-template>
           <ng-template #othercols> <span *ngIf="col.substring(col.length - 4, col.length) == 'null'; else nullcol" class="pairsTable">{{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length - 6)}}</span>
             <ng-template #nullcol> <span class="pairsTable">{{col.substring(0, col.indexOf(":")+1)}}<br>{{ col.substring(col.indexOf(":")+2, col.length)}}</span></ng-template>
           </ng-template>
+        </mat-header-cell>
         <mat-cell *matCellDef="let pool">
 
           <span *ngIf="col == 'Increment' || col == 'RealIncrement'; else show">{{ dollarUS.format(pool[col]) }}</span>

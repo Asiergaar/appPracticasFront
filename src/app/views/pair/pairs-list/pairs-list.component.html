@@ -4,38 +4,38 @@
 
 <div id="pairList" class="lists tarjeta">
 
-  <h1 class="tituloPagina">List of pairs</h1>
+  <h1 class="tituloPagina">{{'title.pairList' | translate}}</h1>
 
-  <button type="submit" routerLink="/AddPair" mat-raised-button class="addbtn">Add Pair</button>
+  <button type="submit" routerLink="/AddPair" mat-raised-button class="addbtn">{{'btn.addPair' | translate}}</button>
 
     <mat-form-field class="listFilter poolslist">
-      <input (keyup)="applyFilter(target($event).value)" matInput placeholder="Search...">
+      <input (keyup)="applyFilter(target($event).value)" matInput placeholder="{{'nav.search' | translate}}">
     </mat-form-field>
 
   <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
     <ng-container matColumnDef="pair_id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.id' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let pair">{{pair.id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="pair_exchange">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Exchange</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.exchange' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let pair"><img src="{{pair.exchange_img_url}}" class="tokenimg">{{pair.exchange}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tokenA">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Token A</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenA' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let pair"><img src="{{pair.tokenA_img_url}}" class="tokenimg">{{pair.tokenA}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tokenB">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Token B</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenB' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let pair"><img *ngIf="pair.tokenB" src="{{pair.tokenB_img_url}}" class="tokenimg">{{pair.tokenB}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>{{'data.edit' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let pair"><a routerLink="/ModPair/{{ pair.id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
     </ng-container>
 

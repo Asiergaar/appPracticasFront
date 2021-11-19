@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { CapitalsService } from 'src/app/shared/services/capital/capitals.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class CapitalTotalCompareComponent implements OnInit {
   public dataSource: any;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
-  constructor(private capitalsService: CapitalsService, private router: Router) {
+  constructor(private capitalsService: CapitalsService, private router: Router, private translate: TranslateService) {
     this.totals = [];
     this.displayedColumns = ['pastmonth', 'comparison', 'thismonth'];
   }

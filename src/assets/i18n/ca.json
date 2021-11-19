@@ -1,0 +1,161 @@
+{
+  "btn": {
+    "add": "Afegir",
+    "addCapital": "Afegir Capital",
+    "addClient": "Afegir Client",
+    "addExchange": "Afegir Exchange",
+    "addPair": "Afegir Pair",
+    "addPool": "Afegir Pool",
+    "addToken": "Afegir Token",
+    "appInfo": "Informació de l'app",
+    "back": "Tornar",
+    "clientsCapitals": "Capitals dels Clients",
+    "clientsList": "Llista de Clients",
+    "mod": "Modificar",
+    "modClient": "Modificar Client",
+    "poolsByDay": "Pools diaris",
+    "poolsList": "Llista de Pools",
+    "reset": "Reiniciar",
+    "updatePools": "Actualitzar Pools",
+    "viewDailyPools": "Veure pools diaris"
+  },
+
+  "clientDet": {
+    "actual": "Capital actual",
+    "benefit": "Benefici",
+    "benefitPercentage": "Percentatge de benefici",
+    "email": "Email",
+    "initialCapital": "Capital inicial",
+    "lastProgress": "Últims progressos",
+    "modified1": "Capital modificat",
+    "modified2": "el",
+    "name": "Nom",
+    "progress": "progrés",
+    "since": "Cliente des",
+    "totalProgress": "Progrés total del capital",
+    "variousDates": "diverses dates"
+  },
+
+  "data": {
+    "add": "Afegir",
+    "actual": "Actual",
+    "benefit": "Benefici",
+    "coins": "Monedes",
+    "date": "Data",
+    "divergence": "Divergència",
+    "edit": "Edita",
+    "email": "Email",
+    "entryDate": "Data d'entrada",
+    "exchange": "Exchange",
+    "hideClients": "Amagar clients",
+    "hidePairs": "Amagar Pairs",
+    "id": "id",
+    "increment": "Increment",
+    "initial": "Inicial",
+    "initialCapital": "Capital inicial",
+    "investedQuantity": "Quantitat invertida",
+    "lastCapital": "Darrer capital",
+    "logoUrl": "URL del logo",
+    "modifiedCapital": "Capital modificat",
+    "name": "Nome",
+    "newCapital": "Capital nou",
+    "noToken": "Sense token",
+    "pair": "Pair",
+    "poolDate": "Data dels Pools",
+    "poolPair": "Pair del Pool",
+    "quantity": "Quantitat",
+    "realIncrement": "Increment real",
+    "selectClient": "Selecciona un client",
+    "selectPair": "Selecciona un pair",
+    "showClients": "Mostrar Clients",
+    "showPairs": "Mostrar Pairs",
+    "surname": "Cognoms",
+    "ticker": "Ticker",
+    "tokenA": "Token A",
+    "tokenB": "Token B",
+    "total": "Total",
+    "url": "URL",
+    "variation": "Variació"
+  },
+
+  "error": {
+    "clientForm": "La combinació de nom, cognoms i email ja és a la base de dades",
+    "exchangeForm": "Aquest exchange ja és a la base de dades",
+    "pairForm": "Aquesta combinació de pairs ja existeix a la base de dades",
+    "tokenForm": "Ja hi ha un token amb aquest nom o ticker a la base de dades"
+  },
+
+  "home": {
+    "subtitle": "Per a un flux de treball correcte, afegeix les dades en l'ordre següent",
+    "step1": "1 - Afegir: Tokens, Exchanges i Clients",
+    "step2": "2 - Crea els Pairs",
+    "step3": "3 - Afegir els Pairs als Pools",
+    "step4": "4 - Actualitza la informació diària dels Pools"
+  },
+
+  "menu": {
+    "client": "Client",
+    "exchange": "Exchange",
+    "liquidityPool": "Liquidesa dels Pools",
+    "pair": "Pair",
+    "token": "Token",
+    "updatePools": "Actualitzar Pools"
+  },
+
+  "nav": {
+    "search": "Cerca..."
+  },
+
+  "notFound": {
+    "textUp": "Ui! alguna cosa no ha anat bé...",
+    "textDown": "No podem trobar la pàgina que cerques."
+  },
+
+  "poolAdd": {
+    "textUp": "No hi ha pairs disponibles per al pool.",
+    "textDown": "Afegeix un nou pair"
+  },
+
+  "poolUpdate": {
+    "lastUpdate": "Última actualització",
+    "poolsDone": "Els pools d'avui estan fets!"
+  },
+
+  "title": {
+    "capitalAdd": "Afegeix un capital nou",
+    "capitalCompare": "Comparació mensual de capital",
+
+    "clientAdd": "Afegeix un client nou",
+    "clientDet": "Detall del client ",
+    "clientMod": "Modifica el client ",
+    "clientCapitals": "Evolució del capital dels clients",
+    "clientList": "Llista de clients",
+
+    "exchangeAdd": "Afegeix un nou exchange",
+    "exchangeMod": "Modifica el exchange ",
+    "exchangeList": "Llista de exchanges",
+
+    "header": "EINA DE FARMING",
+
+    "info": "Instruccions",
+
+    "notFound": "Pàgina no trobada",
+
+    "pairAdd": "Afegeix un pair nou",
+    "pairMod": "Modifica el pair ",
+    "pairList": "Llista de pairs",
+
+    "poolAdd": "Afegeix un pool nou",
+    "poolDaily": "Pools diaris",
+    "poolUpdate": "Actualitza els pools",
+    "poolVariation1": "Variació dels darrers ",
+    "poolVariation2": " dies",
+    "poolList": "Llista de pools",
+
+    "serverError": "Error al servidor",
+
+    "tokenAdd": "Afegeix un nou token",
+    "tokenMod": "Modifica el token ",
+    "tokenList": "Llista de tokens"
+  }
+}
