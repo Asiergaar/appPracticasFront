@@ -5,7 +5,7 @@ body {
 }
 
 .displaynone {
-  display: none;
+  display: none !important;
 }
 
 .tituloPagina,
@@ -187,12 +187,12 @@ form {
   background-color: rgb(230, 230, 230);
   text-align: center;
   margin: 10px auto;
+  border: 2px solid rgb(51, 51, 51);
 }
 
 .itemmenu:hover {
   background-color: rgb(120, 120, 120);
-  outline: 2px solid black;
-  outline-offset: 0px;
+  border: 2px solid black;
 }
 
 .itemmenu:hover p {
@@ -201,8 +201,7 @@ form {
 
 .menuhover {
   background-color: rgb(120, 120, 120);
-  outline: 2px solid black;
-  outline-offset: 0px;
+  border: 2px solid black;
 }
 
 .menuhover p {
@@ -256,11 +255,15 @@ form {
   position: absolute;
   overflow: hidden;
   z-index: 5;
-  height: fit-content;
-  height: -moz-fit-content;
+  height: 70px;
   width: 150px;
   top: 0;
   right: 0;
+}
+
+.langcontainer:hover {
+  height: fit-content;
+  height: -moz-fit-content;
 }
 
 .langselector {
@@ -271,24 +274,23 @@ form {
   width: 100px;
   top: -1px;
   right: -150px;
-  transition: right 2s;
   border-radius: 0 0 0 10px;
 }
 
 .langselector::before {
   border-width: 1px 1px 0 1px;
-    border-style: solid;
-    cursor: pointer;
-    content: 'lang';
-    background-color: #eaeaea;
-    position: absolute;
-    transform: rotate(-90deg);
-    text-align: center;
-    border-radius: 5px 5px 0 0;
-    height: 25px;
-    width: 45px;
-    left: -36px;
-    top: 17px;
+  border-style: solid;
+  cursor: pointer;
+  content: 'lang';
+  background-color: #eaeaea;
+  position: absolute;
+  transform: rotate(-90deg);
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  height: 25px;
+  width: 45px;
+  left: -36px;
+  top: 17px;
 }
 
 .langselector:hover {
@@ -1137,6 +1139,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 }
 
 .poolvarPoolCard .titulo {
+  position: relative;
   background: rgb(44, 44, 44);
   color: white;
   margin: 0;
@@ -1155,6 +1158,20 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 
 .poolvarPoolCard .titulo .poolvartoken {
   margin: 0 2%;
+}
+
+.poolvarPoolCard .titulo .poolvartoken.freearrow {
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+  top: 6px;
+}
+
+.poolvarPoolCard .titulo .poolvartoken.freeclose {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 6px;
 }
 
 .poolvarDayData, .poolvarTotalData {
@@ -1268,11 +1285,11 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 /* Lateral Menu */
 .dark #menu { background-color: rgb(20, 20, 20) !important; }
 .dark #menu a { color: black !important; }
-.dark .itemmenu { color: white; background-color: rgb(120, 120, 120) !important; }
+.dark .itemmenu { color: white; background-color: rgb(120, 120, 120) !important;  border: 2px solid rgb(20, 20, 20) !important; }
 .dark .itemmenu p { color: white; font-weight: normal !important;}
-.dark .itemmenu:hover { background-color: rgb(230, 230, 230) !important; outline: 2px solid white !important; }
-.dark .itemmenu:hover p { color: black !important; }
-.dark .menuhover { background-color: rgb(7, 7, 7) !important; outline: 2px solid white !important; }
+.dark .itemmenu:hover { background-color: black !important; border: 2px solid white !important; }
+.dark .itemmenu:hover p { color: white !important; }
+.dark .menuhover { background-color: rgb(7, 7, 7) !important; border: 2px solid white !important; }
 
 /* Screen */
 .dark .tarjeta { background-color: #606060 !important; }

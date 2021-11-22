@@ -50,4 +50,14 @@ export class PoolVariationComponent implements OnInit {
     })
   }
 
+  public close(card: string) {
+    document.getElementById(card)?.classList.add('displaynone');
+  }
+
+  public hideshow(card: string, id: number) {
+    document.getElementById("poolvararrowup"+id)?.classList.toggle("displaynone");
+    document.getElementById("poolvararrowdown"+id)?.classList.toggle("displaynone");
+    document.getElementById(card+id)?.classList.toggle('displaynone');
+  }
+
 }
