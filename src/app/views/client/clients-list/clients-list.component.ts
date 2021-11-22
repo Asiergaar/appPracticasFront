@@ -21,9 +21,11 @@ export class ClientsListComponent implements OnInit {
   public displayedColumns: Array<string> = ["client_id", "client_name", "email", "entry_date", "start_capital", "benefit", "nwcap", 'last_capital', "edit"];
   public dataSource: any;
   public totalBenefit: number;
+  public pagesize: any;
   public max: number;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
   public message: string;
+  public allInitial: boolean = true;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,10 +40,13 @@ export class ClientsListComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.clientList = await this.getClients();
+    this.checkIntials();
     this.max = this.clientList.length;
+    this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.max;
     this.utils.menuHover('menuclient');
   }
 
@@ -62,15 +67,23 @@ export class ClientsListComponent implements OnInit {
   }
 
   // event and filter for the filtering
-  target(event: KeyboardEvent): HTMLInputElement {
+  public target(event: KeyboardEvent): HTMLInputElement {
     if (!(event.target instanceof HTMLInputElement)) {
       throw new Error("wrong target");
     }
     return event.target;
   }
 
-  applyFilter(filterValue: string){
+  public applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  public checkIntials(){
+    for (let i = this.clientList.length-1; i > 0; i--){
+      if (!this.clientList[i].isInitial) {
+        this.allInitial = false;
+        break;
+      }
+    }
+  }
 }

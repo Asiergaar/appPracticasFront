@@ -4,7 +4,7 @@
 
   <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms forminput">
     <p>
-      <mat-form-field appearance="fill" class="input">
+      <mat-form-field appearance="fill" class="input" (keypress.enter)="submit(poolForm.value)">
         <mat-label>{{'data.selectClient' | translate}}</mat-label>
         <mat-select id="newcapital_client" ngModel name="newcapital_client" required>
           <mat-option *ngFor="let cli of clients" value="{{ cli.client_id }}">{{cli.client_name}}, {{cli.client_surname}}</mat-option>
@@ -12,12 +12,12 @@
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="legacy" class="input">
+      <mat-form-field appearance="legacy" class="input" (keypress.enter)="submit(poolForm.value)">
         <mat-label>{{'data.newCapital' | translate}}</mat-label>
         <input type="number" ngModel matInput id="newcapital_quantity" name="newcapital_quantity" required>
       </mat-form-field>
     </p>
-    <button routerLink="/ClientsCapitals" mat-raised-button color="warn" class="backbtn">{{'btn.back' | translate}}</button>
+    <button type="button" mat-raised-button color="warn" class="backbtn" routerLink="/ClientsCapitals">{{'btn.back' | translate}}</button>
     <button type="submit" mat-raised-button class="submitbtn" [disabled]="!poolForm.form.valid">{{'btn.add' | translate}}</button>
   </form>
 </div>

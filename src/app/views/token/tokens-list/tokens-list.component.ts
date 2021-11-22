@@ -18,6 +18,7 @@ export class TokensListComponent implements OnInit {
   public tokenList: Array<any>;
   public displayedColumns: Array<string> = ["token_id", "token_name", "ticker", "edit"];
   public dataSource: any;
+  public pagesize: any;
   public max: number;
   public message: string;
   public imgurl: string;
@@ -37,9 +38,11 @@ export class TokensListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.tokenList = await this.getTokens();
     this.max = this.tokenList.length;
+    this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.max;
     this.utils.menuHover('menutoken');
   }
 

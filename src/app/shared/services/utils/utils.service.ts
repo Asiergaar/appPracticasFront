@@ -19,5 +19,15 @@ export class UtilsService {
     }
   }
 
+  // Adjust pagination items with given number
+  public pageSize(num:number) {
+    let ret = [];
+    if (num > 10) { ret.push(10); }
+    if (num > 16) { ret.push(16); }
+    if (num > 21) { ret.push(21); }
+    ret.push(num);
+    return ret;
+  }
+
 
 }

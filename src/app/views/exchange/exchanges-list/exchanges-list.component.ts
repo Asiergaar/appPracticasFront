@@ -17,6 +17,7 @@ export class ExchangesListComponent implements OnInit {
   public exchangeList: Array<any>;
   public displayedColumns: Array<string> = ["exchange_id", "exchange_name", "url", "edit"];
   public dataSource: any;
+  public pagesize: any;
   public max: number;
   public message: string;
   public imgurl: string;
@@ -25,7 +26,7 @@ export class ExchangesListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.exchangeList = [];
+    this.exchangeList = [4];
     this.activatedRoute.queryParams.subscribe(params => {
       this.message = params['message'];
       this.imgurl = params['url'];
@@ -36,9 +37,11 @@ export class ExchangesListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.exchangeList = await this.getExchanges();
     this.max = this.exchangeList.length;
+    this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.exchangeList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.max;
     this.utils.menuHover('menuexchange');
   }
 

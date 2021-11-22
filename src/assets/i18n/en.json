@@ -36,6 +36,10 @@
     "variousDates": "various dates"
   },
 
+  "clientList": {
+    "asterisk": "Marked clients are not since the beginning."
+  },
+
   "data": {
     "add": "Add",
     "actual": "Actual",

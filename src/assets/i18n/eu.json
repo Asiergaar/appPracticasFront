@@ -36,6 +36,10 @@
     "variousDates": "data ezberdinak"
   },
 
+  "clientList": {
+    "asterisk": "Markatutako bezeroak ez daude hasieratik."
+  },
+
   "data": {
     "add": "Gehitu",
     "actual": "Egungo",

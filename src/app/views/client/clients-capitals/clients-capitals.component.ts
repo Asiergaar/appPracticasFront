@@ -22,6 +22,7 @@ export class ClientsCapitalsComponent implements OnInit {
   public displayedColumnsLong: Array<string> = [];
   public displayedColumnsShort: Array<string> = ['Date', 'Benefit', 'Total', 'Divergence', 'Show Clients'];
   public dataSource: any;
+  public pagesize: any;
   public max: number;
   public columnsShown: boolean = false;
   public columnsBtn: string = "Show Clients";
@@ -47,9 +48,11 @@ export class ClientsCapitalsComponent implements OnInit {
     }
     this.displayedColumns = this.displayedColumnsShort;
     this.max = this.clientsCapitals.length;
+    this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.max;
     this.paginator.pageIndex = this.paginator.pageSize;
     this.utils.menuHover('menuclient');
   }

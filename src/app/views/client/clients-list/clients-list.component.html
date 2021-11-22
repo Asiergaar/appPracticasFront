@@ -38,12 +38,19 @@
 
     <ng-container matColumnDef="start_capital">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.initialCapital' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.start_capital)}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.start_capital)}}
+          <span *ngIf="!client.isInitial">*</span>
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nwcap">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.modifiedCapital' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="client.nwcap">&nbsp; {{ dollarUS.format(client.nwcap) }}</span></mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">
+          <span *ngIf="client.nwcap">
+            <span *ngIf="client.isInitial; else other">&nbsp; {{ dollarUS.format(client.nwcap) }}</span>
+            <ng-template #other><span *ngIf="client.nwcap - client.start_capital != 0">&nbsp; {{ dollarUS.format(client.nwcap - client.start_capital) }}</span></ng-template>
+          </span>
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="benefit">
@@ -68,5 +75,6 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
   </mat-table>
-  <mat-paginator [pageSizeOptions]="[10, 15, 21, max]" showFirstLastButtons class="pagination"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="pagesize" showFirstLastButtons class="pagination"></mat-paginator>
+  <p *ngIf="!allInitial" class="initialclients">* {{'clientList.asterisk' | translate}}</p>
 </div>

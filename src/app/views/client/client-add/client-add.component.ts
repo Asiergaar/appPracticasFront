@@ -71,7 +71,6 @@ export class ClientAddComponent implements OnInit {
                             // If the pools are started
                             if(this.poolsStarted) {
                               const quantity = this.client.start_capital;
-                              this.client.start_capital = 0;
                               this.clientsService.addClient(this.client).subscribe(
                                 (data: any)    => { this.client.client_id = data.data.client_id; },
                                 (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },

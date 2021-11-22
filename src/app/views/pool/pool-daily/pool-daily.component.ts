@@ -24,6 +24,7 @@ export class PoolDailyComponent implements OnInit {
   public dataSource: any;
   public columnsShown: boolean = false;
   public columnsBtn: string = "Show Pairs";
+  public pagesize: any;
   public max: number;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
   public message: string;
@@ -51,9 +52,11 @@ export class PoolDailyComponent implements OnInit {
     this.displayedColumnsLong.push("TOTAL", "Increment", "RealIncrement", "Benefit", "NewCapital");
     this.displayedColumns = this.displayedColumnsShort;
     this.max = this.poolList.length;
+    this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.max;
     this.paginator.pageIndex = this.paginator.pageSize;
     if(!window.location.href.includes('Home')) {
       this.utils.menuHover('menupool');

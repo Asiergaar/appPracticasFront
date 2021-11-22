@@ -16,6 +16,7 @@ export class PairsListComponent implements OnInit {
   public pairList: Array<any>;
   public displayedColumns: Array<string> = ["pair_id", "pair_exchange", "tokenA", "tokenB", "edit"];
   public dataSource: any;
+  public pagesize: any;
   public max: number;
   public message: string;
 
@@ -33,9 +34,11 @@ export class PairsListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.pairList = await this.getPairsName();
     this.max = this.pairList.length;
+    this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.pairList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.max;
     this.utils.menuHover('menupair');
   }
 
