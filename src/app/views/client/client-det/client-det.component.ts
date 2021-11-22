@@ -32,11 +32,11 @@ export class ClientDetComponent implements OnInit {
     this.MonthInfo = [];
     this.progress = [];
     this.monthList = [
-      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      ['Urtarrilak', 'Otsailak', 'Martxoak', 'Apirilak', 'Maiatzak', 'Ekainak', 'Uztailak', 'Abuztuak', 'Irailak', 'Urriak', 'Azaroak', 'Abenduak'],
-      ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'],
-      ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+      ['en', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      ['es', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      ['eu', 'Urtarrilak', 'Otsailak', 'Martxoak', 'Apirilak', 'Maiatzak', 'Ekainak', 'Uztailak', 'Abuztuak', 'Irailak', 'Urriak', 'Azaroak', 'Abenduak'],
+      ['ca', 'Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'],
+      ['fr', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
     ]
    }
 
@@ -87,22 +87,34 @@ export class ClientDetComponent implements OnInit {
   }
 
   public getMonth(date: string): string | undefined {
-    this.currentLang;
+    let pagelang;
+    let pos = 0;
+    // Get used lang
+    if(this.translate.currentLang == null || this.translate.currentLang == undefined) {
+      pagelang = this.translate.defaultLang;
+    } else {
+      pagelang = this.translate.currentLang;
+    }
+    for (let i in this.monthList) {
+      if (this.monthList[i][0] == pagelang) {
+        pos = parseInt(i);
+      }
+    }
     let m = parseInt(date.substring(date.indexOf('-')+1, date.lastIndexOf('-')));
     let month;
     switch(m){
-      case 1:  month = this.monthList[0][0]; break;
-      case 2:  month = this.monthList[0][1]; break;
-      case 3:  month = this.monthList[0][2]; break;
-      case 4:  month = this.monthList[0][3]; break;
-      case 5:  month = this.monthList[0][4]; break;
-      case 6:  month = this.monthList[0][5]; break;
-      case 7:  month = this.monthList[0][6]; break;
-      case 8:  month = this.monthList[0][7]; break;
-      case 9:  month = this.monthList[0][8]; break;
-      case 10: month = this.monthList[0][9]; break;
-      case 11: month = this.monthList[0][10]; break;
-      case 12: month = this.monthList[0][11]; break;
+      case 1:  month = this.monthList[pos][1]; break;
+      case 2:  month = this.monthList[pos][2]; break;
+      case 3:  month = this.monthList[pos][3]; break;
+      case 4:  month = this.monthList[pos][4]; break;
+      case 5:  month = this.monthList[pos][5]; break;
+      case 6:  month = this.monthList[pos][6]; break;
+      case 7:  month = this.monthList[pos][7]; break;
+      case 8:  month = this.monthList[pos][8]; break;
+      case 9:  month = this.monthList[pos][9]; break;
+      case 10: month = this.monthList[pos][10]; break;
+      case 11: month = this.monthList[pos][11]; break;
+      case 12: month = this.monthList[pos][12]; break;
     }
     return month;
   }

@@ -13,7 +13,7 @@
     <button type="submit" routerLink="/AddPool" mat-raised-button class="poolupdate addbtn">{{'btn.addPool' | translate}}</button>
     <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">{{'btn.addCapital' | translate}}</button>
 
-    <form (ngSubmit)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
+    <form (ngSubmit)="submit(poolForm.value)" (keypress.enter)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
       <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
         <ng-container matColumnDef="poolupdate_pair">
@@ -38,11 +38,11 @@
 
         <ng-container matColumnDef="add">
             <mat-header-cell *matHeaderCellDef>{{'data.add' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let pool">
+            <mat-cell *matCellDef="let pool; let i = index">
                 <p *ngIf="!donePools[pool.pool_pair]; else done">
                   <mat-form-field appearance="legacy" class="input">
                     <mat-label>{{'data.quantity' | translate}}</mat-label>
-                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" class="autofocus" ngModel required>
+                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" ngModel required>
                   </mat-form-field>
                 </p>
                 <ng-template #done>{{ dollarUS.format(donePools[pool.pool_pair]) }}</ng-template>

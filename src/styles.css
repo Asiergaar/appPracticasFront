@@ -59,7 +59,7 @@ form {
   color: white;
   text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
   font-size: 4em;
-  padding: 20px 0px;
+  padding: 15px 0px;
 }
 
 #darklight {
@@ -285,10 +285,10 @@ form {
     transform: rotate(-90deg);
     text-align: center;
     border-radius: 5px 5px 0 0;
-    height: 20px;
-    width: 40px;
-    left: -31px;
-    top: 15px;
+    height: 25px;
+    width: 45px;
+    left: -36px;
+    top: 17px;
 }
 
 .langselector:hover {

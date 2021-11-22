@@ -127,7 +127,7 @@ export class PoolUpdateComponent implements OnInit {
   private async addCapitals(): Promise<any> {
     // Create capitals with that progress
       this.capitalsService.addCapitals(this.progress).subscribe(
-      (data: any)    => { this.router.navigate(['/PoolsByDay'], { queryParams: { message: "Pools succesfully added on:" + new Date()} } ); },
+      (data: any)    => { this.router.navigate(['/PoolsByDay'], { queryParams: { message: "Pools succesfully added on: " + new Date()} } ); },
       (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
     )
   }
