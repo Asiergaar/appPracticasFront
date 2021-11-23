@@ -1,6 +1,10 @@
 <div *ngIf="poolData.length == 0 || poolData[0] == 0 || poolData[0][1] == null || showinfo == true; else data">
-  <div class="homeinfo">
-    <button  *ngIf="poolData.length != 0 || poolData[0] != 0 || poolData[0][1] != null" type="submit" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">{{'btn.back' | translate}}</button>
+  <div *ngIf="!isData" class="addmodmessage">
+    <p>{{"error.noData" | translate}}</p>
+  </div>
+
+  <div class="homeinfo" *ngIf="poolData.length != 0">
+    <button type="button" (click)="appinfo()" mat-raised-button class="infobtn pbdbtn">{{'btn.back' | translate}}</button>
   </div>
   <div class="home firsthome tarjeta">
     <h1 class="tituloPagina">{{'title.info' | translate}}</h1>

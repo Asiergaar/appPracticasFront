@@ -22,6 +22,7 @@ export class TokensListComponent implements OnInit {
   public max: number;
   public message: string;
   public imgurl: string;
+  public isData: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -37,12 +38,16 @@ export class TokensListComponent implements OnInit {
    async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.tokenList = await this.getTokens();
+    if (this.tokenList.length == 0){
+      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+    }
     this.max = this.tokenList.length;
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.paginator.pageSize = this.max;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menutoken');
   }
 

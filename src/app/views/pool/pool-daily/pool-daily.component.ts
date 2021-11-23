@@ -43,7 +43,9 @@ export class PoolDailyComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsByDay();
-
+    if (this.poolList.length == 0){
+      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+    }
     // Get list of pairs on pools
     this.pairList = await this.getPoolsDistinct();
     for (let pa in this.pairList) {
@@ -56,7 +58,8 @@ export class PoolDailyComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.paginator.pageSize = this.max;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.paginator.pageIndex = this.paginator.pageSize;
     if(!window.location.href.includes('Home')) {
       this.utils.menuHover('menupool');

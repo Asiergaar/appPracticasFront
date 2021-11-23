@@ -37,7 +37,8 @@ export class PoolsListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.paginator.pageSize = this.max;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menupool');
   }
 

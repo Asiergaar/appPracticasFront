@@ -85,6 +85,7 @@
   "error": {
     "clientForm": "The combination of name, surname and email already exists on database",
     "exchangeForm": "This exchange already exists on database",
+    "noData": "No data found, please follow the instructions",
     "pairForm": "This pair combination already exists on database",
     "tokenForm": "This token name or ticker already exists on database"
   },

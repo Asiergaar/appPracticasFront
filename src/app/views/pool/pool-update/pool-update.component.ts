@@ -45,6 +45,9 @@ export class PoolUpdateComponent implements OnInit {
 
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsDistinct();
+    if (this.poolList.length == 0){
+      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+    }
     this.poolStatus = await this.getPoolStatus();
     if(this.poolStat == 'done') {
       this.poolToDo = false;

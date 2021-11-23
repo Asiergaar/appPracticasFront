@@ -85,6 +85,7 @@
   "error": {
     "clientForm": "Izen, abizen eta email konbinazioa datu-basean jada sartuta dago",
     "exchangeForm": "Exchange hau datu-basean jada sartuta dago",
+    "noData": "Ez dira daturik aurkitu, mesedez jarraitu argibideak",
     "pairForm": "Pair konbinazio hau datu-basean jada sartuta dago",
     "tokenForm": "Token izen edo ticker hau datu-basean jada sartuta dago"
   },

@@ -85,6 +85,7 @@
   "error": {
     "clientForm": "La combinación de nombre, apellidos y email ya está en la base de datos",
     "exchangeForm": "Este exchange ya está en la base de datos",
+    "noData": "No se han encontrado datos, siga las instrucciones por favor",
     "pairForm": "Esta combinación de par ya existe en la base de datos",
     "tokenForm": "Ya hay un token con este nombre o ticker en la base de datos"
   },

@@ -85,6 +85,7 @@
   "error": {
     "clientForm": "La combinaison nom, prénom et email est déjà dans la base de données",
     "exchangeForm": "Cet échange est déjà dans la base de données",
+    "noData": "Aucune donnée trouvée, veuillez suivre les instructions",
     "pairForm": "Cette combinaison de pair existe déjà dans la base de données",
     "tokenForm": "Un token portant ce nom ou ce ticker existe déjà dans la base de données"
   },

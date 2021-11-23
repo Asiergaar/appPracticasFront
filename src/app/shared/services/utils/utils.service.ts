@@ -29,5 +29,14 @@ export class UtilsService {
     return ret;
   }
 
+  public parseBoolean(data: string): boolean {
+    if (data == undefined || data == null) { data = "true"; }
+    if (data.trim().toLowerCase() == "true") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
 }

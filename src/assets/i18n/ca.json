@@ -85,6 +85,7 @@
   "error": {
     "clientForm": "La combinació de nom, cognoms i email ja és a la base de dades",
     "exchangeForm": "Aquest exchange ja és a la base de dades",
+    "noData": "No s'han trobat dades, seguiu les instruccions si us plau",
     "pairForm": "Aquesta combinació de pairs ja existeix a la base de dades",
     "tokenForm": "Ja hi ha un token amb aquest nom o ticker a la base de dades"
   },

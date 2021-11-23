@@ -25,8 +25,11 @@ export class PoolVariationComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.poolData = await this.getPoolsData();
+    if (this.poolData.length == 0){
+      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+    }
     // Adjust len to max of poolData length, can't be higher
-    if (this.poolData != []){
+    if (this.poolData.length != 0){
       if (this.poolData[0].length < this.len) {
         this.len = this.poolData[0].length;
       }

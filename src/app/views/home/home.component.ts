@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PoolsService } from 'src/app/shared/services/pool/pools.service';
 
 import { UtilsService } from 'src/app/shared/services/utils/utils.service';
@@ -14,10 +14,14 @@ export class HomeComponent implements OnInit {
   public dataLength: Array<number>;
   public len: number;
   public showinfo: boolean = false;
+  public isData: boolean = true;
 
   @ViewChild('homepools') private divElement:ElementRef;
 
-  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router) {
+  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.isData = utils.parseBoolean(params['isData']);
+    });
     this.poolData = [];
     this.dataLength = [];
     // change this to set result quantity
@@ -27,7 +31,7 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.poolData = await this.getPoolsData();
     // Adjust len to max of poolData length, can't be higher
-    if (this.poolData != []){
+    if (this.poolData.length != 0){
       if (this.poolData[0].length < this.len) {
         this.len = this.poolData[0].length;
       }

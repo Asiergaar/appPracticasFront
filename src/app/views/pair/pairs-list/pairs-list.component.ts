@@ -33,12 +33,16 @@ export class PairsListComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.pairList = await this.getPairsName();
+    if (this.pairList.length == 0){
+      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+    }
     this.max = this.pairList.length;
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.pairList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.paginator.pageSize = this.max;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menupair');
   }
 

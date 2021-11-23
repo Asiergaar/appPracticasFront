@@ -40,13 +40,17 @@ export class ClientsListComponent implements OnInit {
   async ngOnInit(): Promise<void>{
     // await to get the list for paginator and sorting
     this.clientList = await this.getClients();
+    if (this.clientList.length == 0){
+      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+    }
     this.checkIntials();
     this.max = this.clientList.length;
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.paginator.pageSize = this.max;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menuclient');
   }
 
