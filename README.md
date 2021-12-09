@@ -50,3 +50,13 @@ En la home, hay un botón **app info** con unas pequeñas instrucciones. Para qu
 
   * _Para hacer pruebas y poder meter más datos, se pueden echar todas las fechas un día para atrás en:_ http://localhost:3000/progress/minusDate
 
+
+### Herramientas utilizadas
+
+## Back-end
+* [Node.Js](https://nodejs.org/es/download/)
+* [Sequelize](https://sequelize.org/)
+* [SQLiteStudio](https://sqlitestudio.pl/)
+
+## Front-end
+* [Angular](https://angular.io/)
