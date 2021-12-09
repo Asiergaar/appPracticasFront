@@ -1,5 +1,5 @@
 <div *ngIf="message" class="addmodmessage">
-  <p>{{message}} <img src="{{imgurl}}" style="height: 10px;"> </p>
+  <p>{{ 'list.exchange' |translate }} {{message}} {{'list.'+type |translate}} <img src="{{imgurl}}" style="height: 10px;"> </p>
 </div>
 
 <div id="exchangeList" class="lists tarjeta">

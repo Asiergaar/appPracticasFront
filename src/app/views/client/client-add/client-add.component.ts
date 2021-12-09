@@ -26,7 +26,14 @@ export class ClientAddComponent implements OnInit {
   public capital: Capital;
   public isOnDB: boolean = true;
 
-  constructor(private clientsService: ClientsService, private poolsService: PoolsService, private capitalsService: CapitalsService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
+  constructor(
+    private clientsService: ClientsService,
+    private poolsService: PoolsService,
+    private capitalsService: CapitalsService,
+    private utils: UtilsService,
+    private validator: ValidatorService,
+    private router: Router
+  ) {
     this.newCapital = new NewCapital();
     this.capital = new Capital();
     this.client = new Client();
@@ -83,7 +90,7 @@ export class ClientAddComponent implements OnInit {
                                     this.newCapital.newcapital_client = this.client.client_id;
                                     this.newCapital.newcapital_quantity = quantity;
                                     this.capitalsService.newCapital(this.newCapital).subscribe(
-                                      (data: any)    => { this.router.navigate(['/clientsList'], { queryParams: { message: "Client: " + this.client.client_name + ", " + this.client.client_surname + " added."} } ).then(() => { window.location.reload(); }); },
+                                      (data: any)    => { this.router.navigate(['/clientsList'], { queryParams: { message: this.client.client_name + ", " + this.client.client_surname, type: "add"} } ).then(() => { window.location.reload(); }); },
                                       (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                                     )
                                 }
@@ -91,7 +98,7 @@ export class ClientAddComponent implements OnInit {
                             } else{
                               // If it's the firs day of pools
                               this.clientsService.addClient(this.client).subscribe(
-                                (data: any)    => { this.router.navigate(['/clientsList'], { queryParams: { message: "Client: " + this.client.client_name + ", " + this.client.client_surname + " added."} } ); },
+                                (data: any)    => { this.router.navigate(['/clientsList'], { queryParams: { message: this.client.client_name + ", " + this.client.client_surname, type: "add"} } ); },
                                 (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } );}
                               )
                             }

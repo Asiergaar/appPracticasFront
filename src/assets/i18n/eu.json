@@ -98,6 +98,17 @@
     "step4": "4 - Eguneratu Pool-en informazioa egunero"
   },
 
+  "list": {
+    "add": " gehituta.",
+    "client": "Bezeroa: ",
+    "exchange": "Exchange-a: ",
+    "mod": " aldatuta.",
+    "pair": "Pair: ",
+    "pool": "Pool-a gehituta ",
+    "sub": "Pool-ak eguneratu dira",
+    "token": "Token-a: "
+  },
+
   "menu": {
     "client": "Bezeroak",
     "exchange": "Exchange",

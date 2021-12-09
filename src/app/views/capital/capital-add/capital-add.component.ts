@@ -15,7 +15,12 @@ export class CapitalAddComponent implements OnInit {
   public newCapital: NewCapital;
   public clients: Array<any>;
 
-  constructor(private clientsService: ClientsService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
+  constructor(
+    private clientsService: ClientsService,
+    private capitalsService: CapitalsService,
+    private utils: UtilsService,
+    private router: Router
+  ) {
     this.newCapital = new NewCapital();
     this.clients = [];
   }

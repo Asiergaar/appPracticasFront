@@ -1,5 +1,5 @@
 <div *ngIf="message" class="addmodmessage">
-  <p>{{message}}</p>
+  <p>{{ 'list.client' |translate }} {{message}} {{'list.'+type |translate}}</p>
 </div>
 
 <div id="clientList" class="lists tarjeta">

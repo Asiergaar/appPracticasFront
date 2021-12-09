@@ -99,6 +99,17 @@
     "step4": "4 - Mettre à jour les informations quotidiennes des Pools"
   },
 
+  "list": {
+    "add": "ajouté.",
+    "client": "Client: ",
+    "exchange": "Exchange: ",
+    "mod": " modifié.",
+    "pair": "Pair: ",
+    "pool": "Pool ajoutée avec succès",
+    "sub": "Pools mise à jour correctement sur",
+    "token": "Token: "
+  },
+
   "menu": {
     "client": "Client",
     "exchange": "Exchange",

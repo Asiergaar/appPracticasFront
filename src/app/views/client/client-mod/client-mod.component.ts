@@ -18,7 +18,12 @@ export class ClientModComponent implements OnInit {
   public id: any;
   public isOnDB: boolean = true;
 
-  constructor(private clientsService: ClientsService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
+  constructor(
+    private clientsService: ClientsService,
+    private utils: UtilsService,
+    private validator: ValidatorService,
+    private router: Router
+  ) {
     this.client = new Client();
     this.id = router.url.split('/').pop();
     this.clientInfo = [];
@@ -60,7 +65,7 @@ export class ClientModComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.clientsService.modClient(this.clientInfo.client_id, this.client).subscribe(
-                              (data: any)    => { this.router.navigate(['/clientsList'], { queryParams: { message: "Client: " + this.client.client_name + ", " + this.client.client_surname + " modified."} } ); },
+                              (data: any)    => { this.router.navigate(['/clientsList'], { queryParams: { message: this.client.client_name + ", " + this.client.client_surname, type: "mod"} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             );
                           } else {

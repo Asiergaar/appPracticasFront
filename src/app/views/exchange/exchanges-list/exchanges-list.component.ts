@@ -20,15 +20,22 @@ export class ExchangesListComponent implements OnInit {
   public pagesize: any;
   public max: number;
   public message: string;
+  public type: string;
   public imgurl: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private exchangesService: ExchangesService,
+    private utils: UtilsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.exchangeList = [4];
     this.activatedRoute.queryParams.subscribe(params => {
       this.message = params['message'];
+      this.type = params['type'];
       this.imgurl = params['url'];
     });
   }

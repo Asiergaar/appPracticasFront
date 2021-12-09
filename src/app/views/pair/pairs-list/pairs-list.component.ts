@@ -19,14 +19,21 @@ export class PairsListComponent implements OnInit {
   public pagesize: any;
   public max: number;
   public message: string;
+  public type: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private pairsService: PairsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private pairsService: PairsService,
+    private utils: UtilsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.pairList = [];
     this.activatedRoute.queryParams.subscribe(params => {
       this.message = params['message'];
+      this.type = params['type'];
     });
   }
 

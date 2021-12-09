@@ -19,7 +19,14 @@ export class PairAddComponent implements OnInit {
   public exchangeList: Array<any>;
   public isOnDB: boolean = true;
 
-  constructor(private pairsService: PairsService, private tokensService: TokensService, private exchangesService: ExchangesService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
+  constructor(
+    private pairsService: PairsService,
+    private tokensService: TokensService,
+    private exchangesService: ExchangesService,
+    private utils: UtilsService,
+    private validator: ValidatorService,
+    private router: Router
+  ) {
     this.pair = new Pair();
     this.tokenList = [];
     this.exchangeList = [];
@@ -56,7 +63,7 @@ export class PairAddComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.pairsService.addPair(this.pair).subscribe(
-                              (data: any) => { this.router.navigate(['/pairsList'], { queryParams: { message: "Pair added: exchange " + this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name + ", with tokens " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name + " & " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenB)].token_name + "."} } ); },
+                              (data: any) => { this.router.navigate(['/pairsList'], { queryParams: { message: this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name + ", with tokens " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name + " & " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenB)].token_name, type: "add"} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

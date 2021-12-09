@@ -19,7 +19,12 @@ export class TokenModComponent implements OnInit {
   public prevName: string;
   public prevTicker: string;
 
-  constructor(private tokensService: TokensService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
+  constructor(
+    private tokensService: TokensService,
+    private utils: UtilsService,
+    private validator: ValidatorService,
+    private router: Router
+  ) {
     this.token = new Token();
     this.id = router.url.split('/').pop();
     this.tokenInfo = [];
@@ -65,7 +70,7 @@ export class TokenModComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.tokensService.modToken(this.tokenInfo.token_id, this.token).subscribe(
-                              (data: any)    => { this.router.navigate(['/tokensList'], { queryParams: { message: "Token: " + this.token.token_name + "(" + this.token.ticker + ") modified.",  url: this.token.token_img_url} } ); },
+                              (data: any)    => { this.router.navigate(['/tokensList'], { queryParams: { message: this.token.token_name + "(" + this.token.ticker + ")",  url: this.token.token_img_url, type: "mod"} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

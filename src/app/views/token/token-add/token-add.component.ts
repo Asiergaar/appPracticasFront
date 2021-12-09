@@ -16,7 +16,12 @@ export class TokenAddComponent implements OnInit {
   public token: Token;
   public isOnDB: boolean = true;
 
-  constructor(private tokensService: TokensService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
+  constructor(
+    private tokensService: TokensService,
+    private utils: UtilsService,
+    private validator: ValidatorService,
+    private router: Router
+  ) {
     this.token = new Token();
   }
 
@@ -41,7 +46,7 @@ export class TokenAddComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.tokensService.addToken(this.token).subscribe(
-                              (data: any)    => { this.router.navigate(['/tokensList'], { queryParams: { message: "Token: " + this.token.token_name + "(" + this.token.ticker + ") added.",  url: this.token.token_img_url} } ); },
+                              (data: any)    => { this.router.navigate(['/tokensList'], { queryParams: { message: this.token.token_name + "(" + this.token.ticker + ")",  url: this.token.token_img_url, type: "add"} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

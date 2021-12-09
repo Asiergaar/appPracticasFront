@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MatSort } from '@angular/material/sort';
@@ -15,7 +15,7 @@ import { UtilsService } from 'src/app/shared/services/utils/utils.service';
   templateUrl: './clients-capitals.component.html',
   styleUrls: ['./clients-capitals.component.css']
 })
-export class ClientsCapitalsComponent implements OnInit {
+export class ClientsCapitalsComponent implements OnInit, AfterViewInit {
   public client: Client;
   public clientsCapitals: Array<any>;
   public displayedColumns: Array<string>;
@@ -31,7 +31,12 @@ export class ClientsCapitalsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router) {
+  constructor(
+    private clientsService: ClientsService,
+    private utils: UtilsService,
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     this.clientsCapitals = [];
   }
 
@@ -57,8 +62,12 @@ export class ClientsCapitalsComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.paginator.pageIndex = this.paginator.pageSize;
     this.utils.menuHover('menuclient');
+  }
+
+  ngAfterViewInit() {
+    this.paginator.pageIndex = this.paginator.pageSize;
+    this.changeDetectorRef.detectChanges();
   }
 
   // get clients data to show on form

@@ -30,7 +30,13 @@ export class PoolUpdateComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private poolsService: PoolsService, private progressService: ProgressService, private capitalsService: CapitalsService, private utils: UtilsService, private router: Router) {
+  constructor(
+    private poolsService: PoolsService,
+    private progressService: ProgressService,
+    private capitalsService: CapitalsService,
+    private utils: UtilsService,
+    private router: Router
+  ) {
     this.pool = new Pool();
     this.progress = new Progress();
     this.poolList = [];
@@ -130,7 +136,7 @@ export class PoolUpdateComponent implements OnInit {
   private async addCapitals(): Promise<any> {
     // Create capitals with that progress
       this.capitalsService.addCapitals(this.progress).subscribe(
-      (data: any)    => { this.router.navigate(['/poolsByDay'], { queryParams: { message: "Pools succesfully added on: " + new Date()} } ); },
+      (data: any)    => { this.router.navigate(['/poolsByDay'], { queryParams: { message: ": " + new Date(), type: "sub"} } ); },
       (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
     )
   }

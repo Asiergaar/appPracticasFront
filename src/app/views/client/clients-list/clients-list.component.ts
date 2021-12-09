@@ -25,15 +25,22 @@ export class ClientsListComponent implements OnInit {
   public max: number;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
   public message: string;
+  public type: string;
   public allInitial: boolean = true;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private clientsService: ClientsService,
+    private utils: UtilsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.clientList = [];
     this.activatedRoute.queryParams.subscribe(params => {
       this.message = params['message'];
+      this.type = params['type'];
     });
    }
 

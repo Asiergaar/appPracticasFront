@@ -16,7 +16,12 @@ export class ExchangeAddComponent implements OnInit {
   public exchange: Exchange;
   public isOnDB: boolean = true;
 
-  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
+  constructor(
+    private exchangesService: ExchangesService,
+    private utils: UtilsService,
+    private validator: ValidatorService,
+    private router: Router
+  ) {
     this.exchange = new Exchange();
    }
 
@@ -41,7 +46,7 @@ export class ExchangeAddComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.exchangesService.addExchange(this.exchange).subscribe(
-                              (data: any)    => { this.router.navigate(['/exchangesList'], { queryParams: { message: "Exchange: " + this.exchange.exchange_name + " added.",  url: this.exchange.exchange_img_url} } ); },
+                              (data: any)    => { this.router.navigate(['/exchangesList'], { queryParams: { message: this.exchange.exchange_name, type: "add",  url: this.exchange.exchange_img_url} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

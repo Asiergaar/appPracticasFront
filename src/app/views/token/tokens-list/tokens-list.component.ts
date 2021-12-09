@@ -21,16 +21,23 @@ export class TokensListComponent implements OnInit {
   public pagesize: any;
   public max: number;
   public message: string;
+  public type: string;
   public imgurl: string;
   public isData: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private tokensService: TokensService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private tokensService: TokensService,
+    private utils: UtilsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.tokenList = [];
     this.activatedRoute.queryParams.subscribe(params => {
       this.message = params['message'];
+      this.type = params['type'];
       this.imgurl = params['url'];
     });
    }

@@ -16,7 +16,11 @@ export class PoolVariationComponent implements OnInit {
 
   @ViewChild('homepools') private divElement:ElementRef;
 
-  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router) {
+  constructor(
+    private poolsService: PoolsService,
+    private utils: UtilsService,
+    private router: Router
+  ) {
     this.poolData = [];
     this.dataLength = [];
     // change this to set result quantity

@@ -18,7 +18,12 @@ export class PoolAddComponent implements OnInit {
   public pairsleft: boolean = true;
   public notUsedPairs: Array<any>;
 
-  constructor(private poolsService: PoolsService, private pairsService: PairsService, private utils: UtilsService, private router: Router) {
+  constructor(
+    private poolsService: PoolsService,
+    private pairsService: PairsService,
+    private utils: UtilsService,
+    private router: Router
+  ) {
     this.pool = new Pool();
     this.pairList = [];
     this.poolList = [];
@@ -55,7 +60,7 @@ export class PoolAddComponent implements OnInit {
       (data: any)    => { let messageend = "";
                           if (this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenB == null) { messageend = ", token: " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenA + ")."; }
                           else { messageend = ", tokens: " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenA + " & " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].tokenB + ")."; }
-                          this.router.navigate(['/poolsByDay'], { queryParams: { message: "Pool succesfully added (exchange: " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].exchange + messageend } } ); },
+                          this.router.navigate(['/poolsByDay'], { queryParams: { message: "(exchange: " + this.pairList[this.pairList.findIndex(item => item.id == this.pool.pool_pair)].exchange + messageend, type: "add" } } ); },
       (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
     )
   }

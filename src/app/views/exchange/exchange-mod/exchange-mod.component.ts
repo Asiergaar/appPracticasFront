@@ -19,7 +19,12 @@ export class ExchangeModComponent implements OnInit {
   public isOnDB: boolean = true;
   public prevName: string;
 
-  constructor(private exchangesService: ExchangesService, private utils: UtilsService, private validator: ValidatorService, private router: Router) {
+  constructor(
+    private exchangesService: ExchangesService,
+    private utils: UtilsService,
+    private validator: ValidatorService,
+    private router: Router
+  ) {
     this.exchange = new Exchange();
     this.id = router.url.split('/').pop();
     this.exchangeInfo = [];
@@ -63,7 +68,7 @@ export class ExchangeModComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.exchangesService.modExchange(this.exchangeInfo.exchange_id, this.exchange).subscribe(
-                              (data: any)    => { this.router.navigate(['/exchangesList'], { queryParams: { message: "Exchange: " + this.exchange.exchange_name + " modified.",  url: this.exchange.exchange_img_url} } ); },
+                              (data: any)    => { this.router.navigate(['/exchangesList'], { queryParams: { message: this.exchange.exchange_name, type: "mod",  url: this.exchange.exchange_img_url} } ); },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {

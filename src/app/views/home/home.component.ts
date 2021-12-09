@@ -18,7 +18,12 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('homepools') private divElement:ElementRef;
 
-  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private poolsService: PoolsService,
+    private utils: UtilsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.isData = utils.parseBoolean(params['isData']);
     });

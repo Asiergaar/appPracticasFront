@@ -23,7 +23,12 @@ export class ClientDetComponent implements OnInit {
   public loaded: boolean = false;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
 
-  constructor(private clientsService: ClientsService, private utils: UtilsService, private router: Router,private translate: TranslateService) {
+  constructor(
+    private clientsService: ClientsService,
+    private utils: UtilsService,
+    private router: Router,
+    private translate: TranslateService
+  ) {
     this.client = new Client();
     this.id = router.url.split('/').pop();
     this.clientInfo = [];

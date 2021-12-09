@@ -25,7 +25,11 @@ export class PoolsListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService,private utils: UtilsService, private router: Router) {
+  constructor(
+    private poolsService: PoolsService,
+    private utils: UtilsService,
+    private router: Router
+  ) {
     this.poolList = [];
    }
 

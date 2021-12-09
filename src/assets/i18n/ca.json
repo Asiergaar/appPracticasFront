@@ -98,6 +98,17 @@
     "step4": "4 - Actualitza la informació diària dels Pools"
   },
 
+  "list": {
+    "add": "afegit.",
+    "client": "Client: ",
+    "exchange": "Exchange: ",
+    "mod": " modificat.",
+    "pair": "Pair: ",
+    "pool": "Pool actualitzada correctament",
+    "sub": "Pools afegides correctament el",
+    "token": "Token: "
+  },
+
   "menu": {
     "client": "Client",
     "exchange": "Exchange",

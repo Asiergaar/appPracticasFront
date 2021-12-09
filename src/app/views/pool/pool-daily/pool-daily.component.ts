@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -28,15 +28,23 @@ export class PoolDailyComponent implements OnInit {
   public max: number;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
   public message: string;
+  public type: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private poolsService: PoolsService, private utils: UtilsService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private poolsService: PoolsService,
+    private utils: UtilsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     this.poolList = [];
     this.pairList = [];
     this.activatedRoute.queryParams.subscribe(params => {
       this.message = params['message'];
+      this.type = params['type'];
     });
    }
 
@@ -60,10 +68,14 @@ export class PoolDailyComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.paginator.pageIndex = this.paginator.pageSize;
     if(!window.location.href.includes('Home')) {
       this.utils.menuHover('menupool');
     }
+  }
+
+  ngAfterViewInit() {
+    this.paginator.pageIndex = this.paginator.pageSize;
+    this.changeDetectorRef.detectChanges();
   }
 
   // get pools data to show on form
