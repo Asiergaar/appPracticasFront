@@ -181,13 +181,14 @@ form {
 }
 
 .itemmenu {
+  position: relative;
   width: 16%;
-  line-height: 50px;
   border-radius: 5px;
   background-color: rgb(230, 230, 230);
   text-align: center;
-  margin: 10px auto;
+  margin: auto;
   border: 2px solid rgb(51, 51, 51);
+  padding-bottom: 25px;
 }
 
 .itemmenu:hover {
@@ -213,18 +214,29 @@ form {
 }
 
 .itemmenu p {
+  margin: auto;
   font-size: 1.4em;
+  line-height: 1.2em;
   font-weight: bold;
-  line-height: 1.8em;
-  margin-bottom: 0;
+}
+
+.itemmenu .itemText {
+  padding: 5px 3px;
+}
+
+.itemmenu:first-child {
+  padding-bottom: 0;
 }
 
 .itemmenu:first-child p {
-  padding: 10px;
+  padding: 17px 5px;
 }
 
 .buttons {
   display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   height: 25px;
 }
 
@@ -1371,3 +1383,4 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 .dark .poolvarPoolTotal { color: white !important;  background-color: #898989 !important; border-top: 1px solid white; }
 .dark .poolvarPoolTotal p { font-weight: normal !important; }
 .dark .homeinfo { background: white; }
+
