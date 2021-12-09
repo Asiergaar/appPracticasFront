@@ -12,7 +12,7 @@ export class AppComponent implements AfterViewInit {
 
 
   constructor(private translate: TranslateService) {
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('es');
   }
 
   ngAfterViewInit(): void {
