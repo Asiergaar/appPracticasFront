@@ -28,6 +28,6 @@ export class PairsService {
   }
 
   public modPair(id: number, pair: Pair) {
-    return this.httpClient.post<Pair>(environment.api + 'pairs/editPair/'+id, pair);
+    return this.httpClient.put<Pair>(environment.api + 'pairs/editPair/'+id, pair);
   }
 }

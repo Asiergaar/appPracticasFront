@@ -45,12 +45,12 @@ export class ClientsListComponent implements OnInit {
     }
     this.checkIntials();
     this.max = this.clientList.length;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.clientList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    if (this.max < 10) {this.paginator.pageSize = this.max;}
-    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menuclient');
   }
 

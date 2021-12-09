@@ -1,27 +1,39 @@
-# Front
+# API:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
+Para arrancar la api en local en el puerto 3000: 
+  npm run start
 
-## Development server
+Si se van a hacer modificaciones, se puede arrancar con nodemon:
+  npm run start-dev
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para arrancar en otro puerto, hay que modificar en el archivo index.js el valor de la constante port al número de puerto que se quiera.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# FRONT:
 
-## Build
+Para el front en local en el puerto 4200: 
+  ng serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para arrancar en otro puerto, hay que modificar en el archivo angular.json el valor de “port” (dentro de projects>front>architect>serve>options>port) al número de puerto que se quiera.
 
-## Running unit tests
+Si se cambia el puerto en la api, hay que ajustar en el front los dos archivos de entorno con el número de puerto nuevo, environment.ts y environment.prod.ts que están en la carpeta src>environments.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+# Una vez arrancada la aplicación:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+En la home, hay un botón "app info" con unas pequeñas instrucciones. Para que funcione bien hay que:
 
-## Further help
+1. Crear Tokens: no se podrá añadir un nombre de token o un ticker ya existente en la base de datos.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   Crear Exchanges: no se podrá añadir un nombre de exchange ya existente en la base de datos
+
+   Crear Clientes: no se podrá añadir un cliente que coincida en nombre, apellidos y email con otro cliente existente en la base de datos.
+
+2. Con datos añadidos crear los Pares, se cargan en la lista los tokens y exhanges creados.
+
+3. Añadir los pares creados al pool, una vez añadido un par, dejará de aparecer en la lista de opciones.
+
+4. Actualizar los pools con las cantidades diarias. Esta operación solo se puede hacer una vez por día*.
+
+  * Para hacer pruebas y poder meter más datos, se pueden echar todas las fechas un día para atrás en: http://localhost:3000/progress/minusDate
+

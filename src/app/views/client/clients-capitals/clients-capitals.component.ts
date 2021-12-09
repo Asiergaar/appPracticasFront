@@ -51,12 +51,12 @@ export class ClientsCapitalsComponent implements OnInit {
     }
     this.displayedColumns = this.displayedColumnsShort;
     this.max = this.clientsCapitals.length;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.clientsCapitals);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    if (this.max < 10) {this.paginator.pageSize = this.max;}
-    else {this.paginator.pageSize = 10;}
     this.paginator.pageIndex = this.paginator.pageSize;
     this.utils.menuHover('menuclient');
   }

@@ -42,12 +42,12 @@ export class TokensListComponent implements OnInit {
       this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     this.max = this.tokenList.length;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.tokenList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    if (this.max < 10) {this.paginator.pageSize = this.max;}
-    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menutoken');
   }
 

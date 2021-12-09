@@ -30,7 +30,7 @@ export class ClientAddComponent implements OnInit {
     this.newCapital = new NewCapital();
     this.capital = new Capital();
     this.client = new Client();
-   }
+  }
 
   async ngOnInit(): Promise<void>{
     this.pools = await this.getPools();

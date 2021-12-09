@@ -33,12 +33,12 @@ export class PoolsListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsName();
     this.max = this.poolList.length;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.poolList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    if (this.max < 10) {this.paginator.pageSize = this.max;}
-    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menupool');
   }
 

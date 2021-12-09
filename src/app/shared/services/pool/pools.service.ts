@@ -48,6 +48,6 @@ export class PoolsService {
   }
 
   public modPool(id: number, pool: Pool) {
-    return this.httpClient.post<Pool>(environment.api + 'pools/editPool/'+id, pool);
+    return this.httpClient.put<Pool>(environment.api + 'pools/editPool/'+id, pool);
   }
 }

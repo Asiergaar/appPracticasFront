@@ -24,6 +24,6 @@ export class ExchangesService {
   }
 
   public modExchange(id: number, exchange: Exchange) {
-    return this.httpClient.post<Exchange>(environment.api + 'Exchanges/editExchange/'+id, exchange);
+    return this.httpClient.put<Exchange>(environment.api + 'Exchanges/editExchange/'+id, exchange);
   }
 }

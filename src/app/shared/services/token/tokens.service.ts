@@ -24,6 +24,6 @@ export class TokensService {
   }
 
   public modToken(id: number, token: Token) {
-    return this.httpClient.post<Token>(environment.api + 'tokens/editToken/'+id, token);
+    return this.httpClient.put<Token>(environment.api + 'tokens/editToken/'+id, token);
   }
 }

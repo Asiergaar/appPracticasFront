@@ -40,12 +40,12 @@ export class ExchangesListComponent implements OnInit {
       this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     this.max = this.exchangeList.length;
+    if (this.max < 10) {this.paginator.pageSize = this.max;}
+    else {this.paginator.pageSize = 10;}
     this.pagesize = this.utils.pageSize(this.max);
     this.dataSource = new MatTableDataSource(this.exchangeList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    if (this.max < 10) {this.paginator.pageSize = this.max;}
-    else {this.paginator.pageSize = 10;}
     this.utils.menuHover('menuexchange');
   }
 
