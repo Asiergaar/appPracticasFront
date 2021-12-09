@@ -59,7 +59,7 @@ export class PairModComponent implements OnInit {
                           }
                           this.pair.pair_exchange = this.pairInfo.pair_exchange;
       },
-      (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+      (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       () => { console.log('Petición realizada correctamente'); }
     )
   }
@@ -79,16 +79,16 @@ export class PairModComponent implements OnInit {
                             this.isOnDB = true;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             this.pairsService.modPair(this.pairInfo.pair_id, this.pair).subscribe(
                               (data: any)    => { let messageend = "";
                                                   if (this.pair.tokenB) { messageend = ", with tokens " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name + " & " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenB)].token_name + ".";}
                                                   else { messageend = ", with " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name;}
-                                                  this.router.navigate(['/PairsList'], { queryParams: { message: "Pair (" + this.pair.pair_id + ") modified: exchange " + this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name + messageend} } );
+                                                  this.router.navigate(['/pairsList'], { queryParams: { message: "Pair (" + this.pair.pair_id + ") modified: exchange " + this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name + messageend} } );
                                                 },
-                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
+                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
                             if (this.isOnDB){

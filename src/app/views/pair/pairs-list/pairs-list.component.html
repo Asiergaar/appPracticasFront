@@ -6,7 +6,7 @@
 
   <h1 class="tituloPagina">{{'title.pairList' | translate}}</h1>
 
-  <button type="submit" routerLink="/AddPair" mat-raised-button class="addbtn">{{'btn.addPair' | translate}}</button>
+  <button type="submit" routerLink="/addPair" mat-raised-button class="addbtn">{{'btn.addPair' | translate}}</button>
 
     <mat-form-field class="listFilter poolslist">
       <input (keyup)="applyFilter(target($event).value)" matInput placeholder="{{'nav.search' | translate}}">
@@ -36,7 +36,7 @@
 
     <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef>{{'data.edit' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let pair"><a routerLink="/ModPair/{{ pair.id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+        <mat-cell *matCellDef="let pair"><a routerLink="/modPair/{{ pair.id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

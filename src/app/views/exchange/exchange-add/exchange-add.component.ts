@@ -37,12 +37,12 @@ export class ExchangeAddComponent implements OnInit {
                             this.isOnDB = true;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             this.exchangesService.addExchange(this.exchange).subscribe(
-                              (data: any)    => { this.router.navigate(['/ExchangesList'], { queryParams: { message: "Exchange: " + this.exchange.exchange_name + " added.",  url: this.exchange.exchange_img_url} } ); },
-                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
+                              (data: any)    => { this.router.navigate(['/exchangesList'], { queryParams: { message: "Exchange: " + this.exchange.exchange_name + " added.",  url: this.exchange.exchange_img_url} } ); },
+                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
                             if (this.isOnDB){

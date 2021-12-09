@@ -31,7 +31,7 @@ export class ClientsService {
     return this.httpClient.get<any>(environment.api + 'clients/getClientsCapitals');
   }
 
-  public clientMonthlyData(): Observable<any> {
-    return this.httpClient.get<any>(environment.api + 'clients/clientMonthlyData');
+  public getClientMonthlyData(): Observable<any> {
+    return this.httpClient.get<any>(environment.api + 'clients/getClientMonthlyData');
   }
 }

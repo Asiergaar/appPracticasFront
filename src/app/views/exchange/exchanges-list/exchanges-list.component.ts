@@ -37,7 +37,7 @@ export class ExchangesListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.exchangeList = await this.getExchanges();
     if (this.exchangeList.length == 0){
-      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+      this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     this.max = this.exchangeList.length;
     this.pagesize = this.utils.pageSize(this.max);
@@ -55,7 +55,7 @@ export class ExchangesListComponent implements OnInit {
       let exchangeList: any[];
       this.exchangesService.getExchanges().subscribe(
         (data: any)    => { exchangeList = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(exchangeList);
         }

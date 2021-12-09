@@ -40,7 +40,7 @@ export class ExchangeModComponent implements OnInit {
                           this.exchange.exchange_img_url = this.exchangeInfo.exchange_img_url;
                           this.prevName = this.exchangeInfo.exchange_name;
       },
-      (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+      (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => { console.log('Petición realizada correctamente'); }
     )
   }
@@ -59,12 +59,12 @@ export class ExchangeModComponent implements OnInit {
                             this.isOnDB = false;
                           }
                         },
-      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
       ()             => {
                           if(!this.isOnDB) {
                             this.exchangesService.modExchange(this.exchangeInfo.exchange_id, this.exchange).subscribe(
-                              (data: any)    => { this.router.navigate(['/ExchangesList'], { queryParams: { message: "Exchange: " + this.exchange.exchange_name + " modified.",  url: this.exchange.exchange_img_url} } ); },
-                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
+                              (data: any)    => { this.router.navigate(['/exchangesList'], { queryParams: { message: "Exchange: " + this.exchange.exchange_name + " modified.",  url: this.exchange.exchange_img_url} } ); },
+                              (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
                             if (this.isOnDB){

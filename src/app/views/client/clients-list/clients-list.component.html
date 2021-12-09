@@ -6,9 +6,9 @@
 
   <h1 class="tituloPagina">{{ 'title.clientList' | translate }}</h1>
 
-  <button type="submit" routerLink="/ClientsCapitals" mat-raised-button class="pbdbtn">{{'btn.clientsCapitals' | translate}}</button>
-  <button type="submit" routerLink="/AddClient" mat-raised-button class="addbtn">{{'btn.addClient' | translate}}</button>
-  <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">{{'btn.addCapital' | translate}}</button>
+  <button type="submit" routerLink="/clientsCapitals" mat-raised-button class="pbdbtn">{{'btn.clientsCapitals' | translate}}</button>
+  <button type="submit" routerLink="/addClient" mat-raised-button class="addbtn">{{'btn.addClient' | translate}}</button>
+  <button type="submit" routerLink="/addCapital" mat-raised-button class="addbtn">{{'btn.addCapital' | translate}}</button>
 
   <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="{{ 'nav.search' | translate }}">
@@ -18,34 +18,34 @@
 
     <ng-container matColumnDef="client_id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.id' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_id}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer">{{client.client_id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="client_name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.name' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.client_name}}, &nbsp;{{client.client_surname}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer">{{client.client_name}}, &nbsp;{{client.client_surname}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.email' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.email}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer">{{client.email}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="entry_date">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.entryDate' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{client.entry_date | date: 'dd/MM/yyyy' }}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer">{{client.entry_date | date: 'dd/MM/yyyy' }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="start_capital">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.initialCapital' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.start_capital)}}
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.start_capital)}}
           <span *ngIf="!client.isInitial">*</span>
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nwcap">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.modifiedCapital' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer">
           <span *ngIf="client.nwcap">
             <span *ngIf="client.isInitial; else other">&nbsp; {{ dollarUS.format(client.nwcap) }}</span>
             <ng-template #other><span *ngIf="client.nwcap - client.start_capital != 0">&nbsp; {{ dollarUS.format(client.nwcap - client.start_capital) }}</span></ng-template>
@@ -55,7 +55,7 @@
 
     <ng-container matColumnDef="benefit">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.benefit' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer"><span *ngIf="totalBenefit == 0; else neg" class="zeroBenefit">{{totalBenefit | number: '1.6-6'}}%</span>
           <ng-template #neg><span *ngIf="totalBenefit < 0; else pos" class="negBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
           <ng-template #pos><span *ngIf="totalBenefit > 0" class="posBenefit">{{totalBenefit | number: '1.6-6'}}%</span></ng-template>
         </mat-cell>
@@ -63,12 +63,12 @@
 
     <ng-container matColumnDef="last_capital">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.lastCapital' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client" routerLink="/ClientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.last_capital)}}</mat-cell>
+        <mat-cell *matCellDef="let client" routerLink="/clientDetail/{{client.client_id}}" class="pointer">{{dollarUS.format(client.last_capital)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef>{{'data.edit' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let client"><a routerLink="/ModClient/{{ client.client_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+        <mat-cell *matCellDef="let client"><a routerLink="/modClient/{{ client.client_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -39,7 +39,7 @@ export class TokensListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.tokenList = await this.getTokens();
     if (this.tokenList.length == 0){
-      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+      this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     this.max = this.tokenList.length;
     this.pagesize = this.utils.pageSize(this.max);
@@ -57,7 +57,7 @@ export class TokensListComponent implements OnInit {
       let tokenList: any[];
       this.tokensService.getTokens().subscribe(
         (data: any)    => { tokenList = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(tokenList);
         }

@@ -6,7 +6,7 @@
 
   <h1 class="tituloPagina">{{'title.exchangeList' | translate}}</h1>
 
-  <button type="submit" routerLink="/AddExchange" mat-raised-button class="addbtn">{{'btn.addExchange' | translate}}</button>
+  <button type="submit" routerLink="/addExchange" mat-raised-button class="addbtn">{{'btn.addExchange' | translate}}</button>
 
   <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="{{'nav.search' | translate}}">
@@ -31,7 +31,7 @@
 
     <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef>{{'data.edit' | translate}}</mat-header-cell>
-        <mat-cell *matCellDef="let exchange"><a routerLink="/ModExchange/{{ exchange.exchange_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
+        <mat-cell *matCellDef="let exchange"><a routerLink="/modExchange/{{ exchange.exchange_id }}" class="editlink"> <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> </a></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

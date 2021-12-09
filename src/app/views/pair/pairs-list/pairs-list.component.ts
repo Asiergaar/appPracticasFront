@@ -34,7 +34,7 @@ export class PairsListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.pairList = await this.getPairsName();
     if (this.pairList.length == 0){
-      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+      this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     this.max = this.pairList.length;
     this.pagesize = this.utils.pageSize(this.max);
@@ -52,7 +52,7 @@ export class PairsListComponent implements OnInit {
       let pairList: any[];
       this.pairsService.getPairsName().subscribe(
         (data: any)    => { pairList = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(pairList);
         }

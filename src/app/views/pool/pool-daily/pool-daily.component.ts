@@ -44,7 +44,7 @@ export class PoolDailyComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.poolList = await this.getPoolsByDay();
     if (this.poolList.length == 0){
-      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+      this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     // Get list of pairs on pools
     this.pairList = await this.getPoolsDistinct();
@@ -72,7 +72,7 @@ export class PoolDailyComponent implements OnInit {
       let poolList: any[];
       this.poolsService.getPoolsByDay().subscribe(
         (data: any)    => { poolList = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(poolList);
         }
@@ -85,7 +85,7 @@ export class PoolDailyComponent implements OnInit {
       let poolList: any[];
       this.poolsService.getPoolsDistinct().subscribe(
         (data: any)    => { poolList = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(poolList);
         }

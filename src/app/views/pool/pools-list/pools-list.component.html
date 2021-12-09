@@ -2,8 +2,8 @@
 
   <h1 class="tituloPagina">{{'title.poolList' | translate}}</h1>
 
-  <button type="submit" routerLink="/PoolsByDay" mat-raised-button class="pbdbtn">{{'btn.poolsByDay' | translate}}</button>
-  <button type="submit" routerLink="/AddPool" mat-raised-button class="addbtn">{{'btn.addPool' | translate}}</button>
+  <button type="submit" routerLink="/poolsByDay" mat-raised-button class="pbdbtn">{{'btn.poolsByDay' | translate}}</button>
+  <button type="submit" routerLink="/addPool" mat-raised-button class="addbtn">{{'btn.addPool' | translate}}</button>
 
   <mat-form-field class="listFilter poolslist">
     <input (keyup)="applyFilter(target($event).value)" matInput placeholder="{{'nav.search' | translate}}">

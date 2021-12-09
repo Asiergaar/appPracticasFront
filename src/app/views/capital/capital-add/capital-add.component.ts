@@ -32,8 +32,8 @@ export class CapitalAddComponent implements OnInit {
       this.newCapital.newcapital_quantity = value.newcapital_quantity;
 
       this.capitalsService.newCapital(this.newCapital).subscribe(
-        (data: any)    => { this.router.navigate(['/ClientsCapitals']).then(() => { window.location.reload(); }); },
-        (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } );}
+        (data: any)    => { this.router.navigate(['/clientsCapitals']).then(() => { window.location.reload(); }); },
+        (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } );}
       )
   }
 

@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
       let querydata: any[];
       this.poolsService.getPoolsData().subscribe(
         (data: any)    => { querydata = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(querydata);
         }

@@ -6,12 +6,12 @@
     <h2>{{'poolUpdate.poolsDone' | translate}}</h2>
     <img class="logopooldone" src="../../../assets/images/pandaface.png">
     <h2>{{'poolUpdate.lastUpdate' | translate}}: {{poolStatus[0].pool_date | date: 'dd/MM/yyyy HH:MM' }}</h2>
-    <button type="submit" routerLink="/PoolsByDay" mat-raised-button class="poolupdate addbtn">{{'btn.viewDailyPools' | translate}}</button>
+    <button type="submit" routerLink="/poolsByDay" mat-raised-button class="poolupdate addbtn">{{'btn.viewDailyPools' | translate}}</button>
   </div>
 
   <ng-template #elseBlock>
-    <button type="submit" routerLink="/AddPool" mat-raised-button class="poolupdate addbtn">{{'btn.addPool' | translate}}</button>
-    <button type="submit" routerLink="/AddCapital" mat-raised-button class="addbtn">{{'btn.addCapital' | translate}}</button>
+    <button type="submit" routerLink="/addPool" mat-raised-button class="poolupdate addbtn">{{'btn.addPool' | translate}}</button>
+    <button type="submit" routerLink="/addCapital" mat-raised-button class="addbtn">{{'btn.addCapital' | translate}}</button>
 
     <form (ngSubmit)="submit(poolForm.value)" (keypress.enter)="submit(poolForm.value)" #poolForm="ngForm" class="forms pools">
       <mat-table matSort [dataSource]="dataSource" class="tablelist">

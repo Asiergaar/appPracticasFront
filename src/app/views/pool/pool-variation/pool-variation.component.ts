@@ -26,7 +26,7 @@ export class PoolVariationComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.poolData = await this.getPoolsData();
     if (this.poolData.length == 0){
-      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+      this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     // Adjust len to max of poolData length, can't be higher
     if (this.poolData.length != 0){
@@ -45,7 +45,7 @@ export class PoolVariationComponent implements OnInit {
       let querydata: any[];
       this.poolsService.getPoolsData().subscribe(
         (data: any)    => { querydata = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(querydata);
         }

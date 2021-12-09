@@ -26,36 +26,36 @@ import { CapitalAddComponent } from './views/capital/capital-add/capital-add.com
 import { ServerErrorComponent } from './views/server-error/server-error.component';
 
 const routes: Routes = [
-  { path: 'Home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
 
-  { path: 'ClientsList', component: ClientsListComponent },
-  { path: 'AddClient', component: ClientAddComponent },
-  { path: 'ModClient/:id', component: ClientModComponent },
-  { path: 'ClientDetail/:id', component: ClientDetComponent },
-  { path: 'ClientsCapitals', component: ClientsCapitalsComponent },
+  { path: 'clientsList', component: ClientsListComponent },
+  { path: 'addClient', component: ClientAddComponent },
+  { path: 'modClient/:id', component: ClientModComponent },
+  { path: 'clientDetail/:id', component: ClientDetComponent },
+  { path: 'clientsCapitals', component: ClientsCapitalsComponent },
 
-  { path: 'TokensList', component: TokensListComponent},
-  { path: 'AddToken', component: TokenAddComponent },
-  { path: 'ModToken/:id', component: TokenModComponent },
+  { path: 'tokensList', component: TokensListComponent},
+  { path: 'addToken', component: TokenAddComponent },
+  { path: 'modToken/:id', component: TokenModComponent },
 
-  { path: 'ExchangesList', component: ExchangesListComponent},
-  { path: 'AddExchange', component: ExchangeAddComponent },
-  { path: 'ModExchange/:id', component: ExchangeModComponent },
+  { path: 'exchangesList', component: ExchangesListComponent},
+  { path: 'addExchange', component: ExchangeAddComponent },
+  { path: 'modExchange/:id', component: ExchangeModComponent },
 
-  { path: 'PairsList', component: PairsListComponent},
-  { path: 'AddPair', component: PairAddComponent},
-  { path: 'ModPair/:id', component: PairModComponent},
+  { path: 'pairsList', component: PairsListComponent},
+  { path: 'addPair', component: PairAddComponent},
+  { path: 'modPair/:id', component: PairModComponent},
 
-  { path: 'PoolsList', component: PoolsListComponent},
-  { path: 'AddPool', component: PoolAddComponent},
-  { path: 'PoolsByDay', component: PoolDailyComponent},
-  { path: 'UpdatePools', component: PoolUpdateComponent},
-  { path: 'PoolVariation', component: PoolVariationComponent},
+  { path: 'poolsList', component: PoolsListComponent},
+  { path: 'addPool', component: PoolAddComponent},
+  { path: 'poolsByDay', component: PoolDailyComponent},
+  { path: 'updatePools', component: PoolUpdateComponent},
+  { path: 'poolVariation', component: PoolVariationComponent},
 
-  { path: 'AddCapital', component: CapitalAddComponent},
+  { path: 'addCapital', component: CapitalAddComponent},
 
-  { path: 'ServerError', component: ServerErrorComponent},
-  { path: '', redirectTo: '/Home', pathMatch: 'full'},
+  { path: 'serverError', component: ServerErrorComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent}
 ];
 

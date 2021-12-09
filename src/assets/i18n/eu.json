@@ -107,6 +107,21 @@
     "updatePools": "Pool-ak eguneratu"
   },
 
+  "month": {
+    "1": "Urtarrila",
+    "2": "Otsaila",
+    "3": "Martxoa",
+    "4": "Apirila",
+    "5": "Maiatza",
+    "6": "Ekaina",
+    "7": "Uztaila",
+    "8": "Abuztua",
+    "9": "Iraila",
+    "10": "Urria",
+    "11": "Azaroa",
+    "12": "Abendua"
+  },
+
   "nav": {
     "search": "Bilatu..."
   },

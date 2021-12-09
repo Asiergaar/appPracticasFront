@@ -7,8 +7,8 @@
   </div>
 
   <div>
-    <button type="submit" routerLink="/ClientsList" mat-raised-button class="pbdbtn">{{'btn.back' | translate}}</button>
-    <button type="submit" routerLink="/ModClient/{{ client.client_id }}" mat-raised-button class="addbtn">{{'btn.modClient' | translate}}</button>
+    <button type="submit" routerLink="/clientsList" mat-raised-button class="pbdbtn">{{'btn.back' | translate}}</button>
+    <button type="submit" routerLink="/modClient/{{ client.client_id }}" mat-raised-button class="addbtn">{{'btn.modClient' | translate}}</button>
   </div>
 
   <div class="clientStats">
@@ -44,26 +44,26 @@
       </div>
 
       <div class="capitalProgressData bamboo">
-        <h2 class="titulo">{{ getMonth(MonthInfo[0].LastMonth) + ' - ' + getMonth(MonthInfo[0].ActualMonth) }} {{'clientDet.progress' | translate}}</h2>
-        <h2>{{'clientDet.benefitPercentage' | translate}} = %{{ MonthInfo[0].BenefitPercentage | number: "1.6-6"}}:</h2>
+        <h2 class="titulo">{{ 'month.' + getMonth(monthInfo[0].LastMonth) | translate }} {{ ' - ' }} {{'month.' + getMonth(monthInfo[0].ActualMonth) | translate }} {{'clientDet.progress' | translate}}</h2>
+        <h2>{{'clientDet.benefitPercentage' | translate}} = %{{ monthInfo[0].BenefitPercentage | number: "1.6-6"}}:</h2>
         <div class="capitalData">
           <div>
-            <h2>{{ getMonth(MonthInfo[0].LastMonth) + ' 1'}}:</h2>
-            <h2>{{ dollarUS.format(MonthInfo[0].LastMonthCapital) }}</h2>
+            <h2>{{ 'month.' + getMonth(monthInfo[0].LastMonth) | translate }} {{' 1'}}:</h2>
+            <h2>{{ dollarUS.format(monthInfo[0].LastMonthCapital) }}</h2>
           </div>
           <i class="fa fa-angle-double-right" aria-hidden="true"></i>
           <div>
-            <h2>{{'data.benefit' | translate}}<span *ngIf="MonthInfo[0].NewCapital != 0">*</span>:</h2>
-            <h2>{{ dollarUS.format(MonthInfo[0].Benefit - MonthInfo[0].NewCapital) }}</h2>
+            <h2>{{'data.benefit' | translate}}<span *ngIf="monthInfo[0].NewCapital != 0">*</span>:</h2>
+            <h2>{{ dollarUS.format(monthInfo[0].Benefit - monthInfo[0].NewCapital) }}</h2>
           </div>
           <i class="fa fa-angle-double-right" aria-hidden="true"></i>
           <div>
-            <h2>{{ getMonth(MonthInfo[0].ActualMonth) + ' 1'}}:</h2>
-            <h2>{{ dollarUS.format(MonthInfo[0].ActualCapital) }}</h2>
+            <h2>{{'month.' + getMonth(monthInfo[0].ActualMonth) | translate }}{{' 1'}}:</h2>
+            <h2>{{ dollarUS.format(monthInfo[0].ActualCapital) }}</h2>
           </div>
         </div>
-        <h3 *ngIf="MonthInfo[0].NewCapital != 0">*{{'clientDet.modified1' | translate}}: {{ dollarUS.format(MonthInfo[0].NewCapital) }} {{'clientDet.modified2' | translate}}
-          <span *ngIf="MonthInfo[0].CountNewCapitalDate == 1; else elseblock">{{ MonthInfo[0].NewCapitalDate }}</span>
+        <h3 *ngIf="monthInfo[0].NewCapital != 0">*{{'clientDet.modified1' | translate}}: {{ dollarUS.format(monthInfo[0].NewCapital) }} {{'clientDet.modified2' | translate}}
+          <span *ngIf="monthInfo[0].CountNewCapitalDate == 1; else elseblock">{{ monthInfo[0].NewCapitalDate }}</span>
             <ng-template #elseblock>{{'clientDet.variousDates' | translate}}</ng-template>
         </h3>
       </div>

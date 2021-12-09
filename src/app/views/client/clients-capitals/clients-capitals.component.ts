@@ -39,7 +39,7 @@ export class ClientsCapitalsComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.clientsCapitals = await this.getClientsCapitals();
     if (this.clientsCapitals.length == 0){
-      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+      this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     for (let c in this.clientsCapitals[0]) {
       if (!c.includes('newcapital')) {
@@ -67,7 +67,7 @@ export class ClientsCapitalsComponent implements OnInit {
       let query: any[];
       this.clientsService.getClientsCapitals().subscribe(
         (data: any)    => { query = data.data; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(query);
         }

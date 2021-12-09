@@ -41,7 +41,7 @@ export class ClientsListComponent implements OnInit {
     // await to get the list for paginator and sorting
     this.clientList = await this.getClients();
     if (this.clientList.length == 0){
-      this.router.navigate([ '/Home'], { queryParams: { isData: false } } );
+      this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
     this.checkIntials();
     this.max = this.clientList.length;
@@ -62,7 +62,7 @@ export class ClientsListComponent implements OnInit {
         (data: any)    => { clientList = data.data;
                             this.totalBenefit = (data.benefit);
         },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/ServerError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
         ()             => { console.log('Petición realizada correctamente');
                             resolve(clientList);
         }
