@@ -17,36 +17,41 @@
       <mat-table matSort [dataSource]="dataSource" class="tablelist">
 
         <ng-container matColumnDef="poolupdate_pair">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.poolPair' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let pool">{{pool.pool_pair}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.poolPair' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let pool">{{pool.pool_pair}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="exchange">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.exchange' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let pool"><img src="{{pool.exchange_img_url}}" class="tokenimg">{{pool.exchange}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.exchange' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let pool"><img src="{{pool.exchange_img_url}}" class="tokenimg">{{pool.exchange}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tokenA">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenA' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let pool"><img src="{{pool.tokenA_img_url}}" class="tokenimg">{{pool.tokenA}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenA' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let pool"><img src="{{pool.tokenA_img_url}}" class="tokenimg">{{pool.tokenA}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tokenB">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenB' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let pool"><img *ngIf="pool.tokenB" src="{{pool.tokenB_img_url}}" class="tokenimg">{{pool.tokenB}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.tokenB' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let pool"><img *ngIf="pool.tokenB" src="{{pool.tokenB_img_url}}" class="tokenimg">{{pool.tokenB}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Last pool">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{'data.lastPool' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let pool">{{pool.last_pool}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="add">
-            <mat-header-cell *matHeaderCellDef>{{'data.add' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let pool; let i = index">
-                <p *ngIf="!donePools[pool.pool_pair]; else done">
-                  <mat-form-field appearance="legacy" class="input">
-                    <mat-label>{{'data.quantity' | translate}}</mat-label>
-                    <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" ngModel required>
-                  </mat-form-field>
-                </p>
-                <ng-template #done>{{ dollarUS.format(donePools[pool.pool_pair]) }}</ng-template>
-            </mat-cell>
+          <mat-header-cell *matHeaderCellDef>{{'data.add' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let pool; let i = index">
+              <p *ngIf="!donePools[pool.pool_pair]; else done">
+                <mat-form-field appearance="legacy" class="input">
+                  <mat-label>{{'data.quantity' | translate}}</mat-label>
+                  <input type="number" matInput id="pool_{{pool.pool_pair}}" name="{{pool.pool_pair}}" ngModel required>
+                </mat-form-field>
+              </p>
+              <ng-template #done>{{ dollarUS.format(donePools[pool.pool_pair]) }}</ng-template>
+          </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -23,7 +23,7 @@ export class PoolUpdateComponent implements OnInit {
   public poolStatus: Array<any>;
   public poolStat: string;
   public donePools: Array<number>;
-  public displayedColumns: Array<string> = ["poolupdate_pair", "exchange", "tokenA", "tokenB", "add"];
+  public displayedColumns: Array<string> = ["poolupdate_pair", "exchange", "tokenA", "tokenB", "Last pool", "add"];
   public dataSource: any;
   public poolToDo: boolean = true;
   public dollarUS = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'});
