@@ -1,3 +1,6 @@
+### Language
+[![es](https://img.shields.io/badge/lang-es-red.svg)](./README.es.md)
+
 # Farming Application
 
 ## Back-end API:
