@@ -2,6 +2,7 @@ body {
   margin: 0;
   background-color: rgb(182, 218, 182);
   font-family: 'Exo 2', sans-serif !important;
+  min-width: 320px;
 }
 
 .displaynone {
@@ -65,7 +66,7 @@ form {
 #darklight {
   position: absolute !important;
   z-index: 7;
-  left: 0px;
+  left: -30px;
   top: -30px;
   font-size: 2em;
 }
@@ -169,7 +170,6 @@ form {
 /* Nav Menu */
 
 #menu {
-  display: flex;
   background-color: rgb(51, 51, 51);
   text-align: center;
   margin: 0;
@@ -182,6 +182,7 @@ form {
 
 .itemmenu {
   position: relative;
+  display: inline-block;
   width: 16%;
   border-radius: 5px;
   background-color: rgb(230, 230, 230);
@@ -226,6 +227,8 @@ form {
 
 .itemmenu:first-child {
   padding-bottom: 0;
+  transform: translateY(12px);
+  margin-top: -12px;
 }
 
 .itemmenu:first-child p {
@@ -898,14 +901,14 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   left: 10px;
 }
 
-.clientProgress::after {
-  content: "Last progress";
+.clientProgress p {
   background-color: red;
   background-size: cover;
   position: absolute;
   color: white;
   font-size: 0.8em;
   z-index: 3;
+  margin: 0;
   padding: 0px 8px;
   border-radius: 0 0 15px 0;
   bottom: 0px;
@@ -1384,3 +1387,93 @@ body.dark { background-color: rgb(50, 60, 90) !important; }
 .dark .poolvarPoolTotal p { font-weight: normal !important; }
 .dark .homeinfo { background: white; }
 
+
+
+
+@media(max-width: 1250px) {
+
+  .itemmenu {
+    width: 32%;
+  }
+}
+
+
+@media(max-width: 900px) {
+
+  .tituloheader h1 {
+    width: 80%;
+    margin: auto;
+    font-size: 6.22vw;
+  }
+}
+
+
+@media(max-width: 650px) {
+
+  .itemmenu {
+    width: 49%;
+  }
+}
+
+
+@media(max-width: 450px) {
+
+  .tituloheader h1 {
+    font-size: 1.8em;
+    padding: 10px;
+    width: 65%;
+  }
+
+  .forminput button {
+    margin: 0 10px;
+  }
+
+  .itemmenu {
+    margin: 1px 0;
+    width: 100%;
+    padding: 0%;
+  }
+
+  .itemmenu .itemText {
+    display: inline-block;
+    width: 72%;
+    padding: 0;
+  }
+
+  .itemmenu:first-child {
+    transform: unset;
+    margin-top: unset;
+    padding: 2px 0;
+  }
+
+  .itemmenu:first-child p {
+    padding: 0;
+  }
+
+  .buttons {
+    display: inline-block;
+    position: relative;
+    width: 28%;
+    height: unset;
+    top: 0;
+    right: 0;
+  }
+
+  .buttons2 div {
+    display: inline-block;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .buttonlist {
+    border-radius: 0px;
+    padding: 3px 0;
+  }
+
+  .buttonadd2 {
+    border-radius: 0 4px 4px 0;
+    padding: 3px 0;
+  }
+
+}

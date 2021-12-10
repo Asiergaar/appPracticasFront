@@ -19,6 +19,7 @@
         <ng-template #neg> <h3 *ngIf="p < 0; else pos">{{ p | number: "1.6-6" }}% &nbsp;<i class="fa fa-arrow-down" aria-hidden="true"></i></h3> </ng-template>
         <ng-template #pos> <h3 *ngIf="p > 0">{{ p | number: "1.6-6" }}% &nbsp;<i class="fa fa-arrow-up" aria-hidden="true"></i></h3> </ng-template>
       </div>
+      <p>{{ 'data.lastProgress' | translate }}</p>
     </div>
 
     <div class="capitalProgress" *ngIf="loaded">

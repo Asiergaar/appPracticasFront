@@ -71,7 +71,8 @@ export class ClientDetComponent implements OnInit {
     return new Promise(resolve => {
       let querydata: any[];
       this.clientsService.getClientMonthlyData().subscribe(
-        (data: any)    => { querydata = data.data; querydata = querydata[querydata.findIndex(item => item.id === this.client.client_id)].capitals; this.loaded = true;
+        (data: any)    => { querydata = data.data;
+                            querydata = querydata[querydata.findIndex(item => item.id === this.client.client_id)].capitals; this.loaded = true;
                             console.log('Petición realizada correctamente');
                             resolve(querydata);
                           },
