@@ -60,9 +60,6 @@ export class ClientModComponent implements OnInit {
                           } else {
                             this.isOnDB = true;
                           }
-                        },
-      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
-      ()             => {
                           if(!this.isOnDB) {
                             this.clientsService.modClient(this.clientInfo.client_id, this.client).subscribe(
                               (data: any)    => { this.router.navigate(['/clientsList'], { queryParams: { message: this.client.client_name + ", " + this.client.client_surname, type: "mod"} } ); },
@@ -74,8 +71,9 @@ export class ClientModComponent implements OnInit {
                               document.getElementById('clientformalert')?.classList.add('formalert');
                             }
                           }
-                        }
-      )
+                        },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
+    )
   }
 
 }

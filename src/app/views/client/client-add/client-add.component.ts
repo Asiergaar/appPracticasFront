@@ -71,9 +71,6 @@ export class ClientAddComponent implements OnInit {
                           } else {
                             this.isOnDB = true;
                           }
-                        },
-      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
-      ()             => {
                           if(!this.isOnDB) {
                             // If the pools are started
                             if(this.poolsStarted) {
@@ -106,7 +103,10 @@ export class ClientAddComponent implements OnInit {
                             document.getElementById('clientexists')?.classList.remove('displaynone');
                             document.getElementById('clientformalert')?.classList.add('formalert');
                           }
-    })
+                        },
+      (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
+    )
   }
+
 
 }

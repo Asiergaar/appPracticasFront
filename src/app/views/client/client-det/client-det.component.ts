@@ -26,8 +26,7 @@ export class ClientDetComponent implements OnInit {
   constructor(
     private clientsService: ClientsService,
     private utils: UtilsService,
-    private router: Router,
-    private translate: TranslateService
+    private router: Router
   ) {
     this.client = new Client();
     this.id = router.url.split('/').pop();
@@ -72,17 +71,16 @@ export class ClientDetComponent implements OnInit {
     return new Promise(resolve => {
       let querydata: any[];
       this.clientsService.getClientMonthlyData().subscribe(
-        (data: any)    => { querydata = data.data; querydata = querydata[querydata.findIndex(item => item.id === this.client.client_id)].capitals; this.loaded = true; },
-        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); },
-        ()             => { console.log('Petición realizada correctamente');
+        (data: any)    => { querydata = data.data; querydata = querydata[querydata.findIndex(item => item.id === this.client.client_id)].capitals; this.loaded = true;
+                            console.log('Petición realizada correctamente');
                             resolve(querydata);
-        }
+                          },
+        (error: Error) => { console.log('Error: ', error); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
       )
     })
   }
 
   public getMonth(date: string): number {
-    console.log(this.monthInfo[0].LastMonth);
     return parseInt(date.substring(date.indexOf('-')+1, date.lastIndexOf('-')));
   }
 
