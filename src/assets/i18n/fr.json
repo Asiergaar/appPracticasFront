@@ -94,7 +94,6 @@
 
   "home": {
     "subtitle": "Pour un flux de travail correct, ajoutez les données dans l'ordre suivant",
-    "updatePools": "Actualiser Pools",
     "step1": "1 - Ajouter: Tokens, Exchanges et Clients",
     "step2": "2 - Crée les Pairs",
     "step3": "3 - Ajouter des paires aux pools",
@@ -117,7 +116,8 @@
     "exchange": "Exchange",
     "liquidityPool": "Réserve de liquidité",
     "pair": "Pair",
-    "token": "Token"
+    "token": "Token",
+    "updatePools": "Actualiser les Pools"
   },
 
   "month": {
