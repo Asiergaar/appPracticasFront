@@ -24,9 +24,9 @@ export class AppComponent implements AfterViewInit {
     this.translate.use(language);
     for(let lang in this.langList){
       if (this.langList[lang] == language) {
-        document.getElementById('language_' + language)?.classList.add('selectedlang')
+        document.getElementById('language_' + language)?.classList.add('selectedlang');
       } else {
-        document.getElementById('language_' + this.langList[lang])?.classList.remove('selectedlang')
+        document.getElementById('language_' + this.langList[lang])?.classList.remove('selectedlang');
       }
     }
   }
