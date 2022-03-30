@@ -48,7 +48,7 @@ export class ClientAddComponent implements OnInit {
   }
 
 
-  // get pools
+  // get pools data
   private async getPools(): Promise<any> {
     let list: any[];
     return new Promise( resolve => {
@@ -60,7 +60,7 @@ export class ClientAddComponent implements OnInit {
     })
   }
 
-  // On form submit => create client on DB
+  // On form submit => check if client exists => create client on DB
   public submit(): void {
     document.getElementById('clientexists')?.classList.add('displaynone');
     document.getElementById('clientformalert')?.classList.remove('formalert');

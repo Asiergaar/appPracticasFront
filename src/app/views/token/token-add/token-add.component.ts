@@ -30,7 +30,7 @@ export class TokenAddComponent implements OnInit {
   }
 
 
-  // On form submit => create token on DB
+  // On form submit => check if token exists => create token on DB
   public submit(): void {
     document.getElementById('tokenexists')?.classList.add('displaynone');
     document.getElementById('tokenformalert')?.classList.remove('formalert');

@@ -33,9 +33,11 @@ export class PairAddComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    // Gets exchanges data
     this.exchangesService.getExchanges().subscribe(
       (data: any) => { this.exchangeList = data.data; }
     )
+    // Gets tokens data
     this.tokensService.getTokens().subscribe(
       (data: any) => { this.tokenList = data.data; }
     )
@@ -44,7 +46,7 @@ export class PairAddComponent implements OnInit {
   }
 
 
-  // On form submit => create pair on DB
+  // On form submit => check if pair exists => create pair on DB
   public submit(): void {
     if (this.pair.tokenB == -1) {
       this.pair.tokenB = null;

@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Change between light/dark mode
   public changemode($event: any, mode: string) {
     if (mode == 'light') {
       document.getElementById('dark')?.classList.remove('displaynone');

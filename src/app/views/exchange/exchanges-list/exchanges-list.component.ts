@@ -56,7 +56,7 @@ export class ExchangesListComponent implements OnInit {
     this.utils.menuHover('menuexchange');
   }
 
-  // get exchanges data to show on form
+  // get exchanges data
   private async getExchanges(): Promise<any> {
     return new Promise(resolve => {
       let exchangeList: any[];

@@ -44,7 +44,7 @@ export class ClientDetComponent implements OnInit {
     this.utils.menuHover('menuclient');
   }
 
-  // get client data to show on form
+  // gets client data
   public async getClient(): Promise<any> {
     return new Promise(resolve => {
       let querydata: any[];
@@ -66,7 +66,7 @@ export class ClientDetComponent implements OnInit {
     })
   }
 
-  // get client data to show on form
+  // gets client monthly data
   public async getClientMonthlyData(): Promise<any> {
     return new Promise(resolve => {
       let querydata: any[];

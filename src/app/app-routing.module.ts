@@ -26,34 +26,42 @@ import { CapitalAddComponent } from './views/capital/capital-add/capital-add.com
 import { ServerErrorComponent } from './views/server-error/server-error.component';
 
 const routes: Routes = [
+  // Home route
   { path: 'home', component: HomeComponent },
 
+  // Client routes
   { path: 'clientsList', component: ClientsListComponent },
   { path: 'addClient', component: ClientAddComponent },
   { path: 'modClient/:id', component: ClientModComponent },
   { path: 'clientDetail/:id', component: ClientDetComponent },
   { path: 'clientsCapitals', component: ClientsCapitalsComponent },
 
+  // Token routes
   { path: 'tokensList', component: TokensListComponent},
   { path: 'addToken', component: TokenAddComponent },
   { path: 'modToken/:id', component: TokenModComponent },
 
+  // Echange routes
   { path: 'exchangesList', component: ExchangesListComponent},
   { path: 'addExchange', component: ExchangeAddComponent },
   { path: 'modExchange/:id', component: ExchangeModComponent },
 
+  // Pair routes
   { path: 'pairsList', component: PairsListComponent},
   { path: 'addPair', component: PairAddComponent},
   { path: 'modPair/:id', component: PairModComponent},
 
+  // Pool routes
   { path: 'poolsList', component: PoolsListComponent},
   { path: 'addPool', component: PoolAddComponent},
   { path: 'poolsByDay', component: PoolDailyComponent},
   { path: 'updatePools', component: PoolUpdateComponent},
   { path: 'poolVariation', component: PoolVariationComponent},
 
+  // NewCapital routes
   { path: 'addCapital', component: CapitalAddComponent},
 
+  // Other routes
   { path: 'serverError', component: ServerErrorComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent}

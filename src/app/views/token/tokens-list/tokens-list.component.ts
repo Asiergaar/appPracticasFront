@@ -58,7 +58,7 @@ export class TokensListComponent implements OnInit {
     this.utils.menuHover('menutoken');
   }
 
-  // get tokens data to show on form
+  // get tokens data
   private getTokens(): Promise<any> {
     return new Promise(resolve => {
       let tokenList: any[];

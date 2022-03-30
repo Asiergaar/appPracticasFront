@@ -26,12 +26,14 @@ export class CapitalAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Gets clients data
     this.clientsService.getClients().subscribe(
       (data: any) => { this.clients = data.data; }
     )
     this.utils.menuHover('menuclient');
   }
 
+  // Takes data from form and add new capital to database
   public async submit(value:any): Promise<void> {
       this.newCapital.newcapital_client = value.newcapital_client;
       this.newCapital.newcapital_quantity = value.newcapital_quantity;

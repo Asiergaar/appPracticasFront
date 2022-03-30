@@ -53,7 +53,7 @@ export class PairsListComponent implements OnInit {
     this.utils.menuHover('menupair');
   }
 
-  // get pairs data to show on form
+  // get pairs data
   private async getPairsName(): Promise<any> {
     return new Promise(resolve => {
       let pairList: any[];

@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // get pool data to show on form
+  // get pool data
   public async getPoolsData(): Promise<any> {
     return new Promise(resolve => {
       let querydata: any[];

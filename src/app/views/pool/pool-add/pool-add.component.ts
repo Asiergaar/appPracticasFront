@@ -54,7 +54,7 @@ export class PoolAddComponent implements OnInit {
   }
 
 
-  // On form submit => create pool on DB
+  // On form submit => check if pool exists => create pool on DB
   public submit(): void {
     this.poolsService.addPool(this.pool).subscribe(
       (data: any)    => { let messageend = "";

@@ -54,6 +54,7 @@ export class PoolUpdateComponent implements OnInit {
     if (this.poolList.length == 0){
       this.router.navigate([ '/home'], { queryParams: { isData: false } } );
     }
+    // Gets poo status
     this.poolStatus = await this.getPoolStatus();
     if(this.poolStat == 'done') {
       this.poolToDo = false;
@@ -98,7 +99,7 @@ export class PoolUpdateComponent implements OnInit {
     })
   }
 
-  // On form submit => create pools on DB
+  // On form submit => check if pool exists => create pools on DB
   public async submit(value:Array<any>): Promise<void> {
     await this.createPools(value);
     this.progress = await this.addProgress();
@@ -109,6 +110,7 @@ export class PoolUpdateComponent implements OnInit {
     this.progressService.checkProgress().subscribe( () => { console.log("progresses checked"); } );
   }
 
+  // Creates pool on database
   private async createPools(value: Array<any>):Promise<any> {
     return new Promise( resolve => {
       this.poolsService.addPools(value).subscribe(

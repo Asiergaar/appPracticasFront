@@ -78,7 +78,7 @@ export class PoolDailyComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  // get pools data to show on form
+  // get pools data
   private async getPoolsByDay(): Promise<any> {
     return new Promise(resolve => {
       let poolList: any[];
@@ -117,6 +117,7 @@ export class PoolDailyComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  // Shows or hides columns on the table
   submit(){
     if (!this.columnsShown) {
       this.displayedColumns = this.displayedColumnsLong;

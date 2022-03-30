@@ -70,7 +70,7 @@ export class ClientsCapitalsComponent implements OnInit, AfterViewInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  // get clients data to show on form
+  // gets clients data
   private async getClientsCapitals(): Promise<any> {
     return new Promise(resolve => {
       let query: any[];

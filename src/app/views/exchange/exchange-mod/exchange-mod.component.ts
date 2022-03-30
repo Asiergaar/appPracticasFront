@@ -50,7 +50,7 @@ export class ExchangeModComponent implements OnInit {
     )
   }
 
-  // On form submit => modify exchange on DB
+  // On form submit => check if exchange exists => modify exchange on DB
   public submit(): void {
     document.getElementById('exchangeexists')?.classList.add('displaynone');
     document.getElementById('exchangeformalert')?.classList.remove('formalert');

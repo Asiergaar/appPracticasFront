@@ -34,7 +34,7 @@ export class ClientModComponent implements OnInit {
    this.utils.menuHover('menuclient');
   }
 
-  // get client data to show on form
+  // gets client data to show on form
   public getClient() {
     this.clientsService.getClient(this.id).subscribe(
       (data: any)    => { this.clientInfo = data.data[0];
@@ -49,7 +49,7 @@ export class ClientModComponent implements OnInit {
   }
 
 
-  // On form submit => modify client on DB
+  // On form submit => check if client exists => modify client on DB
   public submit(): void {
     document.getElementById('clientexists')?.classList.add('displaynone');
     document.getElementById('clientformalert')?.classList.remove('formalert');

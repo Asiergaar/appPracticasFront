@@ -34,7 +34,7 @@ export class TokenModComponent implements OnInit {
    this.getToken();
   }
 
-  // get token data to show on form
+  // get token data
   public getToken() {
     this.tokensService.getToken(this.id).subscribe(
       (data: any)    => { this.tokenInfo = data.data[0];
@@ -52,7 +52,7 @@ export class TokenModComponent implements OnInit {
     this.utils.menuHover('menutoken');
   }
 
-  // On form submit => modify token on DB
+  // On form submit => check if token exists => modify token on DB
   public submit(): void {
     document.getElementById('tokenexists')?.classList.add('displaynone');
     document.getElementById('tokenformalert')?.classList.remove('formalert');

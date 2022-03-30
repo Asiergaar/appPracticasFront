@@ -30,7 +30,7 @@ export class ExchangeAddComponent implements OnInit {
   }
 
 
-  // On form submit => create exchange on DB
+  // On form submit => check if exchange exists => create exchange on DB
   public submit(): void {
     document.getElementById('exchangeexists')?.classList.add('displaynone');
     document.getElementById('exchangeformalert')?.classList.remove('formalert');
