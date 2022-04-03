@@ -750,17 +750,22 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 }
 
 .submitbtn {
-  background-color: rgb(37, 151, 37);
+  background-color: rgb(14, 124, 23);
   color: white;
 }
 
 .submitbtn:hover {
-  background-color: rgb(12, 141, 12);
+  background-color: rgb(43, 156, 52);
   color: black;
 }
 
+.backbtn {
+  background-color: rgb(199, 7, 7) !important;
+  color: white;
+}
+
 .backbtn:hover {
-  background-color: rgb(231, 38, 38);
+  background-color: rgb(255, 61, 61) !important;
   color: black;
 }
 
