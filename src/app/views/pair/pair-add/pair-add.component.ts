@@ -65,7 +65,17 @@ export class PairAddComponent implements OnInit {
       ()             => {
                           if(!this.isOnDB) {
                             this.pairsService.addPair(this.pair).subscribe(
-                              (data: any) => { this.router.navigate(['/pairsList'], { queryParams: { message: this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name + ", with tokens " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name + " & " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenB)].token_name, type: "add"} } ); },
+                              (data: any) => { 
+                                const exchange = this.exchangeList[this.exchangeList.findIndex(item => item.exchange_id == this.pair.pair_exchange)].exchange_name;
+                                const tokenA = this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenA)].token_name;
+                                let tokenB: string;
+                                try {
+                                  tokenB = " & " + this.tokenList[this.tokenList.findIndex(item => item.token_id == this.pair.tokenB)].token_name;
+                                } catch (error) {
+                                  tokenB = '';
+                                }
+                                this.router.navigate(['/pairsList'], { queryParams: { message: exchange + " -> " + tokenA + tokenB, type: "add"} } ); 
+                              },
                               (error: Error) => { console.error("Error al realizar el acceso"); this.router.navigate([ '/serverError'], { queryParams: { page: window.location.href.substring(window.location.href.lastIndexOf('/'), window.location.href.length ) } } ); }
                             )
                           } else {
